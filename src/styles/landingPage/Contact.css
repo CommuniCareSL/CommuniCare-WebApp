@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+.contact-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 0 10px;
+  position: relative;
+}
+
+.contact-body::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: white;
+  background-position: center;
+  background-size: cover;
+}
+
+.contact-wrapper {
+  width: 500px;
+  height: 550px;
+  border-radius: 20px;
+  padding: 40px;
+  margin-top:70px;
+  /* margin-left: 800px; */
+  text-align: justify;
+  border: 4px solid #0991FF;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+.contact-input-field {
+  position: relative;
+  border-bottom: 2.5px solid #0991FF;
+  margin: 20px 0;
+}
+
+.contact-input-field label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  color: #000000;
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+
+.contact-input-field input {
+  width: 100%;
+  height: 40px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #000000;
+}
+
+.contact-input-field input:focus ~ label,
+.contact-input-field input:valid ~ label {
+  font-size: 0.8rem;
+  top: 10px;
+  transform: translateY(-140%);
+}
+
+/* .contact-forget {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 25px 0 35px 0;
+  color: #fff;
+}
+
+#contact-remember {
+  accent-color: #0991FF;
+} */
+/* 
+.contact-forget label {
+  display: flex;
+  align-items: center;
+}
+
+.contact-forget label p {
+  margin-left: 8px;
+} */
+
+.contact-wrapper a {
+  color: #efefef;
+  text-decoration: none;
+}
+
+.contact-wrapper a:hover {
+  text-decoration: underline #0991FF;
+}
+
+button {
+  background: #000000;
+  color:  #0991FF;;
+  font-weight: 600;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 16px;
+  border: 2px solid #0991FF transparent;
+  transition: 0.3s ease;
+  margin-top: 20px;
+}
+
+button:hover {
+  color: #fff;
+  border-color: #b0a2fd;
+  background: rgba(0, 122, 255, 0.65);
+}
+
+.contact-register {
+  text-align: center;
+  margin-top: 30px;
+  color: #fff;
+}

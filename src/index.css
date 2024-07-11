@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Mulish", sans-serif;
+}
+
+body
+{
+    background: white;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+    line-height: 1;
+    cursor: pointer;    
+}
+
+nav
+{
+    font-weight: bold;
+}
+
+.container1
+{
+    margin-top: 35px;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-bottom: 0;
+    /* margin-top: 80px; */
+}
+
+.btn
+{
+    background: rgba(0, 122, 255, 0.65);
+    color: black;
+    border: 3px solid black;
+    font-weight: bold;
+    padding:14px 22px ;
+    font-size: 14px;
+    border-radius:10px;
+    cursor: pointer;
+    /* border: 0; */
+    outline: 0;
+}
+
+
+.btn1
+{
+    background: white;
+    color: #0991FF;
+    border: 3px solid #0991FF;
+    font-weight: bold;
+    padding:14px 22px ;
+    font-size: 14px;
+    border-radius:10px;
+    cursor: pointer;
+    /* border: 0; */
+    outline: 0;
+}
+
+
+  
+  .btn {
+      background: rgba(0, 122, 255, 0.65);
+      color: black;
+      border: 1px solid black;
+      font-weight: bold;
+      padding:14px 22px ;
+      font-size: 14px;
+      border-radius:10px;
+      cursor: pointer;
+      /* border: 0; */
+      outline: 0;
+  }
+  
+  
+  
+  .btn + .btn {
+    margin-left: 10px;
+  }
+  
+  .btn1 {
+    background: transparent;
+    color:  rgba(0, 122, 255, 0.65);
+    border: 1px solid  rgba(0, 122, 255, 0.65);
+    transition: all .3s ease;
+  }
+  
+  .btn1:hover {
+    transform: scale(1.125);
+    color: rgba(0, 0, 0, 0.9);
+    border-color: rgba(0, 0, 0, 0.9);
+  }
+  
+  .btn.fill {
+    background:  rgba(0, 122, 255, 0.65);
+    color: rgba(255,255,255,0.95);
+    filter: drop-shadow(0);
+    font-weight: bold;
+    transition: all .3s ease; 
+  }
+  
+  .btn.fill:hover {
+    transform: scale(1.125);  
+    border-color: rgba(255, 255, 255, 0.9);
+    filter: drop-shadow(0 10px 5px rgba(0,0,0,0.125));
+  }
+  
+  html {
+  scroll-behavior: smooth;
+}
+
+.section {
+  padding: 100px 20px; /* Adjust this value based on your navbar height */
+  min-height: 100vh;
+  box-sizing: border-box; /* Adjust this value based on your navbar height */
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: white;
+  z-index: 1000;
+}
