@@ -28,7 +28,7 @@
 }
 
 .contact-wrapper {
-  width: 500px;
+  width: 1000px;
   height: 550px;
   border-radius: 20px;
   padding: 40px;
@@ -54,8 +54,9 @@ h2 {
 
 .contact-input-field {
   position: relative;
+  width: 45%;
   border-bottom: 2.5px solid #0991FF;
-  margin: 20px 0;
+  margin: 20px 30px;
 }
 
 .contact-input-field label {
@@ -140,4 +141,52 @@ button:hover {
   text-align: center;
   margin-top: 30px;
   color: #fff;
+}
+
+.textarea
+{
+  border-radius: 15px;
+  border: 2px solid #0991FF;
+  margin: 20px 30px;
+  
+}
+
+.textarea input
+{
+  width: 100%;
+  height: 40px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #000000;
+}
+
+
+
+/* .contact-input-field {
+  position: relative;
+  width: 45%;
+  border-bottom: 2.5px solid #0991FF;
+  margin: 20px 30px;
+} */
+
+.textarea label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  color: #000000;
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+
+
+
+.textarea input:focus ~ label,
+.textarea input:valid ~ label {
+  font-size: 0.8rem;
+  top: 10px;
+  transform: translateY(-140%);
 }
