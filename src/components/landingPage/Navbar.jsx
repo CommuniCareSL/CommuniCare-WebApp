@@ -36,8 +36,15 @@ const Navbar = ({ setSection }) => {
         </li>
 
         <li>
-          <button className="btn fill">LOGIN-COUNCIL</button>
+        {/* <li style={{marginRight:'0px',marginLeft:'40px'}}> */}
+          <button className="btn1">LOGIN</button>
         </li>
+
+        {/* <li style={{marginLeft:'10px'}}> */}
+        <li style={{marginLeft:'10px'}}>
+          <button className="btn fill">SIGNUP</button>
+        </li>
+
       </ul>
     </nav>
   );
