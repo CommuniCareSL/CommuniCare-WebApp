@@ -1,5 +1,7 @@
 import React from 'react';
 import '../../styles/landingPage/Contact.css';
+import app from '../../assets/landingPage/contact.png'
+
 
 const Contact = () => {
   return (
