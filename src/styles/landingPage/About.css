@@ -2,7 +2,7 @@
 {
     width: 100%;
     min-height: 100vh;
-    background: url('../../assets/landingPage/white.png');
+    background: url('../../assets/white.png');
     background-size: cover;
     background-position: center;
     /* color: ; */
@@ -27,7 +27,7 @@
 
 .services
 {
-    margin-top: 60px;
+    /* margin-top: 60px; */
 }
 
 .services .boxes{
