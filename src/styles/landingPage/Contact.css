@@ -4,7 +4,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
 }
 
 .contact-body {
@@ -15,6 +14,7 @@
   width: 100%;
   padding: 0 10px;
   position: relative;
+  
 }
 
 .contact-body::before {
@@ -28,16 +28,34 @@
 }
 
 .contact-wrapper {
-  width: 500px;
+  display: flex;
+  align-items: center;
+  width: 1000px;
   height: 550px;
   border-radius: 20px;
   padding: 40px;
-  margin-top:70px;
-  /* margin-left: 800px; */
+  margin-top: 70px;
   text-align: justify;
   border: 4px solid #0991FF;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
+}
+
+.contact-logo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-logo {
+  width: 420px;
+  height: 380px;
+
+}
+
+.contact-form {
+  flex: 2;
 }
 
 form {
@@ -54,8 +72,9 @@ h2 {
 
 .contact-input-field {
   position: relative;
+  width: 45%;
   border-bottom: 2.5px solid #0991FF;
-  margin: 20px 0;
+  margin: 20px 30px;
 }
 
 .contact-input-field label {
@@ -86,27 +105,6 @@ h2 {
   transform: translateY(-140%);
 }
 
-/* .contact-forget {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 25px 0 35px 0;
-  color: #fff;
-}
-
-#contact-remember {
-  accent-color: #0991FF;
-} */
-/* 
-.contact-forget label {
-  display: flex;
-  align-items: center;
-}
-
-.contact-forget label p {
-  margin-left: 8px;
-} */
-
 .contact-wrapper a {
   color: #efefef;
   text-decoration: none;
@@ -118,7 +116,7 @@ h2 {
 
 button {
   background: #000000;
-  color:  #0991FF;;
+  color: #0991FF;
   font-weight: 600;
   border: none;
   padding: 12px 20px;
@@ -140,4 +138,38 @@ button:hover {
   text-align: center;
   margin-top: 30px;
   color: #fff;
+}
+
+.textarea {
+  border-radius: 15px;
+  border: 2px solid #0991FF;
+  margin: 20px 30px;
+}
+
+.textarea input {
+  width: 100%;
+  height: 40px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #000000;
+}
+
+.textarea label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  color: #000000;
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+
+.textarea input:focus ~ label,
+.textarea input:valid ~ label {
+  font-size: 0.8rem;
+  top: 10px;
+  transform: translateY(-140%);
 }

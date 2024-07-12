@@ -1,5 +1,5 @@
 .features-container {
-  margin-top: 60px;
+  /* margin-top: 60px; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between; /* Add this to control spacing between cards */
@@ -22,6 +22,11 @@
 .features-container .card-big-shadow {
   max-width: 100%;
   position: relative;
+  box-shadow: 
+    9px 6px 0px rgba(0, 0, 0, 0.2),
+    0px 0px 4px rgba(0, 0, 0, 0.2), 
+    0px 4px 4px rgba(0, 0, 0, 0.2), 
+    4px 0px 4px rgba(0, 0, 0, 0.2);
 }
 
 .features-container .coloured-cards .card {
@@ -35,14 +40,18 @@
 
 .features-container .card {
   border-radius: 8px;
-  box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
+  box-shadow: 
+  9px 6px 0px rgba(0, 0, 0, 0.2),
+  0px 0px 4px rgba(0, 0, 0, 0.2), 
+  0px 4px 4px rgba(0, 0, 0, 0.2), 
+  4px 0px 4px rgba(0, 0, 0, 0.2);
   background-color: #FFFFFF;
   color: #252422;
-  margin-bottom: 20px;
+  margin-bottom: px;
   position: relative;
   z-index: 1;
   width: 400px; 
-  height: 250px; 
+  height: 230px; 
 }
 
 .features-container .card[data-background="image"] .title,
@@ -84,7 +93,7 @@
 }
 
 .features-container .card-big-shadow:before {
-  background-image: url("http://static.tumblr.com/i21wc39/coTmrkw40/shadow.png");
+  /* background-image: url("http://static.tumblr.com/i21wc39/coTmrkw40/shadow.png"); */
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -130,69 +139,74 @@
 
 /*======== COLORS ===========*/
 .features-container .card[data-color="blue"] {
-  background: #000000;
+  background: linear-gradient(135deg, #000000, #074f8a);;
 }
 
 .features-container .card[data-color="blue"] .description {
-  color: #0991FF;
+  color: #ffffff;
+}
+
+
+.features-container .card[data-color="blue"] .category {
+  color: #ffffff;
 }
 
 .features-container .card[data-color="green"] {
-  background: #ffffff;
+  background: linear-gradient(135deg, #000000, #074f8a);;
 }
 
 .features-container .card[data-color="green"] .description {
-  color: #000000;
+  color: #ffffff;
 }
 
 .features-container .card[data-color="green"] .category {
-  color: #000000;
+  color: #ffffff;
 }
 
 .features-container .card[data-color="yellow"] {
-  background: #000000;
+  background: linear-gradient(135deg, #000000, #074f8a);;
 }
 
 .features-container .card[data-color="yellow"] .description {
-  color: #0991FF;
+  color: #ffffff;
 }
 
 .features-container .card[data-color="yellow"] .category {
-  color: #0991FF;
+  color: #ffffff;
 }
 
 .features-container .card[data-color="brown"] {
-  background: #000000;
+  background:linear-gradient(135deg, #000000, #074f8a);;
 }
 
 .features-container .card[data-color="brown"] .description {
-  color: #0991FF;
+  color: #ffffff;
 }
 
 .features-container .card[data-color="brown"] .category {
-  color: #0991FF;
+  color: #ffffff;
 }
 
 .features-container .card[data-color="purple"] {
-  background: #ffffff;
+  background: linear-gradient(135deg, #000000, #074f8a);;
 }
 
 .features-container .card[data-color="purple"] .description {
-  color: #000000;
+  color: #ffffff;
 }
 
 .features-container .card[data-color="purple"] .category {
-  color: #000000;
+  color: #ffffff;
 }
 
 .features-container .card[data-color="orange"] {
-  background: #000000;
+  background: linear-gradient(135deg, #000000, #074f8a);;
 }
 
 .features-container .card[data-color="orange"] .description {
-  color: #0991FF;
+  color: #ffffff;
 }
 
 .features-container .card[data-color="orange"] .category {
-  color: #0991FF;
+  color: #ffffff;
 }
