@@ -1,8 +1,8 @@
 import React from "react";
-
 import "../../styles/landingPage/Navbar.css";
-
 import Logo from "../../assets/landingPage/logo.png";
+
+import { Link } from 'react-router-dom'
 
 const Navbar = ({ setSection }) => {
   return (
@@ -37,12 +37,16 @@ const Navbar = ({ setSection }) => {
 
         <li>
         {/* <li style={{marginRight:'0px',marginLeft:'40px'}}> */}
+        <Link to="/login">
           <button className="btn1">LOGIN</button>
+        </Link>
         </li>
 
         {/* <li style={{marginLeft:'10px'}}> */}
         <li style={{marginLeft:'10px'}}>
+        <Link to="/signup">
           <button className="btn fill">SIGNUP</button>
+        </Link>
         </li>
 
       </ul>

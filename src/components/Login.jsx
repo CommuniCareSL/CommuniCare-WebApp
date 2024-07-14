@@ -1,7 +1,7 @@
 import React from "react";
-import "./Login.css";
+import "../styles/Login.css";
 
-import profileImg from "../../assets/x.png";
+import profileImg from "../assets/x.png";
 
 const Login = () => {
   return (
