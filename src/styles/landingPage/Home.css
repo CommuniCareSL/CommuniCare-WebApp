@@ -2,6 +2,7 @@
 {
     width: 100%;
     min-height: 100vh;
+    margin-top: 120vh;
     background: url('../../assets/landingPage/white.png');
     background-size: cover;
     background-position: center;
@@ -84,3 +85,43 @@ header .navbar{
   display: flex;
   flex-wrap: wrap;
 } */
+
+
+
+@media (max-width: 1200px) {
+  .home-text h1 {
+      font-size: 55px;
+  }
+  .app {
+      margin-left: 100px;
+      margin-top: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-text h1 {
+      font-size: 45px;
+  }
+  .app {
+      margin-left: 50px;
+      margin-top: 20px;
+  }
+  .button-container {
+      flex-direction: column;
+      padding: 10px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-text h1 {
+      font-size: 35px;
+  }
+  .home-text p {
+      max-width: 90%;
+      font-size: 14px;
+  }
+  .app img {
+      width: 90%;
+      margin: auto;
+  }
+}
