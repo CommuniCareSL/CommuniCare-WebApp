@@ -2,6 +2,7 @@
 import '../../styles/pages/landingPage/Home.css'
 import app from '../../assets/landingPage/app.png'
 
+
 const Home = () => {
   return (
     <div className='home container1' style={{ paddingTop:"2350px"}}>
@@ -13,11 +14,9 @@ const Home = () => {
               <button className="btn fill">Download App</button>
             </div>   
         </div>
-
             <div className="app">
               <img src={app} alt="app" />
             </div>
-
     </div>
   );
 };
