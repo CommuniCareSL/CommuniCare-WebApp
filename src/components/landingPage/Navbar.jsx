@@ -1,10 +1,12 @@
-import React from "react";
+// import React from "react";
 
-import "../../styles/landingPage/Navbar.css";
+import "../../styles/components/landingPage/Navbar.css";
 
 import Logo from "../../assets/landingPage/logo.png";
 
-const Navbar = ({ setSection }) => {
+import { Link } from 'react-router-dom'
+
+const Navbar = () => {
   return (
     <nav className="container">
       <div className="logo-container">
@@ -37,12 +39,17 @@ const Navbar = ({ setSection }) => {
 
         <li>
         {/* <li style={{marginRight:'0px',marginLeft:'40px'}}> */}
+          {/* <button className="btn1">LOGIN</button> */}
+          <Link to="/login">
           <button className="btn1">LOGIN</button>
+          </Link>
         </li>
 
         {/* <li style={{marginLeft:'10px'}}> */}
-        <li style={{marginLeft:'10px'}}>
+        <li style={{marginLeft:'10px'}}>          
+          <Link to="/signup">
           <button className="btn fill">SIGNUP</button>
+          </Link>
         </li>
 
       </ul>

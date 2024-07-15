@@ -1,31 +1,20 @@
-// rafc
-import React from "react";
-import Navbar from "./components/landingPage/Navbar";
-import Footer from "./components/landingPage/Footer";
-import Home from "./pages/landingPage/Home";
-import About from "./pages/landingPage/About";
-import Features from "./pages/landingPage/Features";
-import Contact from "./pages/landingPage/Contact";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+import Landing from "./pages/Landing";
+
+import Login from "./pages/Login"
+import Signup from './pages/Signup'
 
 const App = () => {
   return (
-    <div>
-      <Navbar />
-      <div id="home" >
-        <Home />
-      </div>
-      <div id="about">
-        <About />
-      </div>
-      <div id="features">
-        <Features />
-      </div>
-      <div id="contact" >
-        <Contact />
-      </div>
-      <Footer />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+
+      </Routes>
+    </Router>
   );
 };
 

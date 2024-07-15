@@ -1,5 +1,5 @@
-import React from 'react'
-import '../../styles/landingPage/About.css';
+// import React from 'react'
+import '../../styles/pages/landingPage/About.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDesktop,faUsers,faXmark,faClock,faKey,faFaceSmile } from '@fortawesome/free-solid-svg-icons';
 

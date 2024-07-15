@@ -1,5 +1,5 @@
-import React from 'react';
-import '../../styles/landingPage/Features.css';
+// import React from 'react';
+import '../../styles/pages/landingPage/Features.css';
 
 const Features = () => {
   return (

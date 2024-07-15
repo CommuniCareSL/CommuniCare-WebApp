@@ -1,5 +1,5 @@
-import React from 'react';
-import '../../styles/landingPage/Footer.css' // Import your CSS file for styling
+// import React from 'react';
+import '../../styles/components/landingPage/Footer.css' // Import your CSS file for styling
 import logo from '../../assets/landingPage/DarkLogo.png'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
