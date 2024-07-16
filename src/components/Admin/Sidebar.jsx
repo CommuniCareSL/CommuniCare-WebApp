@@ -1,6 +1,6 @@
 // import React from 'react';
 import '../../styles/components/Admin/Sidebar.css';
-// import logo from '../../assets/DarkLogo.png';
+import logo from '../../assets/Admin/DarkLogo.png';
 import profileImg from '../../assets/Admin/profile-img.jpg';
 
 const Sidebar = () => {
@@ -44,6 +44,7 @@ const Sidebar = () => {
             Report
           </a>
         </li>
+
         <li>
           <a href="#">
             <span className="material-symbols-outlined">person</span>
@@ -73,7 +74,6 @@ const Sidebar = () => {
         </li> */}
         <br /><br /><br /><br />
         <br /><br /><br />
-       
         <li>            
           <a href="#">
             <span className="material-symbols-outlined">logout</span>
