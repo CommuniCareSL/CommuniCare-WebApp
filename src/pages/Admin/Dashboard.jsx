@@ -1,13 +1,14 @@
-// import React from 'react';
+// import React from 'react'
+import Sidebar from '../../components/Admin/Sidebar';
+
 import '../../styles/pages/Admin/Dashboard.css';
-import 'boxicons/css/boxicons.min.css';
 
-// import Sidebar from "../../components/Admin/Sidebar";
-
-
-const Dashboardcontent = () => {
-  return (    
-    <div className="home-content">
+const Dashboard = () => {
+  return (
+    <div>
+   
+      <Sidebar/>
+      <div className="home-content">
       <div className="overview-boxes">
         <div className="box">
           <div className="right-side">
@@ -262,7 +263,9 @@ const Dashboardcontent = () => {
         </div>
       </div>
     </div>
+   
+    </div>
   );
 };
 
-export default Dashboardcontent;
+export default Dashboard;
