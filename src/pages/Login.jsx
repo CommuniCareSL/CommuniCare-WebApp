@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import "../styles/pages/Login.css";
 import { useNavigate } from "react-router-dom";
 
@@ -21,7 +21,7 @@ const Login = () => {
           <div className="field">
             <input type="password" placeholder="Password" />
           </div>
-          <button onClick={() => { navigate("/");}}>LOGIN</button>
+          <button onClick={() => { navigate("/dashboard");}}>LOGIN</button>
           <div className="link">
             <a href="#">Forgot Password?</a> <br />
             <br />
