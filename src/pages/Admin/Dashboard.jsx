@@ -8,7 +8,7 @@ const Dashboard = () => {
     <div>
    
       <Sidebar/>
-      <div className="home-content">
+      {/* <div className="home-content">
       <div className="overview-boxes">
         <div className="box">
           <div className="right-side">
@@ -262,7 +262,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div> */}
    
     </div>
   );

@@ -73,7 +73,7 @@ const Sidebar = () => {
           </a>
         </li> */}
         <br /><br /><br /><br />
-        <br /><br /><br />
+        <br /><br />
         <li>            
           <a href="#">
             <span className="material-symbols-outlined">logout</span>
