@@ -1,11 +1,46 @@
-.home-content {
+.admin-dashboard-home-page {
+  flex-grow: 1;
+  padding: 20px;
+  /* background-color: #917d7d; */
+  min-height: 100vh;
+  min-width: auto;
+  margin-left: 85px;
+  transition: margin-left 0.4s ease;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.sidebar:hover ~ .admin-dashboard-home-page {
+  margin-left: 260px;
+}
+
+.admin-dashboard-box-details-row-view{
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.admin-dashboard-detailed-box{
+  margin-top: 5vh;
+  margin-left: 20px;
+  height: 20vh;
+  width: 200px;
+  background-color: rgb(255, 255, 255);
+  margin-right: 20px;
+  border-radius: 15px;
+  border: 3px solid #0991FF;
+  box-shadow: 0 0 20px rgba(0, 145, 255, 0.6), inset 0 0 10px rgba(0, 145, 255, 0.4);
+}
+
+/* .home-content {
   margin-top: 80px;
   margin-left: 90px; 
   transition: margin-left 0.4s ease; 
 }
 
 .sidebar:hover ~ .home-content {
-  margin-left: 260px; /* Adjusted to account for the expanded sidebar width on hover */
+  margin-left: 260px;
 }
 
 .box {
@@ -107,10 +142,8 @@
 .home-content .sales-boxes {
   display: flex;
   justify-content: space-between;
-  /* padding: 0 20px; */
 }
 
-/* left box */
 .home-content .sales-boxes .recent-sales {
   width: 65%;
   background: #fff;
@@ -129,7 +162,6 @@
 .sales-boxes .box .title {
   font-size: 24px;
   font-weight: 500;
-  /* margin-bottom: 10px; */
 }
 
 .transfers {
@@ -218,20 +250,19 @@
 }
 
 .bx-user, .bxs-user-detail,.bxs-error,.bx-calendar {
-  font-size: 30px; /* Adjust the size as needed */
-  color: #ffffff; /* Adjust the color as needed */
-  background: linear-gradient(135deg, #000000, #074f8a); /* Adjust the background as needed */
-  padding: 10px; /* Adjust the padding as needed */
-  border-radius: 50%; /* Makes the background a circle */
+  font-size: 30px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #000000, #074f8a); 
+  padding: 10px;
+  border-radius: 50%;
   display: inline-block;
   text-align: center;
   margin-left: 20px;
 }
 
-/* Example of additional styles */
 .bx-user:hover, .bxs-user-detail:hover,.bxs-error:hover ,.bx-calendar:hover {
-  color: #ffffff; /* Change color on hover */
-  background: black;/* Change background on hover */
+  color: #ffffff; 
+  background: black;
 }
 
 
@@ -269,10 +300,6 @@ overflow-x: auto;
 height: 5px;
 width: 100%;
 }
-
-/* ::-webkit-scrollbar-track {
-background: #444e80;
-} */
 
 ::-webkit-scrollbar-thumb {
 background: #abafc6;
@@ -358,14 +385,6 @@ stroke-width: 3;
 stroke: #ffffff;
 }
 
-/* .circle-unique:nth-child(3) {
-stroke: #5397d6;
-}
-
-.circle-unique:nth-child(4) {
-stroke: #4cc790;
-} */
-
 .graph-container-unique p {
 position: absolute;
 top: 50%;
@@ -390,4 +409,4 @@ flex: 1;
 margin: 0 10px;
 }
 
-
+ */
