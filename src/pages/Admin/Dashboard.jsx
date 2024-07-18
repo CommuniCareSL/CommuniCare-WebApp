@@ -2,13 +2,28 @@
 import Sidebar from '../../components/Admin/Sidebar';
 
 import '../../styles/pages/Admin/Dashboard.css';
+import profileImg from '../../assets/Admin/profile-img.jpg';
+import { height } from '@fortawesome/free-brands-svg-icons/fa42Group';
 
 const Dashboard = () => {
   return (
     <div>
    
       <Sidebar/>
-      <div className="home-content">
+      <div className="admin-dashboard-home-page">
+        <div className="admin-dashboard-box-details-row-view">
+          <div className="admin-dashboard-detailed-box">
+            
+          </div>
+          <div className="admin-dashboard-detailed-box">
+            
+          </div>
+          <div className="admin-dashboard-detailed-box">
+            
+          </div>
+        </div>
+      </div>
+      {/* <div className="home-content">
       <div className="overview-boxes">
         <div className="box">
           <div className="right-side">
@@ -262,7 +277,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div> */}
    
     </div>
   );
