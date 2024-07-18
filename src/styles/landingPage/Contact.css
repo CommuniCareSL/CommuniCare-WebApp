@@ -114,7 +114,7 @@ h2 {
   text-decoration: underline #0991FF;
 }
 
-button {
+/* button {
   background: #000000;
   color: #0991FF;
   font-weight: 600;
@@ -132,7 +132,9 @@ button:hover {
   color: #fff;
   border-color: #b0a2fd;
   background: rgba(0, 122, 255, 0.65);
-}
+
+  
+} */
 
 .contact-register {
   text-align: center;

@@ -2,7 +2,7 @@
 {
     width: 100%;
     min-height: 100vh;
-    background: url('../../assets/white.png');
+    background: white;
     background-size: cover;
     background-position: center;
     /* color: ; */
@@ -16,6 +16,7 @@
     text-align: center;
     max-width: 800px;
     margin-right: 80px;
+    background: white;
 }
 
 .about1 h1

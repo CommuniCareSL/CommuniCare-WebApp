@@ -5,7 +5,14 @@
   justify-content: space-between; /* Add this to control spacing between cards */
   margin-left: 70px;
   margin-right: 30px;
+
+  background: white;
   
+}
+
+.features
+{
+  background-color: white;
 }
 
 .features-container .row {

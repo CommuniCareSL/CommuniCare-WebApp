@@ -11,7 +11,7 @@ import { Routes, Route } from 'react-router-dom';
 
 const App = () => {
   return (
-    <div>
+    <div style={{backgroundColor:"white"}}>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -22,13 +22,13 @@ const App = () => {
       <div id="home" >
         <Home />
       </div>
-      <div id="about">
+      <div id="about" >
         <About />
       </div>
-      <div id="features">
+      <div id="features" >
         <Features />
       </div>
-      <div id="contact" >
+      <div id="contact"  >
         <Contact />
       </div>
       <Footer />

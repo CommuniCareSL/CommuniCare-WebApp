@@ -45,7 +45,7 @@ const Contact = () => {
                 className="textarea"
               ></textarea>
             </div>
-            <center><button type="submit" style={{width:'120px'}}>SEND</button></center>
+            <center><button type="submit" style={{width:'120px'}} className='btn1'>SEND</button></center>
           </form>
         </div>
       </div>
