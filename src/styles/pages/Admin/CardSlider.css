@@ -1,6 +1,6 @@
 .card-slider-section-view{
     position: relative;
-    width: 60%;
+    width: 80%;
     height: 20vh;
     border-radius: 15px;
     margin-left: 20px;
@@ -11,7 +11,6 @@
     height: 20vh;
     background-color: #fff;
     border-radius: 15px;
-    border: 3px solid #0991FF;
 }
 
 .slick-slide > div {
@@ -22,3 +21,42 @@
     bottom: -55px;
 }
 
+.slick-prev:before, .slick-next:before{
+    color: #69b6f5;
+}
+
+.slick-dots li button{
+    color: #69b6f5;
+}
+
+.slick-dots li button:before{
+    color: #69b6f5;
+}
+
+.slick-dots li.slick-active button:before{
+    color: #0991FF;
+}
+
+.card-slider-section-view-cards-title,
+.card-slider-section-view-cards-details{
+    margin: 10px;
+}
+
+.card-slider-section-view-cards-title h3{
+    font-weight: 900;
+    font-size: 20px;
+    margin-left: 8px; 
+}
+
+.card-slider-section-view-cards-details,
+.card-slider-section-view-cards-title{
+    display: flex;
+    align-items: center;
+    
+}
+
+.card-slider-section-view-cards-details p{
+    font-size: 10px;
+    text-align: left;
+    margin-right: 8px; 
+}

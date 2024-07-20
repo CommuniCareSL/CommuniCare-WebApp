@@ -18,7 +18,17 @@ const CardSlider = () => {
     <div className="card-slider-section-view">
       <Slider {...settings}>
 
-        <div className="card-slider-section-view-cards">Title 1</div>
+        <div className="card-slider-section-view-cards">
+          <div className="card-slider-section-view-cards-title">
+            <span className="material-symbols-outlined">dashboard</span><h3>Renting Service</h3>
+          </div>
+          <div className="card-slider-section-view-cards-details">
+            <p>Remaining Service Requests  :</p><h5>40</h5>
+          </div>
+          <div className="card-slider-section-view-cards-progress-bar">
+             
+          </div>
+        </div>
 
         <div className="card-slider-section-view-cards">Title 2</div>
 

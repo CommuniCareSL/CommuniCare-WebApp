@@ -5,6 +5,7 @@
   min-width: auto;
   margin-left: 85px;
   transition: margin-left 0.4s ease;
+  background-color: #e8eff9;
 }
 
 .sidebar:hover ~ .admin-dashboard-home-page {
