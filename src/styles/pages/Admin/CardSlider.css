@@ -1,11 +1,24 @@
-.admin-dashboard-box-details-row-view{
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
+.card-slider-section-view{
+    position: relative;
     width: 60%;
-    height: 25vh;
-    background-color: rgb(177, 202, 253);
+    height: 20vh;
     border-radius: 15px;
+    margin-left: 20px;
   }
 
-  
+.card-slider-section-view-cards{
+    width: 250px;
+    height: 20vh;
+    background-color: #fff;
+    border-radius: 15px;
+    border: 3px solid #0991FF;
+}
+
+.slick-slide > div {
+    margin: 0 20px;
+}
+
+.slick-dots {
+    bottom: -55px;
+}
+

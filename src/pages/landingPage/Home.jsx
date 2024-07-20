@@ -9,8 +9,8 @@ const Home = () => {
             <h1>Your concerns, <br/>Our promise</h1>
             <p>Register and Connect with your local council easily.<br/> Use our app to send complaints, ask questions, and book services. <br/>Download our Mobile App now and get involved in your community!</p>
             <div className="button-container">
-              <button className="btn1">Register Now</button>
-              <button className="btn fill">Download App</button>
+              <button className="btn1 login-button">Register Now</button>
+              <button className="btn fill login-button">Download App</button>
             </div>   
         </div>
 
