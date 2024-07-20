@@ -1,0 +1,11 @@
+.admin-dashboard-box-details-row-view{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: 60%;
+    height: 25vh;
+    background-color: rgb(177, 202, 253);
+    border-radius: 15px;
+  }
+
+  
