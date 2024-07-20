@@ -1,11 +1,62 @@
-.admin-dashboard-box-details-row-view{
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    width: 60%;
-    height: 25vh;
-    background-color: rgb(177, 202, 253);
+.card-slider-section-view{
+    position: relative;
+    width: 80%;
+    height: 20vh;
     border-radius: 15px;
+    margin-left: 20px;
   }
 
-  
+.card-slider-section-view-cards{
+    width: 250px;
+    height: 20vh;
+    background-color: #fff;
+    border-radius: 15px;
+}
+
+.slick-slide > div {
+    margin: 0 20px;
+}
+
+.slick-dots {
+    bottom: -55px;
+}
+
+.slick-prev:before, .slick-next:before{
+    color: #69b6f5;
+}
+
+.slick-dots li button{
+    color: #69b6f5;
+}
+
+.slick-dots li button:before{
+    color: #69b6f5;
+}
+
+.slick-dots li.slick-active button:before{
+    color: #0991FF;
+}
+
+.card-slider-section-view-cards-title,
+.card-slider-section-view-cards-details{
+    margin: 10px;
+}
+
+.card-slider-section-view-cards-title h3{
+    font-weight: 900;
+    font-size: 20px;
+    margin-left: 8px; 
+}
+
+.card-slider-section-view-cards-details,
+.card-slider-section-view-cards-title{
+    display: flex;
+    align-items: center;
+    
+}
+
+.card-slider-section-view-cards-details p{
+    font-size: 10px;
+    text-align: left;
+    margin-right: 8px; 
+}

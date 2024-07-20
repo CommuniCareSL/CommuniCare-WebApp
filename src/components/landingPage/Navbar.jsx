@@ -41,14 +41,14 @@ const Navbar = () => {
         {/* <li style={{marginRight:'0px',marginLeft:'40px'}}> */}
           {/* <button className="btn1">LOGIN</button> */}
           <Link to="/login">
-          <button className="btn1">LOGIN</button>
+          <button className="btn1 login-button">LOGIN</button>
           </Link>
         </li>
 
         {/* <li style={{marginLeft:'10px'}}> */}
         <li style={{marginLeft:'10px'}}>          
           <Link to="/signup">
-          <button className="btn fill">SIGNUP</button>
+          <button className="btn fill login-button">SIGNUP</button>
           </Link>
         </li>
 
