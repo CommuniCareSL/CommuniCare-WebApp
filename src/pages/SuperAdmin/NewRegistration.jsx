@@ -1,9 +1,17 @@
-import React from 'react'
-import './NewRegistration.css';
+// import React from 'react'
+import '../../styles/pages/SuperAdmin/NewRegistration.css';
 import 'boxicons/css/boxicons.min.css';
+import Sidebar from '../../components/SuperAdmin/Sidebar';
+
+
+// export const a = () => {
+//   console.log('9090909')
+// }
 
 export const Newregistration = () => {
   return (
+    <div>
+    <Sidebar />
     <div className="registration-content">
       {/* <h2 className="title">New Registration</h2> */}
       <div className="table-container">
@@ -92,5 +100,13 @@ export const Newregistration = () => {
         </table>
       </div>
     </div>
+    </div>
   )
 }
+
+
+// const b = () => {
+//   console.log('----------------')
+// }
+
+// export default b;

@@ -1,5 +1,5 @@
 // import React from 'react';
-import '../../styles/components/Admin/Sidebar.css';
+import '../../styles/components/SuperAdmin/Sidebar.css';
 import logo from '../../assets/Admin/DarkLogo.png';
 import profileImg from '../../assets/Admin/profile-img.jpg';
 
@@ -16,28 +16,28 @@ const Sidebar = () => {
           <div className="menu-separator"></div>
         </h4>
         <li>
-          <a href="#">
+          <a href="/SuperAdminDashboard">
             <span className="material-symbols-outlined">dashboard</span>
             Dashboard
           </a>
         </li>
        
         <li>
-          <a href="#">
+          <a href="/NewRegistration">
             <span className="material-symbols-outlined">person_add</span>
             New Registration
           </a>
         </li>
         
         <li>
-          <a href="#">
+          <a href="/Registered">
             <span className="material-symbols-outlined">verified_user</span>
             Registered
           </a>
         </li>
 
         <li>
-          <a href="#">
+          <a href="/Report">
             <span className="material-symbols-outlined">overview</span>
             Report
           </a>
