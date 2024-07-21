@@ -23,6 +23,9 @@ const Login = () => {
               <input type="password" placeholder="Password" />
             </div>
             <button onClick={() => { navigate("/dashboard");}}>LOGIN</button>
+            
+            {/* here */}
+            <button onClick={() => { navigate("/dashboard_Officer");}}>LOGIN</button>
             <div className="link">
               <a href="#">Forgot Password?</a> <br />
               <br />
