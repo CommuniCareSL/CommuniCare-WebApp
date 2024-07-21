@@ -1,10 +1,13 @@
 import Sidebar from '../../components/Civil Officer/Sidebar';
+import '../../styles/components/Civil officer/dashboard.css';
 
 const Dashboard = () => {
     return (
-        <div className='flex'>
+        <div className='dashboard-officer'>
+        <div>
         <Sidebar />
-        <div className='p-7'>
+        </div>
+        <div className='officer-home'>
             <h1 className='bg-blue text-2xl font-semibold'>Homepage-Officer</h1>
             
         </div>
