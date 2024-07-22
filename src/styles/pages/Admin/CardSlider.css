@@ -1,6 +1,6 @@
 .card-slider-section-view{
     position: relative;
-    width: 80%;
+    width: 95%;
     height: 20vh;
     border-radius: 15px;
     margin-left: 20px;
@@ -18,7 +18,7 @@
 }
 
 .slick-dots {
-    bottom: -55px;
+    bottom: -50px;
 }
 
 .slick-prev:before, .slick-next:before{
@@ -38,18 +38,20 @@
 }
 
 .card-slider-section-view-cards-title,
-.card-slider-section-view-cards-details{
+.card-slider-section-view-cards-details,
+.card-slider-section-view-cards-progress-bar{
     margin: 10px;
+    margin-bottom: 1vh;
 }
 
 .card-slider-section-view-cards-title h3{
     font-weight: 900;
-    font-size: 20px;
-    margin-left: 8px; 
+    font-size: 20px; 
 }
 
-.card-slider-section-view-cards-details,
-.card-slider-section-view-cards-title{
+.card-slider-section-view-cards-details
+/* .card-slider-section-view-cards-title{ */
+{
     display: flex;
     align-items: center;
     
