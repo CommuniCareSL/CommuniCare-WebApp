@@ -1,142 +1,148 @@
-.registration-content {
-    margin-top: 70px;
-    margin-left: 150px; /* Adding some space to avoid touching the sidebar */
-    transition: margin-left 0.4s ease;
-    margin-right: 60px;
+.new-registration-page .registration-content {
+  margin-top: 70px;
+  margin-left: 150px; /* Adding some space to avoid touching the sidebar */
+  transition: margin-left 0.4s ease;
+  margin-right: 60px;
+}
+
+/* background: linear-gradient(135deg, #000000, #074f8a); */
+
+.new-registration-page .sidebar:hover ~ .registration-content {
+  margin-left: 270px; /* Adjust to match expanded sidebar width */
+}
+
+/* .title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #0991FF;
+  align-items: center;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+} */
+
+.new-registration-page .table-container {
+  overflow-x: auto;
+  /* margin: 60px; */
+}
+
+.new-registration-page .registration-table {
+  max-width: 100%;
+  width: auto;
+  border-collapse: collapse;
+  background: linear-gradient(135deg, #000000, #074f8a);
+  color: white;
+}
+
+.new-registration-page .registration-table {
+  width: 100%; /* Increase this value as needed */
+  max-width: none;
+}
+
+
+.new-registration-page .registration-table th,
+.new-registration-page .registration-table td {
+  padding: 8px 10px; /* Adjusted padding to reduce table size */
+  text-align: left;
+  border-bottom: 8px solid #ffffff;
+}
+
+.new-registration-page .registration-table th {
+  color: #fff;
+  background: black;
+  height: 80px;
+  font-size: 17px;
+}
+
+.new-registration-page .registration-table th:last-child,
+.new-registration-page .registration-table td:last-child {
+  width: 150px; /* Reduce the width of the Action column */
+  color: white;
+}
+
+.new-registration-page .registration-table tr:nth-child(even) {
+  background: linear-gradient(135deg, #000000, #074f8a);
+}
+
+.new-registration-page .registration-table tr:hover {
+  background: linear-gradient(135deg, #000000, #074f8a);
+}
+
+.new-registration-page .registration-table td {
+  color: #ffffff;
+}
+
+.new-registration-page .view-btn,
+.new-registration-page .accept-btn,
+.new-registration-page .reject-btn {
+  padding: 6px 12px;
+  margin: 2px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.new-registration-page .accept-btn,
+.new-registration-page .reject-btn {
+  margin-left: 5px;
+}
+
+.new-registration-page .action-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .new-registration-page .registration-content {
+    margin-left: 20px;
   }
 
-  /* background: linear-gradient(135deg, #000000, #074f8a); */
-  
-  .sidebar:hover ~ .registration-content {
-    margin-left: 260px; /* Adjust to match expanded sidebar width */
+  .new-registration-page .sidebar:hover ~ .registration-content {
+    margin-left: 90px;
   }
-  
-  /* .title {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 40px;
-    color: #0991FF;
-    align-items: center;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-  } */
-  
-  .table-container {
-    overflow-x: auto;
-    margin: 60px;
-    
-  }
-  
-  .registration-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: linear-gradient(135deg, #000000, #074f8a);
-    /* box-shadow: 0 5px 10px rgba(9, 145, 255, 0.5); */
-    color: white;
-  }
-  
-  .registration-table th,
-  .registration-table td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 12px solid #ffffff;
-  }
-  
-  .registration-table th {
-    color: #fff;
-    background: black;
-    height: 80px;
-    font-size: 17px;
- 
-  }
-  
-  .registration-table th:last-child,
-  .registration-table td:last-child {
-    width: 180px; /* Reduce the width of the Action column */
-    color: white;
-  }
-  
-  .registration-table tr:nth-child(even) {
-    background: linear-gradient(135deg, #000000, #074f8a);
-  }
-  
-  .registration-table tr:hover {
-    background: linear-gradient(135deg, #000000, #074f8a);
-  }
-  
-  .registration-table td {
-    color: #ffffff;
-  }
-  
-  .view-btn,
-  .accept-btn,
-  .reject-btn {
-    padding: 6px 12px;
-    margin: 2px;
-    border: none;
-    cursor: pointer;
-    border-radius: 10px;
-  }
+}
 
-  .accept-btn,
-  .reject-btn 
-  {
-    margin-left: 5px;
-  }
-  
+.new-registration-page .view-btn {
+  background: transparent;
+  color: rgba(0, 122, 255, 0.65);
+  border: 2px solid rgba(0, 122, 255, 0.65);
+  transition: all .3s ease;
+  font-weight: 600;
+}
 
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .registration-content {
-      margin-left: 20px;
-    }
-  
-    .sidebar:hover ~ .registration-content {
-      margin-left: 90px;
-    }
-  }
+.new-registration-page .view-btn:hover {
+  transform: scale(1.25);
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.9);
+}
 
-  .view-btn {
-    background: transparent;
-    color:  rgba(0, 122, 255, 0.65);
-    border: 2px solid  rgba(0, 122, 255, 0.65);
-    transition: all .3s ease;
-    font-weight: 600;
-  }
-  
-  .view-btn:hover {
-    transform: scale(1.25);
-    color: rgba(255, 255, 255, 0.9);
-    border-color: rgba(255, 255, 255, 0.9);
-    /* background: black; */
-  }
-  
-  .accept-btn {
-    background: transparent;
-    color: white;
-    border: 2px solid  white;
-    transition: all .3s ease;
-    font-weight: 600;
-  }
-  
-  .accept-btn:hover {
-    transform: scale(1.125);
-    color: rgba(19, 158, 98, 0.9);
-    border-color: rgba(19, 158, 98, 0.9);
-    background: black;
-  }
+.new-registration-page .accept-btn {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  transition: all .3s ease;
+  font-weight: 600;
+}
 
-  .reject-btn {
-    background: transparent;
-    color: white;
-    border: 2px solid  white;
-    transition: all .3s ease;
-    font-weight: 600;
-  }
-  
-  .reject-btn:hover {
-    transform: scale(1.125);
-    color: rgb(145, 20, 20);
-    border-color:rgb(145, 20, 20);
-    background: black;
-  }
+.new-registration-page .accept-btn:hover {
+  transform: scale(1.125);
+  color: rgba(19, 158, 98, 0.9);
+  border-color: rgba(19, 158, 98, 0.9);
+  background: black;
+}
+
+.new-registration-page .reject-btn {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  transition: all .3s ease;
+  font-weight: 600;
+}
+
+.new-registration-page .reject-btn:hover {
+  transform: scale(1.125);
+  color: rgb(145, 20, 20);
+  border-color: rgb(145, 20, 20);
+  background: black;
+}
