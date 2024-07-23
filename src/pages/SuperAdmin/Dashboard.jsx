@@ -7,7 +7,8 @@ import '../../styles/pages/SuperAdmin/Dashboard.css'
 
 const Dashboard = () => {
   return (
-  <div><Sidebar/>
+  <div>
+    <Sidebar/>
     <div className="home-content">
       
       <div className="overview-boxes">
@@ -51,7 +52,7 @@ const Dashboard = () => {
 
 {/* GRAPH */}
       <div className="graph-pie-container">
-  <div className="graph-card">
+  <div className="graph-card1">
     <div className="main-container-unique">
 
       <div className="info-unique">
@@ -94,7 +95,7 @@ const Dashboard = () => {
 
 {/* PIE CHART */}
   <div className="pie-chart-card">
-    <div className="main-container-unique">
+    <div className="main-container-unique2" id='pie'>
 
       <div className="info-unique">
         <p>Users by Gender</p>

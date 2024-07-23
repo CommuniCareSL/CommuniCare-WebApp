@@ -10,7 +10,7 @@
   
   .box {
     height: 200px;
-    width: 150px;
+    width: 130px;
   }
   
   .home-section .home-content {
@@ -243,7 +243,9 @@
 .graph-pie-container {
   display: flex;
   justify-content: space-between;
-  margin-left: 130px;
+  margin-left: 150px;
+
+
 }
 
 .main-container-unique {
@@ -251,14 +253,48 @@
   color: #abafc6;
   border-radius: 15px;
   padding: 20px;
-  width: 450px;
-  height: 390px;
+  width: 550px;
+  height: 350px;
+  margin-top: 30px;
+  
+
 }
+
+.main-container-unique2 {
+  background: linear-gradient(135deg, #000000, #074f8a);
+  color: #abafc6;
+  border-radius: 15px;
+  padding: 20px;
+  width: 400px;
+  height: 350px;
+  margin-top: 30px;
+  
+
+}
+
+
+.graph-card1-,
+.pie-chart-card {
+  flex: 1;
+  
+}
+
+.pie-chart-card
+{
+  margin-left: 130px;
+}
+
+/* .graph-card1{
+  width: 600px;
+} */
+
 
 .year-stats-unique {
   white-space: nowrap;
   max-height: 300px;
   overflow: hidden;
+  width: 600px; 
+  /* Added width: ; */
 }
 
 .year-stats-unique:hover {
@@ -382,12 +418,6 @@
 
 .info-unique span {
   color: #fff;
-}
-
-.graph-card,
-.pie-chart-card {
-  flex: 1;
-  margin: 0 10px;
 }
 
 
