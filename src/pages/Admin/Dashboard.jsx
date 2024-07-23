@@ -1,9 +1,12 @@
 // import React from 'react'
 import Sidebar from '../../components/Admin/Sidebar';
 import CardSlider from '../../components/Admin/CardSlider';
+// import DoughnutChart from '../../components/Admin/DoughnutChart';
+import WaveIcon from '../../assets/Admin/waving-hand.png';
 
 import '../../styles/pages/Admin/Dashboard.css';
 import '../../styles/pages/Admin/CardSlider.css';
+// import { width } from '@fortawesome/free-brands-svg-icons/fa42Group';
 // import profileImg from '../../assets/Admin/profile-img.jpg';
 // import { height } from '@fortawesome/free-brands-svg-icons/fa42Group';
 
@@ -13,10 +16,21 @@ const Dashboard = () => {
    
       <Sidebar />
       <div className="admin-dashboard-home-page">
+
+        <div className="welcome-for-admin">
+          <h3>Welcome Admin 1</h3>
+          <img src={WaveIcon} alt="Wave" />
+        </div>
+
         <CardSlider />
+
+        <div className="admin-dashboard-inside-detaield-view-second-div">
+          <div className="admin-dashboard-inside-detaield-view-second-div-first-one"></div>
+          <div className="admin-dashboard-inside-detaield-view-second-div-second-one"></div>
+        </div>
+
       </div>
-      
-   
+
     </div>
   );
 };

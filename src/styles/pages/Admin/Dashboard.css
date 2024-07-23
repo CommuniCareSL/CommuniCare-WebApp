@@ -12,6 +12,52 @@
   margin-left: 260px;
 }
 
+.welcome-for-admin{
+  width: 93%;
+  margin-left: 35px;
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2vh;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+.welcome-for-admin h3{
+  padding-left: 10px;
+  font-weight: 900;
+}
+
+.welcome-for-admin img{
+  height: 25px;
+  width: 25px;
+  margin-left: 5px;
+}
+
+.admin-dashboard-inside-detaield-view-second-div{
+  display: flex;
+  width: 92%;
+  height: 60vh;
+  margin-left: 35px;
+  margin-top: 7vh;
+}
+
+.admin-dashboard-inside-detaield-view-second-div-first-one{
+  width: 80%;
+  height: 60vh;
+  background-color: #fff;
+  margin-right: 10px;
+  border-radius: 15px;
+}
+
+.admin-dashboard-inside-detaield-view-second-div-second-one{
+  width: 30%;
+  height: 60vh;
+  background-color: #fff;
+  margin-left: 10px;
+  border-radius: 15px;
+}
+
 /* .admin-dashboard-detailed-box{
   margin-top: 5vh;
   margin-left: 20px;

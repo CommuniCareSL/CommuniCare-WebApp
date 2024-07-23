@@ -16,12 +16,11 @@ const Sidebar = () => {
           <div className="menu-separator"></div>
         </h4>
         <li>
-          <a href="#">
+          <a href="/dashboard" onClick={(e) => handleClick(e, '/dashboard')}>
             <span className="material-symbols-outlined">dashboard</span>
             Dashboard
           </a>
         </li>
-       
         <li>
           <a href="#">
             <span className="material-symbols-outlined">report_problem</span>

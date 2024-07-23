@@ -1,5 +1,4 @@
 .card-slider-section-view{
-    position: relative;
     width: 95%;
     height: 20vh;
     border-radius: 15px;
@@ -47,6 +46,11 @@
 .card-slider-section-view-cards-title h3{
     font-weight: 900;
     font-size: 20px; 
+}
+
+.card-slider-section-view-cards-title img{
+    width: 30px;
+    height: 30px;
 }
 
 .card-slider-section-view-cards-details
