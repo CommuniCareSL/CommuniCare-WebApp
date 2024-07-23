@@ -1,14 +1,11 @@
 // import React from 'react'
 import Sidebar from '../../components/Admin/Sidebar';
 import CardSlider from '../../components/Admin/CardSlider';
-// import DoughnutChart from '../../components/Admin/DoughnutChart';
+import DoughnutChart from '../../components/Admin/DoughnutChart';
 import WaveIcon from '../../assets/Admin/waving-hand.png';
 
 import '../../styles/pages/Admin/Dashboard.css';
 import '../../styles/components/Admin/CardSlider.css';
-// import { width } from '@fortawesome/free-brands-svg-icons/fa42Group';
-// import profileImg from '../../assets/Admin/profile-img.jpg';
-// import { height } from '@fortawesome/free-brands-svg-icons/fa42Group';
 
 const Dashboard = () => {
   return (
@@ -26,9 +23,11 @@ const Dashboard = () => {
 
         <div className="admin-dashboard-appointment-complaint-summery">
           <div className="admin-dashboard-appointment-summery"></div>
+
           <div className="admin-dashboard-complaint-summery">
-            
+            <DoughnutChart />
           </div>
+          
         </div>
 
       </div>
