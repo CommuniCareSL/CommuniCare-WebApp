@@ -1,6 +1,7 @@
 // import React from 'react'
 import Sidebar from '../../components/Admin/Sidebar';
 import CardSlider from '../../components/Admin/CardSlider';
+import DoughnutChart from '../../components/Admin/DoughnutChart';
 
 import '../../styles/pages/Admin/Dashboard.css';
 import '../../styles/pages/Admin/CardSlider.css';

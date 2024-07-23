@@ -6,6 +6,9 @@ import ProgressBar from "@ramonak/react-progress-bar";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import rentImage from '../../assets/Admin/rent.png';
+import BookingImage from '../../assets/Admin/booking.png';
+
 const CardSlider = () => {
   const settings = {
     dots: true,
@@ -21,8 +24,8 @@ const CardSlider = () => {
 
         <div className="card-slider-section-view-cards">
           <div className="card-slider-section-view-cards-title">
-            <span className="material-symbols-outlined">dashboard</span>
-            <h3>Renting Service</h3>
+            <img src={rentImage} alt="rent-icon" />
+            <h3>Renting</h3>
           </div>
           <div className="card-slider-section-view-cards-details">
             <p>Remaining Service Requests  :</p><h5>40</h5>
@@ -34,8 +37,8 @@ const CardSlider = () => {
 
         <div className="card-slider-section-view-cards">
           <div className="card-slider-section-view-cards-title">
-            <span className="material-symbols-outlined">dashboard</span>
-            <h3>Renting Service</h3>
+            <img src={BookingImage} alt="booking-icon" />
+            <h3>Booking/Reservation </h3>
           </div>
           <div className="card-slider-section-view-cards-details">
             <p>Remaining Service Requests  :</p><h5>40</h5>
@@ -119,7 +122,7 @@ const CardSlider = () => {
             <p>Remaining Service Requests  :</p><h5>40</h5>
           </div>
           <div className="card-slider-section-view-cards-progress-bar">
-           <ProgressBar completed={70} bgColor='#0991FF' animateOnRender={true} labelSize='10px' height='12px'/>
+           <ProgressBar completed={60} bgColor='#0991FF' animateOnRender={true} labelSize='10px' height='12px'/>
           </div>
         </div>
 

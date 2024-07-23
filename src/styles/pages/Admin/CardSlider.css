@@ -49,6 +49,11 @@
     font-size: 20px; 
 }
 
+.card-slider-section-view-cards-title img{
+    width: 30px;
+    height: 30px;
+}
+
 .card-slider-section-view-cards-details
 /* .card-slider-section-view-cards-title{ */
 {
