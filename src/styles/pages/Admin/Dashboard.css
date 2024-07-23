@@ -34,7 +34,7 @@
   margin-left: 5px;
 }
 
-.admin-dashboard-inside-detaield-view-second-div{
+.admin-dashboard-appointment-complaint-summery{
   display: flex;
   width: 92%;
   height: 60vh;
@@ -42,7 +42,7 @@
   margin-top: 7vh;
 }
 
-.admin-dashboard-inside-detaield-view-second-div-first-one{
+.admin-dashboard-appointment-summery{
   width: 80%;
   height: 60vh;
   background-color: #fff;
@@ -50,7 +50,7 @@
   border-radius: 15px;
 }
 
-.admin-dashboard-inside-detaield-view-second-div-second-one{
+.admin-dashboard-complaint-summery{
   width: 30%;
   height: 60vh;
   background-color: #fff;

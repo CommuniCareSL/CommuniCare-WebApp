@@ -5,7 +5,7 @@ import CardSlider from '../../components/Admin/CardSlider';
 import WaveIcon from '../../assets/Admin/waving-hand.png';
 
 import '../../styles/pages/Admin/Dashboard.css';
-import '../../styles/pages/Admin/CardSlider.css';
+import '../../styles/components/Admin/CardSlider.css';
 // import { width } from '@fortawesome/free-brands-svg-icons/fa42Group';
 // import profileImg from '../../assets/Admin/profile-img.jpg';
 // import { height } from '@fortawesome/free-brands-svg-icons/fa42Group';
@@ -24,9 +24,11 @@ const Dashboard = () => {
 
         <CardSlider />
 
-        <div className="admin-dashboard-inside-detaield-view-second-div">
-          <div className="admin-dashboard-inside-detaield-view-second-div-first-one"></div>
-          <div className="admin-dashboard-inside-detaield-view-second-div-second-one"></div>
+        <div className="admin-dashboard-appointment-complaint-summery">
+          <div className="admin-dashboard-appointment-summery"></div>
+          <div className="admin-dashboard-complaint-summery">
+            
+          </div>
         </div>
 
       </div>
