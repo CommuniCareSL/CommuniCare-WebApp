@@ -42,6 +42,14 @@
   margin-top: 7vh;
 }
 
+.admin-dashboard-complaint-registeroffices-summery{
+  display: flex;
+  width: 30%;
+  height: 60vh;
+  margin-left: 10px;
+  flex-direction: column;
+}
+
 .admin-dashboard-appointment-summery{
   width: 80%;
   height: 60vh;
@@ -51,14 +59,45 @@
 }
 
 .admin-dashboard-complaint-summery{
-  width: 30%;
-  height: 60vh;
+  width: 100%;
+  height: 40vh;
   background-color: #fff;
-  margin-left: 10px;
   border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 2vh;
+}
+
+.admin-dashboard-registeroffices{
+  width: 100%;
+  height: 20vh;
+  background-color: #fff;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 1024px) {
+  .admin-dashboard-appointment-complaint-summery {
+    flex-direction: column; /* Show complaint summary first */
+  }
+
+  .admin-dashboard-complaint-registeroffices-summery{
+    width: 92%;
+    margin-bottom: 2vh;
+  }
+
+  .admin-dashboard-complaint-summery{
+    width: 60%;
+  }
+
+  .admin-dashboard-appointment-summery{
+    width: 92%;
+    margin-bottom: 2vh;
+    margin-left: 10px;
+  }
 }
 
 /* .admin-dashboard-detailed-box{

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Chart } from 'primereact/chart';
+import { width } from '@fortawesome/free-brands-svg-icons/fa42Group';
 
 const DoughnutChart = () => {
   const [chartData, setChartData] = useState({});
@@ -35,7 +36,7 @@ const DoughnutChart = () => {
 
   return (
     <div className="card flex justify-content-center">
-      <Chart type="doughnut" data={chartData} options={chartOptions} className="w-full md:w-30rem" />
+      <Chart type="doughnut" data={chartData} options={chartOptions} className="w-full md:w-30rem" style={{ width: '230px', height: '230px' }} />
     </div>
   );
 }

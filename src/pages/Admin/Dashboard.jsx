@@ -22,10 +22,19 @@ const Dashboard = () => {
         <CardSlider />
 
         <div className="admin-dashboard-appointment-complaint-summery">
+
           <div className="admin-dashboard-appointment-summery"></div>
 
-          <div className="admin-dashboard-complaint-summery">
-            <DoughnutChart />
+          <div className="admin-dashboard-complaint-registeroffices-summery">
+
+            <div className="admin-dashboard-complaint-summery">
+              <DoughnutChart />
+            </div>
+
+            <div className="admin-dashboard-registeroffices">
+
+            </div>
+            
           </div>
           
         </div>
