@@ -17,17 +17,17 @@
   align-items: center;
   justify-content: center;
   margin: 0;
-  background-color: #f0f0f0;
+  background:linear-gradient(135deg, #000000, #074f8a);
 }
 
 .login-container {
   display: flex;
   width: 800px;
   height: 500px;
-  background: #1b1b1b;
+  background: #000000;
   border: 1px solid black;
   border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }
 
@@ -46,7 +46,7 @@
   width: 50%;
   padding: 40px 35px 60px;
   box-sizing: border-box;
-  background: linear-gradient(to bottom right, #1b1b1b, #272727); 
+  background:linear-gradient(135deg, #000000, #074f8a);
   
 }
 

@@ -36,9 +36,11 @@
   padding: 40px;
   margin-top: 70px;
   text-align: justify;
-  border: 4px solid #0991FF;
+  border: 4px solid #000000;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
+  /* background: linear-gradient(135deg, #000000, #074f8a); */
+  background: black;
 }
 
 .contact-logo {
@@ -49,8 +51,8 @@
 }
 
 .contact-logo {
-  width: 420px;
-  height: 380px;
+  width: 350px;
+  height: 500px;
 
 }
 
@@ -67,13 +69,13 @@ form {
 h2 {
   font-size: 2rem;
   margin-bottom: 20px;
-  color: #000000;
+  color: #ffffff;
 }
 
 .contact-input-field {
   position: relative;
   width: 45%;
-  border-bottom: 2.5px solid #0991FF;
+  border-bottom: 2.5px solid #ffffff;
   margin: 20px 30px;
 }
 
@@ -82,7 +84,7 @@ h2 {
   top: 50%;
   left: 0;
   transform: translateY(-50%);
-  color: #000000;
+  color: #ffffff;
   font-size: 16px;
   pointer-events: none;
   transition: 0.25s ease;
@@ -95,7 +97,7 @@ h2 {
   border: none;
   outline: none;
   font-size: 16px;
-  color: #000000;
+  color: #ffffff;
 }
 
 .contact-input-field input:focus ~ label,
@@ -106,12 +108,12 @@ h2 {
 }
 
 .contact-wrapper a {
-  color: #efefef;
+  color: #ffffff;
   text-decoration: none;
 }
 
 .contact-wrapper a:hover {
-  text-decoration: underline #0991FF;
+  text-decoration: underline #ffffff;
 }
 
 button {
@@ -142,7 +144,7 @@ button:hover {
 
 .textarea {
   border-radius: 15px;
-  border: 2px solid #0991FF;
+  border: 2px solid #ffffff;
   margin: 20px 30px;
 }
 
@@ -153,7 +155,7 @@ button:hover {
   border: none;
   outline: none;
   font-size: 16px;
-  color: #000000;
+  color: #ffffff;
 }
 
 .textarea label {
@@ -161,7 +163,7 @@ button:hover {
   top: 50%;
   left: 0;
   transform: translateY(-50%);
-  color: #000000;
+  color: #ffffff;
   font-size: 16px;
   pointer-events: none;
   transition: 0.25s ease;
@@ -172,4 +174,8 @@ button:hover {
   font-size: 0.8rem;
   top: 10px;
   transform: translateY(-140%);
+}
+
+.des{
+  color: white;
 }

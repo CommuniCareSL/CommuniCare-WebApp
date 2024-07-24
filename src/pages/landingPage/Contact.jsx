@@ -1,11 +1,11 @@
 // import React from 'react';
 import '../../styles/pages/landingPage/Contact.css';
-import app from '../../assets/landingPage/contact.png'
+import app from '../../assets/x.png'
 
 
 const Contact = () => {
   return (
-    <div className="contact-body" style={{ paddingTop: "60px" }}>
+    <div className="contact-body" style={{ paddingTop: "0px" }}>
       <div className="contact-wrapper">
         <div className="contact-logo">
           <img src={app} alt="Logo" className="contact-logo" />
@@ -36,7 +36,7 @@ const Contact = () => {
               </div>
             </div>
             <br />
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ display: "flex", flexDirection: "column" }} className='des'>
               <label>Description</label>
               <textarea
                 rows="5"
