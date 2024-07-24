@@ -6,6 +6,7 @@
   margin-left: 85px;
   transition: margin-left 0.4s ease;
   background-color: #e8eff9;
+  overflow-y: auto;
 }
 
 .sidebar:hover ~ .admin-dashboard-home-page {
@@ -34,7 +35,7 @@
   margin-left: 5px;
 }
 
-.admin-dashboard-inside-detaield-view-second-div{
+.admin-dashboard-appointment-complaint-summery{
   display: flex;
   width: 92%;
   height: 60vh;
@@ -42,7 +43,15 @@
   margin-top: 7vh;
 }
 
-.admin-dashboard-inside-detaield-view-second-div-first-one{
+.admin-dashboard-complaint-registeroffices-summery{
+  display: flex;
+  width: 30%;
+  height: 60vh;
+  margin-left: 10px;
+  flex-direction: column;
+}
+
+.admin-dashboard-appointment-summery{
   width: 80%;
   height: 60vh;
   background-color: #fff;
@@ -50,12 +59,49 @@
   border-radius: 15px;
 }
 
-.admin-dashboard-inside-detaield-view-second-div-second-one{
-  width: 30%;
-  height: 60vh;
+.admin-dashboard-complaint-summery{
+  width: 100%;
+  height: 40vh;
   background-color: #fff;
-  margin-left: 10px;
   border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2vh;
+}
+
+.admin-dashboard-registeroffices{
+  width: 100%;
+  height: 20vh;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+.admin-dashboard-registeroffices h3{
+  margin: 20px;
+}
+
+@media (max-width: 1024px) {
+  .admin-dashboard-home-page {
+    overflow-y: auto;
+  }
+
+  .admin-dashboard-appointment-complaint-summery {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .admin-dashboard-complaint-registeroffices-summery,
+  .admin-dashboard-complaint-summery,
+  .admin-dashboard-registeroffices,
+  .admin-dashboard-appointment-summery {
+    width: 92%;
+    margin-bottom: 2vh;
+  }
+
+  .admin-dashboard-appointment-summery {
+    margin-left: 10px;
+  }
 }
 
 /* .admin-dashboard-detailed-box{

@@ -1,14 +1,13 @@
 // import React from 'react'
 import Sidebar from '../../components/Admin/Sidebar';
 import CardSlider from '../../components/Admin/CardSlider';
-// import DoughnutChart from '../../components/Admin/DoughnutChart';
+import DoughnutChart from '../../components/Admin/DoughnutChart';
 import WaveIcon from '../../assets/Admin/waving-hand.png';
+import CounterCard from '../../components/Admin/CounterCard';
 
 import '../../styles/pages/Admin/Dashboard.css';
-import '../../styles/pages/Admin/CardSlider.css';
-// import { width } from '@fortawesome/free-brands-svg-icons/fa42Group';
-// import profileImg from '../../assets/Admin/profile-img.jpg';
-// import { height } from '@fortawesome/free-brands-svg-icons/fa42Group';
+import '../../styles/components/Admin/CardSlider.css';
+
 
 const Dashboard = () => {
   return (
@@ -23,10 +22,28 @@ const Dashboard = () => {
         </div>
 
         <CardSlider />
+        
+        <div className="admin-dashboard-appointment-complaint-summery">
 
-        <div className="admin-dashboard-inside-detaield-view-second-div">
-          <div className="admin-dashboard-inside-detaield-view-second-div-first-one"></div>
-          <div className="admin-dashboard-inside-detaield-view-second-div-second-one"></div>
+          <div className="admin-dashboard-appointment-summery">
+            
+          </div>
+
+          <div className="admin-dashboard-complaint-registeroffices-summery">
+
+            {/* this will show complaint doughnut char as Unseen, inprogress and Completed */}
+            <div className="admin-dashboard-complaint-summery">
+              <DoughnutChart />
+            </div>
+
+            {/* this will show the number of citizens register to the system*/}
+            <div className="admin-dashboard-registeroffices">
+              <h3>Number of registered Citizen</h3>
+              <CounterCard />
+            </div>
+            
+          </div>
+          
         </div>
 
       </div>
