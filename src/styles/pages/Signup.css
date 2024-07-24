@@ -51,7 +51,7 @@
 
 .signup-text {
   font-size: 30px;
-  color: #c7c7c7;
+  color: #ffffff;
   font-weight: 600;
   letter-spacing: 2px;
 }
@@ -70,10 +70,10 @@
   width: 100%;
   outline: none;
   font-size: 19px;
-  color: #868686;
+  color: #ffffff;
   padding: 0 15px;
   border-radius: 5px;
-  border: 1px solid #444;
+  border: 1px solid #ffffff;
   /* background: linear-gradient(#333, #222); */
   background: #000000;
 }
@@ -82,7 +82,7 @@
   color: #0991FF;
   border-color: #0991FF;
   box-shadow: 0 0 5px rgba(0, 145, 255, 0.2), inset 0 0 5px rgba(0, 145, 255, 0.1);
-  background: linear-gradient(#333933, #222922);
+  background: black;
   animation: glow 0.8s ease-out infinite alternate;
 }
 
@@ -117,7 +117,7 @@
 
 .signup-link {
   margin-top: 25px;
-  color: #868686;
+  color: #ffffff;
 }
 
 .signup-link a {

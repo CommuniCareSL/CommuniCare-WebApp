@@ -15,7 +15,7 @@ const Registered = () => {
                 <th>District</th>
                 <th>Pradeshiya Sabha</th>
                 <th>View Details</th>
-                <th>Action</th>
+                <th style={{paddingLeft:'65px'}}>Action</th>
               </tr>
             </thead>
             <tbody>
