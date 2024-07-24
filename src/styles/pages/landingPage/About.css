@@ -24,15 +24,16 @@
     font-weight: 600;
 }
 
-.services
+/* .services
 {
-    /* margin-top: 60px; */
-}
+    
+} */
 
 .services .boxes{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
 }
 
 .services .boxes .box{
@@ -45,10 +46,11 @@
     cursor: default;
     transition: all 0.4s ease;
     border: 3px solid #0991FF;
+    height: 250px;
 }
 
 .services .boxes .box:hover{
-    background: black;
+    background:linear-gradient(135deg, #000000, #074f8a);
     color: #0991FF;
     border: 3px solid white;
 }
