@@ -6,6 +6,7 @@ import Sidebar from '../../components/SuperAdmin/Sidebar';
 export const Newregistration = () => {
   return (
     <div className="new-registration-page">
+     
       <Sidebar />
       <div className="registration-content">
         <div className="table-container">
