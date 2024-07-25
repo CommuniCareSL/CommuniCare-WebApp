@@ -1,34 +1,28 @@
-// import React from 'react';
+import React from 'react';
+import Sidebar from '../../components/Admin/Sidebar';
+
 import '../../styles/pages/Admin/Complaint.css';
-import 'boxicons/css/boxicons.min.css';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTree, faDog, faTrashAlt, faLightbulb, faFileAlt, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 
-// Add the icons to the library
-library.add(faTree, faDog, faTrashAlt, faLightbulb, faFileAlt, faEllipsisH);
 
-const Complaints = () => {
+function Complaints() {
   return (
-    <div className="home-content">
-      <div className="overview-boxes">
-        {Array.from({ length: 12 }).map((_, index) => {
-          const icons = ['tree', 'dog', 'trash-alt', 'lightbulb', 'file-alt', 'ellipsis-h'];
-          const topics = ['Tree Removal', 'Stray Animal', 'Garbage Collection', 'Light Maintenance', 'Rental Permit', 'Others'];
-          const icon = icons[index % icons.length];
-          const topic = topics[index % topics.length];
+    <div>
+   
+      <Sidebar />
+      <div className="admin-complaints-home-page">
+        <div className="complaint-title-container">
+          <h3>Received Complaints</h3>
+        </div>
 
-          return (
-            <div className="box" key={index}>
-              <FontAwesomeIcon icon={icon} className="icon-style" />
-              <div className="box-topic">{topic}</div>
-            </div>
-          );
-        })}
+        <div className="admin-complaint-table-tab-view">
+          
+        </div>
+
       </div>
-    </div>
-  );
-};
+      
 
-export default Complaints;
+    </div>
+  )
+}
+
+export default Complaints

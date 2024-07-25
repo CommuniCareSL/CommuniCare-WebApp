@@ -22,7 +22,7 @@ const Sidebar = () => {
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="/Complaints" onClick={(e) => handleClick(e, '/Complaints')}>
             <span className="material-symbols-outlined">report_problem</span>
             Complaints
           </a>

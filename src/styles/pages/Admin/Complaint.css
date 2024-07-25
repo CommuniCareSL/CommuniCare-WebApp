@@ -1,169 +1,42 @@
-/* Complaints.css */
-.icon-style {
-    display: block;
-    font-size: 32px;
-    height: 50px;
-    width: 50px;
-    line-height: 50px;
-    text-align: center;
-    color: #ffffff;
-    border-radius: 15px;
-    margin: 0 auto 10px auto;
-    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for hover effects */
-  }
-  
-  .icon-style:hover {
-    transform: scale(1.3); /* Increase size on hover */
-    color: #000000; /* Change color on hover */
-  }
-  
-  .home-content {
-    margin-top: 30px;
-    margin-left: 130px;
-    transition: margin-left 0.4s ease;
-    margin-bottom: 80px;
-  }
-  
-  .sidebar:hover ~ .home-content {
-    margin-left: 260px; /* Adjusted to account for the expanded sidebar width on hover */
-  }
-  
-  .box {
-    height: 270px;
-    width: 100px;
-    margin-top: 50px;
-    background: linear-gradient(135deg, #000000, #074f8a);
-  }
-  
-  .home-section .home-content {
-    position: relative;
-    padding-top: 104px;
-  }
-  
-  .home-content .overview-boxes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px; /* Space between boxes */
-    padding: 0 20px;
-    margin-bottom: 20px;
-  }
-  
-  .overview-boxes .box {
-    display: flex;
-    flex-direction: column; /* Align items vertically */
-    align-items: center;
-    justify-content: center;
-    width: calc(100% / 4 - 20px); /* Adjust width for 4 boxes in a row */
-    color: white;
-    padding: 15px 15px;
-    border-radius: 20px;
-    box-shadow: 0 5px 10px rgba(9, 145, 255, 0.5);
-    background: linear-gradient(135deg, #000000, #074f8a);
-  }
-  
-  .overview-boxes .box-topic {
-    font-size: 20px;
-    font-weight: 500;
-    text-align: center;
-    margin-top: 10px; /* Space between icon and text */
-  }
-  
-  .home-content .box .number {
-    display: inline-block;
-    font-size: 35px;
-    margin-top: -6px;
-    font-weight: 500;
-  }
-  
-  .home-content .box .indicator {
-    display: flex;
-    align-items: center;
-  }
-  
-  .home-content .box .indicator i {
-    height: 20px;
-    width: 20px;
-    background: #0991FF;
-    line-height: 20px;
-    text-align: center;
-    border-radius: 50%;
-    color: #fff;
-    font-size: 20px;
-    margin-right: 5px;
-  }
-  
-  .home-content .box .indicator .text {
-    font-size: 12px;
-  }
-  
-  .home-content .box .cart {
-    display: inline-block;
-    font-size: 32px;
-    height: 50px;
-    width: 50px;
-    background: #cce5ff;
-    line-height: 50px;
-    text-align: center;
-    color: #0991FF;
-    border-radius: 12px;
-    margin: -15px 0 0 6px;
-  }
-  
-  .home-content .box .cart.two {
-    color: #000000;
-    background: #C0F2D8;
-  }
-  
-  .home-content .box .cart.three {
-    color: #000000;
-    background: #ffe8b3;
-  }
-  
-  .home-content .box .cart.four {
-    color: #000000;
-    background: #f7d4d7;
-  }
-  
-  .home-content .box .cart.five {
-    color: #000000;
-    background: #e0f7fa;
-  }
-  
-  .home-content .box .cart.six {
-    color: #000000;
-    background: #ffebee;
-  }
-  
-  .home-content .total-order {
-    font-size: 20px;
-    font-weight: 500;
-  }
-  
-  .home-content .sales-boxes {
-    display: flex;
-    justify-content: space-between;
-    /* padding: 0 20px; */
-  }
-  
-  /* left box */
-  .home-content .sales-boxes .recent-sales {
-    width: 65%;
-    background: #fff;
-    padding: 20px 30px;
-    margin: 0 20px;
-    border-radius: 12px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .home-content .sales-boxes .sales-details {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .sales-boxes .box .title {
-    font-size: 24px;
-    font-weight: 500;
-    /* margin-bottom: 10px; */
-  }
-  
+.admin-complaints-home-page {
+  flex-grow: 1;
+  padding: 20px;
+  min-height: 100vh;
+  min-width: auto;
+  margin-left: 85px;
+  transition: margin-left 0.4s ease;
+  background-color: #e8eff9;
+  overflow-y: auto;
+}
+
+.sidebar:hover ~ .admin-complaints-home-page {
+  margin-left: 260px;
+}
+
+.complaint-title-container{
+  width: 93%;
+  margin-left: 35px;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2vh;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+
+.complaint-title-container h3{
+  margin: 20px;
+  font-weight: 800;
+}
+
+.admin-complaint-table-tab-view{
+  width: 93%;
+  margin-left: 35px;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2vh;
+  background-color: #fff;
+  border-radius: 15px;
+}
