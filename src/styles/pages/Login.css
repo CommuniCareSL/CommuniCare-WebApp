@@ -17,17 +17,17 @@
   align-items: center;
   justify-content: center;
   margin: 0;
-  background-color: #f0f0f0;
+  background:linear-gradient(135deg, #000000, #074f8a);
 }
 
 .login-container {
   display: flex;
   width: 800px;
   height: 500px;
-  background: #1b1b1b;
+  background: #000000;
   border: 1px solid black;
   border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }
 
@@ -46,13 +46,13 @@
   width: 50%;
   padding: 40px 35px 60px;
   box-sizing: border-box;
-  background: linear-gradient(to bottom right, #1b1b1b, #272727); 
+  background:linear-gradient(135deg, #000000, #074f8a);
   
 }
 
 .text {
   font-size: 30px;
-  color: #c7c7c7;
+  color: #ffffff;
   font-weight: 600;
   letter-spacing: 2px;
 }
@@ -75,17 +75,17 @@ form button {
   color: #ffffff;
   padding: 0 15px;
   border-radius: 5px;
-  border: 1px solid #444;
+  border: 1px solid #ffffff;
   caret-color: #0991FF;
   /* background: linear-gradient(#333, #222); */
   background: black;
 }
 
 .field input:focus {
-  color: #ffffff;
+  color: #0991FF;
   border-color: #0991FF;
   box-shadow: 0 0 5px rgba(0, 145, 255, 0.2), inset 0 0 5px rgba(0, 145, 255, 0.1);
-  background: linear-gradient(#333933, #222922);
+  background: black;
   animation: glow 0.8s ease-out infinite alternate;
 }
 
@@ -117,7 +117,7 @@ form button {
 
 .link {
   margin-top: 25px;
-  color: #868686;
+  color: #ffffff;
 }
 
 .link a {
