@@ -3,8 +3,11 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Landing from "./pages/Landing";
 
 import Login from "./pages/Login"
-import Signup from './pages/Signup'
-import Dashboard from "./pages/Admin/Dashboard"
+import Signup from './pages/Signup';
+
+import Dashboard from "./pages/Admin/Dashboard";
+import Complaints from "./pages/Admin/Complaints"
+
 import Dashboard_Officer from "./pages/Civil Officer/Dashboard";
 
 import SuperAdminDashboard from "./pages/SuperAdmin/Dashboard"
@@ -22,7 +25,12 @@ const App = () => {
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+
+        {/* admin */}
+        <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/Complaints" element={<Complaints />} />
+
+
         <Route path="/dashboard_Officer" element={<Dashboard_Officer />} />
 
         <Route path="/SuperAdminDashboard" element={<SuperAdminDashboard />} />
