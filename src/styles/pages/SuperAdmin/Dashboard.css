@@ -35,7 +35,7 @@
     background: #fff;
     padding: 15px 15px;
     border-radius: 20px;
-    box-shadow: 0 5px 10px rgba(9, 145, 255, 0.5);
+    box-shadow: 0 0 10px rgba(9, 145, 255, 0.5);
   }
   
   .overview-boxes .box-topic {
@@ -76,7 +76,7 @@
     font-size: 32px;
     height: 50px;
     width: 50px;
-    background: #cce5ff;
+    background: #ffffff;
     line-height: 50px;
     text-align: center;
     color: #0991FF;
@@ -250,10 +250,10 @@
 
 .main-container-unique {
   background: linear-gradient(135deg, #000000, #074f8a);
-  color: #abafc6;
+  color: #ffffff;
   border-radius: 15px;
   padding: 20px;
-  width: 550px;
+  width: 570px;
   height: 350px;
   margin-top: 30px;
   
@@ -262,7 +262,7 @@
 
 .main-container-unique2 {
   background: linear-gradient(135deg, #000000, #074f8a);
-  color: #abafc6;
+  color: #ffffff;
   border-radius: 15px;
   padding: 20px;
   width: 400px;

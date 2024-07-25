@@ -1,108 +1,104 @@
-.about-container1 {
-  padding-left: 10%;
-  padding-right: 10%;
-  /* margin-top: 80px; */
+.about
+{
+    width: 100%;
+    min-height: 100vh;
+    background: url('../../assets/white.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: left;
 }
 
-.about {
-  width: 100%;
-  min-height: 100vh;
-  background: url('../../assets/white.png');
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: left;
+.about1
+{
+    text-align: center;
+    max-width: 800px;
+    margin-right: 80px;
 }
 
-.about-about1 {
-  text-align: center;
-  max-width: 800px;
-  margin-right: 80px;
+.about1 h1
+{
+    font-size: 65px;
+    color: #0991FF;
+    font-weight: 600;
+}
+
+/* .services
+{
+    
+} */
+
+.services .boxes{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
 }
 
-.about-about1 h1 {
-  font-size: 65px;
-  color: #0991FF;
-  font-weight: 600;
+.services .boxes .box{
+    margin: 20px 0;
+    width: calc(100% / 3 - 20px);
+    text-align: center;
+    border-radius: 10px;
+    padding: 30px 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+    cursor: default;
+    transition: all 0.4s ease;
+    border: 3px solid #0991FF;
+    height: 250px;
 }
 
-.about-services {
-  margin-top: 60px;
+.services .boxes .box:hover{
+    background:linear-gradient(135deg, #000000, #074f8a);
+    color: #0991FF;
+    border: 3px solid white;
 }
 
-.about-services .about-boxes {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.services .boxes .box .icon{
+    height: 50px;
+    width: 50px;
+    background: #0991FF;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 18px;
+    color: #000000;
+    margin: 0 auto 10px auto;
+    transition: all 0.4s ease;
+    border: 3px solid #0991FF;
 }
 
-.about-services .about-boxes .about-box {
-  margin: 20px 0;
-  width: calc(100% / 3 - 20px);
-  text-align: center;
-  border-radius: 10px;
-  padding: 30px 10px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
-  cursor: default;
-  transition: all 0.4s ease;
-  border: 3px solid #0991FF;
-  min-height: 300px; /* Adjust the min-height as needed */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.boxes .box:hover .icon{
+    background-color: #fff;
+    color: #0991FF;
 }
 
-.about-services .about-boxes .about-box:hover {
-  background: black;
-  color: #0991FF;
-  border: 3px solid white;
+.services .boxes .box:hover .topic,
+.services .boxes .box:hover p{
+    color: #0991FF;
+    transition: all 0.4s ease;
 }
 
-.about-services .about-boxes .about-box .about-icon {
-  height: 50px;
-  width: 50px;
-  background: #0991FF;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 50px;
-  font-size: 18px;
-  color: #000000;
-  margin: 0 auto 10px auto;
-  transition: all 0.4s ease;
-  border: 3px solid #0991FF;
+.services .boxes .box:hover .topic,
+.services .boxes .box:hover p{
+    color: #fff;
 }
 
-.about-boxes .about-box:hover .about-icon {
-  background-color: #fff;
-  color: #0991FF;
+.topic
+{
+    font-size: 20px;
+    font-weight: bold;
 }
 
-.about-services .about-boxes .about-box:hover .about-topic,
-.about-services .about-boxes .about-box:hover p {
-  color: #0991FF;
-  transition: all 0.4s ease;
+p
+{
+    text-align: center;
 }
 
-.about-services .about-boxes .about-box:hover .about-topic,
-.about-services .about-boxes .about-box:hover p {
-  color: #fff;
-}
-
-.about-topic {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.about p {
-  text-align: center;
-  margin-bottom: 0; /* Ensure there is no extra margin */
-}
-
-.about-boxes .about-box .about-content {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.container1
+{
+    padding-left: 10%;
+    padding-right: 10%;
+    /* margin-top: 80px; */
 }
