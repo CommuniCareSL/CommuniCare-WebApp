@@ -10,6 +10,11 @@
   .new-registration-page .sidebar:hover ~ .registration-content {
     margin-left: 270px; /* Adjust to match expanded sidebar width */
   }
+
+  .new-registration-page{
+    padding: 20px;
+  
+  }
   
   /* .title {
     font-size: 24px;

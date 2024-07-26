@@ -243,7 +243,7 @@
 .graph-pie-container {
   display: flex;
   justify-content: space-between;
-  margin-left: 150px;
+  margin-left: 25px;
 
 
 }
@@ -253,7 +253,7 @@
   color: #ffffff;
   border-radius: 15px;
   padding: 20px;
-  width: 570px;
+  width: 530px;
   height: 350px;
   margin-top: 30px;
   
@@ -265,11 +265,35 @@
   color: #ffffff;
   border-radius: 15px;
   padding: 20px;
-  width: 400px;
+  width: 330px;
   height: 350px;
   margin-top: 30px;
   
 
+}
+
+.main-container-unique3 {
+ 
+  border-radius: 15px;
+  padding: 20px;
+  width: 330px;
+  height: 350px;
+  margin-top: 30px;
+  margin-top: 0.8rem;
+
+  
+
+}
+
+.container-wrapper {
+  display: flex;
+  flex-wrap: wrap; /* Allow containers to wrap if needed */
+}
+
+.main-container-unique,
+.main-container-unique2,
+.main-container-unique3 {
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 
@@ -281,8 +305,58 @@
 
 .pie-chart-card
 {
-  margin-left: 130px;
+  margin-left: 60px;
 }
+
+
+
+/* Additional styles for the calendar */
+.graph-pie-calendar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 30px;
+}
+
+.calendar-card {
+  background: linear-gradient(135deg, #000000, #074f8a);
+  padding: 20px;
+  border-radius: 15px;
+  width: 400px; /* Set width as needed */
+  color: #ffffff;
+  margin-left: 40px;
+  height: 350px;
+}
+
+.calendar-card .react-calendar {
+  width: 100%;
+  background: transparent;
+  border: none;
+}
+
+.calendar-card .react-calendar__tile {
+  color: #ffffff;
+}
+
+.calendar-card .react-calendar__tile--active {
+  background: #ffffff;
+  color: #000000;
+}
+
+.calendar-card .react-calendar__navigation button {
+  color: #ffffff;
+}
+
+.calendar-card .react-calendar__navigation button:disabled {
+  background:white;
+}
+
+.calendar-card .react-calendar__tile--now {
+  background: rgb(0, 0, 0);
+  color: #ffffff;
+}
+
+
 
 /* .graph-card1{
   width: 600px;
@@ -387,7 +461,7 @@
 .circle-unique {
   stroke: #0991FF;
   fill: none;
-  stroke-width: 3;
+  stroke-width: 4;
 }
 
 .circle-unique:nth-child(2) {
@@ -419,5 +493,3 @@
 .info-unique span {
   color: #fff;
 }
-
-
