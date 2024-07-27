@@ -63,7 +63,7 @@
   }
 
 
-  
+
 .complaint-table-with-details{
     display: flex;
     justify-content: center;
@@ -89,7 +89,8 @@
 .complaint-table-with-details-row-column-2,
 .complaint-table-with-details-row-column-3,
 .complaint-table-with-details-row-column-4,
-.complaint-table-with-details-row-column-5{
+.complaint-table-with-details-row-column-5,
+.complaint-table-with-details-row-column-6{
     height: 15vh;
     vertical-align: middle;
 }
@@ -137,4 +138,9 @@
 .complaint-table-with-details-row-column-5 button:hover{
     transform: scale(1.1);
     color: #0991FF;
+}
+
+.complaint-table-with-details-row-column-5 img{
+    width: 60px;
+    height: 30px;
 }

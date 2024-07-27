@@ -3,6 +3,7 @@ import '../../styles/components/Admin/TabTableView.css';
 
 import ComplaintUnseenTable from '../../components/Admin/ComplaintUnseenTable';
 import ComplaintInprocessTable from '../../components/Admin/ComplaintInprocessTable';
+import ComplaintCompletedTable from '../../components/Admin/ComplaintCompletedTable';
 
 function TabTableView() {
   const [activeTab, setActiveTab] = useState(0);
@@ -26,7 +27,7 @@ function TabTableView() {
           <ComplaintInprocessTable />
           </div>}
         {activeTab === 2 && <div className="content-for-the-status active slide-in">
-          
+          <ComplaintCompletedTable />
           </div>}
       </div>
     </div>

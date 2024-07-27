@@ -1,8 +1,9 @@
 import React from 'react';
 
 import profileImg from '../../assets/Admin/profile-img.jpg';
+import completeImage from '../../assets/Admin/complete.png';
 
-const ComplaintInprocessTable = () => {
+const ComplaintCompletedTable = () => {
   return (
     <div className="complaint-table-with-details">
         <table>
@@ -24,7 +25,7 @@ const ComplaintInprocessTable = () => {
                             {/* <button><span class="material-symbols-outlined">visibility</span></button> */}
                         </td>
                         <td className="complaint-table-with-details-row-column-5">
-                            <button><span class="material-symbols-outlined">task_alt</span></button>
+                            <img src={completeImage} alt="complete Image" />
                         </td>
                     </tr>
                 </a>
@@ -45,7 +46,7 @@ const ComplaintInprocessTable = () => {
                             {/* <button><span class="material-symbols-outlined">visibility</span></button> */}
                         </td>
                         <td className="complaint-table-with-details-row-column-5">
-                            <button><span class="material-symbols-outlined">task_alt</span></button>
+                            <img src={completeImage} alt="complete Image" />
                         </td>
                     </tr>
                 </a>
@@ -66,7 +67,7 @@ const ComplaintInprocessTable = () => {
                             {/* <button><span class="material-symbols-outlined">visibility</span></button> */}
                         </td>
                         <td className="complaint-table-with-details-row-column-5">
-                            <button><span class="material-symbols-outlined">task_alt</span></button>
+                            <img src={completeImage} alt="complete Image" />
                         </td>
                     </tr>
                 </a>
@@ -87,7 +88,7 @@ const ComplaintInprocessTable = () => {
                             {/* <button><span class="material-symbols-outlined">visibility</span></button> */}
                         </td>
                         <td className="complaint-table-with-details-row-column-5">
-                            <button><span class="material-symbols-outlined">task_alt</span></button>
+                            <img src={completeImage} alt="complete Image" />
                         </td>
                     </tr>
                 </a>
@@ -98,4 +99,4 @@ const ComplaintInprocessTable = () => {
   )
 }
 
-export default ComplaintInprocessTable
+export default ComplaintCompletedTable
