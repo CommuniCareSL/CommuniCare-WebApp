@@ -15,9 +15,9 @@ function Complaints() {
           <h3>Received Complaints</h3>
         </div>
 
-        <div className="admin-complaint-table-tab-view">
-          <TabTableView />
-        </div>
+          <div className="admin-complaint-table-tab-view">
+            <TabTableView />
+          </div>
 
       </div>
       
