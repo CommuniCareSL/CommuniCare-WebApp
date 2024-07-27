@@ -2,7 +2,7 @@ import React from 'react';
 
 import profileImg from '../../assets/Admin/profile-img.jpg';
 
-const ComplaintUnseenTable = () => {
+const ComplaintInprocessTable = () => {
   return (
     <div className="complaint-table-with-details">
         <table>
@@ -21,15 +21,15 @@ const ComplaintUnseenTable = () => {
                         <p>Complaint title/Category</p>
                     </td>
                     <td className="complaint-table-with-details-row-column-4">
-                        <button><span class="material-symbols-outlined">visibility</span></button>
+                        {/* <button><span class="material-symbols-outlined">visibility</span></button> */}
                     </td>
                     <td className="complaint-table-with-details-row-column-5">
-                        <button><span class="material-symbols-outlined">delete</span></button>
+                        <button><span class="material-symbols-outlined">task_alt</span></button>
                     </td>
                     </tr>
                 </a>
 
-                <a href="">
+                <a href="#">
                     <tr className="complaint-table-with-details-row">
                     <td className="complaint-table-with-details-row-column-1">
                         <img src={profileImg} alt="Profile Image" />
@@ -42,15 +42,15 @@ const ComplaintUnseenTable = () => {
                         <p>Complaint title/Category</p>
                     </td>
                     <td className="complaint-table-with-details-row-column-4">
-                        <button><span class="material-symbols-outlined">visibility</span></button>
+                        {/* <button><span class="material-symbols-outlined">visibility</span></button> */}
                     </td>
                     <td className="complaint-table-with-details-row-column-5">
-                        <button><span class="material-symbols-outlined">delete</span></button>
+                    <button><span class="material-symbols-outlined">task_alt</span></button>
                     </td>
                     </tr>
                 </a>
 
-                <a href="">
+                <a href="#">
                     <tr className="complaint-table-with-details-row">
                     <td className="complaint-table-with-details-row-column-1">
                         <img src={profileImg} alt="Profile Image" />
@@ -63,15 +63,15 @@ const ComplaintUnseenTable = () => {
                         <p>Complaint title/Category</p>
                     </td>
                     <td className="complaint-table-with-details-row-column-4">
-                        <button><span class="material-symbols-outlined">visibility</span></button>
+                        {/* <button><span class="material-symbols-outlined">visibility</span></button> */}
                     </td>
                     <td className="complaint-table-with-details-row-column-5">
-                        <button><span class="material-symbols-outlined">delete</span></button>
+                    <button><span class="material-symbols-outlined">task_alt</span></button>
                     </td>
                     </tr>
                 </a>
 
-                <a href="">
+                <a href="#">
                     <tr className="complaint-table-with-details-row">
                     <td className="complaint-table-with-details-row-column-1">
                         <img src={profileImg} alt="Profile Image" />
@@ -84,10 +84,10 @@ const ComplaintUnseenTable = () => {
                         <p>Complaint title/Category</p>
                     </td>
                     <td className="complaint-table-with-details-row-column-4">
-                        <button><span class="material-symbols-outlined">visibility</span></button>
+                        {/* <button><span class="material-symbols-outlined">visibility</span></button> */}
                     </td>
                     <td className="complaint-table-with-details-row-column-5">
-                        <button><span class="material-symbols-outlined">delete</span></button>
+                    <button><span class="material-symbols-outlined">task_alt</span></button>
                     </td>
                     </tr>
                 </a>
@@ -98,4 +98,4 @@ const ComplaintUnseenTable = () => {
   )
 }
 
-export default ComplaintUnseenTable
+export default ComplaintInprocessTable

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../../styles/components/Admin/TabTableView.css';
 
 import ComplaintUnseenTable from '../../components/Admin/ComplaintUnseenTable';
+import ComplaintInprocessTable from '../../components/Admin/ComplaintInprocessTable';
 
 function TabTableView() {
   const [activeTab, setActiveTab] = useState(0);
@@ -22,7 +23,7 @@ function TabTableView() {
           <ComplaintUnseenTable />
           </div>}
         {activeTab === 1 && <div className="content-for-the-status active slide-in">
-          
+          <ComplaintInprocessTable />
           </div>}
         {activeTab === 2 && <div className="content-for-the-status active slide-in">
           
