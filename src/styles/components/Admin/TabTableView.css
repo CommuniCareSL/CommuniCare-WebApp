@@ -1,0 +1,62 @@
+.tabs-or-status-of-complaints {
+    width: 90%;
+    height: 65vh;
+}
+  
+.tab-list {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border-bottom: 2px solid #007bff;
+}
+
+.tab-list li {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.tab-list li.active {
+    background-color: #fff;
+    border-bottom: 3px solid #0991FF;
+    font-weight: bold;
+    color: #0991FF;
+}
+
+.tab-list li:hover {
+    background-color: #69b6f5;
+}
+
+.tab-content {
+    padding: 20px;
+}
+
+.tab-content p {
+    text-align: start;
+}
+
+.content-for-the-status {
+    display: none;
+}
+
+.content-for-the-status.active {
+    display: block;
+}
+
+@keyframes slideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .slide-in {
+    animation: slideIn 0.7s ease-in-out;
+  }
+  
