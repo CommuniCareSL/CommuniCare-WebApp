@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import '../../styles/components/Admin/TabTableView.css';
+import '../../styles/components/Admin/TabView.css';
+import '../../styles/components/Admin/TableView.css';
 
 import ComplaintUnseenTable from '../../components/Admin/ComplaintUnseenTable';
 import ComplaintInprocessTable from '../../components/Admin/ComplaintInprocessTable';
