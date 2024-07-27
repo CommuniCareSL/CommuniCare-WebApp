@@ -16,7 +16,7 @@ function TabTableView() {
     <div className="tabs-or-status-of-complaints">
       <ul className="tab-list">
         <li className={activeTab === 0 ? 'active' : ''} onClick={() => handleTabClick(0)}>Unseen</li>
-        <li className={activeTab === 1 ? 'active' : ''} onClick={() => handleTabClick(1)}>Inprocess</li>
+        <li className={activeTab === 1 ? 'active' : ''} onClick={() => handleTabClick(1)}>Inprogress</li>
         <li className={activeTab === 2 ? 'active' : ''} onClick={() => handleTabClick(2)}>Completed</li>
       </ul>
       <div className="tab-content">
