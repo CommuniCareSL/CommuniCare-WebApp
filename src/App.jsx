@@ -7,7 +7,8 @@ import Signup from './pages/Signup';
 import Sabha from './pages/PradesiyaSabhaReg'
 
 import Dashboard from "./pages/Admin/Dashboard";
-import Complaints from "./pages/Admin/Complaints"
+import Complaints from "./pages/Admin/Complaints";
+import AdminNewOfficer from "./pages/Admin/AdminNewOfficer";
 
 import Dashboard_Officer from "./pages/Civil Officer/Dashboard";
 
@@ -31,6 +32,7 @@ const App = () => {
         {/* admin */}
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/Complaints" element={<Complaints />} />
+        <Route path="/AdminNewOfficer" element={<AdminNewOfficer />} />
 
 
         <Route path="/dashboard_Officer" element={<Dashboard_Officer />} />

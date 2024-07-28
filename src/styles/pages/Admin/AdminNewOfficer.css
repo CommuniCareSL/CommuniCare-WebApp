@@ -1,0 +1,30 @@
+.admin-add-new-officers-home-page{
+    flex-grow: 1;
+    padding: 20px;
+    min-height: 100vh;
+    min-width: auto;
+    margin-left: 85px;
+    transition: margin-left 0.4s ease;
+    background-color: #e8eff9;
+    overflow-y: auto;
+}
+
+.sidebar:hover ~ .admin-add-new-officers-home-page {
+    margin-left: 260px;
+  }
+  
+.admin-add-new-officers-home-page-title-container{
+    width: 93%;
+    margin-left: 35px;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2vh;
+    background-color: #fff;
+    border-radius: 15px;
+  }
+
+.admin-add-new-officers-home-page-title-container h3{
+    margin: 20px;
+    font-weight: 800;
+}

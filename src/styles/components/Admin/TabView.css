@@ -33,12 +33,15 @@
     background-color: #fff;
 }
 
+/* ---------------------search bar -------------------------*/
+
 .Complaints-search-bar input{
-    width: 100%;
+    width: 300px;
     height: 4vh;
     padding-left: 10px;
     padding-right: 10px;
     border: 2px solid #69b6f5;
+    border-radius: 10px;
 }
 
 .Complaints-search-bar input:hover{
@@ -49,6 +52,8 @@
     border: 2px solid #007bff;
     outline: none
 }
+
+/* ---------------------search bar -------------------------*/
 
 .tab-content {
     padding: 20px;
