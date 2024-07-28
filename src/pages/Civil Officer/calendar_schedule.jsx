@@ -1,50 +1,75 @@
 import Sidebar from '../../components/Civil Officer/Sidebar';
-// import '../../styles/components/Civil officer/dashboard.css';
+import React, { useState, useEffect } from 'react';
+import { Card, CardHeader, CardBody, Stack, StackDivider, Box, Heading, Text } from '@chakra-ui/react';
+import { Button, ButtonGroup } from '@chakra-ui/react';
+import { HiChevronDown, HiPlus } from 'react-icons/hi';
+import { Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
+import { RiInboxFill } from 'react-icons/ri';
 
-import { Card, CardHeader, CardBody, Stack, StackDivider, Box, Heading, Text } from '@chakra-ui/react'
-import { RiInboxFill, RiUserAddFill, RiFileTextFill, RiStarFill, RiArrowRightSLine} from 'react-icons/ri';
+const CalendarSchedule = () => {
+  const times = ['Day', 'Week', 'Month'];
+  const [selectedButton, setSelectedButton] = useState(2); // default to month
+  const [CurrentComponent, setCurrentComponent] = useState(null);
 
-const calendar_schedule = () => {
-    return (
-        <div className='dashboard-officer'>
-        <div>
-        <Sidebar />
+  const handleButtonClick = async (index) => {
+    setSelectedButton(index);
+    if (index === 0) {
+      const { default: AppointmentDay } = await import('./Appointment_today');
+      setCurrentComponent(() => AppointmentDay);
+    } else if (index === 1) {
+      const { default: AppointmentWeek } = await import('./Appointment_week');
+      setCurrentComponent(() => AppointmentWeek);
+    } else if (index === 2) {
+      const { default: AppointmentMonth } = await import('./Appointment_month');
+      setCurrentComponent(() => AppointmentMonth);
+    }
+  };
+
+  useEffect(() => {
+    handleButtonClick(selectedButton); // Load the component for the default state
+  }, []);
+
+  return (
+    <div className='dashboard-officer'>
+      <Sidebar />
+
+      <div className='m-5 h-11 w-screen p-4 flex justify-between items-center'>
+        <Stack direction='row' spacing={4} align='center'>
+          {times.map((time, index) => (
+            <Button
+              key={index}
+              colorScheme='blue'
+              variant={selectedButton === index ? 'solid' : 'outline'}
+              onClick={() => handleButtonClick(index)}
+            >
+              {time}
+            </Button>
+          ))}
+        </Stack>
+
+        <Menu>
+          <MenuButton as={Button} rightIcon={<HiChevronDown />}>
+            Filter
+          </MenuButton>
+          <MenuList>
+            <MenuItem>Completed</MenuItem>
+            <MenuItem>Follow Up</MenuItem>
+            <MenuItem>New Requests</MenuItem>
+          </MenuList>
+          
+        </Menu>
+        <Button colorScheme='blue'>
+          <HiPlus/>
+          Add Appointment
+        </Button>
+        
+        
+      </div>
+      <div className='mt-5'>
+        {CurrentComponent && <CurrentComponent />}
         </div>
-        
-
-       <div>
-       <Card>
-  {/* <CardHeader>
-    <Heading size='md'>Client Report</Heading>
-  </CardHeader> */}
-
-  <CardBody>
-    <Stack divider={<StackDivider />} spacing='4'>
-      <Box>
-      <RiInboxFill/>
-        <Heading size='xs' textTransform='uppercase'>
-          Appointments
-        </Heading>
-      </Box>
-      
-      <Box>
-        <Heading size='s' textTransform='uppercase'>
-          46
-        </Heading>
-        <Text pt='2' fontSize='sm'>
-          See a detailed analysis of all your business clients.
-        </Text>
-      </Box>
-    </Stack>
-  </CardBody>
-</Card>
-       </div>
-        
-
-        
-        
-        </div>
-    );
+    </div>
+  );
 };
 
-export default calendar_schedule;
+export default CalendarSchedule;
