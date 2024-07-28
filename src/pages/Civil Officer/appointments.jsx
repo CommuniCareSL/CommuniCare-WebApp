@@ -3,6 +3,7 @@ import Sidebar from '../../components/Civil Officer/Sidebar';
 import profileImg from '../../assets/Admin/profile-img.jpg';
 import { RiCalendar2Line, RiInboxFill, RiUserAddFill, RiFileTextFill, RiArrowRightSLine, RiBarChartBoxFill } from 'react-icons/ri';
 import { RiCheckboxCircleFill, RiTimeFill } from 'react-icons/ri';
+import { RiFullscreenLine, RiFullscreenFill } from 'react-icons/ri';
 import { Progress } from '@chakra-ui/react'
 import { Card, CardHeader, CardBody, CardFooter, Image, Stack, Heading, Text, Button } from '@chakra-ui/react'
 
@@ -206,14 +207,89 @@ const appointments = () => {
         </div>
     </div> */}
 
-                    <div className='overflow-y-auto flex flex-col w-2/3 bg-red-600'>
-                    <div className='mb-3 h- '>
-                        <p>jdnsdjfbsf</p>
+                    <div className='overflow-y-auto flex flex-col w-2/3 rounded-lg'>
+                    <div className='flex-1 bg-white'>
+                    {/* <div className="flex items-center gap-[420px] bg-blue-100 rounded-t-lg">
+                        <h4 className="ml-3 text-lg text-blue-950 font-bold md:font-medium p-2 ">Ongoing Appointment</h4>
+                        <Button colorScheme='bg-blue-100'>
+                        <RiFullscreenLine size={24} className="text-blue-500" />
+                        </Button>
+                                
                     </div>
-                    <div>
-                        <p>
-                            jsdhjsfj
-                        </p>
+
+                    <div className="flex items-center">
+                    <img className="w-10 h-10 rounded-full" src={profileImg} alt={name} />
+                    </div> */}
+
+<div className="flex justify-between bg-blue-100 rounded-t-lg p-4 overflow-y-auto">
+          <h4 className="text-lg text-blue-950 font-bold md:font-medium">Ongoing Appointment</h4>
+          <Button variant='ghost' size='sm'>
+            <RiFullscreenLine size={24} className="text-blue-500" />
+          </Button>
+        </div>
+
+        <div className="flex items-start p-4">
+          <img className="w-10 h-10 rounded-full mr-4" src={profileImg} alt={name} />
+          <div>
+            <h5 className="font-bold text-blue-950">{name}</h5>
+            <p className="text-sm text-gray-500">Regular Patient • On Consultation</p>
+          </div>
+        </div>
+
+        <div className='flex flex-wrap p-4'>
+          <div className='flex-1 p-2'>
+            <div className='text-gray-700'>
+              <p>Referring Doctor</p>
+              <p className='font-bold'>Dr. Joseph Carla</p>
+            </div>
+            <div className='text-gray-700 mt-2'>
+              <p>Assigned Doctor</p>
+              <p className='font-bold'>Dr. Kim Lee</p>
+            </div>
+            <div className='text-gray-700 mt-2'>
+              <p>RAMQ</p>
+              <p className='font-bold'>STESS 3455 6665</p>
+            </div>
+            <div className='text-gray-700 mt-2'>
+              <p>Expired Date</p>
+              <p className='font-bold'>12/07/2023</p>
+            </div>
+          </div>
+
+          <div className='flex-1 p-2'>
+            <div className='text-gray-700'>
+              <p>Special Notes</p>
+              <p className='font-bold'>Stomach feel like roller coaster overtime.</p>
+            </div>
+          </div>
+
+          <div className='flex-1 p-2'>
+            <div className='text-gray-700'>
+              <p>Consultation Notes</p>
+              <textarea className='w-full p-2 border rounded mt-2' rows='4' placeholder='Type...'></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div className='flex justify-end gap-4 p-4 bg-gray-100'>
+          <Button colorScheme='blue' variant='outline'>
+            Reschedule
+          </Button>
+          <Button colorScheme='blue'>
+            Finish consultation
+          </Button>
+        </div>
+
+                    </div>
+                    <div className='overflow-y-auto flex-1 flex'>
+
+                        <div className='flex-1 bg-green-400 mr-2 mt-4 rounded-lg'>
+
+                        </div>
+
+                        <div className='flex-1 bg-orange-400 ml-2 mt-4 rounded-lg'>
+
+                        </div>
                     </div>
                   
                     </div>
