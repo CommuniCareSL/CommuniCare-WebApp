@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/pages/SuperAdmin/PradesiyaSabhaReg.css';
+import '../styles/pages/PradesiyaSabhaReg.css';
 
 export const Newregistration = () => {
     return (

@@ -4,6 +4,7 @@ import Landing from "./pages/Landing";
 
 import Login from "./pages/Login"
 import Signup from './pages/Signup';
+import Sabha from './pages/PradesiyaSabhaReg'
 
 import Dashboard from "./pages/Admin/Dashboard";
 import Complaints from "./pages/Admin/Complaints"
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/sabharegister" element={<Sabha />} />
 
         {/* admin */}
         <Route path="/Dashboard" element={<Dashboard />} />
