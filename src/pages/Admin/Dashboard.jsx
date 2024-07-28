@@ -2,11 +2,14 @@
 import Sidebar from '../../components/Admin/Sidebar';
 import CardSlider from '../../components/Admin/CardSlider';
 import DoughnutChart from '../../components/Admin/DoughnutChart';
-import WaveIcon from '../../assets/Admin/waving-hand.png';
 import CounterCard from '../../components/Admin/CounterCard';
+import AbsentOfficertable from '../../components/Admin/AbsentOfficertable';
+
+import WaveIcon from '../../assets/Admin/waving-hand.png';
 
 import '../../styles/pages/Admin/Dashboard.css';
 import '../../styles/components/Admin/CardSlider.css';
+import '../../styles/components/Admin/TableView.css';
 
 
 const Dashboard = () => {
@@ -26,7 +29,7 @@ const Dashboard = () => {
           <div className="admin-dashboard-appointment-complaint-summery">
 
             <div className="admin-dashboard-appointment-summery">
-              
+              <AbsentOfficertable />
             </div>
 
             <div className="admin-dashboard-complaint-registeroffices-summery">
