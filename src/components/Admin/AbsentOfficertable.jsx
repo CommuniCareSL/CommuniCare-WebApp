@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ClickIcon from '../../assets/Admin/click.png';
+import profileImg from '../../assets/Admin/profile-img.jpg';
 
 function AbsentOfficertable() {
   return (
@@ -18,7 +19,57 @@ function AbsentOfficertable() {
       <div className="admin-dashboard-absent-approved">
         <table>
           <tbody>
-            
+
+            <tr className="admin-dashboard-absent-list">
+              <td className="admin-dashboard-absent-list-column-1">
+                <img src={profileImg} alt="Profile Image" />
+              </td>
+              <td className="admin-dashboard-absent-list-column-2">
+                <h4>user name</h4>
+                <p>leave start date and range</p>
+              </td>
+            </tr>
+
+            <tr className="admin-dashboard-absent-list">
+              <td className="admin-dashboard-absent-list-column-1">
+                <img src={profileImg} alt="Profile Image" />
+              </td>
+              <td className="admin-dashboard-absent-list-column-2">
+                <h4>user name</h4>
+                <p>leave start date and range</p>
+              </td>
+            </tr>
+
+            <tr className="admin-dashboard-absent-list">
+              <td className="admin-dashboard-absent-list-column-1">
+                <img src={profileImg} alt="Profile Image" />
+              </td>
+              <td className="admin-dashboard-absent-list-column-2">
+                <h4>user name</h4>
+                <p>leave start date and range</p>
+              </td>
+            </tr>
+
+            <tr className="admin-dashboard-absent-list">
+              <td className="admin-dashboard-absent-list-column-1">
+                <img src={profileImg} alt="Profile Image" />
+              </td>
+              <td className="admin-dashboard-absent-list-column-2">
+                <h4>user name</h4>
+                <p>leave start date and range</p>
+              </td>
+            </tr>
+
+            <tr className="admin-dashboard-absent-list">
+              <td className="admin-dashboard-absent-list-column-1">
+                <img src={profileImg} alt="Profile Image" />
+              </td>
+              <td className="admin-dashboard-absent-list-column-2">
+                <h4>user name</h4>
+                <p>leave start date and range</p>
+              </td>
+            </tr>
+
           </tbody>
         </table>
       </div>

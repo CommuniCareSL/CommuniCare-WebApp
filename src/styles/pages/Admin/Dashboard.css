@@ -65,6 +65,7 @@
   background-color: #fff;
   border-radius: 15px;
   margin-right: 25px;
+  padding: 20px;
 }
 
 .admin-dashboard-calender{
@@ -78,7 +79,6 @@
   border-radius: 15px;
   flex-direction: column;
   padding: 20px;
-  transition: background-color 0.3s ease-in-out;
 }
 
 /*-----------------------------------------------*/
@@ -130,6 +130,12 @@
   display: flex;
   align-items: center;
   padding-left: 30px;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.admin-dashboard-linked-title-bar:hover{
+  border-radius: 15px;
+  transform: scale(1.02);
 }
 
 .admin-dashboard-linked-title-bar img{
