@@ -100,13 +100,14 @@
     background-color: #ffffff;
     display: block;
     margin-bottom: 2vh;
-    border-radius: 10px;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.193);
+    border-bottom: 2px solid rgb(169, 216, 255);
+    /* border-radius: 10px; */
+    /* box-shadow: 0 4px 4px rgba(0, 0, 0, 0.193); */
     transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .admin-dashboard-absent-list:hover {
-    background-color: #f6f6f6;
+    /* background-color: #f6f6f6; */
     transform: scale(0.99);
 }
 
