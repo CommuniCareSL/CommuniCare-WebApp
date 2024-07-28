@@ -8,9 +8,15 @@ import ComplaintCompletedTable from '../../components/Admin/ComplaintCompletedTa
 
 function TabTableView() {
   const [activeTab, setActiveTab] = useState(0);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleTabClick = (index) => {
     setActiveTab(index);
+    setSearchTerm('');
+  };
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
   };
 
   return (
@@ -19,7 +25,14 @@ function TabTableView() {
         <li className={activeTab === 0 ? 'active' : ''} onClick={() => handleTabClick(0)}>Unseen</li>
         <li className={activeTab === 1 ? 'active' : ''} onClick={() => handleTabClick(1)}>Inprogress</li>
         <li className={activeTab === 2 ? 'active' : ''} onClick={() => handleTabClick(2)}>Completed</li>
+        <li className='complaint-search-bar-list'>
+          <div className="Complaints-search-bar">
+            <input type="text" placeholder="Search..." value={searchTerm} onChange={handleSearchChange}/>
+          </div>
+        </li>
       </ul>
+
+
       <div className="tab-content">
         {activeTab === 0 && <div className="content-for-the-status active slide-in">
           <ComplaintUnseenTable />

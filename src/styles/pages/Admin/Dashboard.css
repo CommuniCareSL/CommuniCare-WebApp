@@ -52,12 +52,55 @@
 }
 
 .admin-dashboard-appointment-summery{
+  display: flex;
   width: 80%;
   height: 60vh;
-  background-color: #fff;
   margin-right: 10px;
-  border-radius: 15px;
 }
+
+.admin-dashboard-leave-absent-approved{
+  float: left;
+  width: 55%;
+  height: 60vh;
+  background-color: #fff;
+  border-radius: 15px;
+  margin-right: 25px;
+}
+
+.admin-dashboard-calender{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: right;
+  width: 45%;
+  height: 60vh;
+  background-color: #fff;
+  border-radius: 15px;
+  flex-direction: column;
+  padding: 20px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/*-----------------------------------------------*/
+.admin-dashboard-calender .react-calendar{
+  border: none;
+}
+
+.admin-dashboard-calender .react-calendar__month-view__days__day--weekend{
+  color: #0040ff;
+  font-weight: bold;
+}
+
+.admin-dashboard-calender .react-calendar__month-view__days__day--neighboringMonth{
+  color: #94cdfb;
+  font-weight: bold;
+}
+
+.admin-dashboard-calender .react-calendar__tile--now{
+  background: #9ecff8;
+}
+
+/*-----------------------------------------------*/
 
 .admin-dashboard-complaint-summery{
   width: 100%;
@@ -81,12 +124,28 @@
   margin: 20px;
 }
 
+.admin-dashboard-linked-title-bar{
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+}
+
+.admin-dashboard-linked-title-bar img{
+  height: 25px;
+  width: 25px;
+  margin-left: 3px;
+  margin-right: 7px;
+}
+
 @media (max-width: 1024px) {
   .admin-dashboard-home-page {
     overflow-y: auto;
   }
 
-  .admin-dashboard-appointment-complaint-summery {
+  .admin-dashboard-appointment-complaint-summery,
+  .admin-dashboard-appointment-summery {
     display: flex;
     flex-direction: column;
   }
@@ -94,7 +153,9 @@
   .admin-dashboard-complaint-registeroffices-summery,
   .admin-dashboard-complaint-summery,
   .admin-dashboard-registeroffices,
-  .admin-dashboard-appointment-summery {
+  .admin-dashboard-appointment-summery,
+  .admin-dashboard-leave-absent-approved,
+  .admin-dashboard-calender {
     width: 92%;
     margin-bottom: 2vh;
   }
