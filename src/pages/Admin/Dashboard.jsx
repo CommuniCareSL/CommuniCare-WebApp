@@ -4,12 +4,14 @@ import CardSlider from '../../components/Admin/CardSlider';
 import DoughnutChart from '../../components/Admin/DoughnutChart';
 import CounterCard from '../../components/Admin/CounterCard';
 import AbsentOfficertable from '../../components/Admin/AbsentOfficertable';
+import Calendar from 'react-calendar';
 
 import WaveIcon from '../../assets/Admin/waving-hand.png';
 
 import '../../styles/pages/Admin/Dashboard.css';
 import '../../styles/components/Admin/CardSlider.css';
 import '../../styles/components/Admin/TableView.css';
+import 'react-calendar/dist/Calendar.css';
 
 
 const Dashboard = () => {
@@ -29,7 +31,14 @@ const Dashboard = () => {
           <div className="admin-dashboard-appointment-complaint-summery">
 
             <div className="admin-dashboard-appointment-summery">
-              <AbsentOfficertable />
+              <div className="admin-dashboard-leave-absent-approved">
+                <AbsentOfficertable />
+              </div>
+              <div className="admin-dashboard-calender">
+                <h3 style={{fontWeight: '800'}}>Calender</h3>
+                <br />
+                <Calendar/>
+              </div>
             </div>
 
             <div className="admin-dashboard-complaint-registeroffices-summery">
