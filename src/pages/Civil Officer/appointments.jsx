@@ -228,30 +228,32 @@ const appointments = () => {
           </Button>
         </div>
 
-        <div className="flex items-start p-4">
+        <div className="flex items-start p-2">
           <img className="w-10 h-10 rounded-full mr-4" src={profileImg} alt={name} />
           <div>
             <h5 className="font-bold text-blue-950">{name}</h5>
-            <p className="text-sm text-gray-500">Regular Patient • On Consultation</p>
+            <p className="text-sm text-gray-700">Brooklyn Simmons • Ongoing</p>
+            <p className="text-sm text-gray-700 text-left">11.00 - 12.00</p>
           </div>
         </div>
+        <hr className="w-full border-t border-gray-200 my-0.5"/>
 
-        <div className='flex flex-wrap p-4'>
+        <div className='flex flex-wrap p-3 text-left'>
           <div className='flex-1 p-2'>
             <div className='text-gray-700'>
-              <p>Referring Doctor</p>
-              <p className='font-bold'>Dr. Joseph Carla</p>
+              <p>Referring officer</p>
+              <p className='font-bold'>Joseph Carla</p>
             </div>
             <div className='text-gray-700 mt-2'>
-              <p>Assigned Doctor</p>
-              <p className='font-bold'>Dr. Kim Lee</p>
+              <p>Requested Service</p>
+              <p className='font-bold'>Allotment of Billboards and Advertising rights</p>
             </div>
             <div className='text-gray-700 mt-2'>
-              <p>RAMQ</p>
-              <p className='font-bold'>STESS 3455 6665</p>
+              <p>NIC</p>
+              <p className='font-bold'>1345568665v</p>
             </div>
             <div className='text-gray-700 mt-2'>
-              <p>Expired Date</p>
+              <p>Date Booked</p>
               <p className='font-bold'>12/07/2023</p>
             </div>
           </div>
@@ -259,36 +261,65 @@ const appointments = () => {
           <div className='flex-1 p-2'>
             <div className='text-gray-700'>
               <p>Special Notes</p>
-              <p className='font-bold'>Stomach feel like roller coaster overtime.</p>
+              <p className='font-bold'>Payment has already been made. It is urgent</p>
+            </div>
+
+            <div className='text-gray-700 mt-4 flex flex-col items-center'>
+              <p>Submitted Documents</p>
+            <Button colorScheme='blue' variant='ghost'  size='sm'>
+            View Here
+          </Button>
+            </div>
+
+            <div className='text-gray-700 mt-4 flex flex-col items-center'>
+            <Button colorScheme='blue' variant='outline' size='md'>
+            Reschedule
+          </Button>
+          <Button colorScheme='blue' mt={4} size='md'>
+              Finish Appointment
+          </Button>
             </div>
           </div>
 
           <div className='flex-1 p-2'>
             <div className='text-gray-700'>
-              <p>Consultation Notes</p>
-              <textarea className='w-full p-2 border rounded mt-2' rows='4' placeholder='Type...'></textarea>
+              <p>Appointment Notes</p>
+              <textarea className='w-full p-2 border rounded mt-2' rows='5' placeholder='Type...'></textarea>
             </div>
           </div>
+
         </div>
 
-        <div className='flex justify-end gap-4 p-4 bg-gray-100'>
-          <Button colorScheme='blue' variant='outline'>
+        {/* <Button colorScheme='blue' variant='outline'>
             Reschedule
           </Button>
           <Button colorScheme='blue'>
-            Finish consultation
-          </Button>
-        </div>
+              Finish Appointment
+          </Button> */}
+        {/* <div className='flex justify-end gap-4 p-4 bg-gray-100'>
+          
+        </div> */}
 
                     </div>
                     <div className='overflow-y-auto flex-1 flex'>
 
-                        <div className='flex-1 bg-green-400 mr-2 mt-4 rounded-lg'>
-
+                        <div className='flex-1 bg-white mr-2 mt-4 rounded-lg'>
+                        <div className="flex items-center gap-[60px] bg-blue-100 rounded-t-lg">
+                        <h4 className="ml-3 text-md text-blue-950 font-bold md:font-medium p-2 ">Follow-Up Appointments</h4>
+                        <Button variant='ghost' size='sm'>
+                        <RiFullscreenLine size={20} className="text-blue-500" />
+                        </Button> 
+                                
+                    </div>
                         </div>
 
-                        <div className='flex-1 bg-orange-400 ml-2 mt-4 rounded-lg'>
-
+                        <div className='flex-1 bg-white ml-2 mt-4 rounded-lg'>
+                        <div className="flex items-center gap-[60px] bg-blue-100 rounded-t-lg">
+                        <h4 className="ml-3 text-md text-blue-950 font-bold md:font-medium p-2 ">Review Documents</h4>
+                        <Button variant='ghost' size='sm'>
+                        <RiFullscreenLine size={20} className="text-blue-500" />
+                        </Button>
+                        </div>
                         </div>
                     </div>
                   
