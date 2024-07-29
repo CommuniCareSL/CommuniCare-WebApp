@@ -14,9 +14,16 @@
     width: 100%;
     background-color: #ffffff;
     display: block;
-    margin-bottom: 5vh;
+    border-bottom: 2px solid rgb(169, 216, 255);
+    /* border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); */
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.complaint-table-with-details-row:hover{
+    transform: scale(0.99);
+    background-color: rgb(169, 216, 255);
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .complaint-table-with-details-row-column-1,
@@ -62,7 +69,7 @@
 .complaint-table-with-details-row-column-5 button{
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
+    background-color: #ffffff00;
     color: #000;
     cursor: pointer;
     transition: 0.3s ease;

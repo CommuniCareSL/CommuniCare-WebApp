@@ -45,9 +45,9 @@ const Sidebar = () => {
         </li>
 
         <li>
-          <a href="#">
-            <span className="material-symbols-outlined">person</span>
-            Profile
+          <a href="/AdminNewOfficer" onClick={(e) => handleClick(e, '/AdminNewOfficer')}>
+            <span class="material-symbols-outlined">person_add</span>
+            New Officer
           </a>
         </li>
        

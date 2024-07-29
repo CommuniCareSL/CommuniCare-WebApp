@@ -100,6 +100,10 @@
   background: #9ecff8;
 }
 
+.admin-dashboard-calender .react-calendar__tile--active{
+  background: #50b0ff;
+}
+
 /*-----------------------------------------------*/
 
 .admin-dashboard-complaint-summery{
