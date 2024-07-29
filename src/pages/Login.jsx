@@ -34,9 +34,12 @@ const Login = () => {
           case 'ADMIN':
             navigate('/dashboard');
             break;
-          default:
-            navigate('/');
+          case 'OFFICER':
+            navigate('/dashboard_Officer');
             break;
+          // default:
+          //   navigate('/');
+          //   break;
         }
       } else {
         setError(userData.message);
@@ -60,7 +63,7 @@ const Login = () => {
         <div className="login-form">
           <div className="text">LOGIN</div>
 
-          {error && <p className="error-message">{error}</p>}
+          {/* {error && <p style={{ color: 'red', marginBottom: '10px' }}>{error}</p>} */}
 
           <form onSubmit={handleSubmit}>
             <div className="field">
@@ -70,9 +73,7 @@ const Login = () => {
               <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
             </div>
             <button type="submit">LOGIN</button>
-            
-            {/* here */}
-            <button onClick={() => { navigate("/dashboard_Officer");}}>LOGIN</button>
+            {/* <button onClick={() => { navigate("/dashboard_Officer");}}>LOGIN</button> */}
             <div className="link">
               <a href="#">Forgot Password?</a> <br />
               <br />
