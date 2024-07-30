@@ -1,0 +1,90 @@
+.tabs-or-status-of-complaints {
+    width: 80%;
+    height: 65vh;
+}
+  
+.tab-list {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border-bottom: 2px solid #007bff;
+}
+
+.tab-list li {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.tab-list li.active {
+    background-color: #fff;
+    border-bottom: 3px solid #0991FF;
+    font-weight: bold;
+    color: #0991FF;
+}
+
+.tab-list li:hover {
+    background-color: #69b6f5;
+}
+
+.tab-list .complaint-search-bar-list:hover{
+    background-color: #fff;
+}
+
+/* ---------------------search bar -------------------------*/
+
+.Complaints-search-bar input{
+    width: 300px;
+    height: 4vh;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 2px solid #69b6f5;
+    border-radius: 10px;
+}
+
+.Complaints-search-bar input:hover{
+    border: 2px solid #0991FF;
+}
+
+.Complaints-search-bar input:focus{
+    border: 2px solid #007bff;
+    outline: none
+}
+
+/* ---------------------search bar -------------------------*/
+
+.tab-content {
+    padding: 20px;
+    height: 62vh;
+    overflow-y: auto;
+}
+
+.tab-content p {
+    text-align: start;
+}
+
+.content-for-the-status {
+    display: none;
+}
+
+.content-for-the-status.active {
+    display: block;
+}
+
+@keyframes slideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .slide-in {
+    animation: slideIn 0.7s ease-in-out;
+  }
+

@@ -34,9 +34,10 @@
   width: 93%;
   margin-left: 35px;
   height: 80vh;
-  display: flex;
-  align-items: center;
   margin-bottom: 2vh;
   background-color: #fff;
   border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
