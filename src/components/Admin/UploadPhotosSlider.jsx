@@ -45,6 +45,7 @@ const UploadPhotosSlider = () => {
   };
 
   return (
+    <>
     <div className='Complaint-uploaded-image-slider-view' style={{width: '80%', height: '40vh', margin: '0 auto', marginTop: '5vh'}}>
       <Slider {...settings}>
 
@@ -63,11 +64,16 @@ const UploadPhotosSlider = () => {
         <div className="uploaded-image-card" style={{height:'40vh', width: '80%', background: '#fff'}}>
             <img src={logo} alt="DarkLogo.png" style={{width:'100%', height:'auto' , borderRadius:'15px'}}/>
         </div>
-        
-
       </Slider>
-
+    
     </div>
+
+    <div className="Complaint-uploaded-image-slider-view-buttons">
+        <button><span class="material-symbols-outlined">visibility</span> View</button>
+        <button><span class="material-symbols-outlined">delete</span> Delete</button>
+    </div>
+
+    </>
   )
 }
 

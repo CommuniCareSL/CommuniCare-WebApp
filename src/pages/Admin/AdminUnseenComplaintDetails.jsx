@@ -45,7 +45,7 @@ function AdminUnseenComplaintDetails() {
             </div>
 
             <div className="unseen-complaints-contractor-details-second-div">
-              <button>Send Message</button>
+              <button style={{marginRight: '30px'}}>Send Message</button>
             </div>
             
             
