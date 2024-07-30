@@ -22,6 +22,12 @@ const Sidebar = () => {
           </a>
         </li>
         <li>
+          <a href="/AdminNewOfficer" onClick={(e) => handleClick(e, '/AdminNewOfficer')}>
+            <span class="material-symbols-outlined">person_add</span>
+            New Officer
+          </a>
+        </li>
+        <li>
           <a href="/Complaints" onClick={(e) => handleClick(e, '/Complaints')}>
             <span className="material-symbols-outlined">report_problem</span>
             Complaints
@@ -41,13 +47,6 @@ const Sidebar = () => {
           <a href="#">
             <span className="material-symbols-outlined">overview</span>
             Report
-          </a>
-        </li>
-
-        <li>
-          <a href="#">
-            <span className="material-symbols-outlined">person</span>
-            Profile
           </a>
         </li>
        

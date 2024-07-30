@@ -65,6 +65,7 @@
   background-color: #fff;
   border-radius: 15px;
   margin-right: 25px;
+  padding: 20px;
 }
 
 .admin-dashboard-calender{
@@ -78,7 +79,6 @@
   border-radius: 15px;
   flex-direction: column;
   padding: 20px;
-  transition: background-color 0.3s ease-in-out;
 }
 
 /*-----------------------------------------------*/
@@ -100,6 +100,10 @@
   background: #9ecff8;
 }
 
+.admin-dashboard-calender .react-calendar__tile--active{
+  background: #50b0ff;
+}
+
 /*-----------------------------------------------*/
 
 .admin-dashboard-complaint-summery{
@@ -107,9 +111,7 @@
   height: 40vh;
   background-color: #fff;
   border-radius: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
   margin-bottom: 2vh;
 }
 
@@ -122,6 +124,7 @@
 
 .admin-dashboard-registeroffices h3{
   margin: 20px;
+  font-weight: 800;
 }
 
 .admin-dashboard-linked-title-bar{
@@ -130,6 +133,12 @@
   display: flex;
   align-items: center;
   padding-left: 30px;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.admin-dashboard-linked-title-bar:hover{
+  border-radius: 15px;
+  transform: scale(1.02);
 }
 
 .admin-dashboard-linked-title-bar img{
@@ -139,15 +148,22 @@
   margin-right: 7px;
 }
 
+.admin-dashboard-linked-title-bar h3{
+  font-weight: 800;
+}
+
 @media (max-width: 1024px) {
   .admin-dashboard-home-page {
     overflow-y: auto;
   }
 
-  .admin-dashboard-appointment-complaint-summery,
-  .admin-dashboard-appointment-summery {
+  .admin-dashboard-appointment-complaint-summery {
     display: flex;
     flex-direction: column;
+  }
+
+  .admin-dashboard-calender{
+    display: none;
   }
 
   .admin-dashboard-complaint-registeroffices-summery,
