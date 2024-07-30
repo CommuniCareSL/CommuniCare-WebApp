@@ -21,15 +21,16 @@ function TabTableView() {
 
   return (
     <div className="tabs-or-status-of-complaints">
+
+      <div className="Complaints-search-bar">
+        <input type="text" placeholder="Search..." value={searchTerm} onChange={handleSearchChange}/>
+        <button><span class="material-symbols-outlined">tune</span></button>
+      </div>
+
       <ul className="tab-list">
         <li className={activeTab === 0 ? 'active' : ''} onClick={() => handleTabClick(0)}>Unseen</li>
         <li className={activeTab === 1 ? 'active' : ''} onClick={() => handleTabClick(1)}>Inprogress</li>
         <li className={activeTab === 2 ? 'active' : ''} onClick={() => handleTabClick(2)}>Completed</li>
-        <li className='complaint-search-bar-list'>
-          <div className="Complaints-search-bar">
-            <input type="text" placeholder="Search..." value={searchTerm} onChange={handleSearchChange}/>
-          </div>
-        </li>
       </ul>
 
 
