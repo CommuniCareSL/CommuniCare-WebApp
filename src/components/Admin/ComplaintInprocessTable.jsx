@@ -8,7 +8,7 @@ const ComplaintInprocessTable = () => {
         <table>
             <tbody>
 
-                <a href="#">
+                <a href="/AdminInprogressComplainDetails" onClick={(e) => handleClick(e, '/AdminInprogressComplainDetails')}>
                     <tr className="complaint-table-with-details-row">
                         <td className="complaint-table-with-details-row-column-1">
                             <img src={profileImg} alt="Profile Image" />
@@ -29,7 +29,7 @@ const ComplaintInprocessTable = () => {
                     </tr>
                 </a>
 
-                <a href="#">
+                <a href="/AdminInprogressComplainDetails" onClick={(e) => handleClick(e, '/AdminInprogressComplainDetails')}>
                     <tr className="complaint-table-with-details-row">
                         <td className="complaint-table-with-details-row-column-1">
                             <img src={profileImg} alt="Profile Image" />
@@ -50,7 +50,7 @@ const ComplaintInprocessTable = () => {
                     </tr>
                 </a>
 
-                <a href="#">
+                <a href="/AdminInprogressComplainDetails" onClick={(e) => handleClick(e, '/AdminInprogressComplainDetails')}>
                     <tr className="complaint-table-with-details-row">
                         <td className="complaint-table-with-details-row-column-1">
                             <img src={profileImg} alt="Profile Image" />
@@ -71,7 +71,7 @@ const ComplaintInprocessTable = () => {
                     </tr>
                 </a>
 
-                <a href="#">
+                <a href="/AdminInprogressComplainDetails" onClick={(e) => handleClick(e, '/AdminInprogressComplainDetails')}>
                     <tr className="complaint-table-with-details-row">
                         <td className="complaint-table-with-details-row-column-1">
                             <img src={profileImg} alt="Profile Image" />

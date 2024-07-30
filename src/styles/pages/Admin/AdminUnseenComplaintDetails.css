@@ -163,17 +163,18 @@
   }
 
   .Complaint-uploaded-image-slider-view-buttons{
-    width: 100%;
+    width: 20%;
     height: 10vh;
     margin-top: 10vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-right: 20px;
   }
 
   .Complaint-uploaded-image-slider-view-buttons button{
     margin-right: 10px;
-    width: 25%;
+    width: 50%;
     height: 6vh;
     color: #000;
     background: rgb(9, 145, 255);

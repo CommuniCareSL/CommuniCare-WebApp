@@ -47,6 +47,11 @@ function AdminUnseenComplaintDetails() {
             <div className="unseen-complaints-contractor-details-second-div">
               <button style={{marginRight: '30px'}}>Send Message</button>
             </div>
+
+            <div className="Complaint-uploaded-image-slider-view-buttons">
+                <button><span class="material-symbols-outlined">visibility</span> View</button>
+                <button><span class="material-symbols-outlined">delete</span> Delete</button>
+            </div>
             
             
 
