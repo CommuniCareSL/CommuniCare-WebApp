@@ -2,10 +2,10 @@ import React from 'react';
 import Sidebar from '../../components/Civil Officer/Sidebar';
 import profileImg from '../../assets/Admin/profile-img.jpg';
 import { RiCalendar2Line, RiInboxFill, RiUserAddFill, RiFileTextFill, RiArrowRightSLine, RiBarChartBoxFill } from 'react-icons/ri';
-import { RiCheckboxCircleFill, RiTimeFill } from 'react-icons/ri';
-import { RiFullscreenLine, RiFullscreenFill } from 'react-icons/ri';
+import { RiCheckboxCircleFill, RiTimeFill, RiMessageLine, RiFullscreenLine } from 'react-icons/ri';
 import { Progress } from '@chakra-ui/react'
 import { Card, CardHeader, CardBody, CardFooter, Image, Stack, Heading, Text, Button } from '@chakra-ui/react'
+import { IconButton } from '@chakra-ui/react'
 
 
 const appointment_today = [
@@ -375,7 +375,7 @@ const Appointments = () => {
                         </div>
 
                         <div className="p-4">
-          {/* Patient List */}
+        
           {patients.map(patient => (
             <div key={patient.id} className="flex items-center justify-between py-2 border-b">
               <div className="flex ">
@@ -388,9 +388,16 @@ const Appointments = () => {
                 </div>
               </div>
               <div className="flex items-center space-x-2">
-                {/* <RiPhoneLine size={20} className="text-blue-500" />
-                <RiMessageLine size={20} className="text-blue-500" />
-                <RiMailLine size={20} className="text-blue-500" /> */}
+                  <IconButton
+                  variant='ghost'
+                  colorScheme='blue'
+                  aria-label='Call Sage'
+                  fontSize='20px'
+                  icon={<RiMessageLine />}
+                />
+                {/* <RiPhoneLine size={20} className="text-blue-500" /> */}
+                {/* <RiMessageLine size={20} className="text-blue-500" /> */}
+                {/* <RiMailLine size={20} className="text-blue-500" />  */}
               </div>
             </div>
           ))}

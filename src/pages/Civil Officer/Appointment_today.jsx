@@ -60,11 +60,13 @@
 import React from "react";
 
 const AppointmentDay = () => {
-    <div>
+    return(
+    <div className="bg-slate-600">
         <p>test
         </p>
         <h2>test</h2>
     </div>
-}
+    );
+};
 
 export default AppointmentDay;
