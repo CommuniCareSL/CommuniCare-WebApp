@@ -13,8 +13,8 @@
   margin-left: 260px;
 }
 
-.complaint-title-container{
-  width: 93%;
+.admin-complaint-title-container{
+  width: 95%;
   margin-left: 35px;
   height: 10vh;
   display: flex;
@@ -25,12 +25,13 @@
 }
 
 
-.complaint-title-container h3{
+.admin-complaint-title-container h3{
   margin: 20px;
   font-weight: 800;
+  color: #000;
 }
 
-.admin-complaint-table-tab-view{
+.admin-complain-table-tab-view-for-complaint-content{
   width: 93%;
   margin-left: 35px;
   height: 80vh;
