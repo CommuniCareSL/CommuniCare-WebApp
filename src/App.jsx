@@ -10,6 +10,7 @@ import Dashboard from "./pages/Admin/Dashboard";
 import Complaints from "./pages/Admin/Complaints";
 import AdminNewOfficer from "./pages/Admin/AdminNewOfficer";
 import AdminUnseenComplaintDetails from "./pages/Admin/AdminUnseenComplaintDetails";
+import AdminInprogressComplainDetails from "./pages/Admin/AdminInprogressComplainDetails";
 
 import Dashboard_Officer from "./pages/Civil Officer/Dashboard";
 import Calendar_Officer from "./pages/Civil Officer/calendar_schedule";
@@ -39,6 +40,8 @@ const App = () => {
         <Route path="/Complaints" element={<Complaints />} />
         <Route path="/AdminNewOfficer" element={<AdminNewOfficer />} />
         <Route path="/AdminUnseenComplaintDetails" element={<AdminUnseenComplaintDetails />} />
+        <Route path="/AdminInprogressComplainDetails" element={<AdminInprogressComplainDetails />} />
+        
 
 
         <Route path="/dashboard_Officer" element={<Dashboard_Officer />} />
