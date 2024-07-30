@@ -9,14 +9,14 @@ import { IconButton } from '@chakra-ui/react'
 
 
 const appointment_today = [
-    { time: '08.00', name: 'Kristin Watson', issue: 'Stomach Pain', status: 'completed', img: profileImg },
-    { time: '09.00', name: 'Jerome Bell', issue: 'Headache', status: 'completed', img: profileImg },
-    { time: '10.00', name: 'Dianne Russell', issue: 'Gerd', status: 'completed', img: profileImg },
-    { time: '11.00', name: 'Brooklyn Simmons', issue: 'On Consultation', status: 'ongoing', img: profileImg },
-    { time: '12.00', name: 'ISHOMA', issue: '', status: 'none' },
-    { time: '13.00', name: 'Marvin McKinney', issue: 'Stomach Pain', status: 'upcoming', img: profileImg },
-    { time: '14.00', name: 'Ralph Edwards', issue: 'Headache', status: 'upcoming', img: profileImg },
-    { time: '15.00', name: 'Guy Hawkins', issue: 'Headache', status: 'upcoming', img: profileImg },
+    { time: '08.00', name: 'Kristin Watson', issue: 'Acreage Taxation', status: 'completed', img: profileImg },
+    { time: '08.30', name: 'Jerome Bell', issue: 'Allocating the football ground', status: 'completed', img: profileImg },
+    { time: '09.00', name: 'Dianne Russell', issue: 'Issuance of Cycle Permit', status: 'completed', img: profileImg },
+    { time: '09.30', name: 'Brooklyn Simmons', issue: 'Issuance of Marriage Certificate', status: 'ongoing', img: profileImg },
+    { time: '10.00', name: 'ISHOMA', issue: '', status: 'none' },
+    { time: '10.30', name: 'Marvin McKinney', issue: 'Allocating the City hall', status: 'upcoming', img: profileImg },
+    { time: '10.45', name: 'Ralph Edwards', issue: 'Permit to cut down tree', status: 'upcoming', img: profileImg },
+    { time: '11.00', name: 'Guy Hawkins', issue: 'Acreage Taxation', status: 'upcoming', img: profileImg },
   ];
 
   const statusColors = {
@@ -333,13 +333,13 @@ const Appointments = () => {
           </Button>
             </div>
 
-            <div className='text-gray-700 mt-4 flex flex-col items-center'>
-            <Button colorScheme='blue' variant='outline' size='md'>
+            <div className='text-gray-700 mt-11 ml-13 flex flex-row items-right gap-4'>
+            <Button colorScheme='blue' variant='outline' size='md' className='ml-auto' _hover={{ color: 'white', background: 'blue.500' }}>
             Reschedule
           </Button>
-          <Button colorScheme='blue' mt={4} size='md'>
+          {/* <Button colorScheme='blue' mt={4} size='md'>
               Finish Appointment
-          </Button>
+          </Button> */}
             </div>
           </div>
 
@@ -347,6 +347,11 @@ const Appointments = () => {
             <div className='text-gray-700'>
               <p>Appointment Notes</p>
               <textarea className='w-full p-2 border rounded mt-2' rows='5' placeholder='Type...'></textarea>
+              <Button colorScheme='blue' mt={4} size='md'
+              variant='solid'
+               _hover={{ color: 'blue.500', background: 'white', borderColor: 'blue.500'}}>
+              Finish Appointment
+          </Button>
             </div>
           </div>
 
