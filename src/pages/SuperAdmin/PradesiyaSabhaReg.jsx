@@ -1,12 +1,21 @@
 import React, { useState } from 'react'; // Import useState
 import '../../styles/pages/SuperAdmin/PradesiyaSabhaReg.css';
 
-// If Form component is not needed, you can remove it
-export const Newregistration = () => {
+export const Form = () => {
   const [fileType, setFileType] = useState('');
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const handleFileTypeChange = (event) => {
     setFileType(event.target.value);
+  };
+
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
+
+  const handleDropdownItemClick = (type) => {
+    setFileType(type);
+    setShowDropdown(false); // Hide dropdown after selection
   };
 
   return (
@@ -15,6 +24,8 @@ export const Newregistration = () => {
         <div className="form-registration-form">
           <div className="form-text">Register your Pradeshiya Sabha</div>
           <form>
+
+          <div className="form-field-group">
             <div className="form-field">
               <label>Select District:</label>
               <select>
@@ -23,6 +34,8 @@ export const Newregistration = () => {
                 <option value="gampaha">Gampaha</option>
               </select>
             </div>
+
+
             <div className="form-field">
               <label>Select Pradeshiya Sabha:</label>
               <select>
@@ -31,6 +44,9 @@ export const Newregistration = () => {
                 <option value="">Pradeshiya Sabha3</option>
               </select>
             </div>
+            </div>
+
+
             <div className="form-field">
               <label>Register Number:</label>
               <input type="text" placeholder="Register Number" />
@@ -38,35 +54,37 @@ export const Newregistration = () => {
 
             <div className="form-field">
               <label>Upload Document:</label>
-              <div className="file-input-container">
-                <input
-                  type="file"
-                  id="fileInput"
-                  className="file-input"
-                  onChange={handleFileTypeChange}
-                />
-                <label htmlFor="fileInput" className="file-label">
-                  {fileType || 'Choose file'}
-                </label>
+              <div className="dropdown-container">
+                <button 
+                  className="dropdown-toggle" 
+                  type="button" 
+                  onClick={toggleDropdown}
+                >
+                  {fileType || 'Select Document Type'}
+                  <span className="caret"></span>
+                </button>
+                <ul className={`dropdown-menu ${showDropdown ? 'show' : ''}`}>
+                  <li onClick={() => handleDropdownItemClick('Register Documentation')}>Register Documentation</li>
+                  <li onClick={() => handleDropdownItemClick('Request Letter')}>Request Letter</li>
+                </ul>
               </div>
+
               {fileType && (
-                <div className="file-options">
-                  <button
-                    className={`file-option-btn ${
-                      fileType === 'register' ? 'selected' : ''
-                    }`}
-                    onClick={() => setFileType('register')}
-                  >
-                    Register Documentation
-                  </button>
-                  <button
-                    className={`file-option-btn ${
-                      fileType === 'request' ? 'selected' : ''
-                    }`}
-                    onClick={() => setFileType('request')}
-                  >
-                    Request Letter
-                  </button>
+                <div className="file-input-container">
+                  <input
+                    type="file"
+                    id="fileInput"
+                    className="file-input"
+                    onChange={handleFileTypeChange}
+                  />
+                  <label htmlFor="fileInput" className="file-label">
+                    Choose file
+                  </label>
+                  {fileType && (
+                    <div className="file-selected-info">
+                      Selected Document Type: {fileType}
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -81,6 +99,7 @@ export const Newregistration = () => {
                 <input type="text" placeholder="Contact Number" />
               </div>
             </div>
+
             <div className="form-field-group">
               <div className="form-field">
                 <label>User Name:</label>
@@ -91,7 +110,8 @@ export const Newregistration = () => {
                 <input type="password" placeholder="Password" />
               </div>
             </div>
-            <button type="submit" className='form-btnform'>Register</button>
+
+            <button type="submit" className="form-btnform">Register</button>
           </form>
         </div>
       </div>
