@@ -111,9 +111,7 @@
   height: 40vh;
   background-color: #fff;
   border-radius: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
   margin-bottom: 2vh;
 }
 
@@ -126,6 +124,7 @@
 
 .admin-dashboard-registeroffices h3{
   margin: 20px;
+  font-weight: 800;
 }
 
 .admin-dashboard-linked-title-bar{
@@ -149,15 +148,22 @@
   margin-right: 7px;
 }
 
+.admin-dashboard-linked-title-bar h3{
+  font-weight: 800;
+}
+
 @media (max-width: 1024px) {
   .admin-dashboard-home-page {
     overflow-y: auto;
   }
 
-  .admin-dashboard-appointment-complaint-summery,
-  .admin-dashboard-appointment-summery {
+  .admin-dashboard-appointment-complaint-summery {
     display: flex;
     flex-direction: column;
+  }
+
+  .admin-dashboard-calender{
+    display: none;
   }
 
   .admin-dashboard-complaint-registeroffices-summery,
