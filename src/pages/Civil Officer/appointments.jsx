@@ -26,6 +26,68 @@ const appointment_today = [
     none: 'bg-gray-200'
   };
 
+  const patients = [
+    {
+      id: 1,
+      name: 'Esther Howard',
+      service: 'Issuance of cycle licences',
+      date: 'August 26, 2023',
+      note: "Urgent. Provide licence",
+      
+    },
+    {
+      id: 2,
+      name: 'Brooklyn Simmons',
+      service: 'Marriage Certificate Request',
+      date: 'August 26, 2023',
+      note: "Provide Certificate",
+    
+    },
+    {
+      id: 3,
+      name: 'Cody Fisher',
+      service: 'Allocation of Billboard rights',
+      date: 'August 26, 2023',
+      note: "Payment done. Permit needed",
+      
+    }
+  ];
+  
+
+  const reports = [
+    {
+      id: 1,
+      name: 'Georgette Strobel',
+      date: 'August 26, 2023',
+      service: 'Acreage Taxation'
+    },
+    {
+      id: 2,
+      name: 'Freida Varnes',
+      date: 'August 26, 2023',
+      service: 'Acreage Taxation'
+    },
+    {
+      id: 3,
+      name: 'Chantal Shelburne',
+      date: 'August 26, 2023',
+      service: 'Acreage Taxation'
+    },
+    {
+      id: 4,
+      name: 'Maryland Winkles',
+      date: 'August 26, 2023',
+      service: 'Acreage Taxation'
+    },
+    {
+      id: 5,
+      name: 'Phyllis Godley',
+      date: 'August 26, 2023',
+      service: 'Acreage Taxation'
+    }
+  ];
+
+
   const AppointmentCard = ({ time, name, issue, status, img }) => (
     <div className="flex items-center p-2">
       <div className="text-sm font-bold">{time}</div>
@@ -52,7 +114,7 @@ const appointment_today = [
   );
   
 
-const appointments = () => {
+const Appointments = () => {
     return (
         <div className="flex h-screen">
             <Sidebar />
@@ -310,16 +372,64 @@ const appointments = () => {
                         <RiFullscreenLine size={20} className="text-blue-500" />
                         </Button> 
                                 
-                    </div>
+                        </div>
+
+                        <div className="p-4">
+          {/* Patient List */}
+          {patients.map(patient => (
+            <div key={patient.id} className="flex items-center justify-between py-2 border-b">
+              <div className="flex ">
+                <img src={profileImg} alt={patient.name} className="w-10 h-10 rounded-full mr-3" />
+                <div className='text-left p-1'>
+                  <h5 className="text-sm font-semibold text-left mb-1">{patient.name}</h5>
+                  <p className="text-xs text-gray-500 mb-1">Service: {patient.service}</p>
+                  <p className="text-xs text-gray-500 text-left mb-1">{patient.date}</p>
+                  <p className="text-xs text-red-500 text-left mb-1">{patient.note}</p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-2">
+                {/* <RiPhoneLine size={20} className="text-blue-500" />
+                <RiMessageLine size={20} className="text-blue-500" />
+                <RiMailLine size={20} className="text-blue-500" /> */}
+              </div>
+            </div>
+          ))}
+        </div>
                         </div>
 
                         <div className='flex-1 bg-white ml-2 mt-4 rounded-lg'>
-                        <div className="flex items-center gap-[60px] bg-blue-100 rounded-t-lg">
+                        <div className="flex items-center gap-[100px] bg-blue-100 rounded-t-lg">
                         <h4 className="ml-3 text-md text-blue-950 font-bold md:font-medium p-2 ">Review Documents</h4>
                         <Button variant='ghost' size='sm'>
                         <RiFullscreenLine size={20} className="text-blue-500" />
                         </Button>
                         </div>
+
+                        <div className="p-4">
+                 
+                    {reports.map(report => (
+                      // <a href={report.link} key={report.id}>
+                      <a href='' className="shadow hover:bg-blue-500 hover:bordertransition duration-200">
+                      <div key={report.id} className="flex items-center justify-between py-2 border-b">
+                        <div className="flex items-center">
+                          <img src={profileImg} alt='' className="w-10 h-10 rounded-full mr-3" />
+                          <div>
+                            <h5 className="text-sm font-semibold">{report.name}</h5>
+                            <p className="text-xs text-gray-500">{report.service}</p>
+                            <p className="text-xs text-gray-500">{report.date}</p>
+                          </div>
+                        </div>
+                        <div>
+                        <RiArrowRightSLine size={24} className="text-gray-400" />
+                        </div>
+                      </div>
+                      </a>
+                    ))}
+                  </div>
+
+</div>
+
+
                         </div>
                     </div>
                   
@@ -333,8 +443,8 @@ const appointments = () => {
 
 
 
-        </div>
+        // </div>
     );
 };
 
-export default appointments;
+export default Appointments;
