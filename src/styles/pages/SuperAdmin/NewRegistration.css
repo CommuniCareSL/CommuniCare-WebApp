@@ -28,7 +28,7 @@
   font-weight: 800;
   text-align: center;
   color: white;
-  margin-left: 500px; /* Center text properly */
+  margin-left: 0; /* Center text properly */
 }
 
 .admin-complaint-table-tab-view {
@@ -50,14 +50,33 @@
   margin-right: 90px;
 }
 
-.search-bar {
+.search-bar-container {
   margin-bottom: 10px;
   display: flex;
+  align-items: center;
   justify-content: flex-end;
   margin-top: -65px;
 }
 
-.search-bar input {
+.filter-btn {
+  padding: 10px 15px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #000000, #074f8a);
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.filter-btn:hover {
+  background-color: #ffffff; /* Adjust the hover color as needed */
+  border: 2px solid #074f8a;
+  color: #074f8a;
+}
+
+.search-bar-container input {
   padding: 10px;
   border-radius: 5px;
   border: 2px solid #000000;

@@ -18,7 +18,6 @@ export const Newregistration = () => {
     { index: 5, district: 'District D', pradeshiyaSabha: 'City V' },
     { index: 6, district: 'District E', pradeshiyaSabha: 'Suburb U' }
   ];
-  
 
   // Filter data based on search query
   const filteredData = data.filter(item =>
@@ -36,7 +35,8 @@ export const Newregistration = () => {
         <div className="admin-complaint-table-tab-view">
           <div className="new-registration-page">
             <div className="registration-content">
-              <div className="search-bar">
+              <div className="search-bar-container">
+                <button className="filter-btn">Filter</button>
                 <input
                   type="text"
                   placeholder="Search..."
