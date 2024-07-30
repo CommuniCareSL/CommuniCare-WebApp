@@ -11,11 +11,11 @@ function Complaints() {
    
       <Sidebar />
       <div className="admin-complaints-home-page">
-        <div className="complaint-title-container">
+        <div className="admin-complaint-title-container">
           <h3>Received Complaints</h3>
         </div>
 
-          <div className="admin-complaint-table-tab-view">
+          <div className="admin-complain-table-tab-view-for-complaint-content">
             <TabTableView />
           </div>
 
