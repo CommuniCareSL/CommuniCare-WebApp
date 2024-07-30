@@ -53,11 +53,18 @@
     outline: none
 }
 
+@media (max-width: 1024px) {
+    .Complaints-search-bar input{
+        width: 120px;
+    }
+}
+
 /* ---------------------search bar -------------------------*/
 
 .tab-content {
     padding: 20px;
     height: 62vh;
+    width: 100%;
     overflow-y: auto;
 }
 

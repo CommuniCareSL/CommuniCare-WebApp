@@ -35,13 +35,13 @@ body {
 .sidebar .sidebar-header {
   display: flex;
   align-items: center;
-  justify-content: center; /* Center the logo horizontally */
+  justify-content: center;
 }
 
 .sidebar .sidebar-header img {
-  width: 100px; /* Adjust the width as needed */
-  height: auto; /* Maintain aspect ratio */
-  border-radius: 50%; /* Optional: to keep the circular shape */
+  width: 100px;
+  height: auto;
+  border-radius: 50%;
 }
 
 .sidebar .sidebar-header h2 {
