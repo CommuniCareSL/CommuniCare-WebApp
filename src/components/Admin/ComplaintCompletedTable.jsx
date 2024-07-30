@@ -9,7 +9,7 @@ const ComplaintCompletedTable = () => {
         <table>
             <tbody>
 
-                <a href="#">
+                <a href="">
                     <tr className="complaint-table-with-details-row">
                         <td className="complaint-table-with-details-row-column-1">
                             <img src={profileImg} alt="Profile Image" />

@@ -45,6 +45,7 @@ const Dashboard = () => {
 
               {/* this will show complaint doughnut char as Unseen, inprogress and Completed */}
               <div className="admin-dashboard-complaint-summery">
+                <h4 style={{fontWeight: '800'}}>Status of Recived Complaints</h4>
                 <DoughnutChart />
               </div>
 
