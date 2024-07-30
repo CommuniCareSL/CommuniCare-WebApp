@@ -9,6 +9,7 @@ import Sabha from './pages/PradesiyaSabhaReg'
 import Dashboard from "./pages/Admin/Dashboard";
 import Complaints from "./pages/Admin/Complaints";
 import AdminNewOfficer from "./pages/Admin/AdminNewOfficer";
+import AdminUnseenComplaintDetails from "./pages/Admin/AdminUnseenComplaintDetails";
 
 import Dashboard_Officer from "./pages/Civil Officer/Dashboard";
 
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/Complaints" element={<Complaints />} />
         <Route path="/AdminNewOfficer" element={<AdminNewOfficer />} />
+        <Route path="/AdminUnseenComplaintDetails" element={<AdminUnseenComplaintDetails />} />
 
 
         <Route path="/dashboard_Officer" element={<Dashboard_Officer />} />

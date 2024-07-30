@@ -97,7 +97,7 @@
     border-spacing: 0;
     width: 100%;
     height: 40vh;
-    margin-top: 2vh;
+    /* margin-top: 2vh; */
     padding: 10px;
 }
 
@@ -106,7 +106,7 @@
     width: 100%;
     background-color: #ffffff;
     display: block;
-    margin-bottom: 2vh;
+    /* margin-bottom: 2vh; */
     border-bottom: 2px solid rgb(169, 216, 255);
     /* border-radius: 10px; */
     /* box-shadow: 0 4px 4px rgba(0, 0, 0, 0.193); */
@@ -114,8 +114,9 @@
 }
 
 .admin-dashboard-absent-list:hover {
-    /* background-color: #f6f6f6; */
     transform: scale(0.99);
+    background-color: rgb(169, 216, 255);
+    border-radius: 10px;
 }
 
 .admin-dashboard-absent-list-column-1{
