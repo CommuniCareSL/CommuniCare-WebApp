@@ -49,31 +49,19 @@ const UploadPhotosSlider = () => {
       <Slider {...settings}>
 
         <div className="uploaded-image-card" style={{height:'40vh', width: '80%', background: '#fff'}}>
-            <img src={logo} alt="DarkLogo.png" style={{width:'100%', height:'auto'}}/>
+            <img src={logo} alt="DarkLogo.png" style={{width:'100%', height:'auto' , borderRadius:'15px'}}/>
         </div>
 
         <div className="uploaded-image-card" style={{height:'40vh', width: '80%', background: '#fff'}}>
-            <img src={logo} alt="DarkLogo.png" style={{width:'100%', height:'auto'}}/>
+            <img src={logo} alt="DarkLogo.png" style={{width:'100%', height:'auto' , borderRadius:'15px'}}/>
         </div>
 
         <div className="uploaded-image-card" style={{height:'40vh', width: '80%', background: '#fff'}}>
-            <img src={logo} alt="DarkLogo.png" style={{width:'100%', height:'auto'}}/>
+            <img src={logo} alt="DarkLogo.png" style={{width:'100%', height:'auto' , borderRadius:'15px'}}/>
         </div>
 
         <div className="uploaded-image-card" style={{height:'40vh', width: '80%', background: '#fff'}}>
-            <img src={logo} alt="DarkLogo.png" style={{width:'100%', height:'auto'}}/>
-        </div>
-
-        <div className="uploaded-image-card" style={{height:'40vh', width: '80%', background: '#fff'}}>
-            <img src={logo} alt="DarkLogo.png" style={{width:'100%', height:'auto'}}/>
-        </div>
-
-        <div className="uploaded-image-card" style={{height:'40vh', width: '80%', background: '#fff'}}>
-            <img src={logo} alt="DarkLogo.png" style={{width:'100%', height:'auto'}}/>
-        </div>
-
-        <div className="uploaded-image-card" style={{height:'40vh', width: '80%', background: '#fff'}}>
-            <img src={logo} alt="DarkLogo.png" style={{width:'100%', height:'auto'}}/>
+            <img src={logo} alt="DarkLogo.png" style={{width:'100%', height:'auto' , borderRadius:'15px'}}/>
         </div>
         
 

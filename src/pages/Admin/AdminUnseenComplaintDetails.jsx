@@ -24,6 +24,36 @@ function AdminUnseenComplaintDetails() {
 
           <UnseenComplaintsDetails />
 
+          <div className="unseen-complaints-contractor-details">
+
+            <div className="unseen-complaints-contractor-details-first-div">
+
+              <table>
+                <tbody>
+                  <tr className='unseen-complaints-citizen-form-details-first-part'>
+                    <td className='citizen-form-details-first-column'><h4>Contractor Details</h4></td>
+                    <td className='citizen-form-details-second-column'>
+                      <p>Contractor name</p>
+                      <p>contact info</p>
+                      <p>email-address</p>
+                      <p>whatsapp number</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+
+            <div className="unseen-complaints-contractor-details-second-div">
+              <button>Send Message</button>
+            </div>
+            
+            
+
+          </div>
+
+          <div className="extra-div-for-style"></div>
+
         </div>
 
       </div>
