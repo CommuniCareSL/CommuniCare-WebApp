@@ -83,14 +83,14 @@
     width: 50%;
   }
 
-  .unseen-complaints-contractordetails{
+  .unseen-complaints-uploaded-images{
     width: 30%;
     float: right;
   }
 
   .unseen-complaints-profile-details,
   .unseen-complaints-citizen-form-details,
-  .unseen-complaints-contractordetails{
+  .unseen-complaints-uploaded-images{
     height: 65vh;
   }
 

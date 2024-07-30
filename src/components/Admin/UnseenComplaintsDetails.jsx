@@ -2,6 +2,8 @@ import React from 'react';
 
 import profileImg from '../../assets/Admin/profile-img.jpg';
 
+import UploadPhotosSlider from '../../components/Admin/UploadPhotosSlider';
+
 function UnseenComplaintsDetails() {
   return (
     <div className='unseen-complaints-details-divs'>
@@ -49,8 +51,8 @@ function UnseenComplaintsDetails() {
         </table>
       </div>
 
-      <div className="unseen-complaints-contractordetails">
-
+      <div className="unseen-complaints-uploaded-images">
+        <UploadPhotosSlider />
       </div>
       
     </div>
