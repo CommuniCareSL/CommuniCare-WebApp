@@ -41,7 +41,7 @@ function CitizenBlockDetails() {
 
         </div>
         <div className="added-civisl-officer-personal-detail-edit-delete">
-          <button><span class="material-symbols-outlined">radio_button_unchecked</span>UnBlock</button>
+          <button style={{width: '100px'}}><span class="material-symbols-outlined">radio_button_unchecked</span>Unblock</button>
           <button><span class="material-symbols-outlined">delete</span> Delete</button> 
         </div>
       </div>

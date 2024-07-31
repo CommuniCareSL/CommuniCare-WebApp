@@ -8,7 +8,7 @@ const CitizenBlocktable = () => {
         <table>
             <tbody>
 
-                <a href="/" onClick={(e) => handleClick(e, '/')}>
+                <a href="/AdminViewBlockedCitizenDetails" onClick={(e) => handleClick(e, '/AdminViewBlockedCitizenDetails')}>
                     <tr className="complaint-table-with-details-row">
                         <td className="complaint-table-with-details-row-column-1">
                             <img src={profileImg} alt="Profile Image" />
@@ -28,6 +28,105 @@ const CitizenBlocktable = () => {
                     </tr>
                 </a>
 
+                <a href="/AdminViewBlockedCitizenDetails" onClick={(e) => handleClick(e, '/AdminViewBlockedCitizenDetails')}>
+                    <tr className="complaint-table-with-details-row">
+                        <td className="complaint-table-with-details-row-column-1">
+                            <img src={profileImg} alt="Profile Image" />
+                        </td>
+                        <td className="complaint-table-with-details-row-column-2">
+                            <h3>user name</h3>
+                        </td>
+                        <td className="complaint-table-with-details-row-column-3">
+                            <p>Citizen's Regional Office</p>
+                        </td>
+                        <td className="complaint-table-with-details-row-column-4">
+                            {/* <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">visibility</span></button> */}
+                        </td>
+                        <td className="complaint-table-with-details-row-column-5">
+                            <button><span class="material-symbols-outlined">arrow_forward_ios</span></button>
+                        </td>
+                    </tr>
+                </a>
+
+                <a href="/AdminViewBlockedCitizenDetails" onClick={(e) => handleClick(e, '/AdminViewBlockedCitizenDetails')}>
+                    <tr className="complaint-table-with-details-row">
+                        <td className="complaint-table-with-details-row-column-1">
+                            <img src={profileImg} alt="Profile Image" />
+                        </td>
+                        <td className="complaint-table-with-details-row-column-2">
+                            <h3>user name</h3>
+                        </td>
+                        <td className="complaint-table-with-details-row-column-3">
+                            <p>Citizen's Regional Office</p>
+                        </td>
+                        <td className="complaint-table-with-details-row-column-4">
+                            {/* <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">visibility</span></button> */}
+                        </td>
+                        <td className="complaint-table-with-details-row-column-5">
+                            <button><span class="material-symbols-outlined">arrow_forward_ios</span></button>
+                        </td>
+                    </tr>
+                </a>
+
+                <a href="/AdminViewBlockedCitizenDetails" onClick={(e) => handleClick(e, '/AdminViewBlockedCitizenDetails')}>
+                    <tr className="complaint-table-with-details-row">
+                        <td className="complaint-table-with-details-row-column-1">
+                            <img src={profileImg} alt="Profile Image" />
+                        </td>
+                        <td className="complaint-table-with-details-row-column-2">
+                            <h3>user name</h3>
+                        </td>
+                        <td className="complaint-table-with-details-row-column-3">
+                            <p>Citizen's Regional Office</p>
+                        </td>
+                        <td className="complaint-table-with-details-row-column-4">
+                            {/* <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">visibility</span></button> */}
+                        </td>
+                        <td className="complaint-table-with-details-row-column-5">
+                            <button><span class="material-symbols-outlined">arrow_forward_ios</span></button>
+                        </td>
+                    </tr>
+                </a>
+
+                <a href="/AdminViewBlockedCitizenDetails" onClick={(e) => handleClick(e, '/AdminViewBlockedCitizenDetails')}>
+                    <tr className="complaint-table-with-details-row">
+                        <td className="complaint-table-with-details-row-column-1">
+                            <img src={profileImg} alt="Profile Image" />
+                        </td>
+                        <td className="complaint-table-with-details-row-column-2">
+                            <h3>user name</h3>
+                        </td>
+                        <td className="complaint-table-with-details-row-column-3">
+                            <p>Citizen's Regional Office</p>
+                        </td>
+                        <td className="complaint-table-with-details-row-column-4">
+                            {/* <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">visibility</span></button> */}
+                        </td>
+                        <td className="complaint-table-with-details-row-column-5">
+                            <button><span class="material-symbols-outlined">arrow_forward_ios</span></button>
+                        </td>
+                    </tr>
+                </a>
+
+                <a href="/AdminViewBlockedCitizenDetails" onClick={(e) => handleClick(e, '/AdminViewBlockedCitizenDetails')}>
+                    <tr className="complaint-table-with-details-row">
+                        <td className="complaint-table-with-details-row-column-1">
+                            <img src={profileImg} alt="Profile Image" />
+                        </td>
+                        <td className="complaint-table-with-details-row-column-2">
+                            <h3>user name</h3>
+                        </td>
+                        <td className="complaint-table-with-details-row-column-3">
+                            <p>Citizen's Regional Office</p>
+                        </td>
+                        <td className="complaint-table-with-details-row-column-4">
+                            {/* <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">visibility</span></button> */}
+                        </td>
+                        <td className="complaint-table-with-details-row-column-5">
+                            <button><span class="material-symbols-outlined">arrow_forward_ios</span></button>
+                        </td>
+                    </tr>
+                </a>
                 
 
 
