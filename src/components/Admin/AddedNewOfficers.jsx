@@ -9,7 +9,7 @@ function AddedNewOfficers() {
         <tbody>
 
             <a href="">
-              <tr className='admin-add-new-officer-table-row'>
+              <tr className='admin-add-new-officer-table-row' style={{marginTop: '4vh'}}>
                 <td className='admin-add-new-officer-table-row-column-1'>
                   <img src={profileImg} alt="Profile Image" />
                 </td>

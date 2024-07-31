@@ -36,6 +36,22 @@ function AddNewOfficerForm() {
             </select>
         </div>
 
+        <div className="add-new-officer-NIC-number">
+            <input type="text" name="" id="" placeholder="NIC" />
+        </div>
+
+        <div className="add-new-officer-work-place-ID">
+            <input type="number" name="" id="" placeholder="Work Id Number" />
+        </div>
+
+        <div className="add-new-officer-contact-number">
+            <input type='number' name="" id="" placeholder="Contact Number" />
+        </div>
+
+        <div className="add-new-officer-add-button">
+            <button>Add</button>
+        </div>
+
     </div>
   )
 }
