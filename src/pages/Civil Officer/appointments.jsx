@@ -2,21 +2,21 @@ import React from 'react';
 import Sidebar from '../../components/Civil Officer/Sidebar';
 import profileImg from '../../assets/Admin/profile-img.jpg';
 import { RiCalendar2Line, RiInboxFill, RiUserAddFill, RiFileTextFill, RiArrowRightSLine, RiBarChartBoxFill } from 'react-icons/ri';
-import { RiCheckboxCircleFill, RiTimeFill } from 'react-icons/ri';
-import { RiFullscreenLine, RiFullscreenFill } from 'react-icons/ri';
+import { RiCheckboxCircleFill, RiTimeFill, RiMessageLine, RiFullscreenLine } from 'react-icons/ri';
 import { Progress } from '@chakra-ui/react'
 import { Card, CardHeader, CardBody, CardFooter, Image, Stack, Heading, Text, Button } from '@chakra-ui/react'
+import { IconButton } from '@chakra-ui/react'
 
 
 const appointment_today = [
-    { time: '08.00', name: 'Kristin Watson', issue: 'Stomach Pain', status: 'completed', img: profileImg },
-    { time: '09.00', name: 'Jerome Bell', issue: 'Headache', status: 'completed', img: profileImg },
-    { time: '10.00', name: 'Dianne Russell', issue: 'Gerd', status: 'completed', img: profileImg },
-    { time: '11.00', name: 'Brooklyn Simmons', issue: 'On Consultation', status: 'ongoing', img: profileImg },
-    { time: '12.00', name: 'ISHOMA', issue: '', status: 'none' },
-    { time: '13.00', name: 'Marvin McKinney', issue: 'Stomach Pain', status: 'upcoming', img: profileImg },
-    { time: '14.00', name: 'Ralph Edwards', issue: 'Headache', status: 'upcoming', img: profileImg },
-    { time: '15.00', name: 'Guy Hawkins', issue: 'Headache', status: 'upcoming', img: profileImg },
+    { time: '08.00', name: 'Kristin Watson', issue: 'Acreage Taxation', status: 'completed', img: profileImg },
+    { time: '08.30', name: 'Jerome Bell', issue: 'Allocating the football ground', status: 'completed', img: profileImg },
+    { time: '09.00', name: 'Dianne Russell', issue: 'Issuance of Cycle Permit', status: 'completed', img: profileImg },
+    { time: '09.30', name: 'Brooklyn Simmons', issue: 'Issuance of Marriage Certificate', status: 'ongoing', img: profileImg },
+    { time: '10.00', name: 'ISHOMA', issue: '', status: 'none' },
+    { time: '10.30', name: 'Marvin McKinney', issue: 'Allocating the City hall', status: 'upcoming', img: profileImg },
+    { time: '10.45', name: 'Ralph Edwards', issue: 'Permit to cut down tree', status: 'upcoming', img: profileImg },
+    { time: '11.00', name: 'Guy Hawkins', issue: 'Acreage Taxation', status: 'upcoming', img: profileImg },
   ];
 
   const statusColors = {
@@ -25,6 +25,68 @@ const appointment_today = [
     upcoming: 'bg-orange-500',
     none: 'bg-gray-200'
   };
+
+  const patients = [
+    {
+      id: 1,
+      name: 'Esther Howard',
+      service: 'Issuance of cycle licences',
+      date: 'August 26, 2023',
+      note: "Urgent. Provide licence",
+      
+    },
+    {
+      id: 2,
+      name: 'Brooklyn Simmons',
+      service: 'Marriage Certificate Request',
+      date: 'August 26, 2023',
+      note: "Provide Certificate",
+    
+    },
+    {
+      id: 3,
+      name: 'Cody Fisher',
+      service: 'Allocation of Billboard rights',
+      date: 'August 26, 2023',
+      note: "Payment done. Permit needed",
+      
+    }
+  ];
+  
+
+  const reports = [
+    {
+      id: 1,
+      name: 'Georgette Strobel',
+      date: 'August 26, 2023',
+      service: 'Acreage Taxation'
+    },
+    {
+      id: 2,
+      name: 'Freida Varnes',
+      date: 'August 26, 2023',
+      service: 'Acreage Taxation'
+    },
+    {
+      id: 3,
+      name: 'Chantal Shelburne',
+      date: 'August 26, 2023',
+      service: 'Acreage Taxation'
+    },
+    {
+      id: 4,
+      name: 'Maryland Winkles',
+      date: 'August 26, 2023',
+      service: 'Acreage Taxation'
+    },
+    {
+      id: 5,
+      name: 'Phyllis Godley',
+      date: 'August 26, 2023',
+      service: 'Acreage Taxation'
+    }
+  ];
+
 
   const AppointmentCard = ({ time, name, issue, status, img }) => (
     <div className="flex items-center p-2">
@@ -52,7 +114,7 @@ const appointment_today = [
   );
   
 
-const appointments = () => {
+const Appointments = () => {
     return (
         <div className="flex h-screen">
             <Sidebar />
@@ -271,13 +333,13 @@ const appointments = () => {
           </Button>
             </div>
 
-            <div className='text-gray-700 mt-4 flex flex-col items-center'>
-            <Button colorScheme='blue' variant='outline' size='md'>
+            <div className='text-gray-700 mt-11 ml-13 flex flex-row items-right gap-4'>
+            <Button colorScheme='blue' variant='outline' size='md' className='ml-auto' _hover={{ color: 'white', background: 'blue.500' }}>
             Reschedule
           </Button>
-          <Button colorScheme='blue' mt={4} size='md'>
+          {/* <Button colorScheme='blue' mt={4} size='md'>
               Finish Appointment
-          </Button>
+          </Button> */}
             </div>
           </div>
 
@@ -285,6 +347,11 @@ const appointments = () => {
             <div className='text-gray-700'>
               <p>Appointment Notes</p>
               <textarea className='w-full p-2 border rounded mt-2' rows='5' placeholder='Type...'></textarea>
+              <Button colorScheme='blue' mt={4} size='md'
+              variant='solid'
+               _hover={{ color: 'blue.500', background: 'white', borderColor: 'blue.500'}}>
+              Finish Appointment
+          </Button>
             </div>
           </div>
 
@@ -310,16 +377,71 @@ const appointments = () => {
                         <RiFullscreenLine size={20} className="text-blue-500" />
                         </Button> 
                                 
-                    </div>
+                        </div>
+
+                        <div className="p-4">
+        
+          {patients.map(patient => (
+            <div key={patient.id} className="flex items-center justify-between py-2 border-b">
+              <div className="flex ">
+                <img src={profileImg} alt={patient.name} className="w-10 h-10 rounded-full mr-3" />
+                <div className='text-left p-1'>
+                  <h5 className="text-sm font-semibold text-left mb-1">{patient.name}</h5>
+                  <p className="text-xs text-gray-500 mb-1">Service: {patient.service}</p>
+                  <p className="text-xs text-gray-500 text-left mb-1">{patient.date}</p>
+                  <p className="text-xs text-red-500 text-left mb-1">{patient.note}</p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-2">
+                  <IconButton
+                  variant='ghost'
+                  colorScheme='blue'
+                  aria-label='Call Sage'
+                  fontSize='20px'
+                  icon={<RiMessageLine />}
+                />
+                {/* <RiPhoneLine size={20} className="text-blue-500" /> */}
+                {/* <RiMessageLine size={20} className="text-blue-500" /> */}
+                {/* <RiMailLine size={20} className="text-blue-500" />  */}
+              </div>
+            </div>
+          ))}
+        </div>
                         </div>
 
                         <div className='flex-1 bg-white ml-2 mt-4 rounded-lg'>
-                        <div className="flex items-center gap-[60px] bg-blue-100 rounded-t-lg">
+                        <div className="flex items-center gap-[100px] bg-blue-100 rounded-t-lg">
                         <h4 className="ml-3 text-md text-blue-950 font-bold md:font-medium p-2 ">Review Documents</h4>
                         <Button variant='ghost' size='sm'>
                         <RiFullscreenLine size={20} className="text-blue-500" />
                         </Button>
                         </div>
+
+                        <div className="p-4">
+                 
+                    {reports.map(report => (
+                      // <a href={report.link} key={report.id}>
+                      <a href='' className="shadow hover:bg-blue-500 hover:bordertransition duration-200">
+                      <div key={report.id} className="flex items-center justify-between py-2 border-b">
+                        <div className="flex items-center">
+                          <img src={profileImg} alt='' className="w-10 h-10 rounded-full mr-3" />
+                          <div>
+                            <h5 className="text-sm font-semibold">{report.name}</h5>
+                            <p className="text-xs text-gray-500">{report.service}</p>
+                            <p className="text-xs text-gray-500">{report.date}</p>
+                          </div>
+                        </div>
+                        <div>
+                        <RiArrowRightSLine size={24} className="text-gray-400" />
+                        </div>
+                      </div>
+                      </a>
+                    ))}
+                  </div>
+
+</div>
+
+
                         </div>
                     </div>
                   
@@ -333,8 +455,8 @@ const appointments = () => {
 
 
 
-        </div>
+        // </div>
     );
 };
 
-export default appointments;
+export default Appointments;

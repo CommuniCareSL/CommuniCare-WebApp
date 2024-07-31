@@ -1,6 +1,7 @@
 import React from 'react';
 import Sidebar from '../../components/Civil Officer/Sidebar';
 import { RiCalendar2Line, RiInboxFill, RiUserAddFill, RiFileTextFill, RiArrowRightSLine, RiBarChartBoxFill, RiQuestionLine } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
 
 // import { Grid, GridItem } from '@chakra-ui/react';
 // import { Button, ButtonGroup } from '@chakra-ui/react';
@@ -92,7 +93,10 @@ const Service_requests = () => {
                         </div>
                         {/* <span className="text-gray-600">{service.description}</span> */}
                         <div className="w-full flex justify-end mt-2">
-                            <Button colorScheme='blue' size='sm' mr={1}>View More</Button>
+                        <Link to={`/details/${service.title}`}>
+                                    <Button colorScheme='blue' size='sm' mr={1}>View More</Button>
+                            </Link>
+                            {/* <Button colorScheme='blue' size='sm' mr={1}>View More</Button> */}
                             {/* <Button colorScheme='blue' size='sm' variant='ghost'>
                                     <RiQuestionLine size={20} />
                                 </Button> */}

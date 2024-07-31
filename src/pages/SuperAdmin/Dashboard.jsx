@@ -22,15 +22,15 @@ const Dashboard = () => {
   const cardData = [
     { title: 'Total Users', value: 204, icon: 'bx bx-user' },
     { title: 'Total Officers', value: 56, icon: 'bx bxs-user-detail' },
-    { title: 'Pending Complaints', value: 12, icon: 'bx bxs-error' },
-    { title: 'Appointments', value: 25, icon: 'bx bx-calendar' },
+    { title: 'Number of complaints', value: 12, icon: 'bx bxs-error' },
+    { title: 'Make Appointments', value: 25, icon: 'bx bx-calendar' },
   ];
 
   const lineChartData = {
-    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     datasets: [{
-      label: 'Complaints',
-      data: [12, 19, 3, 5, 2, 3, 7],
+      label: 'Users',
+      data: [10, 5, 15, 12, 8, 20, 25, 18, 24, 30, 22, 28],
       borderColor: 'rgb(75, 192, 192)',
       tension: 0.1
     }]
@@ -57,7 +57,7 @@ const Dashboard = () => {
     <div className="flex bg-gray-100 min-h-screen">
       <Sidebar />
       <div className="flex-1 p-4 lg:p-10 lg:ml-64"> {/* Adjust left margin for sidebar */}
-        <h1 className="text-2xl lg:text-3xl font-bold text-blue-600 mb-6">{greeting}, Admin!</h1>
+        <h1 className="text-2xl lg:text-3xl font-bold text-blue-600 mb-6">{greeting}!</h1>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-6">
           {cardData.map((card, index) => (
@@ -73,7 +73,7 @@ const Dashboard = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 mb-6">
           <div className="bg-white rounded-lg shadow-md p-4 lg:p-6">
-            <h2 className="text-lg lg:text-xl font-semibold text-gray-700 mb-4">Weekly Complaints</h2>
+            <h2 className="text-lg lg:text-xl font-semibold text-gray-700 mb-4">Users Registration by Month</h2>
             <div className="h-64">
               <Line data={lineChartData} options={{ responsive: true, maintainAspectRatio: false }} />
             </div>
