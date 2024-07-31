@@ -40,7 +40,7 @@ const Sidebar = () => {
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="/AdminViewCitizen" onClick={(e) => handleClick(e, '/AdminViewCitizen')}>
           <span class="material-symbols-outlined">diversity_2</span>
             Citizens
           </a>
