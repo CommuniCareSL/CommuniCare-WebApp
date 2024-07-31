@@ -12,6 +12,7 @@ import AdminNewOfficer from "./pages/Admin/AdminNewOfficer";
 import AdminUnseenComplaintDetails from "./pages/Admin/AdminUnseenComplaintDetails";
 import AdminInprogressComplainDetails from "./pages/Admin/AdminInprogressComplainDetails";
 import AdminCompletedComplainDetails from "./pages/Admin/AdminCompletedComplainDetails";
+import AdminAddedOfficersDetails from "./pages/Admin/AdminAddedOfficersDetails";
 
 import Dashboard_Officer from "./pages/Civil Officer/Dashboard";
 import Calendar_Officer from "./pages/Civil Officer/calendar_schedule";
@@ -43,6 +44,7 @@ const App = () => {
         <Route path="/AdminUnseenComplaintDetails" element={<AdminUnseenComplaintDetails />} />
         <Route path="/AdminInprogressComplainDetails" element={<AdminInprogressComplainDetails />} />
         <Route path="/AdminCompletedComplainDetails" element={<AdminCompletedComplainDetails />} />
+        <Route path="/AdminAddedOfficersDetails" element={<AdminAddedOfficersDetails />} />
         
 
 

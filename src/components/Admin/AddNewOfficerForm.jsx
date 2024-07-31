@@ -22,6 +22,25 @@ function AddNewOfficerForm() {
             <textarea name="" id="" placeholder='Address'></textarea>
         </div>
 
+        <div className="add-new-officer-NIC-number">
+            <input type="text" name="" id="" placeholder="NIC" />
+        </div>
+
+        <div className="add-new-officer-contact-number">
+            <input type='number' name="" id="" placeholder="Contact Number" />
+        </div>
+
+        <div style={{border: '2px solid #0991ff', padding: '0', marginTop: '2vh'}}></div>
+
+        <div className="add-new-officer-form-Name">
+            <div className="add-new-officer-first-name">
+                <input type="text" name="" id="" placeholder="User name" />
+            </div>
+            <div className="add-new-officer-last-name">
+                <input type="password" name="" id="" placeholder="Password" />
+            </div>
+        </div>
+
         <div className="add-new-officer-selection-for-position">
             <select id="simple-select" value={selectedValue} onChange={handleChange}
                 style={{
@@ -36,16 +55,8 @@ function AddNewOfficerForm() {
             </select>
         </div>
 
-        <div className="add-new-officer-NIC-number">
-            <input type="text" name="" id="" placeholder="NIC" />
-        </div>
-
         <div className="add-new-officer-work-place-ID">
             <input type="number" name="" id="" placeholder="Work Id Number" />
-        </div>
-
-        <div className="add-new-officer-contact-number">
-            <input type='number' name="" id="" placeholder="Contact Number" />
         </div>
 
         <div className="add-new-officer-add-button">

@@ -1,0 +1,43 @@
+.admin-added-officer-details-home-page {
+    flex-grow: 1;
+    padding: 20px;
+    min-height: 100vh;
+    min-width: auto;
+    margin-left: 85px;
+    transition: margin-left 0.4s ease;
+    background-color: #e8eff9;
+    overflow-y: auto;
+  }
+  
+  .sidebar:hover ~ .admin-added-officer-details-home-page {
+    margin-left: 260px;
+  }
+  
+  .admin-added-officer-details-title-container{
+    width: 93%;
+    margin-left: 35px;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2vh;
+    background-color: #fff;
+    border-radius: 15px;
+  }
+  
+  
+  .admin-added-officer-details-title-container h3{
+    margin: 20px;
+    font-weight: 800;
+    color: #000;
+  }
+  
+  .admin-added-officer-details-content{
+    width: 93%;
+    margin-left: 35px;
+    height: 80vh;
+    margin-bottom: 2vh;
+    background-color: #fff;
+    border-radius: 15px;
+    display: flex;
+
+  }
