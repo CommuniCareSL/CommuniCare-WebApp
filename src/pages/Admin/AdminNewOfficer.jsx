@@ -2,6 +2,7 @@ import React from 'react';
 
 import Sidebar from '../../components/Admin/Sidebar';
 import AddedNewOfficers from '../../components/Admin/AddedNewOfficers';
+import AddNewOfficerForm from '../../components/Admin/AddNewOfficerForm';
 
 import '../../styles/pages/Admin/AdminNewOfficer.css';
 
@@ -23,7 +24,7 @@ function AdminNewOfficer() {
                   <h3>Added  Officers</h3>
                 </div>
 
-                <div className="admin-add-new-officer-table-seperator" style={{borderBottom: '2px solid #0991FF'}}></div>
+                <div className="admin-add-new-officer-table-seperator" style={{borderBottom: '2px solid #0991FF', width: '100%'}}></div>
 
 
                 <AddedNewOfficers />
@@ -33,6 +34,14 @@ function AdminNewOfficer() {
 
               {/* adding-form */}
               <div className="admin-adding-new-officer-form">
+
+                <div className="admin-add-new-officer-table-title">
+                  <h3>Add  Officers</h3>
+                </div>
+
+                <div className="admin-add-new-officer-table-seperator" style={{borderBottom: '2px solid #0991FF', width: '100%'}}></div>
+
+                <AddNewOfficerForm />
 
               </div>
 
