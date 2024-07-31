@@ -1,0 +1,44 @@
+.admin-view-citizen-details-home-page {
+    flex-grow: 1;
+    padding: 20px;
+    min-height: 100vh;
+    min-width: auto;
+    margin-left: 85px;
+    transition: margin-left 0.4s ease;
+    background-color: #e8eff9;
+    overflow-y: auto;
+  }
+  
+  .sidebar:hover ~ .admin-view-citizen-details-home-page {
+    margin-left: 260px;
+  }
+  
+  .admin-view-citizen-details-title-container{
+    width: 93%;
+    margin-left: 35px;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2vh;
+    background-color: #fff;
+    border-radius: 15px;
+  }
+  
+  
+  .admin-view-citizen-details-title-container h3{
+    margin: 20px;
+    font-weight: 800;
+    color: #000;
+  }
+  
+  .admin-view-citizen-details-table-tab-view-for-complaint-content{
+    width: 93%;
+    margin-left: 35px;
+    height: 80vh;
+    margin-bottom: 2vh;
+    background-color: #fff;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

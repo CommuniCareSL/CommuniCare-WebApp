@@ -15,6 +15,10 @@ import AdminCompletedComplainDetails from "./pages/Admin/AdminCompletedComplainD
 import AdminAddedOfficersDetails from "./pages/Admin/AdminAddedOfficersDetails";
 import AdminAddContractor from "./pages/Admin/AdminAddContractor";
 import AdminAddedContractorDetails from "./pages/Admin/AdminAddedContractorDetails";
+import AdminViewCitizen from "./pages/Admin/AdminViewCitizen";
+import AdminViewCitizenDetailed from "./pages/Admin/AdminViewCitizenDetailed";
+import AdminViewBlockedCitizenDetails from "./pages/Admin/AdminViewBlockedCitizenDetails";
+
 
 
 import Dashboard_Officer from "./pages/Civil Officer/Dashboard";
@@ -51,7 +55,9 @@ const App = () => {
         <Route path="/AdminAddedOfficersDetails" element={<AdminAddedOfficersDetails />} />
         <Route path="/AdminAddContractor" element={<AdminAddContractor />} />
         <Route path="/AdminAddedContractorDetails" element={<AdminAddedContractorDetails />} />
-        
+        <Route path="/AdminViewCitizen" element={<AdminViewCitizen />} />
+        <Route path="/AdminViewCitizenDetailed" element={<AdminViewCitizenDetailed />} />
+        <Route path="/AdminViewBlockedCitizenDetails" element={<AdminViewBlockedCitizenDetails />} />
 
 
         <Route path="/dashboard_Officer" element={<Dashboard_Officer />} />
