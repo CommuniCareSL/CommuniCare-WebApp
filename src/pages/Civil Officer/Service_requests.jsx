@@ -35,7 +35,7 @@ const serviceData = [
     { icon: RiInboxFill, color: 'green-500', title: 'Acreage Taxation', count: 20, description: 'Requests' },
     { icon: RiUserAddFill, color: 'red-500', title: 'Allotment of Assembly Hall', count: 11, description: 'Follow Up' },
     { icon: RiFileTextFill, color: 'yellow-500', title: 'Marriage Certificate Request', count: 34, description: 'Documents' },
-    { icon: RiCalendar2Line, color: 'blue-500', title: 'Issuance of cycle licences', count: 46, description: 'Appointments' },
+    { icon: RiCalendar2Line, color: 'blue-500', title: 'Permission to display advertisements', count: 4, description: 'Appointments' },
     { icon: RiInboxFill, color: 'green-500', title: 'Booking the crematorium', count: 7, description: 'Requests' },
     { icon: RiUserAddFill, color: 'red-500', title: 'Follow Up Requests', count: 16, description: 'Follow Up' },
     { icon: RiFileTextFill, color: 'yellow-500', title: 'Review Documents', count: 34, description: 'Documents' },
@@ -83,7 +83,7 @@ const Service_requests = () => {
                         <div className="flex items-center justify-between w-full mb-4">
                             <div className="flex items-center gap-2 min-h-[48px]"> {/* Adjust min-h value if needed */}
                                 {/* <service.icon size={24} className={`text-${service.color}`} /> */}
-                                <h4 className="text-lg font-medium truncate max-w-full">{service.title}</h4>
+                                <h4 className="text-lg font-medium break-words max-w-full">{service.title}</h4>
                             </div>
                             <RiArrowRightSLine size={24} className="text-gray-400" />
                         </div>

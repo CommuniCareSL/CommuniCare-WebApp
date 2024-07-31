@@ -161,6 +161,7 @@ const Citizen_documents = () => {
             <div className="flex items-center mr-8">
                 <Button colorScheme='green' className='mr-2'>Completed</Button>
                 <Button colorScheme='blue' className='mr-2'>In-Review</Button>
+                {/* for taking the reject reason use Modal component from chakra ui */}
                 <Popover>
             <PopoverTrigger>
               <Button colorScheme='red'>Reject</Button>
