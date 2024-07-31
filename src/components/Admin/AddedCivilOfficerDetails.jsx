@@ -43,9 +43,8 @@ function AddedCivilOfficerDetails() {
 
         </div>
         <div className="added-civisl-officer-personal-detail-edit-delete">
-          <button></button>
-          <button></button>
-
+          <button><span class="material-symbols-outlined">edit</span>Edit</button>
+          <button><span class="material-symbols-outlined">delete</span> Delete</button> 
         </div>
       </div>
 
