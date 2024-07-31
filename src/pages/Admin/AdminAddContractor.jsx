@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
 import Sidebar from '../../components/Admin/Sidebar';
+import AddNewContractor from '../../components/Admin/AddNewContractor';
+import AddNewContractorForm from '../../components/Admin/AddNewContractorForm';
 
 import '../../styles/pages/Admin/AdminNewOfficer.css';
 
@@ -41,7 +43,7 @@ function AdminAddContractor() {
                   <div className="admin-add-new-officer-table-seperator" style={{borderBottom: '2px solid #0991FF', width: '100%'}}></div>
   
   
-                  {/* <AddedNewOfficers /> */}
+                  <AddNewContractor />
   
   
                 </div>
@@ -55,7 +57,7 @@ function AdminAddContractor() {
   
                   <div className="admin-add-new-officer-table-seperator" style={{borderBottom: '2px solid #0991FF', width: '100%'}}></div>
   
-                  {/* <AddNewOfficerForm /> */}
+                  <AddNewContractorForm />
   
                 </div>
   
