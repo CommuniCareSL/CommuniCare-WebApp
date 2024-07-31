@@ -1,70 +1,133 @@
-// const appointments = [
-//     { time: '08.00', name: 'Kristin Watson', issue: 'Stomach Pain', status: 'completed', img: profileImg },
-//     { time: '09.00', name: 'Jerome Bell', issue: 'Headache', status: 'completed', img: profileImg },
-//     { time: '10.00', name: 'Dianne Russell', issue: 'Gerd', status: 'completed', img: profileImg },
-//     { time: '11.00', name: 'Brooklyn Simmons', issue: 'On Consultation', status: 'ongoing', img: profileImg },
-//     { time: '12.00', name: 'ISHOMA', issue: '', status: 'none' },
-//     { time: '13.00', name: 'Marvin McKinney', issue: 'Stomach Pain', status: 'upcoming', img: profileImg },
-//     { time: '14.00', name: 'Ralph Edwards', issue: 'Headache', status: 'upcoming', img: profileImg },
-//     { time: '15.00', name: 'Guy Hawkins', issue: 'Headache', status: 'upcoming', img: profileImg },
-//   ];
-
-//   const statusColors = {
-//     completed: 'bg-green-500',
-//     ongoing: 'bg-blue-500',
-//     upcoming: 'bg-orange-500',
-//     none: 'bg-gray-200'
-//   };
-
-// const Appointment_Card = ({ time, name, issue, status, img }) => (
-//     <div className="flex items-center p-2">
-//       <div className="text-sm font-bold">{time}</div>
-//       <div className="w-2 h-2 mx-4 rounded-full bg-green-500"></div>
-//       {status !== 'none' && (
-//         <div className="flex items-center w-full bg-white shadow-md rounded-lg p-2">
-//           <img className="w-10 h-10 rounded-full" src={img} alt={name} />
-//           <div className="flex flex-col ml-2">
-//             <div className="font-bold">{name}</div>
-//             <div className="text-gray-500 text-sm">{issue}</div>
-//           </div>
-//           <div className={`ml-auto ${statusColors[status]} w-4 h-4 rounded-full`}></div>
-//         </div>
-//       )}
-//       {status === 'none' && (
-//         <div className="flex items-center justify-center w-full bg-gray-200 shadow-md rounded-lg p-2">
-//           <div className="font-bold">{name}</div>
-//         </div>
-//       )}
-//     </div>
-//   );
-
-//   const Appointment_today = () => (
-//     <div className='flex flex-col w-full bg-white rounded-lg p-4'>
-//       <div className="flex items-center justify-between bg-blue-100 rounded-t-lg p-2">
-//         <h4 className="text-lg text-blue-950 font-bold">Today's Appointments</h4>
-//         <RiCalendar2Line size={24} className="text-blue-950" />
-//       </div>
-//       <div className="mt-4">
-//         {appointments.map((appt, index) => (
-//           <Appointment_Card key={index} {...appt} />
-//         ))}
-//       </div>
-//       <div className="flex justify-center mt-4">
-//         <a href="#" className="text-blue-500">View All</a>
-//       </div>
-//     </div>
-//   );
-
-// export default Appointment_today;
-
-import React from "react";
+import React, { useState, useEffect } from "react";
+import profileImg from '../../assets/Admin/profile-img.jpg';
 
 const AppointmentDay = () => {
-    <div>
-        <p>test
-        </p>
-        <h2>test</h2>
-    </div>
-}
+    const [currentDate, setCurrentDate] = useState('');
+    const [selectedAppointment, setSelectedAppointment] = useState(null);
+
+    useEffect(() => {
+        const date = new Date();
+        const formattedDate = `${date.getDate()} / ${date.getMonth() + 1} / ${date.getFullYear()}`;
+        setCurrentDate(formattedDate);
+    }, []);
+
+    const appointment_day = [
+        { start_time: '08:00', end_time: '08:15', name: 'Kristin Watson', issue: 'Acreage Taxation', state: 'new', img: profileImg },
+        { start_time: '08:30', end_time: '08:45', name: 'Jerome Bell', issue: 'Allocating the football ground', state: 'new', img: profileImg },
+        { start_time: '09:00', end_time: '09:15', name: 'Dianne Russell', issue: 'Issuance of Cycle Permit', state: 'new', img: profileImg },
+        { start_time: '09:30', end_time: '09:45', name: 'Brooklyn Simmons', issue: 'Issuance of Marriage Certificate', state: 'followUp', img: profileImg },
+        { start_time: '10:30', end_time: '10:45', name: 'Marvin McKinney', issue: 'Allocating the City hall', state: 'followUp', img: profileImg },
+        { start_time: '10:45', end_time: '11:00', name: 'Ralph Edwards', issue: 'Permit to cut down tree', state: 'followUp', img: profileImg },
+        { start_time: '11:00', end_time: '11:15', name: 'Guy Hawkins', issue: 'Acreage Taxation', state: 'new', img: profileImg },
+    ];
+
+    const handleAppointmentClick = (appointment) => {
+        setSelectedAppointment(appointment);
+    };
+
+    return (
+        <div className="bg-white p-6">
+            <p className="font-semibold">Current Date: {currentDate}</p>
+            <div className="m-5 text-left p-5 rounded-lg shadow-md">
+           
+     
+       <div  className='flex bg-white justify-start md:justify-center rounded-lg overflow-x-scroll mx-auto py-2 px-2 md:mx-12'>
+        
+          <div className='flex group hover:bg-blue-100 hover:shadow-lg hover-light-shadow rounded-lg mx-1 transition-all border border-gray-300 duration-300 border-blue-100 cursor-pointer justify-center w-16'>
+              <div className='flex items-center px-4 py-4'>
+                  <div className='text-center'>
+                     <p className='text-gray-900 group-hover:text-blue-900 text-sm transition-all	duration-300'> Mon </p>
+                     <p className='text-gray-900 group-hover:text-blue-900 mt-3 group-hover:font-bold transition-all	duration-300'> 29 </p>
+                  </div>
+              </div>
+          </div>
+        
+        <div className='flex group hover:bg-blue-100 hover:shadow-lg hover-light-shadow rounded-lg mx-1 transition-all	duration-300 border border-gray-300 cursor-pointer justify-center w-16'>
+              <div className='flex items-center px-4 py-4'>
+                  <div className='text-center'>
+                     <p className='text-gray-900 group-hover:text-blue-900 text-sm transition-all	duration-300'> Tue </p>
+                     <p className='text-gray-900 group-hover:text-blue-900 mt-3 group-hover:font-bold transition-all	duration-300'> 30 </p>
+                  </div>
+              </div>
+          </div>
+        
+        <div class='flex group hover:bg-blue-100 hover:shadow-lg hover-light-shadow rounded-lg mx-1 transition-all	duration-300 border border-gray-300 cursor-pointer justify-center w-16'>
+              <div class='flex items-center px-4 py-4'>
+                  <div class='text-center'>
+                     <p class='text-gray-900 group-hover:text-blue-900 text-sm transition-all duration-300'> Wed </p>
+                     <p class='text-gray-900 group-hover:text-blue-900 mt-3 group-hover:font-bold transition-all	duration-300'> 31</p>
+                  </div>
+              </div>
+          </div>
+        
+          <div class='flex group bg-blue-300 shadow-lg light-shadow rounded-lg mx-1 cursor-pointer justify-center relative w-16 content-center'>
+            <span class="flex h-3 w-3 absolute -top-1 -right-1">
+              <span class="animate-ping absolute group-hover:opacity-75 opacity-0 inline-flex h-full w-full rounded-full bg-blue-400 "></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+            </span>
+              <div class='flex items-center px-4 py-4'>
+                  <div class='text-center'>
+                     <p class='text-blue-900 text-sm'> Thu </p>
+                     <p class='text-blue-900  mt-3 font-bold'> 01 </p>
+                  </div>
+              </div>
+          </div>
+        
+        <div class='flex group hover:bg-blue-100 hover:shadow-lg hover-light-shadow rounded-lg mx-1 transition-all	duration-300 content-center	border border-gray-300 cursor-pointer justify-center w-16'>
+              <div class='flex items-center px-4 py-4'>
+                  <div class='text-center'>
+                     <p class='text-gray-900 group-hover:text-blue-900 text-sm transition-all	duration-300'> Fri </p>
+                     <p class='text-gray-900 group-hover:text-blue-900 mt-3 group-hover:font-bold transition-all	duration-300'> 02 </p>
+                  </div>
+              </div>
+          </div>
+        
+        <div class='flex group hover:bg-blue-100 hover:shadow-lg hover-light-shadow rounded-lg mx-1 transition-all	duration-300 border border-gray-300 cursor-pointer justify-center w-16'>
+              <div class='flex items-center px-4 py-4'>
+                  <div class='text-center'>
+                     <p class='text-gray-900 group-hover:text-blue-900 text-sm transition-all	duration-300'> Sat </p>
+                     <p class='text-gray-900 group-hover:text-blue-900 mt-3 group-hover:font-bold transition-all	duration-300'> 03 </p>
+                  </div>
+              </div>
+          </div>
+          
+        <div class='flex group hover:bg-blue-100 hover:shadow-lg hover-light-shadow rounded-lg mx-1 transition-all	duration-300 border border-gray-300 cursor-pointer justify-center w-16'>
+              <div class='flex items-center px-4 py-4'>
+                  <div class='text-center'>
+                     <p class='text-gray-900 group-hover:text-blue-900 text-sm transition-all	duration-300'> Sun </p>
+                     <p class='text-gray-900 group-hover:text-blue-900 mt-3 group-hover:font-bold transition-all	duration-300'> 04 </p>
+                  </div>
+              </div>
+          </div>
+          
+        
+
+
+
+                </div>
+                {/* </div> */}
+
+                <p className="text-left text-blue-600 font-semibold text-xl mb-3">Upcoming Appointments</p>
+
+                <div className="relative">
+                    {/* Vertical Timeline */}
+                    <div className="absolute left-0 top-0 h-full w-1 border-l-2 border-blue-600"></div>
+                    
+                    {appointment_day.map((appointment, index) => (
+                        <div key={index} className={`relative mb-6 p-4 rounded-lg shadow-md pl-10 flex items-center ${appointment.state === 'new' ? 'bg-green-100' : 'bg-yellow-100'}`}>
+                            <div className="absolute left-[-1.1rem] top-1/2 transform -translate-y-1/2 h-3 w-3 bg-blue-600 rounded-full"></div>
+                            {/* <img src={appointment.img} alt={appointment.name} className="w-12 h-12 rounded-full mr-4" /> */}
+                            <div>
+                                <p className="font-semibold">{appointment.name}</p>
+                                <p className="text-gray-600">{appointment.issue}</p>
+                                <p className="text-gray-500 text-sm">{appointment.start_time} - {appointment.end_time}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
 
 export default AppointmentDay;

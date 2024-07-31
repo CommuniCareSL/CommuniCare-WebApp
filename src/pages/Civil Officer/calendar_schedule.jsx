@@ -1,6 +1,7 @@
 import Sidebar from '../../components/Civil Officer/Sidebar';
 import React, { useState, useEffect } from 'react';
 import { Card, CardHeader, CardBody, Stack, StackDivider, Box, Heading, Text } from '@chakra-ui/react';
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import { Button, ButtonGroup } from '@chakra-ui/react';
 import { HiChevronDown, HiPlus } from 'react-icons/hi';
 import { Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
@@ -30,10 +31,12 @@ const CalendarSchedule = () => {
   }, []);
 
   return (
-    <div className='dashboard-officer'>
+    <div className='flex h-screen'>
       <Sidebar />
 
-      <div className='m-5 h-11 w-screen p-4 flex justify-between items-center'>
+      <div className='flex flex-col m-5 w-screen p-4 overflow-y-auto'>
+      {/* <div className='m-5 h-11 w-screen p-4 flex justify-between items-center'> */}
+      <div className='h-11 flex justify-between items-center'>
         <Stack direction='row' spacing={4} align='center'>
           {times.map((time, index) => (
             <Button
@@ -48,7 +51,7 @@ const CalendarSchedule = () => {
         </Stack>
 
         <Menu>
-          <MenuButton as={Button} rightIcon={<HiChevronDown />}>
+          <MenuButton as={Button} rightIcon={<HiChevronDown />} mr={12}>
             Filter
           </MenuButton>
           <MenuList>
@@ -65,9 +68,28 @@ const CalendarSchedule = () => {
         
         
       </div>
-      <div className='mt-5'>
+      <div className='mt-3 flex-1'>
         {CurrentComponent && <CurrentComponent />}
         </div>
+
+
+{/* 
+        <Tabs variant='enclosed'>
+  <TabList>
+    <Tab>One</Tab>
+    <Tab>Two</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel>
+      <p>one!</p>
+    </TabPanel>
+    <TabPanel>
+      <p>two!</p>
+    </TabPanel>
+  </TabPanels>
+</Tabs> */}
+
+    </div>
     </div>
   );
 };

@@ -11,7 +11,7 @@ const Menus = [
     { title: 'Calendar Schedule', icon:<RiCalendar2Line /> , path: '/calendar_Officer'},
     { title: 'Appointments', icon:<RiFileList2Line />, path:'/appointment_Officer' },
     { title: 'Service Requests', icon:<RiServiceLine />, path:'/requests_Officer' },
-    { title: 'Analytics',icon:<RiBarChart2Fill />, path:'/analytics_Officer' },
+    { title: 'Documents',icon:<RiBarChart2Fill />, path:'/document_Officer' },
     { title: 'Profile', icon:<RiProfileLine />, path:'/dashboard_Officer', spacing:true},
     { title: 'Logout', icon:<RiLogoutBoxLine />, path: '/dashboard_Officer'},
 
