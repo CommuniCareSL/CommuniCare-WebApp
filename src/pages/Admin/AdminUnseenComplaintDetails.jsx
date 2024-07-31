@@ -49,7 +49,6 @@ function AdminUnseenComplaintDetails() {
             </div>
 
             <div className="Complaint-uploaded-image-slider-view-buttons">
-                <button><span class="material-symbols-outlined">visibility</span> View</button>
                 <button><span class="material-symbols-outlined">delete</span> Delete</button>
             </div>
             
