@@ -44,19 +44,15 @@
   border-radius: 15px;
 }
 
-.admin-adding-new-officer-form{
-  float: right;
-  width: 38%;
-  height: 80vh;
-  background-color: #ffffff;
-  display: flex;
-  border-radius: 15px;
-}
-
 .admin-add-new-officer-table-title{
   width: 100%;
   height: 8vh;
-  padding: 20px;
+  padding: 30px;
+  padding-left: 50px;
+}
+
+.admin-add-new-officer-table-title h3{
+  font-weight: bold;
 }
 
 .admin-add-new-officer-table-seperator{
@@ -65,7 +61,167 @@
 }
 
 .admin-add-new-officer-content{
+  display: flex;
+  justify-content: center;
   width: 100%;
   height: 70vh;
-  text-align: center;
+  overflow-y: auto;
+}
+
+.admin-add-new-officer-content table{
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.admin-add-new-officer-table-row{
+  width: 100%;
+  height: 15vh;
+  display: block;
+  background-color: #fff;
+  border-bottom: 2px solid rgb(169, 216, 255);
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.admin-add-new-officer-table-row:hover{
+  transform: scale(0.99);
+  background-color: rgb(169, 216, 255);
+  border-radius: 10px;
+}
+
+.admin-add-new-officer-table-row-column-1{
+  width: 250px;
+}
+
+.admin-add-new-officer-table-row-column-1 img{
+  border-radius: 50px;
+  width: 70px;
+  height: 70px;
+  margin: 0 auto;
+}
+
+.admin-add-new-officer-table-row-column-2{
+  width: 20%;
+}
+
+.admin-add-new-officer-table-row-column-2 h4{
+  font-weight: bold;
+}
+
+.admin-add-new-officer-table-row-column-2 p{
+  text-align: start;
+}
+
+.admin-add-new-officer-table-row-column-3{
+  width: 20%;
+}
+
+.admin-add-new-officer-table-row-column-4{
+  padding-right: 20px;
+  width: 45%;
+}
+
+.admin-add-new-officer-table-row-column-4 p{
+  text-align: end;
+}
+
+.admin-add-new-officer-table-row-column-1,
+.admin-add-new-officer-table-row-column-2,
+.admin-add-new-officer-table-row-column-3,
+.admin-add-new-officer-table-row-column-4{
+  vertical-align: middle;
+  height: 15vh;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.admin-add-new-officer-table-row {
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+/*------------------------------------------------------------------------------------*/
+
+.admin-adding-new-officer-form{
+  float: right;
+  width: 38%;
+  height: 80vh;
+  background-color: #ffffff;
+  border-radius: 15px;
+}
+
+.add-new-officer-form-content{
+  width: 100%;
+  height: 70vh;
+  padding: 40px 30px;
+}
+
+.add-new-officer-form-Name{
+  width: 100%;
+  height: 6vh;
+  display: flex;
+}
+
+.add-new-officer-first-name{
+  float: left;
+  margin-right: 20px;
+  vertical-align: middle;
+}
+
+.add-new-officer-last-name{
+  float: right;
+  margin-bottom: 1vh;
+}
+
+.add-new-officer-first-name,
+.add-new-officer-last-name{
+  width: 50%;
+  height: 6vh;
+}
+
+.add-new-officer-form-content input{
+  width: 100%;
+  height: 6vh;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  border: 2px solid #69b6f5;
+}
+
+.add-new-officer-form-content textarea{
+  width: 100%;
+  height: 10vh;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  border: 2px solid #69b6f5;
+}
+
+.add-new-officer-form-content input:hover,
+.add-new-officer-form-content textarea:hover{
+  border: 2px solid #0991FF;
+}
+
+.add-new-officer-form-content input:focus,
+.add-new-officer-form-content textarea:focus{
+  border: 2px solid #007bff;
+  outline: none
+}
+
+.add-new-officer-address{
+  margin-top: 2vh;
+  width: 100%;
+  height: 10vh;
 }

@@ -24,7 +24,7 @@ const ComplaintInprocessTable = () => {
                             {/* <button><span class="material-symbols-outlined">visibility</span></button> */}
                         </td>
                         <td className="complaint-table-with-details-row-column-5">
-                            <button><span class="material-symbols-outlined">task_alt</span></button>
+                            <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">task_alt</span></button>
                         </td>
                     </tr>
                 </a>
@@ -45,7 +45,7 @@ const ComplaintInprocessTable = () => {
                             {/* <button><span class="material-symbols-outlined">visibility</span></button> */}
                         </td>
                         <td className="complaint-table-with-details-row-column-5">
-                            <button><span class="material-symbols-outlined">task_alt</span></button>
+                            <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">task_alt</span></button>
                         </td>
                     </tr>
                 </a>
@@ -66,7 +66,7 @@ const ComplaintInprocessTable = () => {
                             {/* <button><span class="material-symbols-outlined">visibility</span></button> */}
                         </td>
                         <td className="complaint-table-with-details-row-column-5">
-                            <button><span class="material-symbols-outlined">task_alt</span></button>
+                            <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">task_alt</span></button>
                         </td>
                     </tr>
                 </a>
@@ -87,7 +87,7 @@ const ComplaintInprocessTable = () => {
                             {/* <button><span class="material-symbols-outlined">visibility</span></button> */}
                         </td>
                         <td className="complaint-table-with-details-row-column-5">
-                            <button><span class="material-symbols-outlined">task_alt</span></button>
+                            <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">task_alt</span></button>
                         </td>
                     </tr>
                 </a>
