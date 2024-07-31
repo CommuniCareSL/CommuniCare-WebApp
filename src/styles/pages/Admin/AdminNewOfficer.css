@@ -131,11 +131,12 @@
 
 .admin-add-new-officer-content{
   width: 100%;
-  height: 70vh;
+  height: 65vh;
   overflow-y: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 2vh;
 }
 
 .admin-add-new-officer-content table{
