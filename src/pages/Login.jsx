@@ -72,6 +72,7 @@ const Login = () => {
             <div className="field">
               <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
             </div>
+            <div className="field"></div>
             <button type="submit">LOGIN</button>
             {/* <button onClick={() => { navigate("/dashboard_Officer");}}>LOGIN</button> */}
             <div className="link">
