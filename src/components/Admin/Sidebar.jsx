@@ -33,6 +33,12 @@ const Sidebar = () => {
             New Officer
           </a>
         </li>
+        <li>
+          <a href="/AdminAddContractor" onClick={(e) => handleClick(e, '/AdminAddContractor')}>
+          <span class="material-symbols-outlined">group_add</span>
+            Add Contractor
+          </a>
+        </li>
         
         <h4>
           {/* <span>General</span> */}
