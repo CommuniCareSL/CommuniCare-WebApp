@@ -30,7 +30,7 @@ function AdminUnseenComplaintDetails() {
 
               <table>
                 <tbody>
-                  <tr className='unseen-complaints-citizen-form-details-first-part'>
+                  <tr className='unseen-complaints-citizen-form-details-first-part' style={{border: 'none'}}>
                     <td className='citizen-form-details-first-column'><h4>Contractor Details</h4></td>
                     <td className='citizen-form-details-second-column'>
                       <p>Contractor name</p>

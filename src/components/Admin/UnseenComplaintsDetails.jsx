@@ -10,8 +10,8 @@ function UnseenComplaintsDetails() {
 
       <div className="unseen-complaints-profile-details">
         <img src={profileImg} alt="Profile Image" />
-        <h4>User name</h4>
-        <p>user's regional office</p>
+        <h4>Officer User name</h4>
+        <p>Officer's regional office</p>
       </div>
 
       <div className="unseen-complaints-citizen-form-details">

@@ -81,6 +81,8 @@
 
   .unseen-complaints-citizen-form-details{
     width: 50%;
+    padding-right: 20px;
+    padding-left: 10px;
   }
 
   .unseen-complaints-uploaded-images{
@@ -104,6 +106,7 @@
     width: 100%;
     height: 8vh;
     margin-bottom: 1vh;
+    border-bottom: 2px solid rgba(171, 217, 255, 0.762);
   }
 
   .unseen-complaints-citizen-form-details-first-part h4{
