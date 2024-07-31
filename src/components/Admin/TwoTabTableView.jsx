@@ -3,8 +3,7 @@ import '../../styles/components/Admin/TabView.css';
 import '../../styles/components/Admin/TableView.css';
 
 import CitizenUnblocktable from '../../components/Admin/CitizenUnblocktable';
-// import ComplaintInprocessTable from '../../components/Admin/ComplaintInprocessTable';
-// import ComplaintCompletedTable from '../../components/Admin/ComplaintCompletedTable';
+import CitizenBlocktable from '../../components/Admin/CitizenBlocktable';
 
 function TwoTabTableView() {
   const [activeTab, setActiveTab] = useState(0);
@@ -38,10 +37,7 @@ function TwoTabTableView() {
           <CitizenUnblocktable />
           </div>}
         {activeTab === 1 && <div className="content-for-the-status active slide-in">
-          {/* <ComplaintInprocessTable /> */}
-          </div>}
-        {activeTab === 2 && <div className="content-for-the-status active slide-in">
-          {/* <ComplaintCompletedTable /> */}
+          <CitizenBlocktable />
           </div>}
       </div>
     </div>

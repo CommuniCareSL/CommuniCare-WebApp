@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Sidebar from '../../components/Admin/Sidebar';
-// import AddedNewContractorDetails from '../../components/Admin/AddedNewContractorDetails';
+import CitizenUnblockDetails from '../../components/Admin/CitizenUnblockDetails';
 
 import '../../styles/pages/Admin/AdminAddedOfficersDetails.css';
 import '../../styles/components/Admin/CivilOfficerDetails.css';
@@ -16,7 +16,7 @@ function AdminViewCitizenDetailed() {
         </div>
 
           <div className="admin-added-officer-details-content">
-            {/* <AddedNewContractorDetails /> */}
+            <CitizenUnblockDetails />
           </div>
 
       </div>
