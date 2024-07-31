@@ -36,15 +36,15 @@
 }
 
 .app {
-  max-width: 26%;
+  max-width: 56%;
   text-align: right;
-  margin-left: 200px;
+  margin-left: 100px;
   margin-top: 60px;
   
 }
 
 .app img {
-  width: 500px;
+  width: 600px;
   height: 500px;
   object-fit: contain;
   
