@@ -21,7 +21,8 @@ import Dashboard_Officer from "./pages/Civil Officer/Dashboard";
 import Calendar_Officer from "./pages/Civil Officer/calendar_schedule";
 import Appointment_Officer from "./pages/Civil Officer/appointments";
 import Requests_Officer from "./pages/Civil Officer/Service_requests";
-import Documents_Officer from "./pages/Civil Officer/Citizen_documents"
+import Documents_Officer from "./pages/Civil Officer/Citizen_documents";
+import ServiceDetails from "./pages/Civil Officer/Service_details";
 
 import SuperAdminDashboard from "./pages/SuperAdmin/Dashboard"
 // import b, {Newregistration, a} from "./pages/SuperAdmin/NewRegistration"
@@ -58,6 +59,7 @@ const App = () => {
         <Route path="/appointment_Officer" element={<Appointment_Officer />} />
         <Route path="/requests_Officer" element={<Requests_Officer />} />
         <Route path="/document_Officer" element={<Documents_Officer />} />
+        <Route path="/details/:serviceName" element={<ServiceDetails />} />
 
         <Route path="/SuperAdminDashboard" element={<SuperAdminDashboard />} />
         {/* <Route path="/NewRegistration" element={Newregistration} /> */}

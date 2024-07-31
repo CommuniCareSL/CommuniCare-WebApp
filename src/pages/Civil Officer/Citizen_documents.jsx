@@ -3,8 +3,10 @@ import Sidebar from '../../components/Civil Officer/Sidebar';
 import profileImg from '../../assets/Admin/profile-img.jpg';
 import { Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 import { RiSortAsc } from 'react-icons/ri';
-import { HiChevronDown, HiPlus } from 'react-icons/hi';
+import { HiChevronDown, HiPlus, HiDownload } from 'react-icons/hi';
 import { BsArrowLeftShort , BsSearch} from "react-icons/bs";
+import { AiOutlineEye } from 'react-icons/ai';
+import { Popover, PopoverTrigger, PopoverContent, PopoverHeader, PopoverBody, PopoverFooter, PopoverArrow, PopoverCloseButton, Input, Textarea, Stack } from '@chakra-ui/react';
 import {
     Button,
     ButtonGroup,
@@ -18,6 +20,7 @@ import {
     TableContainer,
     Checkbox,
     TableCaption,
+    Tooltip,
   } from '@chakra-ui/react';
 
 
@@ -55,6 +58,13 @@ const Citizen_documents = () => {
       };
     
       const showButtons = selectedRows.length > 0;
+
+      const [reason, setReason] = useState('');
+
+    const handleRejectSubmit = () => {
+        // Handle the reject reason submission logic here
+        console.log('Reject reason:', reason);
+    };
 
     return(
         <div className='flex h-screen'>
@@ -150,7 +160,30 @@ const Citizen_documents = () => {
         {showButtons && (
             <div className="flex items-center mr-8">
                 <Button colorScheme='green' className='mr-2'>Completed</Button>
-                <Button colorScheme='blue'>In-Review</Button>
+                <Button colorScheme='blue' className='mr-2'>In-Review</Button>
+                <Popover>
+            <PopoverTrigger>
+              <Button colorScheme='red'>Reject</Button>
+            </PopoverTrigger>
+            <PopoverContent>
+              <PopoverArrow />
+              <PopoverCloseButton />
+              <PopoverHeader>Reject Reason(Be specific as possible) </PopoverHeader>
+              <PopoverBody>
+                <Stack spacing={4}>
+                  <Textarea
+                    placeholder="Please provide a reason for rejection"
+                    value={reason}
+                    onChange={(e) => setReason(e.target.value)}
+                  />
+                </Stack>
+              </PopoverBody>
+              <PopoverFooter display="flex" justifyContent="flex-end">
+                <Button colorScheme="red" onClick={handleRejectSubmit}>Submit</Button>
+              </PopoverFooter>
+            </PopoverContent>
+          </Popover>
+                {/* <Button colorScheme='red'>Reject</Button> */}
             </div>
                     )}
         </div>
@@ -207,8 +240,12 @@ const Citizen_documents = () => {
                   <Td>{doc.date}</Td>
                   <Td>
                     <ButtonGroup spacing={2}>
-                      <Button colorScheme='blue'>Download</Button>
-                      <Button colorScheme='green'>View</Button>
+                    <Tooltip label="Download" aria-label="Download tooltip">
+                      <Button colorScheme='blue'><HiDownload /></Button>
+                      </Tooltip>
+                      <Tooltip label="View" aria-label="View tooltip">
+                      <Button colorScheme='green'><AiOutlineEye /></Button>
+                      </Tooltip>
                     </ButtonGroup>
                   </Td>
                 </Tr>

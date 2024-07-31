@@ -31,10 +31,10 @@ const CalendarSchedule = () => {
   }, []);
 
   return (
-    <div className='dashboard-officer'>
+    <div className='flex h-screen'>
       <Sidebar />
 
-      <div className='flex flex-col m-5 w-screen p-4'>
+      <div className='flex flex-col m-5 w-screen p-4 overflow-y-auto'>
       {/* <div className='m-5 h-11 w-screen p-4 flex justify-between items-center'> */}
       <div className='h-11 flex justify-between items-center'>
         <Stack direction='row' spacing={4} align='center'>
@@ -51,7 +51,7 @@ const CalendarSchedule = () => {
         </Stack>
 
         <Menu>
-          <MenuButton as={Button} rightIcon={<HiChevronDown />}>
+          <MenuButton as={Button} rightIcon={<HiChevronDown />} mr={12}>
             Filter
           </MenuButton>
           <MenuList>
@@ -68,7 +68,7 @@ const CalendarSchedule = () => {
         
         
       </div>
-      <div className='mt-5 flex-1'>
+      <div className='mt-3 flex-1'>
         {CurrentComponent && <CurrentComponent />}
         </div>
 
