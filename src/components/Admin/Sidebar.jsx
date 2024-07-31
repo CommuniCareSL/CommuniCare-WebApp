@@ -77,7 +77,6 @@ const Sidebar = () => {
             Settings
           </a>
         </li> */}
-        <br /><br /><br /><br />
         <br /><br />
         <li>            
           <a href="#">
@@ -89,10 +88,6 @@ const Sidebar = () => {
       <div className="user-account">
         <div className="user-profile">
           <img src={profileImg} alt="Profile Image" />
-          <div className="user-detail">
-            <h3>MANOKARARAJAH</h3>
-            <span>Admin</span>
-          </div>
         </div>
       </div>
     </aside>
