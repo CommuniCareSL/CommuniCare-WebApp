@@ -21,7 +21,7 @@ const ComplaintUnseenTable = () => {
                             <p>Complaint title/Category</p>
                         </td>
                         <td className="complaint-table-with-details-row-column-4">
-                            <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">visibility</span></button>
+                            {/* <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">visibility</span></button> */}
                         </td>
                         <td className="complaint-table-with-details-row-column-5">
                             <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">delete</span></button>
@@ -42,7 +42,7 @@ const ComplaintUnseenTable = () => {
                             <p>Complaint title/Category</p>
                         </td>
                         <td className="complaint-table-with-details-row-column-4">
-                            <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">visibility</span></button>
+                            {/* <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">visibility</span></button> */}
                         </td>
                         <td className="complaint-table-with-details-row-column-5">
                             <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">delete</span></button>
@@ -63,7 +63,7 @@ const ComplaintUnseenTable = () => {
                             <p>Complaint title/Category</p>
                         </td>
                         <td className="complaint-table-with-details-row-column-4">
-                            <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">visibility</span></button>
+                            {/* <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">visibility</span></button> */}
                         </td>
                         <td className="complaint-table-with-details-row-column-5">
                             <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">delete</span></button>
@@ -84,7 +84,7 @@ const ComplaintUnseenTable = () => {
                             <p>Complaint title/Category</p>
                         </td>
                         <td className="complaint-table-with-details-row-column-4">
-                            <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">visibility</span></button>
+                            {/* <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">visibility</span></button> */}
                         </td>
                         <td className="complaint-table-with-details-row-column-5">
                             <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">delete</span></button>
