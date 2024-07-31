@@ -33,17 +33,25 @@ const Sidebar = () => {
             New Officer
           </a>
         </li>
-        
-        <h4>
-          {/* <span>General</span> */}
-          {/* <div className="menu-separator"></div> */}
-        </h4>
+        <li>
+          <a href="/AdminAddContractor" onClick={(e) => handleClick(e, '/AdminAddContractor')}>
+          <span class="material-symbols-outlined">group_add</span>
+            Add Contractor
+          </a>
+        </li>
+        <li>
+          <a href="#">
+          <span class="material-symbols-outlined">diversity_2</span>
+            Citizens
+          </a>
+        </li>
         <li>
           <a href="#">
             <span className="material-symbols-outlined">build</span>
             Services
           </a>
         </li>
+        
         <li>
           <a href="#">
             <span className="material-symbols-outlined">overview</span>
@@ -71,7 +79,6 @@ const Sidebar = () => {
             Settings
           </a>
         </li> */}
-        <br /><br /><br /><br />
         <br /><br />
         <li>            
           <a href="#">
@@ -83,10 +90,6 @@ const Sidebar = () => {
       <div className="user-account">
         <div className="user-profile">
           <img src={profileImg} alt="Profile Image" />
-          <div className="user-detail">
-            <h3>MANOKARARAJAH</h3>
-            <span>Admin</span>
-          </div>
         </div>
       </div>
     </aside>

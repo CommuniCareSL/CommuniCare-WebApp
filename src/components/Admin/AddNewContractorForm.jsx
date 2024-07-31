@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function AddNewOfficerForm() {
+function AddNewContractorForm() {
     const [selectedValue, setSelectedValue] = useState('');
 
     const handleChange = (event) => {
@@ -8,7 +8,9 @@ function AddNewOfficerForm() {
     };
 
   return (
+    
     <div className='add-new-officer-form-content'>
+        
         <div className="add-new-officer-form-Name">
             <div className="add-new-officer-first-name">
                 <input type="text" name="" id="" placeholder="First Name" />
@@ -30,15 +32,10 @@ function AddNewOfficerForm() {
             <input type='number' name="" id="" placeholder="Contact Number" />
         </div>
 
-        <div style={{border: '3px solid #0991ff', padding: '0', marginTop: '2vh'}}></div>
+        <div style={{border: '3px solid #0991ff', padding: '0', marginTop: '5vh', marginBottom: '5vh'}}></div>
 
-        <div className="add-new-officer-form-Name">
-            <div className="add-new-officer-first-name">
-                <input type="text" name="" id="" placeholder="User name" />
-            </div>
-            <div className="add-new-officer-last-name">
-                <input type="password" name="" id="" placeholder="Password" />
-            </div>
+        <div className="add-new-officer-NIC-number">
+            <input type="text" name="" id="" placeholder="Complany Name" />
         </div>
 
         <div className="add-new-officer-selection-for-position">
@@ -55,10 +52,6 @@ function AddNewOfficerForm() {
             </select>
         </div>
 
-        <div className="add-new-officer-work-place-ID">
-            <input type="number" name="" id="" placeholder="Work Id Number" />
-        </div>
-
         <div className="add-new-officer-add-button">
             <button>Add</button>
         </div>
@@ -67,4 +60,5 @@ function AddNewOfficerForm() {
   )
 }
 
-export default AddNewOfficerForm
+export default AddNewContractorForm
+

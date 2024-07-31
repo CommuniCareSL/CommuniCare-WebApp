@@ -2,7 +2,7 @@ import React from 'react';
 
 import profileImg from '../../assets/Admin/profile-img.jpg';
 
-function AddedCivilOfficerDetails() {
+function AddedNewContractorDetails() {
   return (
     <div className="added-civil-officer-profile-details-personal-details">
 
@@ -10,7 +10,6 @@ function AddedCivilOfficerDetails() {
         <img src={profileImg} alt="Profile Image" />
         <h4>User name</h4>
         <p>user's regional office</p>
-        <p>work Id number</p>
         <p>assign service</p>
       </div>
 
@@ -22,6 +21,10 @@ function AddedCivilOfficerDetails() {
               <tr className='added-civisl-officer-personal-detail-table-structure-column-1'>
                 <td className='added-civisl-officer-personal-detail-table-structure-column-1-first-part'><h4>Name</h4></td>
                 <td className='added-civisl-officer-personal-detail-table-structure-column-1-second-part'><p>FirstName LastName</p></td>
+              </tr>
+              <tr className='added-civisl-officer-personal-detail-table-structure-column-1'>
+                <td className='added-civisl-officer-personal-detail-table-structure-column-1-first-part'><h4>Company Name</h4></td>
+                <td className='added-civisl-officer-personal-detail-table-structure-column-1-second-part'><p>Lorem, ipsum dolor</p></td>
               </tr>
               <tr className='added-civisl-officer-personal-detail-table-structure-column-1'>
                 <td className='added-civisl-officer-personal-detail-table-structure-column-1-first-part'><h4>NIC</h4></td>
@@ -52,4 +55,4 @@ function AddedCivilOfficerDetails() {
   )
 }
 
-export default AddedCivilOfficerDetails
+export default AddedNewContractorDetails

@@ -135,7 +135,6 @@
   overflow-y: auto;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .admin-add-new-officer-content table{
@@ -164,8 +163,8 @@
 
 .admin-add-new-officer-table-row-column-1 img{
   border-radius: 50px;
-  width: 70px;
-  height: 70px;
+  width: 65px;
+  height: 65px;
   margin: 0 auto;
 }
 
