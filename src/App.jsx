@@ -14,6 +14,7 @@ import AdminInprogressComplainDetails from "./pages/Admin/AdminInprogressComplai
 import AdminCompletedComplainDetails from "./pages/Admin/AdminCompletedComplainDetails";
 import AdminAddedOfficersDetails from "./pages/Admin/AdminAddedOfficersDetails";
 import AdminAddContractor from "./pages/Admin/AdminAddContractor";
+import AdminAddedContractorDetails from "./pages/Admin/AdminAddedContractorDetails";
 
 
 import Dashboard_Officer from "./pages/Civil Officer/Dashboard";
@@ -48,6 +49,7 @@ const App = () => {
         <Route path="/AdminCompletedComplainDetails" element={<AdminCompletedComplainDetails />} />
         <Route path="/AdminAddedOfficersDetails" element={<AdminAddedOfficersDetails />} />
         <Route path="/AdminAddContractor" element={<AdminAddContractor />} />
+        <Route path="/AdminAddedContractorDetails" element={<AdminAddedContractorDetails />} />
         
 
 
