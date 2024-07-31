@@ -22,17 +22,18 @@ const Sidebar = () => {
           </a>
         </li>
         <li>
-          <a href="/AdminNewOfficer" onClick={(e) => handleClick(e, '/AdminNewOfficer')}>
-            <span class="material-symbols-outlined">person_add</span>
-            New Officer
-          </a>
-        </li>
-        <li>
           <a href="/Complaints" onClick={(e) => handleClick(e, '/Complaints')}>
             <span className="material-symbols-outlined">report_problem</span>
             Complaints
           </a>
         </li>
+        <li>
+          <a href="/AdminNewOfficer" onClick={(e) => handleClick(e, '/AdminNewOfficer')}>
+            <span class="material-symbols-outlined">person_add</span>
+            New Officer
+          </a>
+        </li>
+        
         <h4>
           {/* <span>General</span> */}
           {/* <div className="menu-separator"></div> */}
