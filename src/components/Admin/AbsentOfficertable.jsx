@@ -8,7 +8,7 @@ function AbsentOfficertable() {
     <>
       <a href="">
         <div className="admin-dashboard-linked-title-bar">
-          <h3>Approved Absent Request</h3>
+          <h3>Today's Absents Officers</h3>
           <img src={ClickIcon} alt="Click" />
         <h3>...</h3>
         </div>

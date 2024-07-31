@@ -39,7 +39,7 @@ body {
 }
 
 .sidebar .sidebar-header img {
-  width: 100px;
+  width: 70px;
   height: auto;
   border-radius: 50%;
 }
@@ -81,15 +81,15 @@ body {
   transition-delay: 0.2s;
 }
 
-.sidebar:hover .sidebar-links .menu-separator {
+/* .sidebar:hover .sidebar-links .menu-separator {
   transition-delay: 0s;
   transform: scaleX(0);
-}
+} */
 
 .sidebar-links {
   list-style: none;
   margin-top: 20px;
-  height: 80%;
+  height: 75%;
   overflow-y: auto;
   scrollbar-width: none;
 }
@@ -136,11 +136,11 @@ body {
   margin-left: -10px;
 }
 
-.user-profile {
+/* .user-profile {
   display: flex;
   align-items: center;
   color: #161a2d;
-}
+} */
 
 .user-profile img {
   width: 42px;
@@ -151,12 +151,17 @@ body {
 .user-profile h3 {
   font-size: 1rem;
   font-weight: 600;
+  margin-left: 5px;
 }
 
-.user-profile span {
+.user-profile p{
+  margin-left: 5px;
+}
+
+/* .user-profile span {
   font-size: 0.775rem;
   font-weight: 600;
-}
+} */
 
 .user-detail {
   margin-left: 23px;
@@ -168,6 +173,6 @@ body {
 }
 
 .sidebar:hover .user-account {
-  background: linear-gradient(#333933, #222922);
+  /* background: linear-gradient(#333933, #222922); */
   border-radius: 4px;
 }

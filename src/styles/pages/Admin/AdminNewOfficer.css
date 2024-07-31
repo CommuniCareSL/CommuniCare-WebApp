@@ -135,7 +135,6 @@
   overflow-y: auto;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .admin-add-new-officer-content table{
