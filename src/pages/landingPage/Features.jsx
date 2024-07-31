@@ -14,15 +14,12 @@ const Features = () => {
               data-radius="none"
             >
               <div className="content">
-                <h6 className="category">Best cards</h6>
+                <h6 className="category">Dashboard Access</h6>
                 <p className="description">
-                  What all of these have in common is that they're pulling
-                  information out of the app or the service and making it
-                  relevant to the moment.
+                  View all your interactions, updates, and appointments in one easy-to-access dashboard.
                 </p>
               </div>
-            </div>{" "}
-            {/* end card */}
+            </div>
           </div>
         </div>
 
@@ -35,15 +32,12 @@ const Features = () => {
               data-radius="none"
             >
               <div className="content">
-                <h6 className="category">Best cards</h6>
+                <h6 className="category">Language Support</h6>
                 <p className="description">
-                  What all of these have in common is that they're pulling
-                  information out of the app or the service and making it
-                  relevant to the moment.
+                  Communicate in your preferred language with support for both Sinhala and English.
                 </p>
               </div>
-            </div>{" "}
-            {/* end card */}
+            </div>
           </div>
         </div>
 
@@ -56,15 +50,12 @@ const Features = () => {
               data-radius="none"
             >
               <div className="content">
-                <h6 className="category">Best cards</h6>
+                <h6 className="category">Custom Notifications</h6>
                 <p className="description">
-                  What all of these have in common is that they're pulling
-                  information out of the app or the service and making it
-                  relevant to the moment.
+                  Receive customized notifications about the status of your complaints and appointments.
                 </p>
               </div>
-            </div>{" "}
-            {/* end card */}
+            </div>
           </div>
         </div>
 
@@ -77,15 +68,12 @@ const Features = () => {
               data-radius="none"
             >
               <div className="content">
-                <h6 className="category">Best cards</h6>
+                <h6 className="category">Service Directory</h6>
                 <p className="description">
-                  What all of these have in common is that they're pulling
-                  information out of the app or the service and making it
-                  relevant to the moment.
+                  Quickly find and access the services you need, with detailed information and easy navigation.
                 </p>
               </div>
-            </div>{" "}
-            {/* end card */}
+            </div>
           </div>
         </div>
 
@@ -98,15 +86,12 @@ const Features = () => {
               data-radius="none"
             >
               <div className="content">
-                <h6 className="category">Best cards</h6>
+                <h6 className="category">Resource Management</h6>
                 <p className="description">
-                  What all of these have in common is that they're pulling
-                  information out of the app or the service and making it
-                  relevant to the moment.
+                  Streamline the allocation of government resources to ensure quick and effective responses to public needs.
                 </p>
               </div>
-            </div>{" "}
-            {/* end card */}
+            </div>
           </div>
         </div>
 
@@ -119,15 +104,12 @@ const Features = () => {
               data-radius="none"
             >
               <div className="content">
-                <h6 className="category">Best cards</h6>
+                <h6 className="category">Community Updates</h6>
                 <p className="description">
-                  What all of these have in common is that they're pulling
-                  information out of the app or the service and making it
-                  relevant to the moment.
+                  Stay connected with local events and announcements, fostering a stronger community relationship.
                 </p>
               </div>
-            </div>{" "}
-            {/* end card */}
+            </div>
           </div>
         </div>
       </div>
