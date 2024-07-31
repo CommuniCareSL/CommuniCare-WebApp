@@ -189,7 +189,8 @@
   height: 6vh;
 }
 
-.add-new-officer-form-content input{
+.add-new-officer-form-content input,
+.add-new-officer-form-content select{
   width: 100%;
   height: 6vh;
   padding-left: 10px;
@@ -210,12 +211,14 @@
 }
 
 .add-new-officer-form-content input:hover,
-.add-new-officer-form-content textarea:hover{
+.add-new-officer-form-content textarea:hover,
+.add-new-officer-form-content select:hover{
   border: 2px solid #0991FF;
 }
 
 .add-new-officer-form-content input:focus,
-.add-new-officer-form-content textarea:focus{
+.add-new-officer-form-content textarea:focus,
+.add-new-officer-form-content select:focus{
   border: 2px solid #007bff;
   outline: none
 }
@@ -225,3 +228,17 @@
   width: 100%;
   height: 10vh;
 }
+
+.add-new-officer-selection-for-position{
+  margin-top: 2vh;
+  width: 100%;
+  height: 6vh;
+}
+
+/* .placeholder-selcet{
+  color: #a2a2a2;
+}
+
+.add-new-officer-selection-for-position select .placeholder-selcet{
+  color: #a2a2a2;
+} */
