@@ -25,9 +25,9 @@ function AdminNewOfficer() {
 
                 <div className="admin-add-new-officer-table-seperator" style={{borderBottom: '2px solid #0991FF'}}></div>
 
-                <div className="admin-add-new-officer-content">
-                  <AddedNewOfficers />
-                </div>
+
+                <AddedNewOfficers />
+
 
               </div>
 
