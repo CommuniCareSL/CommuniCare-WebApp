@@ -11,6 +11,11 @@ function AddNewOfficerForm() {
                 <input type="text" name="" id="" placeholder="Last Name" />
             </div>
         </div>
+
+        <div className="add-new-officer-address">
+            <textarea name="" id="" placeholder='Address'></textarea>
+        </div>
+
     </div>
   )
 }

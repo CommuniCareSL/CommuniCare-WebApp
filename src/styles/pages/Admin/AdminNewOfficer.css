@@ -198,11 +198,30 @@
   border: 2px solid #69b6f5;
 }
 
-.add-new-officer-form-content input:hover{
+.add-new-officer-form-content textarea{
+  width: 100%;
+  height: 10vh;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  border: 2px solid #69b6f5;
+}
+
+.add-new-officer-form-content input:hover,
+.add-new-officer-form-content textarea:hover{
   border: 2px solid #0991FF;
 }
 
-.add-new-officer-form-content input:focus{
+.add-new-officer-form-content input:focus,
+.add-new-officer-form-content textarea:focus{
   border: 2px solid #007bff;
   outline: none
+}
+
+.add-new-officer-address{
+  margin-top: 2vh;
+  width: 100%;
+  height: 10vh;
 }
