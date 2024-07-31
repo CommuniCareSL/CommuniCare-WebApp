@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <nav className="container">
+    <nav className="navcontainer">
       <div className="logo-container">
         <img src={Logo} alt="Logo" className="logo" />
       </div>
@@ -46,11 +46,11 @@ const Navbar = () => {
         </li>
 
         {/* <li style={{marginLeft:'10px'}}> */}
-        <li style={{marginLeft:'10px'}}>          
+        {/* <li style={{marginLeft:'10px'}}>          
           <Link to="/signup">
           <button className="btn fill login-button">SIGNUP</button>
           </Link>
-        </li>
+        </li> */}
 
       </ul>
     </nav>

@@ -10,12 +10,6 @@ const Report = () => {
     const genderChartCtx = document.getElementById('genderChart').getContext('2d');
     const categoryChartCtx = document.getElementById('categoryChart').getContext('2d');
 
-    // Set canvas sizes
-    document.getElementById('genderChart').width = 400;
-    document.getElementById('genderChart').height = 400;
-    document.getElementById('categoryChart').width = 400;
-    document.getElementById('categoryChart').height = 400;
-
     const usersChart = new Chart(usersChartCtx, {
       type: 'line',
       data: {
@@ -30,7 +24,7 @@ const Report = () => {
       },
       options: {
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
       }
     });
 
@@ -47,7 +41,7 @@ const Report = () => {
       },
       options: {
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
       }
     });
 
@@ -57,27 +51,27 @@ const Report = () => {
         labels: ['Male', 'Female'],
         datasets: [{
           data: [60, 40],
-          backgroundColor: ['rgba(9, 145, 255, 0.2)', 'black'],
+          backgroundColor: ['rgba(9, 145, 255, 0.2)', '#b0bef7'],
         }]
       },
       options: {
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
       }
     });
 
     const categoryChart = new Chart(categoryChartCtx, {
       type: 'pie',
       data: {
-        labels: ['Category 1', 'Category 2','Category 2'],
+        labels: ['Road hazards', 'Stray animals', 'Garbage disposal'],
         datasets: [{
-          data: [40,30, 30],
-          backgroundColor: ['rgba(9, 145, 255, 0.2)', 'black','beige'],
+          data: [40, 30, 30],
+          backgroundColor: ['rgba(9, 145, 255, 0.2)', '#87d1e8', 'beige'],
         }]
       },
       options: {
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
       }
     });
 
@@ -91,25 +85,33 @@ const Report = () => {
   }, []);
 
   return (
-    <div>
+    <div className="flex">
       <Sidebar />
-      <div className="report-content">
-        <div className="graph-container">
-          <div className="graph-card">
-            <h3>Users Registration by Month</h3>
-            <canvas id="usersChart"></canvas>
+      <div className="flex-1 p-6 ml-64 lg:ml-200">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+          <div className="bg-white p-4 shadow rounded-lg">
+            <h3 className="text-lg font-bold mb-2">Users Registration by Month</h3>
+            <div className="relative" style={{ height: '300px' }}>
+              <canvas id="usersChart"></canvas>
+            </div>
           </div>
-          <div className="graph-card">
-            <h3>Number of Complaints by Month</h3>
-            <canvas id="complaintsChart"></canvas>
+          <div className="bg-white p-4 shadow rounded-lg">
+            <h3 className="text-lg font-bold mb-2">Number of Complaints by Month</h3>
+            <div className="relative" style={{ height: '300px' }}>
+              <canvas id="complaintsChart"></canvas>
+            </div>
           </div>
-          <div className="graph-card">
-            <h3>Users by Gender</h3>
-            <canvas id="genderChart" className="pie-chart"></canvas>
+          <div className="bg-white p-4 shadow rounded-lg">
+            <h3 className="text-lg font-bold mb-2">Users by Gender</h3>
+            <div className="relative" style={{ height: '300px' }}>
+              <canvas id="genderChart"></canvas>
+            </div>
           </div>
-          <div className="graph-card">
-            <h3>Number of Complaints by Category</h3>
-            <canvas id="categoryChart" className="pie-chart"></canvas>
+          <div className="bg-white p-4 shadow rounded-lg">
+            <h3 className="text-lg font-bold mb-2">Number of Complaints by Category</h3>
+            <div className="relative" style={{ height: '300px' }}>
+              <canvas id="categoryChart"></canvas>
+            </div>
           </div>
         </div>
       </div>
