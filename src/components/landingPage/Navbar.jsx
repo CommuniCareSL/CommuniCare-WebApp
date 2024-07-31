@@ -46,11 +46,11 @@ const Navbar = () => {
         </li>
 
         {/* <li style={{marginLeft:'10px'}}> */}
-        <li style={{marginLeft:'10px'}}>          
+        {/* <li style={{marginLeft:'10px'}}>          
           <Link to="/signup">
           <button className="btn fill login-button">SIGNUP</button>
           </Link>
-        </li>
+        </li> */}
 
       </ul>
     </nav>
