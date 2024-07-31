@@ -30,7 +30,7 @@ function AddNewOfficerForm() {
             <input type='number' name="" id="" placeholder="Contact Number" />
         </div>
 
-        <div style={{border: '2px solid #0991ff', padding: '0', marginTop: '2vh'}}></div>
+        <div style={{border: '3px solid #0991ff', padding: '0', marginTop: '2vh'}}></div>
 
         <div className="add-new-officer-form-Name">
             <div className="add-new-officer-first-name">
