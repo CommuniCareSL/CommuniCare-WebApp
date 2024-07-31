@@ -13,7 +13,7 @@ const Menus = [
     { title: 'Service Requests', icon:<RiServiceLine />, path:'/requests_Officer' },
     { title: 'Documents',icon:<RiBarChart2Fill />, path:'/document_Officer' },
     { title: 'Profile', icon:<RiProfileLine />, path:'/dashboard_Officer', spacing:true},
-    { title: 'Logout', icon:<RiLogoutBoxLine />, path: '/dashboard_Officer'},
+    { title: 'Logout', icon:<RiLogoutBoxLine />, path: '/login'},
 
   ];
 

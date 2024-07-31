@@ -10,12 +10,12 @@ export const Newregistration = () => {
   };
 
   const data = [
-    { index: 1, district: 'District A', pradeshiyaSabha: 'Suburb X' },
-    { index: 2, district: 'District A', pradeshiyaSabha: 'Suburb Y' },
-    { index: 3, district: 'District B', pradeshiyaSabha: 'Town Z' },
-    { index: 4, district: 'District C', pradeshiyaSabha: 'Village W' },
-    { index: 5, district: 'District D', pradeshiyaSabha: 'City V' },
-    { index: 6, district: 'District E', pradeshiyaSabha: 'Suburb U' }
+    { index: 1, district: 'Colombo', pradeshiyaSabha: 'Homagama' },
+    { index: 2, district: 'Kalutara', pradeshiyaSabha: 'Agalwatta' },
+    { index: 3, district: 'Colombo', pradeshiyaSabha: 'Dehiwala' },
+    { index: 4, district: 'Gampaha', pradeshiyaSabha: 'Attanagalla' },
+    { index: 5, district: 'Kalutara', pradeshiyaSabha: 'Matugama' },
+    { index: 6, district: 'Gampaha', pradeshiyaSabha: 'Kelaniya' }
   ];
 
   const filteredData = data.filter(item =>
