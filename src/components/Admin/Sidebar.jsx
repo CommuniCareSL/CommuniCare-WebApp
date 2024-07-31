@@ -81,7 +81,7 @@ const Sidebar = () => {
         </li> */}
         <br /><br />
         <li>            
-          <a href="#">
+          <a href="/login">
             <span className="material-symbols-outlined">logout</span>
             Logout
           </a>
