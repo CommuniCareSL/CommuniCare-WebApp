@@ -74,7 +74,7 @@ const Sidebar = () => {
         </nav>
 
         <div className="absolute bottom-0 left-0 right-0 p-4">
-          <SidebarLink href="#" icon="logout" isMinimized={isMinimized} isActive={false}>Logout</SidebarLink>
+          <SidebarLink href="/login" icon="logout" isMinimized={isMinimized} isActive={false}>Logout</SidebarLink>
           <div className={`flex items-center mt-4 ${isMinimized ? 'justify-center' : ''}`}>
             <img src={profileImg} alt="Profile" className="w-10 h-10 rounded-full" />
             {!isMinimized && (

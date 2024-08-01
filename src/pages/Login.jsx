@@ -63,7 +63,7 @@ const Login = () => {
         <div className="login-form">
           <div className="text">LOGIN</div>
 
-          {/* {error && <p style={{ color: 'red', marginBottom: '10px' }}>{error}</p>} */}
+          {error && <p style={{ color: 'red', marginBottom: '10px' }}>{error}</p>}
 
           <form onSubmit={handleSubmit}>
             <div className="field">

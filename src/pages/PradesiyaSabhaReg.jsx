@@ -111,7 +111,7 @@ const PradesiyaSabhaReg = () => {
                 </svg>
               </div>
               {isDocumentInfoVisible && (
-                <p className="mt-2 text-gray-600">Please upload the required document. Only PDF files are accepted.</p>
+                <p className="mt-2 text-gray-600">Please upload thesabha registration documents and request letter. Only PDF files are accepted.</p>
               )}
               <div className="mt-1 flex items-center">
                 <input
