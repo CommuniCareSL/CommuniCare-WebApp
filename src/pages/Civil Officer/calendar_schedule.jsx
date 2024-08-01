@@ -6,6 +6,7 @@ import { Button, ButtonGroup } from '@chakra-ui/react';
 import { HiChevronDown, HiPlus } from 'react-icons/hi';
 import { Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 import { RiInboxFill } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
 
 const CalendarSchedule = () => {
   const times = ['Day', 'Week', 'Month'];
@@ -61,11 +62,12 @@ const CalendarSchedule = () => {
           </MenuList>
           
         </Menu>
+        <Link to={`/new_appointment`}>
         <Button colorScheme='blue'>
           <HiPlus/>
           Add Appointment
         </Button>
-        
+        </Link>
         
       </div>
       <div className='mt-3 flex-1'>
