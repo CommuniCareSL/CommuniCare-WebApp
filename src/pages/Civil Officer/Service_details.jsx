@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Sidebar from '../../components/Civil Officer/Sidebar';
 import { Tabs, TabList, TabPanels, Tab, TabPanel, ChakraProvider, Box, Heading, Divider, Text, Table, Tbody, Tr, Td, Input, Button } from '@chakra-ui/react';
-
+import UserRequests from './User_requests';
 
 const ServiceDetails = () => {
     
@@ -43,6 +43,40 @@ const ServiceDetails = () => {
         console.log(formData);
     };
 
+    const sampleRequests = [
+        {
+            user: "Mckenna Grace",
+            description: "Request for a new billboard at Main St.",
+            date: "2024-07-31",
+            status: "Pending",
+            past_app: "1",
+            upcoming: "1",
+            payment: 'done',
+            docs: "4"
+        },
+        {
+            user: "Dylan Thomas",
+            description: "Approval request for outdoor advertisement.",
+            date: "2024-07-29",
+            status: "Approved",
+            past_app: "1",
+            upcoming: "0",
+            payment: 'done',
+            docs: "4"
+        },
+        {
+            user: "Riley Evans",
+            description: "Renewal request for existing billboard permit.",
+            date: "2024-07-25",
+            status: "Pending",
+            past_app: "1",
+            upcoming: "1",
+            payment: 'none',
+            docs: "4"
+        }
+    ];
+    
+
     
     return (
         <ChakraProvider>
@@ -54,7 +88,7 @@ const ServiceDetails = () => {
                 <TabList className="border-b-2 border-blue-500">
                     <Tab className='px-4 py-2 text-blue-500 focus:outline-none border-b-2 border-transparent hover:border-blue-500 transition-colors duration-300'>Details</Tab>
                     <Tab>Requests</Tab>
-                    <Tab>Three</Tab>
+                    {/* <Tab>Three</Tab> */}
                 </TabList>
 
                 <TabPanels className='p-4'>
@@ -155,7 +189,8 @@ const ServiceDetails = () => {
                                 </Box>
                     </TabPanel>
                     <TabPanel>
-                    <p>two!</p>
+                    <UserRequests requests={sampleRequests} />
+                    
                     </TabPanel>
                     {/* <TabPanel>
                     <p>three!</p>
