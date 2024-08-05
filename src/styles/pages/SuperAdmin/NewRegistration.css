@@ -21,18 +21,55 @@
   background: linear-gradient(135deg, #000000, #074f8a);
 }
 
-.view-btn,
-.accept-btn,
-.reject-btn {
-  padding: 6px 12px;
-  margin: 2px;
-  border: none;
-  cursor: pointer;
-  border-radius: 10px;
+
+
+.Sadmin-table-home-page {
+  flex-grow: 1;
+  padding: 20px;
+  min-height: 100vh;
+  min-width: auto;
+  margin-left: 85px;
+  transition: margin-left 0.4s ease;
+  background-color: #e8eff9;
+  overflow-y: auto;
 }
 
-.accept-btn:hover,
-.reject-btn:hover,
-.view-btn:hover {
-  transform: scale(1.025);
+.sidebar:hover ~ .Sadmin-table-home-page {
+  margin-left: 260px;
+}
+
+.Sadmin-table-title-container{
+  width: 93%;
+  margin-left: 35px;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2vh;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+
+.Sadmin-table-title-container h3{
+  margin: 20px;
+  font-weight: 800;
+  color: #000;
+}
+
+.Sadmin-table-table-tab-view-for-table-content{
+  width: 93%;
+  margin-left: 35px;
+  height: 80vh;
+  margin-bottom: 2vh;
+  background-color: #fff;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.newreg-content {
+  width: 80%; /* Adjust the percentage as needed */
+  max-width: 1200px; /* Optional: Set a maximum width */
+  
 }
