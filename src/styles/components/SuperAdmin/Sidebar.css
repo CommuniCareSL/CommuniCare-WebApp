@@ -1,5 +1,3 @@
-/* SuperAdminSidebar.css */
-
 /* Importing Google font - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
@@ -16,7 +14,7 @@ body {
   background: #ffffff;
 }
 
-.superadmin-sidebar {
+.sidebar {
   position: fixed;
   top: 0;
   left: 0;
@@ -30,23 +28,23 @@ body {
   transition: all 0.4s ease;
 }
 
-.superadmin-sidebar:hover {
+.sidebar:hover {
   width: 260px;
 }
 
-.superadmin-sidebar .superadmin-sidebar-header {
+.sidebar .sidebar-header {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.superadmin-sidebar .superadmin-sidebar-header img {
+.sidebar .sidebar-header img {
   width: 70px;
   height: auto;
   border-radius: 50%;
 }
 
-.superadmin-sidebar .superadmin-sidebar-header h2 {
+.sidebar .sidebar-header h2 {
   color: #fff;
   font-size: 1.25rem;
   font-weight: 600;
@@ -54,7 +52,7 @@ body {
   margin-left: 23px;
 }
 
-.superadmin-sidebar-links h4 {
+.sidebar-links h4 {
   color: #fff;
   font-weight: 500;
   white-space: nowrap;
@@ -62,15 +60,15 @@ body {
   position: relative;
 }
 
-.superadmin-sidebar-links h4 span {
+.sidebar-links h4 span {
   opacity: 0;
 }
 
-.superadmin-sidebar:hover .superadmin-sidebar-links h4 span {
+.sidebar:hover .sidebar-links h4 span {
   opacity: 1;
 }
 
-.superadmin-sidebar-links .superadmin-menu-separator {
+.sidebar-links .menu-separator {
   position: absolute;
   left: 0;
   top: 50%;
@@ -83,7 +81,12 @@ body {
   transition-delay: 0.2s;
 }
 
-.superadmin-sidebar-links {
+/* .sidebar:hover .sidebar-links .menu-separator {
+  transition-delay: 0s;
+  transform: scaleX(0);
+} */
+
+.sidebar-links {
   list-style: none;
   margin-top: 20px;
   height: 75%;
@@ -91,11 +94,11 @@ body {
   scrollbar-width: none;
 }
 
-.superadmin-sidebar-links::-webkit-scrollbar {
+.sidebar-links::-webkit-scrollbar {
   display: none;
 }
 
-.superadmin-sidebar-links li a {
+.sidebar-links li a {
   display: flex;
   align-items: center;
   gap: 0 20px;
@@ -108,15 +111,15 @@ body {
   border: 1px solid transparent;
 }
 
-.superadmin-sidebar-links li a:hover {
+.sidebar-links li a:hover {
   color: #5fb6fd;
   background: linear-gradient(#333933, #222922);
   border-radius: 4px;
   border: 1px solid #0991FF;
-  animation: superadmin-glow 0.8s ease-out infinite alternate;
+  animation: glow 0.8s ease-out infinite alternate;
 }
 
-@keyframes superadmin-glow {
+@keyframes glow {
   0% {
     border-color: #0991FF;
     box-shadow: 0 0 5px rgba(0, 145, 255, 0.2), inset 0 0 5px rgba(0, 0, 0, 0.1);
@@ -126,56 +129,46 @@ body {
     box-shadow: 0 0 20px rgba(0, 145, 255, 0.6), inset 0 0 10px rgba(0, 145, 255, 0.4);
   }
 }
-
-.superadmin-user-account {
+.user-account {
   margin-top: auto;
   padding: 12px 10px;
   margin-left: -10px;
-  overflow: hidden;
+
 }
 
-.superadmin-user-profile {
+.user-profile {
   display: flex;
   align-items: center;
   color: #161a2d;
 }
 
-.superadmin-user-profile img {
+.user-profile img {
   width: 42px;
   border-radius: 50%;
   border: 1px solid #fff;
 }
 
-.superadmin-user-detail {
-  margin-left: 23px;
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  color: white;
+.user-detail {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column; /* Stack the text vertically */
 }
 
-.superadmin-sidebar:hover .superadmin-user-detail {
-  opacity: 1;
+.user-detail h3, .user-detail span {
+  color: #ffffff;
+  margin: 0; /* Remove default margin */
 }
 
-.superadmin-sidebar:hover .superadmin-user-account {
+.user-detail h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.user-detail span {
+  font-size: 0.775rem;
+  font-weight: 600;
+}
+
+.sidebar:hover .user-account {
   border-radius: 4px;
-}
-
-@media screen and (max-width: 768px) {
-  .superadmin-sidebar {
-    width: 60px;
-  }
-
-  .superadmin-sidebar:hover {
-    width: 200px;
-  }
-
-  .superadmin-sidebar .superadmin-sidebar-header img {
-    width: 50px;
-  }
-
-  .superadmin-user-profile img {
-    width: 32px;
-  }
 }

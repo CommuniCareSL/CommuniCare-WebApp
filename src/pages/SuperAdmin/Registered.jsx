@@ -26,7 +26,6 @@ export const Newregistration = () => {
 
   return (
     <div>
-   
       <Sidebar />
       <div className="Sadmin-table-home-page">
         <div className="Sadmin-table-title-container">
@@ -77,10 +76,10 @@ export const Newregistration = () => {
                     <td className="px-4 py-2 text-center">
                       <div className="flex justify-center space-x-2">
                         <button className="btn1">
-                          Accept
+                          Edit
                         </button>
                         <button className="btn1">
-                          Reject
+                          Delete
                         </button>
                       </div>
                     </td>

@@ -23,7 +23,7 @@
 
 
 
-.Sadmin-table-home-page {
+.admin-table-home-page {
   flex-grow: 1;
   padding: 20px;
   min-height: 100vh;
@@ -34,11 +34,11 @@
   overflow-y: auto;
 }
 
-.sidebar:hover ~ .Sadmin-table-home-page {
+.sidebar:hover ~ .admin-table-home-page {
   margin-left: 260px;
 }
 
-.Sadmin-table-title-container{
+.admin-table-title-container{
   width: 93%;
   margin-left: 35px;
   height: 10vh;
@@ -50,13 +50,13 @@
 }
 
 
-.Sadmin-table-title-container h3{
+.admin-table-title-container h3{
   margin: 20px;
   font-weight: 800;
   color: #000;
 }
 
-.Sadmin-table-table-tab-view-for-table-content{
+.admin-table-table-tab-view-for-table-content{
   width: 93%;
   margin-left: 35px;
   height: 80vh;
@@ -71,5 +71,71 @@
 .newreg-content {
   width: 80%; /* Adjust the percentage as needed */
   max-width: 1200px; /* Optional: Set a maximum width */
-  
+}
+
+
+@media (max-width: 768px) {
+  .Sadmin-table-home-page {
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  .Sadmin-table-title-container {
+    width: 100%;
+    margin-left: 0;
+    height: auto;
+    padding: 10px;
+  }
+
+  .Sadmin-table-title-container h3 {
+    margin: 10px;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .Sadmin-table-table-tab-view-for-table-content {
+    width: 100%;
+    margin-left: 0;
+    height: auto;
+    padding: 10px;
+    overflow-x: auto;
+  }
+
+  .newreg-content {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .newreg-search {
+    margin-bottom: 10px;
+    justify-content: center;
+  }
+
+  .newreg-input {
+    width: 100%;
+    padding-left: 40px; /* Adjust padding for the search icon */
+  }
+
+  .newreg-table th, .newreg-table td {
+    padding: 8px;
+    font-size: 14px; /* Adjust font size for better readability */
+  }
+
+  .newreg-table th:last-child,
+  .newreg-table td:last-child {
+    width: auto; /* Let the width adjust automatically */
+  }
+
+  .btn1 {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  /* Ensure buttons don't overflow and are centered */
+  .flex.justify-center.space-x-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
 }
