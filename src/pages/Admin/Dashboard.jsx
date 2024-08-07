@@ -35,9 +35,7 @@ const Dashboard = () => {
                 <AbsentOfficertable />
               </div>
               <div className="admin-dashboard-calender">
-                <h3 style={{fontWeight: '800'}}>Calender</h3>
-                <br />
-                <Calendar/>
+                
               </div>
             </div>
 
@@ -45,15 +43,15 @@ const Dashboard = () => {
 
               {/* this will show complaint doughnut char as Unseen, inprogress and Completed */}
               <div className="admin-dashboard-complaint-summery">
-                <h4 style={{fontWeight: '800'}}>Status of Recived Complaints</h4>
+                <h4>Status of Recived Complaints</h4>
                 <DoughnutChart />
               </div>
 
               {/* this will show the number of citizens register to the system*/}
-              <div className="admin-dashboard-registeroffices">
+              {/* <div className="admin-dashboard-registeroffices">
                 <h3>Number of registered Citizen</h3>
                 <CounterCard />
-              </div>
+              </div> */}
               
             </div>
             

@@ -35,8 +35,8 @@ const DoughnutChart = () => {
   }, []);
 
   return (
-    <div className="card flex justify-content-center items-center" style={{display: 'flex' ,alignItems: 'center', justifyContent: 'center'}}>
-      <Chart type="doughnut" data={chartData} options={chartOptions} className="w-full md:w-30rem" style={{ width: '230px', height: '230px' }} />
+    <div className="card flex justify-content-center items-center">
+      <Chart type="doughnut" data={chartData} options={chartOptions} className="w-full md:w-30rem" style={{ width: '290px', height: '290px' }} />
     </div>
   );
 }

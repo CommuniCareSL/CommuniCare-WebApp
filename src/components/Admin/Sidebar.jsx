@@ -79,7 +79,6 @@ const Sidebar = () => {
             Settings
           </a>
         </li> */}
-        <br /><br />
         <li>            
           <a href="/login">
             <span className="material-symbols-outlined">logout</span>
