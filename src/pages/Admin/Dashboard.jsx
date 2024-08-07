@@ -2,7 +2,9 @@
 import Sidebar from '../../components/Admin/Sidebar';
 import CardSlider from '../../components/Admin/CardSlider';
 import DoughnutChart from '../../components/Admin/DoughnutChart';
-import CounterCard from '../../components/Admin/CounterCard';
+import CounterCardCitizen from '../../components/Admin/CounterCardCitizen';
+import CounterCardCivilOfficer from '../../components/Admin/CounterCardCivilOfficer';
+import CounterCardConstractor from '../../components/Admin/CounterCardConstractor';
 import AbsentOfficertable from '../../components/Admin/AbsentOfficertable';
 import Calendar from 'react-calendar';
 
@@ -34,8 +36,19 @@ const Dashboard = () => {
               <div className="admin-dashboard-leave-absent-approved">
                 <AbsentOfficertable />
               </div>
-              <div className="admin-dashboard-calender">
-                
+              <div className="admin-dashboard-number-content-details">
+                <div className="admin-dashboard-number-content-details-box">
+                  <h3>Number of registered Citizen</h3>
+                  <CounterCardCitizen />
+                </div>
+                <div className="admin-dashboard-number-content-details-box">
+                  <h3>Number of Civil-Officers</h3>
+                  <CounterCardCivilOfficer />
+                </div>
+                <div className="admin-dashboard-number-content-details-box">
+                  <h3>Number of Constractors</h3>
+                  <CounterCardConstractor />
+                </div>
               </div>
             </div>
 

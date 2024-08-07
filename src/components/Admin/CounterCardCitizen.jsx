@@ -1,3 +1,4 @@
+import { color } from 'framer-motion';
 import React from 'react';
 import CountUp from 'react-countup';
 
@@ -7,7 +8,8 @@ function CounterCard() {
     const counterStyle = {
         fontSize: '20px',
         textAlign: 'center',
-        fontWeight: '800'
+        fontWeight: '800',
+        color: 'rgb(9, 145, 255)'
       };
     
       //style for the container that text display
