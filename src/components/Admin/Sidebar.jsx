@@ -29,6 +29,12 @@ const Sidebar = () => {
         </li>
         <li>
           <a href="/AdminNewOfficer" onClick={(e) => handleClick(e, '/AdminNewOfficer')}>
+          <span class="material-symbols-outlined">groups</span>
+            Employee
+          </a>
+        </li>
+        {/* <li>
+          <a href="/AdminNewOfficer" onClick={(e) => handleClick(e, '/AdminNewOfficer')}>
             <span class="material-symbols-outlined">person_add</span>
             New Officer
           </a>
@@ -38,7 +44,7 @@ const Sidebar = () => {
           <span class="material-symbols-outlined">group_add</span>
             Add Contractor
           </a>
-        </li>
+        </li> */}
         <li>
           <a href="/AdminViewCitizen" onClick={(e) => handleClick(e, '/AdminViewCitizen')}>
           <span class="material-symbols-outlined">diversity_2</span>
@@ -79,7 +85,6 @@ const Sidebar = () => {
             Settings
           </a>
         </li> */}
-        <br /><br />
         <li>            
           <a href="/login">
             <span className="material-symbols-outlined">logout</span>

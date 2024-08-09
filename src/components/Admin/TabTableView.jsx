@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import '../../styles/components/Admin/TabView.css';
 import '../../styles/components/Admin/TableView.css';
 
@@ -22,9 +23,15 @@ function TabTableView() {
   return (
     <div className="tabs-or-status-of-complaints">
 
-      <div className="Complaints-search-bar">
-        <input type="text" placeholder="Search..." value={searchTerm} onChange={handleSearchChange}/>
-        <button><span class="material-symbols-outlined">tune</span></button>
+      <div className="Complaints-search-bar-and-fliter-dropdown">
+        <div className="complaints-search-bar">
+          <input type="text" placeholder="Search..." value={searchTerm} onChange={handleSearchChange}/>
+        </div>
+        <div className="complaints-filter-dropdown">
+          
+        </div>
+        
+        {/* <button><span class="material-symbols-outlined">tune</span></button> */}
       </div>
 
       <ul className="tab-list">

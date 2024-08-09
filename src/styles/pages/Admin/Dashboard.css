@@ -68,50 +68,46 @@
   padding: 20px;
 }
 
-.admin-dashboard-calender{
+.admin-dashboard-number-content-details{
   display: flex;
-  align-items: center;
-  justify-content: center;
   float: right;
   width: 45%;
   height: 60vh;
+  flex-direction: column;
+  margin-top: 2vh;
+}
+
+.admin-dashboard-number-content-details-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 20vh;
+  margin-bottom: 2vh;
   background-color: #fff;
   border-radius: 15px;
-  flex-direction: column;
-  padding: 20px;
+  padding: 0 30px;
 }
 
-/*-----------------------------------------------*/
-.admin-dashboard-calender .react-calendar{
-  border: none;
+.admin-dashboard-number-content-details-box h3{
+  font-size: 18px;
+  font-weight: 800;
 }
-
-.admin-dashboard-calender .react-calendar__month-view__days__day--weekend{
-  color: #0040ff;
-  font-weight: bold;
-}
-
-.admin-dashboard-calender .react-calendar__month-view__days__day--neighboringMonth{
-  color: #94cdfb;
-  font-weight: bold;
-}
-
-.admin-dashboard-calender .react-calendar__tile--now{
-  background: #9ecff8;
-}
-
-.admin-dashboard-calender .react-calendar__tile--active{
-  background: #50b0ff;
-}
-
-/*-----------------------------------------------*/
 
 .admin-dashboard-complaint-summery{
   width: 100%;
-  height: 40vh;
+  height: 60vh;
   background-color: #fff;
   border-radius: 15px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.admin-dashboard-complaint-summery h4{
+  font-size: 18px;
+  font-weight: 800;
   margin-bottom: 2vh;
 }
 

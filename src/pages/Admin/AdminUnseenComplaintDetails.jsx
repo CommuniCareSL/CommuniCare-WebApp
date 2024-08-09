@@ -12,6 +12,7 @@ function AdminUnseenComplaintDetails() {
 
       <div className="admin-unseen-complaints-details-home-page">
         <div className="unseen-complaint-title-container">
+          <button><span class="material-symbols-outlined">arrow_back_ios</span></button>
           <h3>Unseen Complaints</h3>
         </div>
 

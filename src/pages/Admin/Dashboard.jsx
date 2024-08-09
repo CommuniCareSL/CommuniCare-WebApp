@@ -2,7 +2,9 @@
 import Sidebar from '../../components/Admin/Sidebar';
 import CardSlider from '../../components/Admin/CardSlider';
 import DoughnutChart from '../../components/Admin/DoughnutChart';
-import CounterCard from '../../components/Admin/CounterCard';
+import CounterCardCitizen from '../../components/Admin/CounterCardCitizen';
+import CounterCardCivilOfficer from '../../components/Admin/CounterCardCivilOfficer';
+import CounterCardConstractor from '../../components/Admin/CounterCardConstractor';
 import AbsentOfficertable from '../../components/Admin/AbsentOfficertable';
 import Calendar from 'react-calendar';
 
@@ -34,10 +36,19 @@ const Dashboard = () => {
               <div className="admin-dashboard-leave-absent-approved">
                 <AbsentOfficertable />
               </div>
-              <div className="admin-dashboard-calender">
-                <h3 style={{fontWeight: '800'}}>Calender</h3>
-                <br />
-                <Calendar/>
+              <div className="admin-dashboard-number-content-details">
+                <div className="admin-dashboard-number-content-details-box">
+                  <h3>Number of registered Citizen</h3>
+                  <CounterCardCitizen />
+                </div>
+                <div className="admin-dashboard-number-content-details-box">
+                  <h3>Number of Civil-Officers</h3>
+                  <CounterCardCivilOfficer />
+                </div>
+                <div className="admin-dashboard-number-content-details-box">
+                  <h3>Number of Constractors</h3>
+                  <CounterCardConstractor />
+                </div>
               </div>
             </div>
 
@@ -45,15 +56,15 @@ const Dashboard = () => {
 
               {/* this will show complaint doughnut char as Unseen, inprogress and Completed */}
               <div className="admin-dashboard-complaint-summery">
-                <h4 style={{fontWeight: '800'}}>Status of Recived Complaints</h4>
+                <h4>Status of Recived Complaints</h4>
                 <DoughnutChart />
               </div>
 
               {/* this will show the number of citizens register to the system*/}
-              <div className="admin-dashboard-registeroffices">
+              {/* <div className="admin-dashboard-registeroffices">
                 <h3>Number of registered Citizen</h3>
                 <CounterCard />
-              </div>
+              </div> */}
               
             </div>
             
