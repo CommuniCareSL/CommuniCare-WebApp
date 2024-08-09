@@ -21,18 +21,121 @@
   background: linear-gradient(135deg, #000000, #074f8a);
 }
 
-.view-btn,
-.accept-btn,
-.reject-btn {
-  padding: 6px 12px;
-  margin: 2px;
-  border: none;
-  cursor: pointer;
-  border-radius: 10px;
+
+
+.admin-table-home-page {
+  flex-grow: 1;
+  padding: 20px;
+  min-height: 100vh;
+  min-width: auto;
+  margin-left: 85px;
+  transition: margin-left 0.4s ease;
+  background-color: #e8eff9;
+  overflow-y: auto;
 }
 
-.accept-btn:hover,
-.reject-btn:hover,
-.view-btn:hover {
-  transform: scale(1.025);
+.sidebar:hover ~ .admin-table-home-page {
+  margin-left: 260px;
+}
+
+.admin-table-title-container{
+  width: 93%;
+  margin-left: 35px;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2vh;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+
+.admin-table-title-container h3{
+  margin: 20px;
+  font-weight: 800;
+  color: #000;
+}
+
+.admin-table-table-tab-view-for-table-content{
+  width: 93%;
+  margin-left: 35px;
+  height: 80vh;
+  margin-bottom: 2vh;
+  background-color: #fff;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.newreg-content {
+  width: 80%; /* Adjust the percentage as needed */
+  max-width: 1200px; /* Optional: Set a maximum width */
+}
+
+
+@media (max-width: 768px) {
+  .Sadmin-table-home-page {
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  .Sadmin-table-title-container {
+    width: 100%;
+    margin-left: 0;
+    height: auto;
+    padding: 10px;
+  }
+
+  .Sadmin-table-title-container h3 {
+    margin: 10px;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .Sadmin-table-table-tab-view-for-table-content {
+    width: 100%;
+    margin-left: 0;
+    height: auto;
+    padding: 10px;
+    overflow-x: auto;
+  }
+
+  .newreg-content {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .newreg-search {
+    margin-bottom: 10px;
+    justify-content: center;
+  }
+
+  .newreg-input {
+    width: 100%;
+    padding-left: 40px; /* Adjust padding for the search icon */
+  }
+
+  .newreg-table th, .newreg-table td {
+    padding: 8px;
+    font-size: 14px; /* Adjust font size for better readability */
+  }
+
+  .newreg-table th:last-child,
+  .newreg-table td:last-child {
+    width: auto; /* Let the width adjust automatically */
+  }
+
+  .btn1 {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  /* Ensure buttons don't overflow and are centered */
+  .flex.justify-center.space-x-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
 }

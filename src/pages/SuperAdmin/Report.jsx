@@ -51,7 +51,7 @@ const Report = () => {
         labels: ['Male', 'Female'],
         datasets: [{
           data: [60, 40],
-          backgroundColor: ['rgba(9, 145, 255, 0.2)', '#b0bef7'],
+          backgroundColor: ['rgba(9, 145, 255, 0.2)', 'rgba(54, 162, 235, 0.9)'],
         }]
       },
       options: {
@@ -66,7 +66,7 @@ const Report = () => {
         labels: ['Road hazards', 'Stray animals', 'Garbage disposal'],
         datasets: [{
           data: [40, 30, 30],
-          backgroundColor: ['rgba(9, 145, 255, 0.2)', '#87d1e8', 'beige'],
+          backgroundColor: ['rgba(9, 145, 255, 0.2)', 'rgba(54, 162, 235, 0.8)', 'rgba(54, 162, 235, 0.5)'],
         }]
       },
       options: {

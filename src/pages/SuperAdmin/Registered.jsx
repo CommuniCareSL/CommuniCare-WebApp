@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Sidebar from '../../components/SuperAdmin/Sidebar';
+import '../../styles/pages/SuperAdmin/Registered.css';
 
 export const Newregistration = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -24,16 +25,19 @@ export const Newregistration = () => {
   );
 
   return (
-    <div className="flex bg-gray-100 min-h-screen">
+    <div>
       <Sidebar />
-      <div className="flex-1 p-4 lg:p-10 lg:ml-64">
-        <div className="bg-gradient-to-r from-black to-blue-900 rounded-lg shadow-md p-6 mb-6">
-          <h1 className="text-2xl lg:text-3xl font-bold text-white">Registered Pradeshiya Sabha</h1>
+      <div className="Sadmin-table-home-page">
+        <div className="Sadmin-table-title-container">
+        <h3 style={{marginLeft:'500px'}}>Registered Pradeshiya Sabha</h3>
         </div>
-        
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <div className="mb-4 flex justify-end">
-            <div className="relative">
+
+
+          <div className="Sadmin-table-table-tab-view-for-table-content">
+
+          <div className="newreg-content bg-white rounded-lg shadow-md p-4">
+          <div className="newreg-search mb-4 flex justify-end">
+            <div className="newreg-search-input relative">
               <input
                 type="text"
                 placeholder="Search..."
@@ -47,8 +51,8 @@ export const Newregistration = () => {
             </div>
           </div>
           
-          <div className="overflow-x-auto">
-            <table className="w-full table-auto">
+          <div className="">
+            <table className="newreg-table w-full table-auto">
               <thead className="bg-gradient-to-r from-black to-blue-900 text-white">
                 <tr>
                   <th className="px-4 py-2 text-center">Index</th>
@@ -65,27 +69,34 @@ export const Newregistration = () => {
                     <td className="px-4 py-2 text-center">{item.district}</td>
                     <td className="px-4 py-2 text-center">{item.pradeshiyaSabha}</td>
                     <td className="px-4 py-2 text-center">
-                      <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded">
+                      <button className="btn1">
                         View
                       </button>
                     </td>
                     <td className="px-4 py-2 text-center">
                       <div className="flex justify-center space-x-2">
-                        <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-3 rounded">
+                        <button className="btn1">
                           Edit
                         </button>
-                        <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded">
+                        <button className="btn1">
                           Delete
                         </button>
                       </div>
                     </td>
                   </tr>
+
                 ))}
               </tbody>
             </table>
+            
           </div>
         </div>
+            
+          </div>
+
       </div>
+      
+
     </div>
   );
 }

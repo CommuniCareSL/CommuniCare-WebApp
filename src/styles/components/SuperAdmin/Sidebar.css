@@ -35,13 +35,13 @@ body {
 .sidebar .sidebar-header {
   display: flex;
   align-items: center;
-  justify-content: center; /* Center the logo horizontally */
+  justify-content: center;
 }
 
 .sidebar .sidebar-header img {
-  width: 90px; /* Adjust the width as needed */
-  height: auto; /* Maintain aspect ratio */
-  border-radius: 50%; /* Optional: to keep the circular shape */
+  width: 70px;
+  height: auto;
+  border-radius: 50%;
 }
 
 .sidebar .sidebar-header h2 {
@@ -81,15 +81,15 @@ body {
   transition-delay: 0.2s;
 }
 
-.sidebar:hover .sidebar-links .menu-separator {
+/* .sidebar:hover .sidebar-links .menu-separator {
   transition-delay: 0s;
   transform: scaleX(0);
-}
+} */
 
 .sidebar-links {
   list-style: none;
   margin-top: 20px;
-  height: 80%;
+  height: 75%;
   overflow-y: auto;
   scrollbar-width: none;
 }
@@ -107,19 +107,33 @@ body {
   white-space: nowrap;
   padding: 15px 10px;
   text-decoration: none;
-  transition: 0.2s ease;
+  transition: color 0.2s ease, background 0.2s ease, border 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid transparent;
 }
 
 .sidebar-links li a:hover {
-  color: #161a2d;
-  background: #fff;
+  color: #5fb6fd;
+  background: linear-gradient(#333933, #222922);
   border-radius: 4px;
+  border: 1px solid #0991FF;
+  animation: glow 0.8s ease-out infinite alternate;
 }
 
+@keyframes glow {
+  0% {
+    border-color: #0991FF;
+    box-shadow: 0 0 5px rgba(0, 145, 255, 0.2), inset 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    border-color: #0991FF;
+    box-shadow: 0 0 20px rgba(0, 145, 255, 0.6), inset 0 0 10px rgba(0, 145, 255, 0.4);
+  }
+}
 .user-account {
   margin-top: auto;
   padding: 12px 10px;
   margin-left: -10px;
+
 }
 
 .user-profile {
@@ -131,27 +145,30 @@ body {
 .user-profile img {
   width: 42px;
   border-radius: 50%;
-  border: 2px solid #fff;
-}
-
-.user-profile h3 {
-  font-size: 1rem;
-  font-weight: 600;
-  color: black;
-}
-
-.user-profile span {
-  font-size: 0.775rem;
-  font-weight: 600;
-  color: #000000;
+  border: 1px solid #fff;
 }
 
 .user-detail {
-  margin-left: 23px;
-  white-space: nowrap;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column; /* Stack the text vertically */
+}
+
+.user-detail h3, .user-detail span {
+  color: #ffffff;
+  margin: 0; /* Remove default margin */
+}
+
+.user-detail h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.user-detail span {
+  font-size: 0.775rem;
+  font-weight: 600;
 }
 
 .sidebar:hover .user-account {
-  background: #fff;
   border-radius: 4px;
 }
