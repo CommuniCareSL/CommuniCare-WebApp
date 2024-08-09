@@ -136,15 +136,15 @@ body {
 
 .user-account {
   margin-top: auto;
-  padding: 12px 10px;
+  /* padding: 12px 10px; */
   margin-left: -10px;
 }
 
-/* .user-profile {
+.user-profile {
   display: flex;
   align-items: center;
   color: #161a2d;
-} */
+}
 
 .user-profile img {
   width: 42px;

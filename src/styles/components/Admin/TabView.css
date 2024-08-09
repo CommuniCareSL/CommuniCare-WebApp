@@ -32,14 +32,24 @@
 
 /* ---------------------search bar -------------------------*/
 
-.Complaints-search-bar{
+.Complaints-search-bar-and-fliter-dropdown{
     width: 100%;
     height: 6vh;
     display: flex;
     justify-content: flex-end;
 }
 
-.Complaints-search-bar button{
+.Complaints-search-bar-and-fliter-dropdown .complaints-search-bar{
+    width: 310px;
+    height: 5vh;
+}
+
+.Complaints-search-bar-and-fliter-dropdown .complaints-filter-dropdown{
+    width: 100px;
+    height: 5vh;
+}
+
+/* .Complaints-search-bar button{
     width: 30px;
     height: 5vh;
     background: #0991FF;
@@ -54,9 +64,9 @@
     transform: scale(0.9);
     background: #0074d3;
     color: #fff;
-  }
+  } */
 
-.Complaints-search-bar input{
+  .Complaints-search-bar-and-fliter-dropdown .complaints-search-bar input{
     width: 300px;
     height: 5vh;
     padding-left: 10px;
@@ -65,25 +75,25 @@
     border-radius: 10px;
 }
 
-.Complaints-search-bar input:hover{
+.Complaints-search-bar-and-fliter-dropdown .complaints-search-bar input:hover{
     border: 2px solid #0991FF;
 }
 
-.Complaints-search-bar input:focus{
+.Complaints-search-bar-and-fliter-dropdown .complaints-search-bar input:focus{
     border: 2px solid #007bff;
     outline: none
 }
 
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
     .Complaints-search-bar input{
         width: 120px;
     }
-}
+} */
 
 /* ---------------------search bar -------------------------*/
 
 .tab-content {
-    padding: 20px;
+    /* padding:  0 20px; */
     height: 50vh;
     width: 100%;
     overflow-y: auto;
