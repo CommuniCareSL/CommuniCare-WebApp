@@ -10,8 +10,7 @@ function UnseenComplaintsDetails() {
 
       <div className="unseen-complaints-profile-details">
         <img src={profileImg} alt="Profile Image" />
-        <h4>Officer User name</h4>
-        <p>Officer's regional office</p>
+        <h4>Citizen User name</h4>
       </div>
 
       <div className="unseen-complaints-citizen-form-details">
@@ -29,7 +28,7 @@ function UnseenComplaintsDetails() {
               <td className='citizen-form-details-first-column'><h4>Contact Info</h4></td>
               <td className='citizen-form-details-second-column'><p>0777123456</p></td>
             </tr>
-            <tr className='unseen-complaints-citizen-form-details-first-part'>
+            <tr className='unseen-complaints-citizen-form-details-Second-part'>
               <td className='citizen-form-details-first-column'><h4>Description</h4></td>
               <td className='citizen-form-details-second-column'>
                 <p>
