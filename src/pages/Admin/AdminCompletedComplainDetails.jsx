@@ -19,7 +19,7 @@ function AdminCompletedComplainDetails() {
     
             <div className="admin-unseen-complain-details-panel">
               <div className="admin-unseen-complain-detailed-panel-title">
-                <h3>Complaint Category Name</h3>
+                <h3>Complaint Category Name / Department</h3>
               </div>
     
               <div style={{borderBottom: '2px solid #0991FF'}}></div>

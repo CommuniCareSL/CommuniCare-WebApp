@@ -29,8 +29,8 @@ function UnseenComplaintsDetails() {
               <td className='citizen-form-details-second-column'><p>0777123456</p></td>
             </tr>
             <tr className='unseen-complaints-citizen-form-details-Second-part'>
-              <td className='citizen-form-details-first-column'><h4>Description</h4></td>
-              <td className='citizen-form-details-second-column'>
+              <td className='citizen-form-details-first-column-first-part'><h4>Description</h4></td>
+              <td className='citizen-form-details-second-column-second-part'>
                 <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                 Culpa quasi fugiat libero dicta exercitationem iure vero ratione 
@@ -39,6 +39,22 @@ function UnseenComplaintsDetails() {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                 Culpa quasi fugiat libero dicta exercitationem iure vero ratione 
                 tempore minus voluptates, praesentium dolores sit laboriosam, eum maiores 
+                repudiandae. Non, velit impedit
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Culpa quasi fugiat libero dicta exercitationem iure vero ratione 
+                tempore minus voluptates
+                repudiandae. Non, velit impedit
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Culpa quasi fugiat libero dicta exercitationem iure vero ratione 
+                tempore minus voluptates
+                repudiandae. Non, velit impedit
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Culpa quasi fugiat libero dicta exercitationem iure vero ratione 
+                tempore minus voluptates
+                repudiandae. Non, velit impedit
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Culpa quasi fugiat libero dicta exercitationem iure vero ratione 
+                tempore minus voluptates
                 repudiandae. Non, velit impedit
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                 Culpa quasi fugiat libero dicta exercitationem iure vero ratione 

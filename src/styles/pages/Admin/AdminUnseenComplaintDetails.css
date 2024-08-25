@@ -100,6 +100,8 @@
     width: 50%;
     padding-right: 20px;
     padding-left: 10px;
+    overflow: hidden;
+    overflow-y: auto;
   }
 
   .unseen-complaints-uploaded-images{
@@ -147,6 +149,16 @@
     padding-left: 20px;
   }
 
+  .citizen-form-details-first-column-first-part{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: auto;
+    width: 20%;
+    padding-left: 20px;
+    margin-top: 4vh;
+  }
+
   .citizen-form-details-second-column{
     width: 70%;
     height: 8vh;
@@ -156,6 +168,19 @@
 
   .citizen-form-details-second-column p{
     text-align: left;
+  }
+
+  .citizen-form-details-second-column-second-part{
+    width: 70%;
+    max-height: 8vh;
+    padding-left: 20px;
+    padding-right: 20px;
+    overflow-y: auto;
+  }
+
+  .citizen-form-details-second-column-second-part p{
+    text-align: left;
+    margin-bottom: 10px;
   }
 
   .Complaint-uploaded-completed-seal{
