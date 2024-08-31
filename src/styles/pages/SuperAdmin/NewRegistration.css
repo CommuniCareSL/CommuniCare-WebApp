@@ -68,6 +68,10 @@
   justify-content: center;
 }
 
+.tabCon{
+  width: 1100px;
+}
+
 .newreg-content {
   width: 80%; /* Adjust the percentage as needed */
   max-width: 1200px; /* Optional: Set a maximum width */
