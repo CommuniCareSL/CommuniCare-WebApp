@@ -35,7 +35,7 @@ export const Newregistration = () => {
 
           <div className="Sadmin-table-table-tab-view-for-table-content">
 
-          <div className="newreg-content bg-white rounded-lg shadow-md p-4">
+          <div className="tabCon">
           <div className="newreg-search mb-4 flex justify-end">
             <div className="newreg-search-input relative">
               <input
