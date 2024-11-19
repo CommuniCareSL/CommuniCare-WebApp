@@ -7,7 +7,7 @@ const Features = () => {
 
       <div className="text-center mb-12">
           <h1 className="text-4xl lg:text-6xl font-bold text-blue-500">
-            Features Communi Care?
+            Features Communi Care
           </h1>
         </div>
         {/* Feature Card 1 */}
