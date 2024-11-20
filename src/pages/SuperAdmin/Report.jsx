@@ -84,6 +84,8 @@ const Report = () => {
     };
   }, []);
 
+
+  // sidebar issue fixed
   return (
    <div>
       <Sidebar />
