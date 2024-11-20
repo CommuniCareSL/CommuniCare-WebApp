@@ -55,17 +55,16 @@ const Dashboard = () => {
   };
 
   return (
-    <div className='admin-table-home-page'>
-      <Sidebar
-        onMouseEnter={() => setIsSidebarHovered(true)}
-        onMouseLeave={() => setIsSidebarHovered(false)}
-      />
+<div>
+<Sidebar/>
+<div className='admin-table-home-page'>
+      
 
       <div className={`flex bg-gray-100 min-h-screen transition-all ${isSidebarHovered ? 'ml-64' : 'ml-16'}`}>
         <div className="flex-1 p-4 lg:p-10 min-h-screen">
-          <h1 className="text-2xl lg:text-3xl font-bold text-blue-600 mb-6" style={{marginLeft:'400px'}}>{greeting}!</h1>
+          <h1 className="text-2xl lg:text-3xl font-bold text-blue-600 mb-6 ml-4 sm:ml-16">{greeting}!</h1>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-6" style={{width:'1200px'}}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-6">
             {cardData.map((card, index) => (
               <div key={index} className="bg-white rounded-lg shadow-md p-4 lg:p-6 flex items-center justify-between">
                 <div>
@@ -78,14 +77,14 @@ const Dashboard = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 mb-6">
-            <div className="bg-white rounded-lg shadow-md p-4 lg:p-6" style={{width:'500px', marginLeft:'100px',marginTop:'40px'}}>
+            <div className="bg-white rounded-lg shadow-md p-4 lg:p-6">
               <h2 className="text-lg lg:text-xl font-semibold text-gray-700 mb-4">Users Registration by Month</h2>
               <div className="h-64">
                 <Line data={lineChartData} options={{ responsive: true, maintainAspectRatio: false }} />
               </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow-md p-4 lg:p-6" style={{width:'500px',marginTop:'40px'}}>
+            <div className="bg-white rounded-lg shadow-md p-4 lg:p-6">
               <h2 className="text-lg lg:text-xl font-semibold text-gray-700 mb-4">Users by Gender</h2>
               <div className="h-64">
                 <Pie data={pieChartData} options={{ responsive: true, maintainAspectRatio: false }} />
@@ -93,15 +92,15 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6" >
-            <div className="bg-white rounded-lg shadow-md p-4 lg:p-6" style={{width:'500px', marginLeft:'100px',marginTop:'40px'}}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+            <div className="bg-white rounded-lg shadow-md p-4 lg:p-6">
               <h2 className="text-lg lg:text-xl font-semibold text-gray-700 mb-4">Monthly Complaints</h2>
               <div className="h-64">
                 <Bar data={barChartData} options={{ responsive: true, maintainAspectRatio: false }} />
               </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow-md p-4 lg:p-6" style={{width:'500px',marginTop:'40px'}}>
+            <div className="bg-white rounded-lg shadow-md p-4 lg:p-6">
               <h2 className="text-lg lg:text-xl font-semibold text-gray-700 mb-4">Calendar</h2>
               <Calendar
                 onChange={setDate}
@@ -115,6 +114,7 @@ const Dashboard = () => {
         </div>
       </div>
     </div>
+</div>
   );
 };
 
