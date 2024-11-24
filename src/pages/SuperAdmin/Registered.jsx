@@ -5,19 +5,42 @@ import '../../styles/pages/SuperAdmin/Registered.css';
 
 export const Newregistration = () => {
   const [searchQuery, setSearchQuery] = useState('');
-
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const data = [
+  const [data, setData] = useState([
     { index: 1, district: 'Colombo', pradeshiyaSabha: 'Homagama' },
     { index: 2, district: 'Kalutara', pradeshiyaSabha: 'Agalwatta' },
     { index: 3, district: 'Colombo', pradeshiyaSabha: 'Dehiwala' },
     { index: 4, district: 'Gampaha', pradeshiyaSabha: 'Attanagalla' },
     { index: 5, district: 'Kalutara', pradeshiyaSabha: 'Matugama' },
     { index: 6, district: 'Gampaha', pradeshiyaSabha: 'Kelaniya' }
-  ];
+  ]);
+  const [editingIndex, setEditingIndex] = useState(null);
+  const [editDistrict, setEditDistrict] = useState('');
+  const [editPradeshiyaSabha, setEditPradeshiyaSabha] = useState('');
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleEdit = (item) => {
+    setEditingIndex(item.index); // Set the index being edited
+    setEditDistrict(item.district); // Prefill current district
+    setEditPradeshiyaSabha(item.pradeshiyaSabha); // Prefill current pradeshiya sabha
+  };
+
+  const handleSave = () => {
+    setData((prevData) =>
+      prevData.map((item) =>
+        item.index === editingIndex
+          ? { ...item, district: editDistrict, pradeshiyaSabha: editPradeshiyaSabha }
+          : item
+      )
+    );
+    setEditingIndex(null); // Exit edit mode
+  };
+
+  const handleCancel = () => {
+    setEditingIndex(null); // Exit edit mode without saving
+  };
 
   const filteredData = data.filter(item =>
     item.district.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -63,21 +86,49 @@ export const Newregistration = () => {
                 <tbody>
                   {filteredData.map((item) => (
                     <tr key={item.index} className="border-b border-gray-200 hover:bg-gray-100">
-                      <td className="px-4 py-2 text-center">{item.index}</td>
-                      <td className="px-4 py-2 text-center">{item.district}</td>
-                      <td className="px-4 py-2 text-center">{item.pradeshiyaSabha}</td>
-                      <td className="px-4 py-2 text-center">
-                        {/* Updated link to PradeshiyaSabhaDetails with the index */}
-                        <Link to={`/pradeshiya-sabha-details/${item.index}`}>
-                          <button className="btn1">View</button>
-                        </Link>
-                      </td>
-                      <td className="px-4 py-2 text-center">
-                        <div className="flex justify-center space-x-2">
-                          <button className="btn1">Edit</button>
-                          <button className="btn1">Delete</button>
-                        </div>
-                      </td>
+                      {editingIndex === item.index ? (
+                        <>
+                          <td className="px-4 py-2 text-center">{item.index}</td>
+                          <td className="px-4 py-2 text-center">
+                            <input
+                              type="text"
+                              value={editDistrict}
+                              onChange={(e) => setEditDistrict(e.target.value)}
+                              className="border rounded px-2 py-1"
+                            />
+                          </td>
+                          <td className="px-4 py-2 text-center">
+                            <input
+                              type="text"
+                              value={editPradeshiyaSabha}
+                              onChange={(e) => setEditPradeshiyaSabha(e.target.value)}
+                              className="border rounded px-2 py-1"
+                            />
+                          </td>
+                          <td className="px-4 py-2 text-center">
+                            <button className="btn1" onClick={handleSave}>Save</button>
+                            <button className="btn1 ml-2" onClick={handleCancel}>Cancel</button>
+                          </td>
+                          <td className="px-4 py-2 text-center"></td>
+                        </>
+                      ) : (
+                        <>
+                          <td className="px-4 py-2 text-center">{item.index}</td>
+                          <td className="px-4 py-2 text-center">{item.district}</td>
+                          <td className="px-4 py-2 text-center">{item.pradeshiyaSabha}</td>
+                          <td className="px-4 py-2 text-center">
+                            <Link to={`/pradeshiya-sabha-details/${item.index}`}>
+                              <button className="btn1">View</button>
+                            </Link>
+                          </td>
+                          <td className="px-4 py-2 text-center">
+                            <div className="flex justify-center space-x-2">
+                              <button className="btn1" onClick={() => handleEdit(item)}>Edit</button>
+                              <button className="btn1">Delete</button>
+                            </div>
+                          </td>
+                        </>
+                      )}
                     </tr>
                   ))}
                 </tbody>
