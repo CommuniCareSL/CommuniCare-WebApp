@@ -18,10 +18,12 @@ import AdminViewCitizen from "./pages/Admin/AdminViewCitizen";
 import AdminViewCitizenDetailed from "./pages/Admin/AdminViewCitizenDetailed";
 import AdminViewBlockedCitizenDetails from "./pages/Admin/AdminViewBlockedCitizenDetails";
 
+import officer_complaintView from "./pages/Civil Officer/ComplaintView";
+
 import Dashboard_Officer from "./pages/Civil Officer/Dashboard";
 import Calendar_Officer from "./pages/Civil Officer/calendar_schedule";
 import Appointment_Officer from "./pages/Civil Officer/appointments";
-import Requests_Officer from "./pages/Civil Officer/Service_requests";
+import Requests_Officer from "./pages/Civil Officer/Service_requests";getToastPlacement
 import Documents_Officer from "./pages/Civil Officer/Citizen_documents";
 import ServiceDetails from "./pages/Civil Officer/Service_details";
 import NewAppointment from "./pages/Civil Officer/New_appointment";
@@ -56,6 +58,7 @@ const App = () => {
         <Route path="/AdminViewCitizenDetailed" element={<AdminViewCitizenDetailed />} />
         <Route path="/AdminViewBlockedCitizenDetails" element={<AdminViewBlockedCitizenDetails />} />
 
+        <Route path="/complaintsFor" element={<officer_complaintView/>} />
         {/* Officer Routes */}
         <Route path="/dashboard_Officer" element={<Dashboard_Officer />} />
         <Route path="/calendar_Officer" element={<Calendar_Officer />} />

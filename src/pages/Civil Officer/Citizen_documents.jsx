@@ -21,12 +21,27 @@ import {
     Checkbox,
     TableCaption,
     Tooltip,
+    AlertDialog,
+    AlertDialogBody,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogContent,
+    AlertDialogOverlay,
+    AlertDialogCloseButton,
+    useDisclosure
   } from '@chakra-ui/react';
 
 
 const Citizen_documents = () => {
     const [sortOption, setSortOption] = useState('Latest'); // default state 'latest'
     const [selectedRows, setSelectedRows] = useState([]);
+    const [reason, setReason] = useState('');
+
+    // Disclosure hooks for dialogs
+    const { isOpen: isCompletedOpen, onOpen: onCompletedOpen, onClose: onCompletedClose } = useDisclosure();
+    const { isOpen: isInReviewOpen, onOpen: onInReviewOpen, onClose: onInReviewClose } = useDisclosure();
+    const { isOpen: isRejectOpen, onOpen: onRejectOpen, onClose: onRejectClose } = useDisclosure();
+    const cancelRef = React.useRef();
 
     const documents = [
         { id: 1, name:'Erin Downes', doc: 'Requesting letter',service:'Allocation of City Hall', date:'21-04-24', status: 'In Review' },
@@ -59,11 +74,10 @@ const Citizen_documents = () => {
     
       const showButtons = selectedRows.length > 0;
 
-      const [reason, setReason] = useState('');
-
     const handleRejectSubmit = () => {
         // Handle the reject reason submission logic here
         console.log('Reject reason:', reason);
+        onRejectClose();
     };
 
     return(
@@ -158,34 +172,82 @@ const Citizen_documents = () => {
         </div>
 
         {showButtons && (
-            <div className="flex items-center mr-8">
-                <Button colorScheme='green' className='mr-2'>Completed</Button>
-                <Button colorScheme='blue' className='mr-2'>In-Review</Button>
-                {/* for taking the reject reason use Modal component from chakra ui */}
-                <Popover>
-            <PopoverTrigger>
-              <Button colorScheme='red'>Reject</Button>
-            </PopoverTrigger>
-            <PopoverContent>
-              <PopoverArrow />
-              <PopoverCloseButton />
-              <PopoverHeader>Reject Reason(Be specific as possible) </PopoverHeader>
-              <PopoverBody>
-                <Stack spacing={4}>
-                  <Textarea
-                    placeholder="Please provide a reason for rejection"
-                    value={reason}
-                    onChange={(e) => setReason(e.target.value)}
-                  />
-                </Stack>
-              </PopoverBody>
-              <PopoverFooter display="flex" justifyContent="flex-end">
-                <Button colorScheme="red" onClick={handleRejectSubmit}>Submit</Button>
-              </PopoverFooter>
-            </PopoverContent>
-          </Popover>
-                {/* <Button colorScheme='red'>Reject</Button> */}
-            </div>
+                        <div className="flex items-center mr-8">
+                            <Button colorScheme='green' className='mr-2' onClick={onCompletedOpen}>Completed</Button>
+                            <Button colorScheme='blue' className='mr-2' onClick={onInReviewOpen}>In-Review</Button>
+                            
+                            <AlertDialog
+                                isOpen={isCompletedOpen}
+                                leastDestructiveRef={cancelRef}
+                                onClose={onCompletedClose}
+                            >
+                                <AlertDialogOverlay>
+                                    <AlertDialogContent>
+                                        <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                                            Confirm Completion
+                                        </AlertDialogHeader>
+                                        <AlertDialogCloseButton />
+                                        <AlertDialogBody>
+                                            Are you sure you want to mark the selected documents as completed?
+                                        </AlertDialogBody>
+                                        <AlertDialogFooter>
+                                            <Button ref={cancelRef} onClick={onCompletedClose}>
+                                                Cancel
+                                            </Button>
+                                            <Button colorScheme="green" onClick={onCompletedClose} ml={3}>
+                                                Confirm
+                                            </Button>
+                                        </AlertDialogFooter>
+                                    </AlertDialogContent>
+                                </AlertDialogOverlay>
+                            </AlertDialog>
+
+                            <AlertDialog
+                                isOpen={isInReviewOpen}
+                                leastDestructiveRef={cancelRef}
+                                onClose={onInReviewClose}
+                            >
+                                <AlertDialogOverlay>
+                                    <AlertDialogContent>
+                                        <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                                            Confirm In Review
+                                        </AlertDialogHeader>
+                                        <AlertDialogCloseButton />
+                                        <AlertDialogBody>
+                                            Are you sure you want to mark the selected documents as in review?
+                                        </AlertDialogBody>
+                                        <AlertDialogFooter>
+                                            <Button ref={cancelRef} onClick={onInReviewClose}>
+                                                Cancel
+                                            </Button>
+                                            <Button colorScheme="blue" onClick={onInReviewClose} ml={3}>
+                                                Confirm
+                                            </Button>
+                                        </AlertDialogFooter>
+                                    </AlertDialogContent>
+                                </AlertDialogOverlay>
+                            </AlertDialog>
+
+                            <Popover>
+                                <PopoverTrigger>
+                                    <Button colorScheme='red'>Reject</Button>
+                                </PopoverTrigger>
+                                <PopoverContent>
+                                    <PopoverArrow />
+                                    <PopoverCloseButton />
+                                    <PopoverHeader>Reject Reason</PopoverHeader>
+                                    <PopoverBody>
+                                        <Textarea value={reason} onChange={(e) => setReason(e.target.value)} placeholder='Enter your reason here' />
+                                    </PopoverBody>
+                                    <PopoverFooter>
+                                        <ButtonGroup size='sm'>
+                                            <Button variant='outline' onClick={onRejectClose}>Cancel</Button>
+                                            <Button colorScheme='red' onClick={handleRejectSubmit}>Submit</Button>
+                                        </ButtonGroup>
+                                    </PopoverFooter>
+                                </PopoverContent>
+                            </Popover>
+                        </div>
                     )}
         </div>
 {/* 
@@ -283,3 +345,4 @@ const Citizen_documents = () => {
 };
 
 export default Citizen_documents;
+
