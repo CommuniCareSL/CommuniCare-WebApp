@@ -21,7 +21,7 @@ function TwoTabTableView() {
   return (
     <div className="tabs-or-status-of-complaints">
 
-      <div className="Complaints-search-bar">
+      <div className="Complaints-search-bar-and-fliter-dropdown">
         <input type="text" placeholder="Search..." value={searchTerm} onChange={handleSearchChange}/>
         <button><span class="material-symbols-outlined">tune</span></button>
       </div>

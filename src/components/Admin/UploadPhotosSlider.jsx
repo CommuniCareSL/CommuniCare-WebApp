@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import logo from '../../assets/Admin/DarkLogo.png';
+import roadImage from '../../assets/Admin/road_damages_article_2.jpg';
 
 
 const UploadPhotosSlider = () => {
@@ -50,19 +51,19 @@ const UploadPhotosSlider = () => {
       <Slider {...settings}>
 
         <div className="uploaded-image-card" style={{height:'40vh', width: '80%', background: '#fff'}}>
-            <img src={logo} alt="DarkLogo.png" style={{width:'100%', height:'auto' , borderRadius:'15px'}}/>
+            <img src={roadImage} alt="DarkLogo.png" style={{width:'100%', height:'auto' , borderRadius:'15px'}}/>
         </div>
 
         <div className="uploaded-image-card" style={{height:'40vh', width: '80%', background: '#fff'}}>
-            <img src={logo} alt="DarkLogo.png" style={{width:'100%', height:'auto' , borderRadius:'15px'}}/>
+            <img src={roadImage} alt="DarkLogo.png" style={{width:'100%', height:'auto' , borderRadius:'15px'}}/>
         </div>
 
         <div className="uploaded-image-card" style={{height:'40vh', width: '80%', background: '#fff'}}>
-            <img src={logo} alt="DarkLogo.png" style={{width:'100%', height:'auto' , borderRadius:'15px'}}/>
+            <img src={roadImage} alt="DarkLogo.png" style={{width:'100%', height:'auto' , borderRadius:'15px'}}/>
         </div>
 
         <div className="uploaded-image-card" style={{height:'40vh', width: '80%', background: '#fff'}}>
-            <img src={logo} alt="DarkLogo.png" style={{width:'100%', height:'auto' , borderRadius:'15px'}}/>
+            <img src={roadImage} alt="DarkLogo.png" style={{width:'100%', height:'auto' , borderRadius:'15px'}}/>
         </div>
       </Slider>
     
