@@ -32,7 +32,7 @@ const Login = () => {
             navigate("/dashboard");
             break;
           case "OFFICER":
-            navigate("/dashboard_Officer");
+            navigate("/officer_complaint");
             break;
           default:
             navigate("/");
