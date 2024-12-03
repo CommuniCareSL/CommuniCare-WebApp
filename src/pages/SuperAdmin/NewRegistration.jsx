@@ -9,6 +9,17 @@ export const Newregistration = () => {
     setSearchQuery(e.target.value);
   };
 
+  const handleAccept = (pradeshiyaSabha) => {
+    alert(`Accepted request for ${pradeshiyaSabha}!`);
+  };
+
+  const handleReject = (pradeshiyaSabha) => {
+    const confirmReject = window.confirm(`Are you sure you want to reject the request for ${pradeshiyaSabha}?`);
+    if (confirmReject) {
+      alert(`Rejected request for ${pradeshiyaSabha}.`);
+    }
+  };
+
   const data = [
     { index: 1, district: 'Colombo', pradeshiyaSabha: 'Homagama' },
     { index: 2, district: 'Kalutara', pradeshiyaSabha: 'Agalwatta' },
@@ -31,11 +42,9 @@ export const Newregistration = () => {
           <h3 style={{ marginLeft: '500px' }}>Newly requested Pradeshiya Sabha</h3>
         </div>
 
-
-
         <div className="admin-table-table-tab-view-for-table-content">
-          <div className="newreg-content bg-white rounded-lg shadow-md p-4">
-            <div className="newreg-search mb-4 flex justify-end">
+          <div className="tabCon">
+            <div className="newreg-search mb-6 flex justify-end">
               <div className="newreg-search-input relative">
                 <input
                   type="text"
@@ -72,10 +81,16 @@ export const Newregistration = () => {
                     </td>
                     <td className="px-4 py-2 text-center">
                       <div className="flex justify-center space-x-2">
-                        <button className="btn1">
+                        <button
+                          className="btn1"
+                          onClick={() => handleAccept(item.pradeshiyaSabha)}
+                        >
                           Accept
                         </button>
-                        <button className="btn1">
+                        <button
+                          className="btn1"
+                          onClick={() => handleReject(item.pradeshiyaSabha)}
+                        >
                           Reject
                         </button>
                       </div>
@@ -89,6 +104,6 @@ export const Newregistration = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Newregistration;
