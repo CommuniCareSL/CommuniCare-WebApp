@@ -52,7 +52,7 @@ export const Newregistration = () => {
       <Sidebar />
       <div className="Sadmin-table-home-page">
         <div className="Sadmin-table-title-container">
-          <h3 style={{ marginLeft: '500px' }}>Registered Pradeshiya Sabha</h3>
+          <h3 style={{ marginLeft: '500px' }}>Pradeshiya Sabha</h3>
         </div>
 
         <div className="Sadmin-table-table-tab-view-for-table-content">
@@ -124,7 +124,7 @@ export const Newregistration = () => {
                           <td className="px-4 py-2 text-center">
                             <div className="flex justify-center space-x-2">
                               <button className="btn1" onClick={() => handleEdit(item)}>Edit</button>
-                              <button className="btn1">Delete</button>
+                              {/* <button className="btn1">Delete</button> */}
                             </div>
                           </td>
                         </>
