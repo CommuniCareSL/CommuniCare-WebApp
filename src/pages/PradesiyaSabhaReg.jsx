@@ -42,18 +42,18 @@ const PradesiyaSabhaReg = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[black] to-[#0991FF] flex justify-center items-center px-4">
-      <div className="w-full max-w-3xl bg-white/100 backdrop-blur-md rounded-lg shadow-lg p-8">
-        <h2 className="text-3xl font-bold text-center text-black mb-6">
+      <div className="w-full max-w-3xl bg-white/100 backdrop-blur-md rounded-lg shadow-lg p-6">
+        <h2 className="text-2xl font-bold text-center text-black mb-4">
           Register Your Pradeshiya Sabha
         </h2>
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="district" className="block text-lg font-semibold text-black">
               Select District
             </label>
             <select
               id="district"
-              className="w-full p-3 border border-black rounded-md focus:ring focus:ring-[#0991FF]"
+              className="w-full p-2 border border-black rounded-md focus:ring focus:ring-[#0991FF]"
               value={district}
               onChange={(e) => setDistrict(e.target.value)}
             >
@@ -71,7 +71,7 @@ const PradesiyaSabhaReg = () => {
             <select
               id="pradeshiya-sabha"
               disabled={!district}
-              className="w-full p-3 border border-black rounded-md focus:ring focus:ring-[#0991FF]"
+              className="w-full p-2 border border-black rounded-md focus:ring focus:ring-[#0991FF]"
             >
               <option value="">Select a Pradeshiya Sabha</option>
               {pradeshiyaSabhas.map((ps, index) => (
@@ -88,7 +88,7 @@ const PradesiyaSabhaReg = () => {
             <input
               type="text"
               id="register-number"
-              className="w-full p-3 border border-black rounded-md focus:ring focus:ring-[#0991FF]"
+              className="w-full p-2 border border-black rounded-md focus:ring focus:ring-[#0991FF]"
               placeholder="Enter register number"
             />
           </div>
@@ -99,7 +99,7 @@ const PradesiyaSabhaReg = () => {
             <div className="flex items-center">
               <label
                 htmlFor="document-upload"
-                className="cursor-pointer bg-[#0991FF] text-white py-2 px-4 rounded-md"
+                className="cursor-pointer bg-[#0991FF] text-white py-2 px-3 rounded-md"
               >
                 Choose file
               </label>
@@ -124,7 +124,7 @@ const PradesiyaSabhaReg = () => {
             <input
               type="text"
               id="registrant-name"
-              className="w-full p-3 border border-black rounded-md focus:ring focus:ring-[#0991FF]"
+              className="w-full p-2 border border-black rounded-md focus:ring focus:ring-[#0991FF]"
               placeholder="Enter name"
             />
           </div>
@@ -135,14 +135,14 @@ const PradesiyaSabhaReg = () => {
             <input
               type="text"
               id="contact-number"
-              className="w-full p-3 border border-black rounded-md focus:ring focus:ring-[#0991FF]"
+              className="w-full p-2 border border-black rounded-md focus:ring focus:ring-[#0991FF]"
               placeholder="Enter contact number"
             />
           </div>
           <div>
             <button
               type="submit"
-              className="w-full py-3 bg-[#0991FF] text-white font-semibold rounded-md shadow-lg hover:bg-[#007ACC] transition-all"
+              className="w-full py-2 bg-[#0991FF] text-white font-semibold rounded-md shadow-lg hover:bg-[#007ACC] transition-all"
             >
               Register
             </button>
