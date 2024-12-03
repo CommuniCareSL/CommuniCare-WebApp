@@ -1,19 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import UserService from "../../service/UserService";
 import { useNavigate } from 'react-router-dom';
 
 function AddNewOfficerForm() {
     const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
+        email: "",
         name: "", // ensure it's always controlled with an initial value
         address: "",
         nic: "",
         contactNumber: "",
-        email: "",
         password: "",
         sabhaDepartmentId: ""
     });
-    
+
+    const [profileInfo, setProfileInfo] = useState(null); // Profile data state
+    const [isLoading, setIsLoading] = useState(true); // Loading state for profile
+
+    useEffect(() => {
+        fetchProfileInfo(); // Fetch profile on mount
+    }, []);
+
+    const fetchProfileInfo = async () => {
+        try {
+            const token = localStorage.getItem('token'); // Retrieve the token from localStorage
+            const response = await UserService.getYourProfile(token);
+            setProfileInfo(response.employees); // Set the profile data
+            setIsLoading(false); // Set loading to false once data is fetched
+        } catch (error) {
+            console.error('Error fetching profile information:', error);
+            setIsLoading(false); // Set loading to false in case of error
+        }
+    };
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prevState => ({
@@ -24,11 +44,20 @@ function AddNewOfficerForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            // Call the register method from UserService
+        // if (!profileInfo) {
+        //     alert('Profile information not available!');
+        //     return; // Prevent submission if profile is not fetched
+        // }
 
+        try {
             const token = localStorage.getItem('token');
-            await UserService.register(formData, token);
+            const dataToSend = { 
+                ...formData, 
+                // sabaha: profileInfo.sabaha, // Use sabaha from the fetched profile
+                role: "OFFICER" 
+            };
+
+            await UserService.register(dataToSend, token);
 
             // Clear the form fields after successful registration
             setFormData({
@@ -37,14 +66,13 @@ function AddNewOfficerForm() {
                 password: '',
                 address: '',
                 nic: '',
-                sabhaDepartmentId: ''
+                sabhaDepartmentId: '',
+                contactNumber: ''
             });
             alert('User registered successfully');
-            navigate('/admin/user-management');
 
         } catch (error) {
-            // console.error('Error registering user:', error);
-            alert('User Added to System');
+            alert('Sorry, something went wrong');
             setFormData({
                 name: '',
                 email: '',
@@ -56,6 +84,10 @@ function AddNewOfficerForm() {
             });
         }
     };
+
+    if (isLoading) {
+        return <div>Loading profile...</div>; // Optionally show a loading state while fetching profile
+    }
     
 
   return (
@@ -71,11 +103,11 @@ function AddNewOfficerForm() {
             </div>
 
             <div className="add-new-officer-NIC-number">
-                <input type="text" name="nic" placeholder="NIC" value={formData.nic} onChange={handleInputChange} required/>
+                <input type="text" name="nic" placeholder="NIC" value={formData.nic} onChange={handleInputChange} maxlength="12" required/>
             </div>
 
             <div className="add-new-officer-contact-number">
-                <input type='number' name="contactNumber" placeholder="Contact Number" value={formData.contactNumber} onChange={handleInputChange} required/>
+                <input type='tel' name="contactNumber" placeholder="Contact Number" value={formData.contactNumber} onChange={handleInputChange} pattern="[0-9]{10}" maxLength="10" required/>
             </div>
 
             <div style={{border: '3px solid #0991ff', padding: '0', marginTop: '2vh', marginBottom: '2vh'}}></div>
@@ -85,7 +117,7 @@ function AddNewOfficerForm() {
                     <input type="text" name="email" placeholder="User name" value={formData.email} onChange={handleInputChange} required/>
                 </div>
                 <div className="add-new-officer-last-name">
-                    <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleInputChange} required/>
+                    <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleInputChange} minLength="8" required/>
                 </div>
             </div>
 
@@ -96,10 +128,12 @@ function AddNewOfficerForm() {
                     }}
                  required>
                     <option value="" disabled className='placeholder-selcet' style={{color:'#a2a2a2'}}>Please choose the Department</option>
-                    <option value="1">Department 1</option>
-                    <option value="2">Department 2</option>
-                    <option value="3">Department 3</option>
-                    <option value="4">Department 4</option>
+                    <option value="1">Super Administration Division</option>
+                    <option value="2">Administration Division</option>
+                    <option value="3">Health Division</option>
+                    <option value="4">Account Division</option>
+                    <option value="5">Work and Plan Division</option>
+                    <option value="6">Development Division</option>
                 </select>
             </div>
 
