@@ -17,6 +17,7 @@ import AdminAddedContractorDetails from "./pages/Admin/AdminAddedContractorDetai
 import AdminViewCitizen from "./pages/Admin/AdminViewCitizen";
 import AdminViewCitizenDetailed from "./pages/Admin/AdminViewCitizenDetailed";
 import AdminViewBlockedCitizenDetails from "./pages/Admin/AdminViewBlockedCitizenDetails";
+import AdminReport from "./pages/Admin/AdminReport";
 
 import OfficerComplaintView from "./pages/Civil Officer/Complaint_view";
 import SingleComplaint from './pages/Civil Officer/Single_Complaint_view';
@@ -58,6 +59,8 @@ const App = () => {
         <Route path="/AdminViewCitizen" element={<AdminViewCitizen />} />
         <Route path="/AdminViewCitizenDetailed" element={<AdminViewCitizenDetailed />} />
         <Route path="/AdminViewBlockedCitizenDetails" element={<AdminViewBlockedCitizenDetails />} />
+        <Route path="/AdminReport" element={<AdminReport />} />
+        
 
         <Route path="/officer_complaint" element={<OfficerComplaintView />} />
         {/* <Route path="/Single_complaint/:id" component={SingleComplaint} /> */}

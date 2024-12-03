@@ -51,15 +51,15 @@ const Sidebar = () => {
             Citizens
           </a>
         </li>
-        <li>
+        {/* <li>
           <a href="#">
             <span className="material-symbols-outlined">build</span>
             Services
           </a>
-        </li>
+        </li> */}
         
         <li>
-          <a href="#">
+          <a href="/AdminReport" onClick={(e) => handleClick(e, '/AdminReport')}>
             <span className="material-symbols-outlined">overview</span>
             Report
           </a>
