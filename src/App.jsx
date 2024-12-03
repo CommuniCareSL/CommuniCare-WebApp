@@ -24,7 +24,7 @@ import SingleComplaint from './pages/Civil Officer/Single_Complaint_view';
 import Dashboard_Officer from "./pages/Civil Officer/Dashboard";
 import Calendar_Officer from "./pages/Civil Officer/calendar_schedule";
 import Appointment_Officer from "./pages/Civil Officer/appointments";
-import Requests_Officer from "./pages/Civil Officer/Service_requests";
+import Requests_Officer from "./pages/Civil Officer/Service_requests";getToastPlacement
 import Documents_Officer from "./pages/Civil Officer/Citizen_documents";
 import ServiceDetails from "./pages/Civil Officer/Service_details";
 import NewAppointment from "./pages/Civil Officer/New_appointment";
@@ -63,6 +63,11 @@ const App = () => {
         {/* <Route path="/Single_complaint/:id" component={SingleComplaint} /> */}
         <Route path="/Single_complaint/:id" element={<SingleComplaint />} />
 
+        <Route path="/officer_complaint" element={<OfficerComplaintView />} />
+        {/* <Route path="/Single_complaint/:id" component={SingleComplaint} /> */}
+        <Route path="/Single_complaint/:id" element={<SingleComplaint />} />
+
+        
         {/* Officer Routes */}
         <Route path="/dashboard_Officer" element={<Dashboard_Officer />} />
         <Route path="/calendar_Officer" element={<Calendar_Officer />} />
