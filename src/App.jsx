@@ -18,6 +18,9 @@ import AdminViewCitizen from "./pages/Admin/AdminViewCitizen";
 import AdminViewCitizenDetailed from "./pages/Admin/AdminViewCitizenDetailed";
 import AdminViewBlockedCitizenDetails from "./pages/Admin/AdminViewBlockedCitizenDetails";
 
+import OfficerComplaintView from "./pages/Civil Officer/Complaint_view";
+import SingleComplaint from './pages/Civil Officer/Single_Complaint_view';
+
 import Dashboard_Officer from "./pages/Civil Officer/Dashboard";
 import Calendar_Officer from "./pages/Civil Officer/calendar_schedule";
 import Appointment_Officer from "./pages/Civil Officer/appointments";
@@ -55,6 +58,10 @@ const App = () => {
         <Route path="/AdminViewCitizen" element={<AdminViewCitizen />} />
         <Route path="/AdminViewCitizenDetailed" element={<AdminViewCitizenDetailed />} />
         <Route path="/AdminViewBlockedCitizenDetails" element={<AdminViewBlockedCitizenDetails />} />
+
+        <Route path="/officer_complaint" element={<OfficerComplaintView />} />
+        {/* <Route path="/Single_complaint/:id" component={SingleComplaint} /> */}
+        <Route path="/Single_complaint/:id" element={<SingleComplaint />} />
 
         {/* Officer Routes */}
         <Route path="/dashboard_Officer" element={<Dashboard_Officer />} />
