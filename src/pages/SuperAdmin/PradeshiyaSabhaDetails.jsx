@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const secondDropdownOptions = {
@@ -95,31 +95,90 @@ const PradeshiyaSabhaDetails = () => {
   }
 
   const { district, pradeshiyaSabha: name } = pradeshiyaSabha;
-  const details = secondDropdownOptions[district]?.find((d) => d.name === name);
+  const initialDetails = secondDropdownOptions[district]?.find((d) => d.name === name);
+
+  const [details, setDetails] = useState(initialDetails);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDetails((prevDetails) => ({
+      ...prevDetails,
+      [name]: value,
+    }));
+  };
+
+  const handleSave = () => {
+    // Simulate saving the updated details (you can replace this with actual save logic)
+    setIsEditing(false);
+    console.log('Saved details:', details);
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-black to-blue-900">
       <div className="w-full max-w-3xl mx-auto p-6 sm:p-8 md:p-16 shadow-lg shadow-black rounded-lg">
-        <h1 className="text-3xl font-semibold text-blue-600 text-center mb-6">
-          Sabha Details
-        </h1>
+        <h1 className="text-3xl font-semibold text-blue-600 text-center mb-6">Details</h1>
         <div className="space-y-6 text-white grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-4">
             <h2 className="text-xl font-semibold">Admin Info</h2>
             {details && (
               <>
-                <p>
-                  <strong>Admin Name:</strong> {details.adminName}
-                </p>
-                <p>
-                  <strong>NIC:</strong> {details.nic}
-                </p>
-                <p>
-                  <strong>Phone:</strong> {details.adminPhone}
-                </p>
-                <p>
-                  <strong>Email:</strong> {details.adminEmail}
-                </p>
+                <div>
+                  <strong>Admin Name:</strong>
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      name="adminName"
+                      value={details.adminName}
+                      onChange={handleChange}
+                      className="text-black p-2 rounded"
+                    />
+                  ) : (
+                    details.adminName
+                  )}
+                </div>
+                <div>
+                  <strong>NIC:</strong>
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      name="nic"
+                      value={details.nic}
+                      onChange={handleChange}
+                      className="text-black p-2 rounded"
+                    />
+                  ) : (
+                    details.nic
+                  )}
+                </div>
+                <div>
+                  <strong>Phone:</strong>
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      name="adminPhone"
+                      value={details.adminPhone}
+                      onChange={handleChange}
+                      className="text-black p-2 rounded"
+                    />
+                  ) : (
+                    details.adminPhone
+                  )}
+                </div>
+                <div>
+                  <strong>Email:</strong>
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      name="adminEmail"
+                      value={details.adminEmail}
+                      onChange={handleChange}
+                      className="text-black p-2 rounded"
+                    />
+                  ) : (
+                    details.adminEmail
+                  )}
+                </div>
               </>
             )}
           </div>
@@ -128,24 +187,75 @@ const PradeshiyaSabhaDetails = () => {
             <h2 className="text-xl font-semibold">Sabha Info</h2>
             {details && (
               <>
-                <p>
+                <div>
                   <strong>District:</strong> {district}
-                </p>
-                <p>
+                </div>
+                <div>
                   <strong>Pradeshiya Sabha:</strong> {name}
-                </p>
-                <p>
-                  <strong>Address:</strong> {details.address}
-                </p>
-                <p>
-                  <strong>Phone:</strong> {details.phone}
-                </p>
-                <p>
-                  <strong>Email:</strong> {details.email}
-                </p>
+                </div>
+                <div>
+                  <strong>Address:</strong>
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      name="address"
+                      value={details.address}
+                      onChange={handleChange}
+                      className="text-black p-2 rounded"
+                    />
+                  ) : (
+                    details.address
+                  )}
+                </div>
+                <div>
+                  <strong>Phone:</strong>
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      name="phone"
+                      value={details.phone}
+                      onChange={handleChange}
+                      className="text-black p-2 rounded"
+                    />
+                  ) : (
+                    details.phone
+                  )}
+                </div>
+                <div>
+                  <strong>Email:</strong>
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      name="email"
+                      value={details.email}
+                      onChange={handleChange}
+                      className="text-black p-2 rounded"
+                    />
+                  ) : (
+                    details.email
+                  )}
+                </div>
               </>
             )}
           </div>
+        </div>
+
+        <div className="mt-6 text-center">
+          {isEditing ? (
+            <button
+              onClick={handleSave}
+              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+            >
+              Save
+            </button>
+          ) : (
+            <button
+              onClick={() => setIsEditing(true)}
+              className="btn1"
+            >
+              Edit
+            </button>
+          )}
         </div>
       </div>
     </div>

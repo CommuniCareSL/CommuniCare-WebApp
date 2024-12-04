@@ -123,8 +123,9 @@ export const Newregistration = () => {
                           </td>
                           <td className="px-4 py-2 text-center">
                             <div className="flex justify-center space-x-2">
-                              <button className="btn1" onClick={() => handleEdit(item)}>Edit</button>
-                              {/* <button className="btn1">Delete</button> */}
+                            <Link to={`/pradeshiya-sabha-details/${item.index}`}>
+                              <button className="btn1">Edit</button>
+                            </Link>
                             </div>
                           </td>
                         </>
