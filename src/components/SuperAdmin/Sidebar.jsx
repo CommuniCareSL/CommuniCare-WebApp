@@ -20,12 +20,12 @@ const Sidebar = () => {
             Dashboard
           </a>
         </li>
-        <li>
+        {/* <li>
           <a href="/NewRegistration">
             <span className="material-symbols-outlined">person_add</span>
             New Registration
           </a>
-        </li>
+        </li> */}
         <li>
           <a href="/Registered">
             <span className="material-symbols-outlined">verified_user</span>
