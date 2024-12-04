@@ -46,8 +46,8 @@ const Dashboard = () => {
                   <CounterCardCivilOfficer />
                 </div>
                 <div className="admin-dashboard-number-content-details-box">
-                  <h3>Number of Constractors</h3>
-                  <CounterCardConstractor />
+                  {/* <h3>Number of Constractors</h3>
+                  <CounterCardConstractor /> */}
                 </div>
               </div>
             </div>

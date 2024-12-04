@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../../components/Admin/Sidebar';
 import Calendar from 'react-calendar';
+import DoughnutChart from '../../components/Admin/DoughnutChart';
 import 'react-calendar/dist/Calendar.css';
 import { Line, Pie, Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, ArcElement, BarElement, Title, Tooltip, Legend } from 'chart.js';
@@ -19,8 +20,8 @@ const AdminReport = () => {
     }, []);
   
     const cardData = [
-      { title: 'Total Users', value: 204, icon: 'bx bx-user' },
-      { title: 'Total Officers', value: 56, icon: 'bx bxs-user-detail' },
+      { title: 'Total Users', value: 12, icon: 'bx bx-user' },
+      { title: 'Total Officers', value: 5, icon: 'bx bxs-user-detail' },
       { title: 'Number of complaints', value: 12, icon: 'bx bxs-error' },
     ];
   
@@ -28,7 +29,7 @@ const AdminReport = () => {
       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
       datasets: [{
         label: 'Users',
-        data: [10, 5, 15, 12, 8, 20, 25, 18, 24, 30, 22, 28],
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 2],
         borderColor: '#0991FF',
         tension: 0.1
       }]
@@ -43,10 +44,10 @@ const AdminReport = () => {
     };
   
     const barChartData = {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
       datasets: [{
         label: 'Monthly Complaints',
-        data: [65, 59, 80, 81, 56, 55],
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 2],
         backgroundColor: 'rgba(54, 162, 235, 0.5)',
       }]
     };
@@ -79,17 +80,17 @@ const AdminReport = () => {
             </div>
   
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 mb-6">
-              <div className="bg-white rounded-lg shadow-md p-4 lg:p-6">
+              <div className="6bg-white rounded-lg shadow-md p-4 lg:p-6 flex flex-col items-center">
                 <h2 className="text-lg lg:text-xl font-semibold text-gray-700 mb-4">Users Registration by Month</h2>
                 <div className="h-64">
                   <Line data={lineChartData} options={{ responsive: true, maintainAspectRatio: false }} />
                 </div>
               </div>
   
-              <div className="bg-white rounded-lg shadow-md p-4 lg:p-6">
-                <h2 className="text-lg lg:text-xl font-semibold text-gray-700 mb-4">Users by Gender</h2>
-                <div className="h-64">
-                  <Pie data={pieChartData} options={{ responsive: true, maintainAspectRatio: false }} />
+              <div className="bg-white rounded-lg shadow-md p-4 lg:p-6 flex flex-col items-center">
+                <h2 className="text-lg lg:text-xl font-semibold text-gray-700 mb-4">Complaints</h2>
+                <div className="flex items-center justify-center h-96 w-full">
+                  <DoughnutChart />
                 </div>
               </div>
             </div>

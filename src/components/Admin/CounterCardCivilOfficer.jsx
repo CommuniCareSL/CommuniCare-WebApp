@@ -22,7 +22,7 @@ function CounterCard() {
     <div style={containerStyle}>
       <CountUp
             start={0}
-            end={500}
+            end={5}
             duration={2.75}
             separator=","
             decimals={0}
