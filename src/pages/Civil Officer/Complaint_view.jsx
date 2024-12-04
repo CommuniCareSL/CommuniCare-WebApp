@@ -61,7 +61,7 @@ const Complaint_view = () => {
         <div className='flex h-screen'>
             <Sidebar />
             <div className='overflow-y-auto bg-white flex-1'>
-                <h2 className='ml-20 mb-3 mt-5 font-semibold text-3xl'>Department : Health Division</h2>
+                <h2 className='ml-20 mb-3 mt-5 font-semibold text-3xl'>Department : Work and Plan Division</h2>
                 <div className='ml-20 font-semibold'>
                     <span>Officer : Sunil Wijerathna</span>
                 </div>
