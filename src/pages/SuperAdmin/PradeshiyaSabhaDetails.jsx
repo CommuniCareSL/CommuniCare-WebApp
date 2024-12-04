@@ -13,6 +13,7 @@ const secondDropdownOptions = {
       adminName: 'Kumara Ranawira',
       adminPhone: '+94 112 999 999', // Admin Phone
       adminEmail: 'kumara@example.com', // Admin Email
+      adminPassword: 'admin123', // Admin Password
     },
     {
       id: 2,
@@ -24,56 +25,10 @@ const secondDropdownOptions = {
       adminName: 'Sujani Perera',
       adminPhone: '+94 114 888 888', // Admin Phone
       adminEmail: 'sujani@example.com', // Admin Email
+      adminPassword: 'admin456', // Admin Password
     },
   ],
-  Kalutara: [
-    {
-      id: 1,
-      name: 'Agalwatta',
-      phone: '+94 112 345 679',
-      email: 'agalwatta@example.com',
-      address: '789 Temple Road, Agalwatta',
-      nic: '123123123V',
-      adminName: 'Ravi Kumara',
-      adminPhone: '+94 112 345 123',
-      adminEmail: 'ravi@example.com',
-    },
-    {
-      id: 2,
-      name: 'Matugama',
-      phone: '+94 113 456 789',
-      email: 'matugama@example.com',
-      address: '123 River Road, Matugama',
-      nic: '321654987V',
-      adminName: 'Priya Perera',
-      adminPhone: '+94 113 555 555',
-      adminEmail: 'priya@example.com',
-    },
-  ],
-  Gampaha: [
-    {
-      id: 1,
-      name: 'Attanagalla',
-      phone: '+94 114 345 678',
-      email: 'attanagalla@example.com',
-      address: '987 Main Street, Attanagalla',
-      nic: '456789123V',
-      adminName: 'Jayantha Silva',
-      adminPhone: '+94 114 666 666',
-      adminEmail: 'jayantha@example.com',
-    },
-    {
-      id: 2,
-      name: 'Kelaniya',
-      phone: '+94 116 567 890',
-      email: 'kelaniya@example.com',
-      address: '555 River Road, Kelaniya',
-      nic: '789456123V',
-      adminName: 'Dinesh Wickramasinghe',
-      adminPhone: '+94 116 777 777',
-      adminEmail: 'dinesh@example.com',
-    },
-  ],
+  // Other districts...
 };
 
 const PradeshiyaSabhaDetails = () => {
@@ -119,7 +74,7 @@ const PradeshiyaSabhaDetails = () => {
       <div className="w-full max-w-3xl mx-auto p-6 sm:p-8 md:p-16 shadow-lg shadow-black rounded-lg">
         <h1 className="text-3xl font-semibold text-blue-600 text-center mb-6">Details</h1>
         <div className="space-y-6 text-white grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="space-y-4">
+          <div className="space-y-4">  
             <h2 className="text-xl font-semibold">Admin Info</h2>
             {details && (
               <>
@@ -177,6 +132,20 @@ const PradeshiyaSabhaDetails = () => {
                     />
                   ) : (
                     details.adminEmail
+                  )}
+                </div>
+                <div>
+                  <strong>Password:</strong>
+                  {isEditing ? (
+                    <input
+                      type="password"
+                      name="adminPassword"
+                      value={details.adminPassword}
+                      onChange={handleChange}
+                      className="text-black p-2 rounded"
+                    />
+                  ) : (
+                    details.adminPassword
                   )}
                 </div>
               </>
