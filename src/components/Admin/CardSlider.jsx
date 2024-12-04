@@ -55,7 +55,7 @@ const CardSlider = () => {
             <h3>Renting</h3>
           </div>
           <div className="card-slider-section-view-cards-details">
-            <p>Remaining Service Requests  :</p><h5>40</h5>
+            <p>Remaining Service Requests  :</p><h5>60</h5>
           </div>
           <div className="card-slider-section-view-cards-progress-bar">
            <ProgressBar completed={60} bgColor='#0991FF' animateOnRender={true} labelSize='10px' height='12px'/>
@@ -78,10 +78,10 @@ const CardSlider = () => {
         <div className="card-slider-section-view-cards">
           <div className="card-slider-section-view-cards-title">
             <span className="material-symbols-outlined">dashboard</span>
-            <h3>Renting Service</h3>
+            <h3>Cemetery Reservation</h3>
           </div>
           <div className="card-slider-section-view-cards-details">
-            <p>Remaining Service Requests  :</p><h5>40</h5>
+            <p>Remaining Service Requests  :</p><h5>80</h5>
           </div>
           <div className="card-slider-section-view-cards-progress-bar">
            <ProgressBar completed={80} bgColor='#0991FF' animateOnRender={true} labelSize='10px' height='12px'/>
@@ -94,7 +94,7 @@ const CardSlider = () => {
             <h3>Renting Service</h3>
           </div>
           <div className="card-slider-section-view-cards-details">
-            <p>Remaining Service Requests  :</p><h5>40</h5>
+            <p>Remaining Service Requests  :</p><h5>10</h5>
           </div>
           <div className="card-slider-section-view-cards-progress-bar">
            <ProgressBar completed={10} bgColor='#0991FF' animateOnRender={true} labelSize='10px' height='12px'/>
@@ -107,7 +107,7 @@ const CardSlider = () => {
             <h3>Renting Service</h3>
           </div>
           <div className="card-slider-section-view-cards-details">
-            <p>Remaining Service Requests  :</p><h5>40</h5>
+            <p>Remaining Service Requests  :</p><h5>20</h5>
           </div>
           <div className="card-slider-section-view-cards-progress-bar">
            <ProgressBar completed={20} bgColor='#0991FF' animateOnRender={true} labelSize='10px' height='12px'/>
@@ -120,7 +120,7 @@ const CardSlider = () => {
             <h3>Renting Service</h3>
           </div>
           <div className="card-slider-section-view-cards-details">
-            <p>Remaining Service Requests  :</p><h5>40</h5>
+            <p>Remaining Service Requests  :</p><h5>50</h5>
           </div>
           <div className="card-slider-section-view-cards-progress-bar">
            <ProgressBar completed={50} bgColor='#0991FF' animateOnRender={true} labelSize='10px' height='12px'/>
@@ -133,7 +133,7 @@ const CardSlider = () => {
             <h3>Renting Service</h3>
           </div>
           <div className="card-slider-section-view-cards-details">
-            <p>Remaining Service Requests  :</p><h5>40</h5>
+            <p>Remaining Service Requests  :</p><h5>90</h5>
           </div>
           <div className="card-slider-section-view-cards-progress-bar">
            <ProgressBar completed={90} bgColor='#0991FF' animateOnRender={true} labelSize='10px' height='12px'/>
@@ -146,7 +146,7 @@ const CardSlider = () => {
             <h3>Renting Service</h3>
           </div>
           <div className="card-slider-section-view-cards-details">
-            <p>Remaining Service Requests  :</p><h5>40</h5>
+            <p>Remaining Service Requests  :</p><h5>60</h5>
           </div>
           <div className="card-slider-section-view-cards-progress-bar">
            <ProgressBar completed={60} bgColor='#0991FF' animateOnRender={true} labelSize='10px' height='12px'/>

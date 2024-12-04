@@ -88,6 +88,19 @@ class UserService{
         }
     };
 
+    static async getComplaintsWithStatusZero(token){
+        try{
+            const response = await axios.get(`${UserService.BASE_URL}/app/api/user/complaints/status/0`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            return response.data;
+        }catch(err){
+            throw err;
+        }
+    };
+
 
     static async deleteUser(userId, token){
         try{
