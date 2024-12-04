@@ -19,7 +19,7 @@ function CitizenBlockDetails() {
             <tbody>
               <tr className='added-civisl-officer-personal-detail-table-structure-column-1'>
                 <td className='added-civisl-officer-personal-detail-table-structure-column-1-first-part'><h4>Name</h4></td>
-                <td className='added-civisl-officer-personal-detail-table-structure-column-1-second-part'><p>FirstName LastName</p></td>
+                <td className='added-civisl-officer-personal-detail-table-structure-column-1-second-part'><p>Indewari Gamage</p></td>
               </tr>
               <tr className='added-civisl-officer-personal-detail-table-structure-column-1'>
                 <td className='added-civisl-officer-personal-detail-table-structure-column-1-first-part'><h4>NIC</h4></td>

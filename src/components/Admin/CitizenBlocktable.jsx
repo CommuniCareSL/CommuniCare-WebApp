@@ -1,6 +1,7 @@
 import React from 'react';
 
 import profileImg from '../../assets/Admin/profile-img.jpg';
+import x from '../../assets/SuperAdmin/LightLogo.png';
 
 const CitizenBlocktable = () => {
   return (
@@ -11,13 +12,13 @@ const CitizenBlocktable = () => {
                 <a href="/AdminViewBlockedCitizenDetails" onClick={(e) => handleClick(e, '/AdminViewBlockedCitizenDetails')}>
                     <tr className="complaint-table-with-details-row">
                         <td className="complaint-table-with-details-row-column-1">
-                            <img src={profileImg} alt="Profile Image" />
+                            <img src={x} alt="Profile Image" />
                         </td>
                         <td className="complaint-table-with-details-row-column-2">
-                            <h3>user name</h3>
+                            <h3>Indewari Gamage</h3>
                         </td>
                         <td className="complaint-table-with-details-row-column-3">
-                            <p>Citizen's Regional Office</p>
+                            <p>indewarigamage@gmail.com</p>
                         </td>
                         <td className="complaint-table-with-details-row-column-4">
                             {/* <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">visibility</span></button> */}
@@ -31,13 +32,13 @@ const CitizenBlocktable = () => {
                 <a href="/AdminViewBlockedCitizenDetails" onClick={(e) => handleClick(e, '/AdminViewBlockedCitizenDetails')}>
                     <tr className="complaint-table-with-details-row">
                         <td className="complaint-table-with-details-row-column-1">
-                            <img src={profileImg} alt="Profile Image" />
+                            <img src={x} alt="Profile Image" />
                         </td>
                         <td className="complaint-table-with-details-row-column-2">
-                            <h3>user name</h3>
+                            <h3>Palitha Siriwardana</h3>
                         </td>
                         <td className="complaint-table-with-details-row-column-3">
-                            <p>Citizen's Regional Office</p>
+                            <p>palithasiriwardana@gmail.com</p>
                         </td>
                         <td className="complaint-table-with-details-row-column-4">
                             {/* <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">visibility</span></button> */}
@@ -51,13 +52,13 @@ const CitizenBlocktable = () => {
                 <a href="/AdminViewBlockedCitizenDetails" onClick={(e) => handleClick(e, '/AdminViewBlockedCitizenDetails')}>
                     <tr className="complaint-table-with-details-row">
                         <td className="complaint-table-with-details-row-column-1">
-                            <img src={profileImg} alt="Profile Image" />
+                            <img src={x} alt="Profile Image" />
                         </td>
                         <td className="complaint-table-with-details-row-column-2">
-                            <h3>user name</h3>
+                            <h3>Samanatha Badderama</h3>
                         </td>
                         <td className="complaint-table-with-details-row-column-3">
-                            <p>Citizen's Regional Office</p>
+                            <p>samanthabadderana@gmail.com</p>
                         </td>
                         <td className="complaint-table-with-details-row-column-4">
                             {/* <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">visibility</span></button> */}
@@ -71,13 +72,13 @@ const CitizenBlocktable = () => {
                 <a href="/AdminViewBlockedCitizenDetails" onClick={(e) => handleClick(e, '/AdminViewBlockedCitizenDetails')}>
                     <tr className="complaint-table-with-details-row">
                         <td className="complaint-table-with-details-row-column-1">
-                            <img src={profileImg} alt="Profile Image" />
+                            <img src={x} alt="Profile Image" />
                         </td>
                         <td className="complaint-table-with-details-row-column-2">
-                            <h3>user name</h3>
+                            <h3>shila abewardana</h3>
                         </td>
                         <td className="complaint-table-with-details-row-column-3">
-                            <p>Citizen's Regional Office</p>
+                            <p>shilaabewardana@gmail.com</p>
                         </td>
                         <td className="complaint-table-with-details-row-column-4">
                             {/* <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">visibility</span></button> */}
@@ -91,13 +92,13 @@ const CitizenBlocktable = () => {
                 <a href="/AdminViewBlockedCitizenDetails" onClick={(e) => handleClick(e, '/AdminViewBlockedCitizenDetails')}>
                     <tr className="complaint-table-with-details-row">
                         <td className="complaint-table-with-details-row-column-1">
-                            <img src={profileImg} alt="Profile Image" />
+                            <img src={x} alt="Profile Image" />
                         </td>
                         <td className="complaint-table-with-details-row-column-2">
-                            <h3>user name</h3>
+                            <h3>Miluvan Gunasekara</h3>
                         </td>
                         <td className="complaint-table-with-details-row-column-3">
-                            <p>Citizen's Regional Office</p>
+                            <p>miluvangunasekara@gmail.com</p>
                         </td>
                         <td className="complaint-table-with-details-row-column-4">
                             {/* <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">visibility</span></button> */}
@@ -111,13 +112,13 @@ const CitizenBlocktable = () => {
                 <a href="/AdminViewBlockedCitizenDetails" onClick={(e) => handleClick(e, '/AdminViewBlockedCitizenDetails')}>
                     <tr className="complaint-table-with-details-row">
                         <td className="complaint-table-with-details-row-column-1">
-                            <img src={profileImg} alt="Profile Image" />
+                            <img src={x} alt="Profile Image" />
                         </td>
                         <td className="complaint-table-with-details-row-column-2">
-                            <h3>user name</h3>
+                            <h3>Siripala Gamage</h3>
                         </td>
                         <td className="complaint-table-with-details-row-column-3">
-                            <p>Citizen's Regional Office</p>
+                            <p>sirigamage@gmail.com</p>
                         </td>
                         <td className="complaint-table-with-details-row-column-4">
                             {/* <button onClick={(e) => e.stopPropagation()}><span class="material-symbols-outlined">visibility</span></button> */}
