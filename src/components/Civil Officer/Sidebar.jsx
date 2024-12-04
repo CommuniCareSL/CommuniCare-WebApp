@@ -3,11 +3,13 @@ import '../../styles/components/Civil officer/Sidebar.css';
 import profileImg from '../../assets/Admin/profile-img.jpg';
 import { Link } from 'react-router-dom';
 import { BsArrowLeftShort , BsSearch} from "react-icons/bs";
-import { RiDashboardFill, RiCalendar2Line, RiServiceLine, RiBarChart2Fill, RiProfileLine, RiLogoutBoxLine, RiFileList2Line } from 'react-icons/ri';
+import { RiDashboardFill, RiCalendar2Line, RiServiceLine, RiBarChart2Fill, RiProfileLine,  RiLogoutBoxLine, RiFileList2Line } from 'react-icons/ri';
+import { FaRegCommentAlt } from 'react-icons/fa';
 import { useState } from 'react';
 
 const Menus = [
     { title: 'Home', icon:<RiDashboardFill />, path: '/dashboard_Officer'},
+    { title: 'Complaints', icon:<FaRegCommentAlt /> , path: '/officer_complaint'},
     { title: 'Calendar Schedule', icon:<RiCalendar2Line /> , path: '/calendar_Officer'},
     { title: 'Appointments', icon:<RiFileList2Line />, path:'/appointment_Officer' },
     { title: 'Service Requests', icon:<RiServiceLine />, path:'/requests_Officer' },

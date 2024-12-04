@@ -1,6 +1,7 @@
-import { React, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Box, Image, SimpleGrid, Modal, ModalOverlay, ModalContent, ModalBody, Select, Textarea, Button, Alert, AlertIcon, useDisclosure, FormControl, FormLabel } from '@chakra-ui/react';
+import MapComponent from './MapComponent'; 
 
 const SingleComplaint = () => {
   const { id } = useParams();
@@ -10,17 +11,23 @@ const SingleComplaint = () => {
     'https://via.placeholder.com/150',
     'https://via.placeholder.com/150',
     'https://via.placeholder.com/150',
-    // Add more image URLs as needed
   ];
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedImage, setSelectedImage] = useState('');
   const [status, setStatus] = useState("PENDING");
+  const [newStatus, setNewStatus] = useState("");
   const [remark, setRemark] = useState("");
   const [rejectReason, setRejectReason] = useState("");
   const [otherReason, setOtherReason] = useState("");
   const [alertOpen, setAlertOpen] = useState(false);
   const [isRejected, setIsRejected] = useState(false);
+  const [submittedRemark, setSubmittedRemark] = useState("");
+  const [submittedRejectReason, setSubmittedRejectReason] = useState("");
+
+  // Sample latitude and longitude for demonstration
+  const latitude = 6.9022;
+  const longitude = 79.8607;
 
   const handleImageClick = (image) => {
     setSelectedImage(image);
@@ -28,7 +35,7 @@ const SingleComplaint = () => {
   };
 
   const handleStatusChange = (event) => {
-    setStatus(event.target.value);
+    setNewStatus(event.target.value);
   };
 
   const handleRemarkChange = (event) => {
@@ -37,31 +44,43 @@ const SingleComplaint = () => {
 
   const handleRejectReasonChange = (event) => {
     setRejectReason(event.target.value);
-    if (event.target.value !== "Other") {
+    if (event.target.value === "Other") {
+      setOtherReason(""); // Clear other reason if not "Other"
+    } else {
       setOtherReason(""); // Clear other reason if not "Other"
     }
   };
 
   const handleConfirmStatusChange = () => {
-    if (status === "REJECTED") {
-      setRemark(rejectReason === "Other" ? otherReason : rejectReason);
-      setIsRejected(true);
-    }
     setAlertOpen(true); // Show alert before confirming status change
   };
 
-  const handleConfirmReject = () => {
-    setRemark(rejectReason === "Other" ? otherReason : rejectReason);
-    setStatus("REJECTED");
-    setAlertOpen(true);
+  const handleSubmitStatusChange = () => {
+    setStatus(newStatus);
+    setNewStatus("");
+    setAlertOpen(false);
+  };
+
+  const handleCancelStatusChange = () => {
+    setAlertOpen(false);
+    setNewStatus(""); 
   };
 
   const handleSubmitRemark = () => {
-    // Logic to handle remark submission
+    setSubmittedRemark(remark); 
+    setRemark(""); 
+  };
+
+  const handleSubmitRejectReason = () => {
+    setSubmittedRejectReason(rejectReason === "Other" ? otherReason : rejectReason);
+    setRejectReason(""); 
+    setOtherReason(""); 
+    setStatus("REJECTED");
+    setIsRejected(true);
   };
 
   useEffect(() => {
-    // Equalize the height of left and right columns
+    
     const leftColumn = document.querySelector('.left-column');
     const rightColumn = document.querySelector('.right-column');
     const handleResize = () => {
@@ -81,7 +100,7 @@ const SingleComplaint = () => {
       {/* Left Column: Complaint Details */}
       <div className='left-column bg-white h-full overflow-y-auto m-5 w-2/3 ml-10 shadow-md rounded-md'>
         <p className='font-semibold text-lg m-5'>
-          <span className='text-blue-700'>Status : </span>
+          <span className='text-blue-700'>Status : </span>  
           {status}
         </p>
 
@@ -127,113 +146,99 @@ const SingleComplaint = () => {
         </p>
 
         <p className='m-5'>
-          <span className='text-blue-700 text-lg'>Date/Time Submitted : </span><br />
-          mm/dd/yyyy 21:00 pm 
+          <span className='text-blue-700 text-lg'>Date Submitted : </span><br />
+          12/4/2021
         </p>
 
-        {status === "REJECTED" || status === "CLOSED" ? (
+        {/* Display Submitted Remark */}
+        {submittedRemark && (
           <p className='m-5'>
             <span className='text-blue-700 text-lg'>Remark : </span><br />
-            {remark}
+            {submittedRemark}
           </p>
-        ) : null}
+        )}
+
+        {submittedRejectReason && (
+          <p className='m-5'>
+            <span className='text-blue-700 text-lg'>Reject Reason : </span><br />
+            {submittedRejectReason}
+          </p>
+        )}
+
+        {/* Map Component */}
+        <div className="m-5 h-96">
+          <MapComponent latitude={latitude} longitude={longitude} />
+        </div>
       </div>
 
-      {/* Right Column: Actions */}
-      {status !== "REJECTED" && status !== "CLOSED" && (
-        <div className='right-column bg-slate-200 h-full m-5 w-1/3 mr-10 rounded-md flex flex-col space-y-5'>
-          {/* Change Status */}
-          <div className='bg-white shadow-md rounded-md p-5'>
-            <p className='font-semibold mb-2'>Change Status</p>
-            <FormControl mb={4}>
-              {/* <FormLabel>Select Status</FormLabel> */}
-              <Select
-                value={status}
-                onChange={handleStatusChange}
-                placeholder="Select Status"
-              >
-                {['INPROGRESS', 'RESOLVED', 'CLOSED'].map((option) => 
-                  option !== status && <option key={option} value={option}>{option}</option>
-                )}
-              </Select>
-            </FormControl>
-            <Button colorScheme="blue" onClick={handleConfirmStatusChange} w="full">Change Status</Button>
+      {/* Right Column: Action Form */}
+      <div className={`right-column bg-white h-full m-5 w-1/3 mr-10 shadow-md rounded-md ${isRejected ? 'pointer-events-none' : ''}`}>
+        <div className='p-5'>
+          <FormControl mb={4}>
+            <FormLabel>Change Status</FormLabel>
+            <Select value={newStatus} onChange={handleStatusChange} placeholder="Select new status">
+              <option value="PENDING">PENDING</option>
+              <option value="IN_PROGRESS">IN_PROGRESS</option>
+              <option value="RESOLVED">RESOLVED</option>
+              <option value="REJECTED">REJECTED</option>
+            </Select>
+            <Button colorScheme="blue" size="sm" mt={2} onClick={handleConfirmStatusChange}>
+              Change Status
+            </Button>
+          </FormControl>
 
-            {/* Status change alert */}
-            {alertOpen && (
-              <Alert status="warning" variant="left-accent" mt={4}>
-                <AlertIcon />
-                Are you sure you want to change the status to <strong>{status}</strong>?
-                <Button colorScheme="green" size="sm" ml={2}  onClick={() => setAlertOpen(false)}>
+          {/* Alert for Confirming Status Change */}
+          {alertOpen && (
+            <Alert status="warning">
+              <AlertIcon />
+              <div>
+                <p>Are you sure you want to change the status?</p>
+                <Button colorScheme="blue" size="sm" mt={2} onClick={handleSubmitStatusChange}>
                   Confirm
                 </Button>
-                <Button colorScheme="red" size="sm" ml={2} onClick={() => setAlertOpen(false)}>
+                <Button colorScheme="red" size="sm" mt={2} ml={2} onClick={handleCancelStatusChange}>
                   Cancel
                 </Button>
-              </Alert>
+              </div>
+            </Alert>
+          )}
+
+          <FormControl mb={4}>
+            <FormLabel>Add Remark</FormLabel>
+            <Textarea
+              value={remark}
+              onChange={handleRemarkChange}
+              placeholder="Add a remark"
+              maxLength={200}
+            />
+            <Button colorScheme="blue" size="sm" mt={2} onClick={handleSubmitRemark}>
+              Submit Remark
+            </Button>
+          </FormControl>
+
+          <FormControl mb={4}>
+            <FormLabel>Reject Reason</FormLabel>
+            <Select value={rejectReason} onChange={handleRejectReasonChange} placeholder="Select reject reason">
+              <option value="Invalid Complaint">Invalid Complaint</option>
+              <option value="Insufficient Information">Insufficient Information</option>
+              <option value="Other">Other</option>
+            </Select>
+            {rejectReason === 'Other' && (
+              <FormControl mb={4}>
+                <Textarea
+                  value={otherReason}
+                  onChange={(e) => setOtherReason(e.target.value)}
+                  placeholder="Provide your reason"
+                  maxLength={200}
+                />
+              </FormControl>
             )}
-          </div>
-
-          {/* Add Remark */}
-          <div className='bg-white shadow-md rounded-md p-5'>
-            <p className='font-semibold'>Add Remark</p>
-            <FormControl mb={4}>
-              <FormLabel>Remark</FormLabel>
-              <Textarea
-                value={remark}
-                onChange={handleRemarkChange}
-                placeholder="Enter your remark"
-                maxLength={200}
-                resize="vertical"
-              />
-              <p className="text-sm text-gray-500">Word Limit: {remark.length}/200</p>
-              <Button colorScheme="blue" size="sm" mt={2} onClick={handleSubmitRemark}>
-                Submit Remark
-              </Button>
-            </FormControl>
-          </div>
-
-          {/* Reject Reason */}
-          <div className='bg-white shadow-md rounded-md p-5'>
-            <p className='font-semibold mb-2'>Reject This Complaint ?</p>
-            <FormControl mb={4}>
-              {/* <FormLabel>Reject Complaint</FormLabel> */}
-              <Button colorScheme="red" onClick={() => setIsRejected(true)} w="full">Reject Complaint</Button>
-            </FormControl>
-
-            {isRejected && (
-              <>
-                <FormControl mb={4}>
-                  <FormLabel>Reason for Rejection</FormLabel>
-                  <Select
-                    value={rejectReason}
-                    onChange={handleRejectReasonChange}
-                    placeholder="Select a reason"
-                  >
-                    <option value="Invalid Request">Invalid Request</option>
-                    <option value="Duplicate Complaint">Duplicate Complaint</option>
-                    <option value="Other">Other</option>
-                  </Select>
-                </FormControl>
-
-                {rejectReason === 'Other' && (
-                  <FormControl mb={4}>
-                    <FormLabel>Please specify reason</FormLabel>
-                    <Textarea
-                      value={otherReason}
-                      onChange={(e) => setOtherReason(e.target.value)}
-                      placeholder="Enter brief reason"
-                      resize="vertical"
-                    />
-                    <p className="text-sm text-gray-500">Word Limit: {otherReason.length}/200</p>
-                  </FormControl>
-                )}
-                <Button colorScheme="green" onClick={handleConfirmReject} w="full">Confirm Rejection</Button>
-              </>
-            )}
-          </div>
+            <Button colorScheme="red" size="sm" mt={2} onClick={handleSubmitRejectReason}>
+              Submit Reject Reason
+            </Button>
+          </FormControl>
         </div>
-      )}
+      </div>
     </div>
   );
 };
