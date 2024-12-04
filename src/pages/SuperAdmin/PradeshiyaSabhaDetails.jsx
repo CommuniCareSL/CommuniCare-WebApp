@@ -1,72 +1,38 @@
-import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const secondDropdownOptions = {
   Colombo: [
     {
       id: 1,
       name: 'Homagama',
-      phone: '+94 112 345 678',
+      phone: '+94 112 345 678', // Sabha Phone
       email: 'homagama@example.com',
       address: '123 Main Street, Homagama',
       nic: '123456789V',
-      adminName: 'John Doe',
+      adminName: 'Kumara Ranawira',
+      adminPhone: '+94 112 999 999', // Admin Phone
+      adminEmail: 'kumara@example.com', // Admin Email
+      adminPassword: 'admin123', // Admin Password
     },
     {
       id: 2,
       name: 'Dehiwala',
-      phone: '+94 114 567 890',
+      phone: '+94 114 567 890', // Sabha Phone
       email: 'dehiwala@example.com',
       address: '456 Beach Road, Dehiwala',
       nic: '987654321V',
-      adminName: 'Jane Smith',
+      adminName: 'Sujani Perera',
+      adminPhone: '+94 114 888 888', // Admin Phone
+      adminEmail: 'sujani@example.com', // Admin Email
+      adminPassword: 'admin456', // Admin Password
     },
   ],
-  Gampaha: [
-    {
-      id: 3,
-      name: 'Attanagalla',
-      phone: '+94 112 678 901',
-      email: 'attanagalla@example.com',
-      address: '789 Hilltop Drive, Attanagalla',
-      nic: '123123123V',
-      adminName: 'Alice Brown',
-    },
-    {
-      id: 4,
-      name: 'Kelaniya',
-      phone: '+94 112 345 123',
-      email: 'kelaniya@example.com',
-      address: '321 Riverside Blvd, Kelaniya',
-      nic: '321321321V',
-      adminName: 'Bob White',
-    },
-  ],
-  Kalutara: [
-    {
-      id: 5,
-      name: 'Agalwatta',
-      phone: '+94 116 789 012',
-      email: 'agalwatta@example.com',
-      address: '567 Mountain Pass, Agalwatta',
-      nic: '456456456V',
-      adminName: 'Charlie Green',
-    },
-    {
-      id: 6,
-      name: 'Matugama',
-      phone: '+94 117 890 123',
-      email: 'matugama@example.com',
-      address: '890 Forest Lane, Matugama',
-      nic: '654654654V',
-      adminName: 'Diana Blue',
-    },
-  ],
+  // Other districts...
 };
 
 const PradeshiyaSabhaDetails = () => {
   const { index } = useParams();
-  const navigate = useNavigate();
 
   const data = [
     { index: 1, district: 'Colombo', pradeshiyaSabha: 'Homagama' },
@@ -84,43 +50,180 @@ const PradeshiyaSabhaDetails = () => {
   }
 
   const { district, pradeshiyaSabha: name } = pradeshiyaSabha;
-  const details = secondDropdownOptions[district]?.find((d) => d.name === name);
+  const initialDetails = secondDropdownOptions[district]?.find((d) => d.name === name);
+
+  const [details, setDetails] = useState(initialDetails);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDetails((prevDetails) => ({
+      ...prevDetails,
+      [name]: value,
+    }));
+  };
+
+  const handleSave = () => {
+    // Simulate saving the updated details (you can replace this with actual save logic)
+    setIsEditing(false);
+    console.log('Saved details:', details);
+  };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-black to-blue-900 ">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-black to-blue-900">
       <div className="w-full max-w-3xl mx-auto p-6 sm:p-8 md:p-16 shadow-lg shadow-black rounded-lg">
-        <h1 className="text-3xl font-semibold text-blue-600 text-center mb-6 ">
-          Pradeshiya Sabha Details
-        </h1>
-        <div className="space-y-4 text-white">
-          <p>
-            <strong>Index:</strong> {pradeshiyaSabha.index}
-          </p>
-          <p>
-            <strong>District:</strong> {district}
-          </p>
-          <p>
-            <strong>Pradeshiya Sabha:</strong> {name}
-          </p>
-          {details && (
-            <>
-            <p>
-                <strong>Admin Name:</strong> {details.adminName}
-              </p>
-              <p>
-                <strong>Phone:</strong> {details.phone}
-              </p>
-              <p>
-                <strong>Email:</strong> {details.email}
-              </p>
-              <p>
-                <strong>Address:</strong> {details.address}
-              </p>
-              <p>
-                <strong>NIC:</strong> {details.nic}
-              </p>
-              
-            </>
+        <h1 className="text-3xl font-semibold text-blue-600 text-center mb-6">Details</h1>
+        <div className="space-y-6 text-white grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-4">  
+            <h2 className="text-xl font-semibold">Admin Info</h2>
+            {details && (
+              <>
+                <div>
+                  <strong>Admin Name:</strong>
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      name="adminName"
+                      value={details.adminName}
+                      onChange={handleChange}
+                      className="text-black p-2 rounded"
+                    />
+                  ) : (
+                    details.adminName
+                  )}
+                </div>
+                <div>
+                  <strong>NIC:</strong>
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      name="nic"
+                      value={details.nic}
+                      onChange={handleChange}
+                      className="text-black p-2 rounded"
+                    />
+                  ) : (
+                    details.nic
+                  )}
+                </div>
+                <div>
+                  <strong>Phone:</strong>
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      name="adminPhone"
+                      value={details.adminPhone}
+                      onChange={handleChange}
+                      className="text-black p-2 rounded"
+                    />
+                  ) : (
+                    details.adminPhone
+                  )}
+                </div>
+                <div>
+                  <strong>Email:</strong>
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      name="adminEmail"
+                      value={details.adminEmail}
+                      onChange={handleChange}
+                      className="text-black p-2 rounded"
+                    />
+                  ) : (
+                    details.adminEmail
+                  )}
+                </div>
+                <div>
+                  <strong>Password:</strong>
+                  {isEditing ? (
+                    <input
+                      type="password"
+                      name="adminPassword"
+                      value={details.adminPassword}
+                      onChange={handleChange}
+                      className="text-black p-2 rounded"
+                    />
+                  ) : (
+                    details.adminPassword
+                  )}
+                </div>
+              </>
+            )}
+          </div>
+
+          <div className="space-y-4">
+            <h2 className="text-xl font-semibold">Sabha Info</h2>
+            {details && (
+              <>
+                <div>
+                  <strong>District:</strong> {district}
+                </div>
+                <div>
+                  <strong>Pradeshiya Sabha:</strong> {name}
+                </div>
+                <div>
+                  <strong>Address:</strong>
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      name="address"
+                      value={details.address}
+                      onChange={handleChange}
+                      className="text-black p-2 rounded"
+                    />
+                  ) : (
+                    details.address
+                  )}
+                </div>
+                <div>
+                  <strong>Phone:</strong>
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      name="phone"
+                      value={details.phone}
+                      onChange={handleChange}
+                      className="text-black p-2 rounded"
+                    />
+                  ) : (
+                    details.phone
+                  )}
+                </div>
+                <div>
+                  <strong>Email:</strong>
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      name="email"
+                      value={details.email}
+                      onChange={handleChange}
+                      className="text-black p-2 rounded"
+                    />
+                  ) : (
+                    details.email
+                  )}
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+
+        <div className="mt-6 text-center">
+          {isEditing ? (
+            <button
+              onClick={handleSave}
+              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+            >
+              Save
+            </button>
+          ) : (
+            <button
+              onClick={() => setIsEditing(true)}
+              className="btn1"
+            >
+              Edit
+            </button>
           )}
         </div>
       </div>
