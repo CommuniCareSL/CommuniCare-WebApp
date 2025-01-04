@@ -2,8 +2,23 @@
 import '../../styles/components/Admin/Sidebar.css';
 import logo from '../../assets/Admin/DarkLogo.png';
 import profileImg from '../../assets/Admin/profile-img.jpg';
+import { clearStoredData } from "../../hooks/localStorage";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
+
+  const navigate = useNavigate(); // Use navigate for redirection
+
+  const handleLogout = (e) => {
+    e.preventDefault(); // Prevent default link behavior
+    clearStoredData(); // Clear all stored data in localStorage
+    navigate("/login"); // Redirect to the login page
+  };
+
+  const handleClick = (e, path) => {
+    e.preventDefault(); // Prevent default link behavior
+    navigate(path); // Navigate to the desired page
+  };
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
@@ -86,7 +101,7 @@ const Sidebar = () => {
           </a>
         </li> */}
         <li>            
-          <a href="/login">
+          <a href="/login" onClick={handleLogout}>
             <span className="material-symbols-outlined">logout</span>
             Logout
           </a>
