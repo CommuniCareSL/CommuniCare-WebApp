@@ -24,7 +24,7 @@ import { BsSearch } from 'react-icons/bs';
 import { FaUser, FaCalendarAlt, FaInfoCircle } from 'react-icons/fa';
 import axios from 'axios';
 
-const ComplaintView = () => {
+const Complaint = () => {
   const [complaints, setComplaints] = useState([]);
   const [filteredComplaints, setFilteredComplaints] = useState([]);
   const [statusCounts, setStatusCounts] = useState({ pending: 0, inProgress: 0, resolved: 0, rejected: 0 });
@@ -211,4 +211,4 @@ const ComplaintView = () => {
   );
 };
 
-export default ComplaintView;
+export default Complaint;

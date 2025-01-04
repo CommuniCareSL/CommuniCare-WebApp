@@ -37,7 +37,7 @@ import Report from "./pages/SuperAdmin/Report";
 import PradeshiyaSabhaDetails from "./pages/SuperAdmin/PradeshiyaSabhaDetails"; // Import the new details page
 
 import WorkAndPlanDashboard from "./pages/WorkAndPlan/Dashboard";
-import WorkAndPlanComplaintView from "./pages/WorkAndPlan/ComplaintView";
+import WorkAndPlanComplaint from "./pages/WorkAndPlan/Complaint";
 const App = () => {
   return (
     <Router>
@@ -93,7 +93,7 @@ const App = () => {
         
         {/* 5 Work And Plan */}
         <Route path="/WorkAndPlanDashboard" element={<WorkAndPlanDashboard />} />
-        <Route path="/WorkAndPlanComplaintView" element={<WorkAndPlanComplaintView />} />
+        <Route path="/WorkAndPlanComplaint" element={<WorkAndPlanComplaint />} />
       </Routes>
     </Router>
   );

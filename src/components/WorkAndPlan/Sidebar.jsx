@@ -9,7 +9,7 @@ import profileImg from "../../assets/SuperAdmin/profile-img.jpg";
 
 const Menus = [
   { title: 'Home', icon: <RiDashboardFill />, path: '/WorkAndPlanDashboard' },
-  { title: 'Complaints', icon: <FaRegCommentAlt />, path: '/WorkAndPlanComplaintView' },
+  { title: 'Complaints', icon: <FaRegCommentAlt />, path: '/WorkAndPlanComplaint' },
   { title: 'Appointments', icon: <RiFileList2Line />, path: '/appointment_Officer' },
   { title: 'Service Requests', icon: <RiServiceLine />, path: '/requests_Officer' },
   { title: 'Documents', icon: <RiBarChart2Fill />, path: '/document_Officer' },
