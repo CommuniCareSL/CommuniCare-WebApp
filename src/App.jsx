@@ -36,6 +36,7 @@ import Registered from "./pages/SuperAdmin/Registered";
 import Report from "./pages/SuperAdmin/Report";
 import PradeshiyaSabhaDetails from "./pages/SuperAdmin/PradeshiyaSabhaDetails"; // Import the new details page
 
+import WorkAndPlanDashboard from "./pages/WorkAndPlan/Dashboard";
 const App = () => {
   return (
     <Router>
@@ -88,6 +89,9 @@ const App = () => {
 
         {/* Pradeshiya Sabha Details Route */}
         <Route path="/pradeshiya-sabha-details/:index" element={<PradeshiyaSabhaDetails />} /> {/* Add this new route */}
+        
+        {/* 5 Work And Plan */}
+        <Route path="/WorkAndPlanDashboard" element={<WorkAndPlanDashboard />} />
       </Routes>
     </Router>
   );
