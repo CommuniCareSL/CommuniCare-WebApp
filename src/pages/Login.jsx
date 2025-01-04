@@ -39,6 +39,9 @@ const Login = () => {
           case 3:
             navigate("/officer_complaint");
             break;
+          case 5:
+            navigate("/WorkAndPlanDashboard");
+            break;
           default:
             navigate("/");
             break;
