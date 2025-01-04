@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { BsArrowLeftShort, BsSearch } from "react-icons/bs";
 import { RiDashboardFill, RiCalendar2Line, RiServiceLine, RiBarChart2Fill, 
          RiProfileLine, RiLogoutBoxLine, RiFileList2Line, RiMenu2Fill } from 'react-icons/ri';
 import { FaRegCommentAlt } from 'react-icons/fa';
 import darkLogo from "../../assets/SuperAdmin/DarkLogo.png";
 import profileImg from "../../assets/SuperAdmin/profile-img.jpg";
+import { clearStoredData } from "../../hooks/localStorage";
 
 const Menus = [
   { title: 'Home', icon: <RiDashboardFill />, path: '/WorkAndPlanDashboard' },
@@ -21,9 +22,16 @@ const Sidebar = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate(); // Initialize the navigate hook
 
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
+
+  const handleLogout = (e) => {
+    e.preventDefault(); // Prevent default behavior
+    clearStoredData(); // Clear stored data from localStorage
+    navigate("/login"); // Redirect user to login page
+  };
 
   return (
     <div className="flex min-h-screen bg-gray-50">
@@ -84,7 +92,13 @@ const Sidebar = ({ children }) => {
                 <Link 
                   to={menu.path} 
                   className="flex items-center w-full p-4 gap-4"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    if (menu.title === 'Logout') {
+                      handleLogout(e); // Trigger logout if 'Logout' is clicked
+                    } else {
+                      setMobileMenuOpen(false); // Close mobile menu for other links
+                    }
+                  }}
                 >
                   <span className={`text-xl ${isActive && 'text-blue-500'}`}>
                     {menu.icon}
