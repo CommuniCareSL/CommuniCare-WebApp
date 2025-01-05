@@ -21,15 +21,15 @@ const Login = () => {
 
       if (userData.token) {
         localStorage.setItem("token", userData.token);
-        localStorage.setItem('sabhaId', userData.sabhaId);
-        localStorage.setItem('role', userData.role);
-        localStorage.setItem('departmentId', userData.departmentId);
+        localStorage.setItem('sabhaId', userData.employee.sabhaId);
+        localStorage.setItem('role', userData.employee.role);
+        localStorage.setItem('departmentId', userData.employee.departmentId);
 
-        console.log("Sabha ID:", userData.sabhaId);
-        console.log("Department ID:", userData.departmentId);
+        console.log("Sabha ID:", userData.employee.sabhaId);
+        console.log("Department ID:", userData.employee.departmentId);
 
         // Redirect based on user role
-        switch (userData.departmentId) {
+        switch (userData.employee.departmentId) {
           case 1:
             navigate("/SuperAdminDashboard");
             break;

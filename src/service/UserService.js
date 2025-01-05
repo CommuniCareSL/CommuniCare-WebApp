@@ -5,7 +5,7 @@ class UserService{
 
     static async login(email, password){
         try{
-            const response = await axios.post(`${BASE_URL}/auth/login`, {email, password})
+            const response = await axios.post(`${BASE_URL}/employee/login`, {email, password})
             return response.data;
 
         }catch(err){
