@@ -29,6 +29,7 @@ import Requests_Officer from "./pages/Civil Officer/Service_requests";//getToast
 import Documents_Officer from "./pages/Civil Officer/Citizen_documents";
 import ServiceDetails from "./pages/Civil Officer/Service_details";
 import NewAppointment from "./pages/Civil Officer/New_appointment";
+import OfficerProfile from './pages/Civil Officer/Profile_page';
 
 import SuperAdminDashboard from "./pages/SuperAdmin/Dashboard";
 import { Newregistration } from "./pages/SuperAdmin/NewRegistration";
@@ -72,6 +73,7 @@ const App = () => {
         <Route path="/officer_complaint" element={<OfficerComplaintView />} />
         {/* <Route path="/Single_complaint/:id" component={SingleComplaint} /> */}
         <Route path="/Single_complaint/:id" element={<SingleComplaint />} />
+        <Route path="/profile_Officer" element={<OfficerProfile/>} />
 
         
         {/* Officer Routes */}
