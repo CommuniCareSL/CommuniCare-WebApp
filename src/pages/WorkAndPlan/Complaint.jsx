@@ -22,72 +22,110 @@ import {
 import { HiChevronDown } from 'react-icons/hi';
 import { BsSearch } from 'react-icons/bs';
 import { FaUser, FaCalendarAlt, FaInfoCircle } from 'react-icons/fa';
-import axios from 'axios';
+import { getStoredData } from "../../hooks/localStorage";
+import { fetchComplaints } from '../../service/complaint/Complaint';
+
+// Status mapping object
+const STATUS_MAP = {
+  0: 'PENDING',
+  1: 'IN PROGRESS',
+  2: 'RESOLVED',
+  3: 'REJECTED'
+};
 
 const Complaint = () => {
   const [complaints, setComplaints] = useState([]);
   const [filteredComplaints, setFilteredComplaints] = useState([]);
-  const [statusCounts, setStatusCounts] = useState({ pending: 0, inProgress: 0, resolved: 0, rejected: 0 });
   const [selectedStatus, setSelectedStatus] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const [statusCounts, setStatusCounts] = useState({
+    pending: 0,
+    inprogress: 0,
+    resolved: 0,
+    rejected: 0
+  });
+
+  const { sabhaId, departmentId } = getStoredData();
 
   useEffect(() => {
-    const fetchComplaints = async () => {
+    const getComplaintsData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/complaints/department');
-        const fetchedComplaints = response.data;
-
-        const statusCounts = {
-          pending: fetchedComplaints.filter(c => c.status === 'PENDING').length,
-          inProgress: fetchedComplaints.filter(c => c.status === 'IN PROGRESS').length,
-          resolved: fetchedComplaints.filter(c => c.status === 'RESOLVED').length,
-          rejected: fetchedComplaints.filter(c => c.status === 'REJECTED').length,
-        };
-        setStatusCounts(statusCounts);
-
-        fetchedComplaints.sort((a, b) => (a.status === 'PENDING' ? -1 : 1));
+        setIsLoading(true);
+        const fetchedComplaints = await fetchComplaints(sabhaId, departmentId);
         setComplaints(fetchedComplaints);
         setFilteredComplaints(fetchedComplaints);
+        updateStatusCounts(fetchedComplaints);
       } catch (error) {
         console.error('Error fetching complaints:', error);
+        setError('Failed to fetch complaints. Please try again later.');
+      } finally {
+        setIsLoading(false);
       }
     };
-    fetchComplaints();
-  }, []);
+
+    if (sabhaId && departmentId) {
+      getComplaintsData();
+    }
+  }, [sabhaId, departmentId]);
+
+  const updateStatusCounts = (complaintsList) => {
+    const counts = complaintsList.reduce((acc, complaint) => {
+      const status = STATUS_MAP[complaint.status].toLowerCase().replace(' ', '');
+      acc[status] = (acc[status] || 0) + 1;
+      return acc;
+    }, {
+      pending: 0,
+      inprogress: 0,
+      resolved: 0,
+      rejected: 0
+    });
+
+    setStatusCounts(counts);
+  };
 
   const handleFilterChange = (status) => {
     setSelectedStatus(status);
     if (status === 'All') {
       setFilteredComplaints(complaints);
     } else {
-      setFilteredComplaints(complaints.filter(c => c.status === status));
+      setFilteredComplaints(complaints.filter(c => STATUS_MAP[c.status] === status));
     }
   };
 
   const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
     const searchValue = event.target.value.toLowerCase();
+    setSearchTerm(searchValue);
+
     setFilteredComplaints(
-      complaints.filter(
-        complaint =>
-          complaint.userName.toLowerCase().includes(searchValue) ||
-          complaint.status.toLowerCase().includes(searchValue) ||
-          complaint.categoryName.toLowerCase().includes(searchValue)
+      complaints.filter(complaint =>
+        complaint.area.toLowerCase().includes(searchValue) || // Search by area
+        STATUS_MAP[complaint.status].toLowerCase().includes(searchValue) || // Search by status
+        (complaint.categoryName && complaint.categoryName.toLowerCase().includes(searchValue)) // Search by category name
       )
     );
   };
 
-  return (
-      <Sidebar>
-      <div className="overflow-y-auto bg-white flex-1">
+  if (error) {
+    return <div className="text-red-500 text-center p-4">{error}</div>;
+  }
 
+  if (isLoading) {
+    return <div className="text-center p-4">Loading...</div>;
+  }
+
+  return (
+    <Sidebar>
+      <div className="overflow-y-auto bg-white flex-1">
+        {/* Status count cards */}
         <div className="p-3 pb-6">
           <div className="flex justify-center space-x-4 h-13">
             {Object.entries(statusCounts).map(([key, count], idx) => (
               <div
                 key={key}
-                style={{ width: '150px' }}
-                className={`max-w-xs p-3 rounded-lg shadow-md border ${
+                className={`max-w-xs p-3 rounded-lg shadow-md border w-[150px] ${
                   idx === 0
                     ? 'border-gray-500'
                     : idx === 1
@@ -97,41 +135,32 @@ const Complaint = () => {
                     : 'border-red-500'
                 }`}
               >
-                <h3
-                  className={`text-left font-semibold text-2xl ${
-                    idx === 0
-                      ? 'text-slate-700'
-                      : idx === 1
-                      ? 'text-blue-600'
-                      : idx === 2
-                      ? 'text-green-500'
-                      : 'text-red-500'
-                  }`}
-                >
+                <h3 className={`text-left font-semibold text-2xl ${
+                  idx === 0 ? 'text-slate-700' :
+                  idx === 1 ? 'text-blue-600' :
+                  idx === 2 ? 'text-green-500' :
+                  'text-red-500'
+                }`}>
                   {count}
                 </h3>
-                <p
-                  className={`text-left ${
-                    idx === 0
-                      ? 'text-slate-700'
-                      : idx === 1
-                      ? 'text-blue-600'
-                      : idx === 2
-                      ? 'text-green-500'
-                      : 'text-red-500'
-                  }`}
-                >
+                <p className={`text-left ${
+                  idx === 0 ? 'text-slate-700' :
+                  idx === 1 ? 'text-blue-600' :
+                  idx === 2 ? 'text-green-500' :
+                  'text-red-500'
+                }`}>
                   {key.charAt(0).toUpperCase() + key.slice(1)}
                 </p>
               </div>
             ))}
           </div>
 
+          {/* Search and Filter */}
           <div className="flex justify-center mt-5">
             <InputGroup maxW="600px">
               <Input
                 type="search"
-                placeholder="Search by user, status, or category"
+                placeholder="Search by area, status, or category"
                 value={searchTerm}
                 onChange={handleSearch}
                 className="p-2 border border-blue-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -161,10 +190,11 @@ const Complaint = () => {
               </MenuButton>
               <MenuList>
                 <MenuItem onClick={() => handleFilterChange('All')}>All</MenuItem>
-                <MenuItem onClick={() => handleFilterChange('PENDING')}>Pending</MenuItem>
-                <MenuItem onClick={() => handleFilterChange('IN PROGRESS')}>In Progress</MenuItem>
-                <MenuItem onClick={() => handleFilterChange('RESOLVED')}>Resolved</MenuItem>
-                <MenuItem onClick={() => handleFilterChange('REJECTED')}>Rejected</MenuItem>
+                {Object.values(STATUS_MAP).map(status => (
+                  <MenuItem key={status} onClick={() => handleFilterChange(status)}>
+                    {status}
+                  </MenuItem>
+                ))}
               </MenuList>
             </Menu>
           </div>
@@ -172,32 +202,35 @@ const Complaint = () => {
 
         <hr className="w-full border-t border-gray-200 my-0.5 ml-5 mr-15 mb-5" />
 
-        <div className="mb-7 ml-14 flex justify-between items-center">
-          <SimpleGrid spacing={4} templateColumns="repeat(4, 1fr)">
+        {/* Complaints Grid */}
+        <div className="mb-7 ml-14">
+          <SimpleGrid spacing={4} templateColumns="repeat(auto-fill, minmax(300px, 1fr))">
             {filteredComplaints.map((complaint) => (
-              <Link to={`/Single_complaint/${complaint.complaintId}`} key={complaint.complaintId}>
-                <Card cursor="pointer">
+              <Link to={`/ComplaintView/${complaint.complaintId}`} key={complaint.complaintId}>
+                <Card>
                   <CardHeader>
-                    <Heading size="md">Category: {complaint.categoryName}</Heading>
+                    <Heading size="md">
+                      Category: {complaint.categoryName} {/* Use categoryName */}
+                    </Heading>
                   </CardHeader>
                   <CardBody>
                     <Stack spacing={3}>
                       <Stack direction="row" alignItems="center">
                         <FaUser color="blue" />
-                        <Text>Submittee : {complaint.userName}</Text>
+                        <Text>Area: {complaint.area}</Text>
                       </Stack>
                       <Stack direction="row" alignItems="center">
                         <FaCalendarAlt color="green" />
-                        <Text>Date : {complaint.createdDate}</Text>
+                        <Text>Date: {new Date(complaint.createdAt).toISOString().split('T')[0]}</Text>
                       </Stack>
                       <Stack direction="row" alignItems="center">
                         <FaInfoCircle color="red" />
-                        <Text>Status : {complaint.status}</Text>
+                        <Text>Status: {STATUS_MAP[complaint.status]}</Text>
                       </Stack>
                     </Stack>
                   </CardBody>
                   <CardFooter>
-                    <Button colorScheme="blue" size="sm" mr={1}>
+                    <Button colorScheme="blue" size="sm">
                       View More
                     </Button>
                   </CardFooter>

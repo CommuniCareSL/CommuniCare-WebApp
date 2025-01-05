@@ -38,6 +38,7 @@ import PradeshiyaSabhaDetails from "./pages/SuperAdmin/PradeshiyaSabhaDetails"; 
 
 import WorkAndPlanDashboard from "./pages/WorkAndPlan/Dashboard";
 import WorkAndPlanComplaint from "./pages/WorkAndPlan/Complaint";
+import ComplaintView from './components/WorkAndPlan/Complaint/ComplaintView';
 const App = () => {
   return (
     <Router>
@@ -94,6 +95,7 @@ const App = () => {
         {/* 5 Work And Plan */}
         <Route path="/WorkAndPlanDashboard" element={<WorkAndPlanDashboard />} />
         <Route path="/WorkAndPlanComplaint" element={<WorkAndPlanComplaint />} />
+        <Route path="/ComplaintView/:id" element={<ComplaintView />} />
       </Routes>
     </Router>
   );
