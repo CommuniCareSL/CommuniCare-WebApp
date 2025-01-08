@@ -1,9 +1,24 @@
-import React from 'react';
-import '../../styles/components/SuperAdmin/Sidebar.css';
-import logo from '../../assets/SuperAdmin/DarkLogo.png';
-import profileImg from '../../assets/SuperAdmin/profile-img.jpg';
+import React from "react";
+import "../../styles/components/SuperAdmin/Sidebar.css";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import logo from "../../assets/SuperAdmin/DarkLogo.png";
+import profileImg from "../../assets/SuperAdmin/profile-img.jpg";
+import { clearStoredData } from "../../hooks/localStorage"; // Import the clearStoredData utility function
 
 const Sidebar = () => {
+  const navigate = useNavigate(); // For navigation
+
+  const handleLogout = (e) => {
+    e.preventDefault(); // Prevent default behavior
+    clearStoredData(); // Clear localStorage data
+    navigate("/login"); // Redirect to login page
+  };
+
+  const handleClick = (e, path) => {
+    e.preventDefault(); // Prevent default behavior
+    navigate(path); // Navigate to the specified path
+  };
+
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
@@ -15,7 +30,10 @@ const Sidebar = () => {
         </h4>
 
         <li>
-          <a href="/SuperAdminDashboard">
+          <a
+            href="/SuperAdminDashboard"
+            onClick={(e) => handleClick(e, "/SuperAdminDashboard")}
+          >
             <span className="material-symbols-outlined">dashboard</span>
             Dashboard
           </a>
@@ -27,13 +45,16 @@ const Sidebar = () => {
           </a>
         </li> */}
         <li>
-          <a href="/Registered">
+          <a
+            href="/Registered"
+            onClick={(e) => handleClick(e, "/Registered")}
+          >
             <span className="material-symbols-outlined">verified_user</span>
             Registered
           </a>
         </li>
         <li>
-          <a href="/Report">
+          <a href="/Report" onClick={(e) => handleClick(e, "/Report")}>
             <span className="material-symbols-outlined">assessment</span>
             Report
           </a>
@@ -42,7 +63,7 @@ const Sidebar = () => {
         {/* Add more menu items here as needed */}
 
         <li className="logout-item">
-          <a href="/login">
+          <a href="/login" onClick={handleLogout}>
             <span className="material-symbols-outlined">logout</span>
             Logout
           </a>
@@ -50,7 +71,11 @@ const Sidebar = () => {
       </ul>
       <div className="user-account">
         <div className="user-profile">
-          <img src={profileImg} alt="Profile" style={{ marginRight: '20px' }} />
+          <img
+            src={profileImg}
+            alt="Profile"
+            style={{ marginRight: "20px" }}
+          />
           <div className="user-detail">
             <h3>MANOKARARAJAH</h3>
             <span>Super Admin</span>
