@@ -108,9 +108,9 @@ const Complaint = () => {
     );
   };
 
-  if (error) {
-    return <div className="text-red-500 text-center p-4">{error}</div>;
-  }
+  // if (error) {
+  //   return <div className="text-red-500 text-center p-4">{error}</div>;
+  // }
 
   if (isLoading) {
     return <div className="text-center p-4">Loading...</div>;
