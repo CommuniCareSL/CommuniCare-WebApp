@@ -49,7 +49,7 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/sabharegister" element={<Sabha />} />
 
-        {/* Admin Routes */}
+        {/* 2 Admin Routes */}
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/Complaints" element={<Complaints />} />
         <Route path="/AdminNewOfficer" element={<AdminNewOfficer />} />
@@ -83,7 +83,7 @@ const App = () => {
         <Route path="/details/:serviceName" element={<ServiceDetails />} />
         <Route path="/new_appointment" element={<NewAppointment />} />
 
-        {/* Super Admin Routes */}
+        {/* 1 Super Admin Routes */}
         <Route path="/SuperAdminDashboard" element={<SuperAdminDashboard />} />
         <Route path="/NewRegistration" element={<Newregistration />} />
         <Route path="/Registered" element={<Registered />} />
@@ -91,11 +91,17 @@ const App = () => {
 
         {/* Pradeshiya Sabha Details Route */}
         <Route path="/pradeshiya-sabha-details/:index" element={<PradeshiyaSabhaDetails />} /> {/* Add this new route */}
-        
+
+        {/* 3 Health */}
+
+        {/* 4 Account */}
+
         {/* 5 Work And Plan */}
         <Route path="/WorkAndPlanDashboard" element={<WorkAndPlanDashboard />} />
         <Route path="/WorkAndPlanComplaint" element={<WorkAndPlanComplaint />} />
         <Route path="/ComplaintView/:id" element={<ComplaintView />} />
+        
+        {/* 6 Development */}
       </Routes>
     </Router>
   );
