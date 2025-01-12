@@ -28,7 +28,7 @@
   padding: 20px;
   min-height: 100vh;
   min-width: auto;
-  margin-left: 85px;
+  margin-left: 0px;
   transition: margin-left 0.4s ease;
   background-color: #e8eff9;
   overflow-y: auto;

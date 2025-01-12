@@ -84,46 +84,44 @@ const Report = () => {
     };
   }, []);
 
-
-  // sidebar issue fixed
   return (
-   <div>
-      <Sidebar />
-      <div className='admin-table-home-page'>
-      <div className="flex">
-    
-    <div className="flex-1 p-6 ml-64 lg:ml-200" style={{marginLeft:'0'}}>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+    <Sidebar>
+      <div className="p-6 overflow-y-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+          {/* Users Registration Chart */}
+          <div className="bg-white p-4 shadow rounded-lg">
+            <h3 className="text-lg font-bold mb-2">Users Registration by Month</h3>
+            <div className="relative" style={{ height: '260px' }}>
+              <canvas id="usersChart"></canvas>
+            </div>
+          </div>
 
-        <div className="bg-white p-4 shadow rounded-lg" >
-          <h3 className="text-lg font-bold mb-2">Users Registration by Month</h3>
-          <div className="relative" style={{ height: '260px' }}>
-            <canvas id="usersChart"></canvas>
+          {/* Complaints Chart */}
+          <div className="bg-white p-4 shadow rounded-lg">
+            <h3 className="text-lg font-bold mb-2">Number of Complaints by Month</h3>
+            <div className="relative" style={{ height: '260px' }}>
+              <canvas id="complaintsChart"></canvas>
+            </div>
           </div>
-        </div>
-        <div className="bg-white p-4 shadow rounded-lg" >
-          <h3 className="text-lg font-bold mb-2">Number of Complaints by Month</h3>
-          <div className="relative" style={{ height: '260px' }}>
-            <canvas id="complaintsChart"></canvas>
+
+          {/* Gender Chart */}
+          <div className="bg-white p-4 shadow rounded-lg">
+            <h3 className="text-lg font-bold mb-2">Users by Gender</h3>
+            <div className="relative" style={{ height: '260px' }}>
+              <canvas id="genderChart"></canvas>
+            </div>
           </div>
-        </div>
-        <div className="bg-white p-4 shadow rounded-lg " >
-          <h3 className="text-lg font-bold mb-2">Users by Gender</h3>
-          <div className="relative" style={{ height: '260px' }}>
-            <canvas id="genderChart"></canvas>
-          </div>
-        </div>
-        <div className="bg-white p-4 shadow rounded-lg" >
-          <h3 className="text-lg font-bold mb-2">Number of Complaints by Category</h3>
-          <div className="relative" style={{ height: '260px' }}>
-            <canvas id="categoryChart"></canvas>
+
+          {/* Category Chart */}
+          <div className="bg-white p-4 shadow rounded-lg">
+            <h3 className="text-lg font-bold mb-2">Number of Complaints by Category</h3>
+            <div className="relative" style={{ height: '260px' }}>
+              <canvas id="categoryChart"></canvas>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-      </div>
-   </div>
+    </Sidebar>
   );
 };
 
