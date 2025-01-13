@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useParams } from 'react-router-dom';
 import Sidebar from '../../components/Admin/Sidebar';
 import CitizenBlockDetails from '../../components/Admin/CitizenBlockDetails';
 
@@ -7,6 +7,7 @@ import '../../styles/pages/Admin/AdminAddedOfficersDetails.css';
 import '../../styles/components/Admin/CivilOfficerDetails.css';
 
 function AdminViewBlockedCitizenDetails() {
+  const { userId } = useParams(); 
   return (
     <div>
       <Sidebar />
@@ -16,7 +17,7 @@ function AdminViewBlockedCitizenDetails() {
         </div>
 
           <div className="admin-added-officer-details-content">
-            <CitizenBlockDetails />
+            <CitizenBlockDetails userId={userId} />
           </div>
 
       </div>

@@ -1,94 +1,74 @@
 import React, { useState, useEffect } from 'react';
-import UserService from "../../service/UserService";
 import { useNavigate } from 'react-router-dom';
-
+import { getStoredData } from "../../hooks/localStorage";
+import { fetchEmployeesBySabhaId } from "../../service/admin/Employee"; // Import the service function
 import profileImg from '../../assets/Admin/profile-img.jpg';
 
 function AddedNewOfficers() {
-  const [officerInfo, setofficerInfo] = useState([]);
+  const [officerInfo, setOfficerInfo] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchofficerInfo();
-  }, []);
+  const { sabhaId } = getStoredData();
 
+  // Fetch officer information from the backend using the service file
   const fetchofficerInfo = async () => {
     try {
-      const token = localStorage.getItem('token'); // Retrieve the token from localStorage
-      const response = await UserService.getOfficers(token);
-
-      // Debugging: Check the full structure of the response
-      console.log('Response from API:', response);
-      // alert('Data fetched from API: ' + JSON.stringify(response)); // Shows the full response in alert
-
-      // Ensure the response contains 'employees' and that it's an array
-      if (response && Array.isArray(response)) {
-        setofficerInfo(response); // Update state with the array of officers
-      } else {
-        alert('No officers data found or data is not in expected format.');
-        console.log('No officers data found or the data is not an array.');
-      }
+      const response = await fetchEmployeesBySabhaId(sabhaId); // Call the service function
+      setOfficerInfo(response.data); // Assuming the response data is an array of officer objects
     } catch (error) {
-      // alert('Error fetching officer information: ' + error.message);
       console.error('Error fetching officer information:', error);
     }
   };
 
+  useEffect(() => {
+    fetchofficerInfo();
+  }, [sabhaId]); // Re-fetch when sabhaId changes
+
   // Check if officerInfo is updated properly
   useEffect(() => {
     console.log('officerInfo state after update:', officerInfo); // Log the state after it changes
-  },[officerInfo]);
+  }, [officerInfo]);
 
-  // Department name mapping
-  const departmentNames = {
-    1: "Super Administration Division",
-    2: "Administration Division",
-    3: "Health Division",
-    4: "Account Division",
-    5: "Work and Plan Division",
-    6: "Development Division"
+  // Handle click on officer row
+  const handleClick = (e, path, employeeId) => {
+    e.preventDefault();
+    navigate(`${path}/${employeeId}`); // Pass employeeId as a URL parameter
   };
-
 
   return (
     <div className='admin-add-new-officer-content'>
       <table>
         <tbody>
-
-        {officerInfo && officerInfo.length > 0 ? (
-        officerInfo.map((officer, index) => (
-            <a
-                href="/AdminAddedOfficersDetails"
+          {officerInfo && officerInfo.length > 0 ? (
+            officerInfo.map((officer, index) => (
+              <a
+                href={`/AdminAddedOfficersDetails/${officer.id}`} // Add employeeId to the URL
                 key={index}
-                onClick={(e) => handleClick(e, '/AdminAddedOfficersDetails')}
-            >
+                onClick={(e) => handleClick(e, '/AdminAddedOfficersDetails', officer.id)} // Pass employeeId
+              >
                 <tr className="admin-add-new-officer-table-row">
-                    <td className="admin-add-new-officer-table-row-column-1">
-                        <img src={profileImg} alt="Profile" />
-                    </td>
-                    <td className="admin-add-new-officer-table-row-column-2">
-                        <h4>{officer.name}</h4>
-                        <p>{officer.nic}</p>
-                    </td>
-                    {/* <td className="admin-add-new-officer-table-row-column-3">
-                        <p>{officer.nic}</p>
-                    </td> */}
-                    <td className="admin-add-new-officer-table-row-column-4">
-                        <p>{departmentNames[officer.sabhaDepartmentId.sabhaDepartmentId] || "Unknown Department"}</p>
-                    </td>
+                  <td className="admin-add-new-officer-table-row-column-1">
+                    <img src={profileImg} alt="Profile" />
+                  </td>
+                  <td className="admin-add-new-officer-table-row-column-2">
+                    <h4>{officer.name}</h4>
+                    <p>{officer.id}</p> {/* Display officer ID */}
+                  </td>
+                  <td className="admin-add-new-officer-table-row-column-4">
+                    <p>{officer.department}</p> {/* Display department name */}
+                  </td>
                 </tr>
-            </a>
-        ))
-    ) : (
-        <tr>
-            <td colSpan="4">No officers found</td>
-        </tr>
-    )}
-
+              </a>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="4">No officers found</td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
-  )
+  );
 }
 
-export default AddedNewOfficers
+export default AddedNewOfficers;

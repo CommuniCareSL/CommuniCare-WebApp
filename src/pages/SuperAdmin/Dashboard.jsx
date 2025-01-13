@@ -1,30 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import Sidebar from '../../components/SuperAdmin/Sidebar';
 import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
 import { Line, Pie, Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, ArcElement, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import Sidebar from '../../components/SuperAdmin/Sidebar';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, ArcElement, BarElement, Title, Tooltip, Legend);
 
 const Dashboard = () => {
   const [date, setDate] = useState(new Date());
   const [greeting, setGreeting] = useState('');
-  const [isSidebarHovered, setIsSidebarHovered] = useState(false);
 
   useEffect(() => {
     const hour = new Date().getHours();
-    if (hour < 11) setGreeting('Good morning Super Admin');
-    else if (hour < 13) setGreeting('Good afternoon Super Admin');
-    else if (hour < 17) setGreeting('Good evening Super Admin');
-    else setGreeting('Good night Super Admin');
+    if (hour < 12) setGreeting('Good morning');
+    else if (hour < 17) setGreeting('Good afternoon');
+    else setGreeting('Good evening');
   }, []);
 
   const cardData = [
-    { title: 'Total Users', value: 204, icon: 'bx bx-user' },
-    { title: 'Total Officers', value: 56, icon: 'bx bxs-user-detail' },
-    { title: 'Number of complaints', value: 12, icon: 'bx bxs-error' },
-    { title: 'Make Appointments', value: 25, icon: 'bx bx-calendar' },
+    { title: 'Total Users', value: 204, icon: 'person_outline' },
+    { title: 'Total Officers', value: 56, icon: 'badge' },
+    { title: 'Number of complaints', value: 12, icon: 'warning' },
+    { title: 'Make Appointments', value: 25, icon: 'calendar_month' }
   ];
 
   const lineChartData = {
@@ -41,7 +38,7 @@ const Dashboard = () => {
     labels: ['Male', 'Female'],
     datasets: [{
       data: [120, 84],
-      backgroundColor: ['rgba(54, 162, 235, 0.9)', 'rgba(54, 162, 235, 0.5)'],
+      backgroundColor: ['rgba(54, 162, 235, 0.9)', 'rgba(54, 162, 235, 0.5)']
     }]
   };
 
@@ -50,71 +47,63 @@ const Dashboard = () => {
     datasets: [{
       label: 'Monthly Complaints',
       data: [65, 59, 80, 81, 56, 55],
-      backgroundColor: 'rgba(54, 162, 235, 0.5)',
+      backgroundColor: 'rgba(54, 162, 235, 0.5)'
     }]
   };
 
   return (
-<div>
-<Sidebar/>
-<div className='admin-table-home-page'>
-      
-
-      <div className={`flex bg-gray-100 min-h-screen transition-all ${isSidebarHovered ? 'ml-64' : 'ml-16'}`}>
-        <div className="flex-1 p-4 lg:p-10 min-h-screen">
-          <h1 className="text-2xl lg:text-3xl font-bold text-blue-600 mb-6 ml-4 sm:ml-16">{greeting}!</h1>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-6">
-            {cardData.map((card, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md p-4 lg:p-6 flex items-center justify-between">
-                <div>
-                  <h2 className="text-base lg:text-lg font-semibold text-gray-700">{card.title}</h2>
-                  <p className="text-2xl lg:text-3xl font-bold text-blue-500">{card.value}</p>
-                </div>
-                <i className={`${card.icon} text-3xl lg:text-4xl text-blue-400`}></i>
+    <Sidebar>
+      <div className="pt-16 p-6 overflow-y-auto">
+        {/* Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+          {cardData.map((card, index) => (
+            <div key={index} className="bg-white rounded-lg shadow-md p-6 flex items-center justify-between">
+              <div>
+                <h2 className="text-gray-700 font-semibold">{card.title}</h2>
+                <p className="text-3xl font-bold text-blue-500">{card.value}</p>
               </div>
-            ))}
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 mb-6">
-            <div className="bg-white rounded-lg shadow-md p-4 lg:p-6">
-              <h2 className="text-lg lg:text-xl font-semibold text-gray-700 mb-4">Users Registration by Month</h2>
-              <div className="h-64">
-                <Line data={lineChartData} options={{ responsive: true, maintainAspectRatio: false }} />
-              </div>
+              <span className="material-symbols-outlined text-4xl text-blue-400">
+                {card.icon}
+              </span>
             </div>
+          ))}
+        </div>
 
-            <div className="bg-white rounded-lg shadow-md p-4 lg:p-6">
-              <h2 className="text-lg lg:text-xl font-semibold text-gray-700 mb-4">Users by Gender</h2>
-              <div className="h-64">
-                <Pie data={pieChartData} options={{ responsive: true, maintainAspectRatio: false }} />
-              </div>
+        {/* Charts Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-xl font-semibold text-gray-700 mb-4">Users Registration</h2>
+            <div className="h-64">
+              <Line data={lineChartData} options={{ responsive: true, maintainAspectRatio: false }} />
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
-            <div className="bg-white rounded-lg shadow-md p-4 lg:p-6">
-              <h2 className="text-lg lg:text-xl font-semibold text-gray-700 mb-4">Monthly Complaints</h2>
-              <div className="h-64">
-                <Bar data={barChartData} options={{ responsive: true, maintainAspectRatio: false }} />
-              </div>
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-xl font-semibold text-gray-700 mb-4">Users by Gender</h2>
+            <div className="h-64">
+              <Pie data={pieChartData} options={{ responsive: true, maintainAspectRatio: false }} />
             </div>
+          </div>
 
-            <div className="bg-white rounded-lg shadow-md p-4 lg:p-6">
-              <h2 className="text-lg lg:text-xl font-semibold text-gray-700 mb-4">Calendar</h2>
-              <Calendar
-                onChange={setDate}
-                value={date}
-                className="w-full border-none"
-                tileClassName="text-black-600 hover:bg-blue-100"
-                navigationLabel={({ date }) => <span className="text-blue-600">{date.toLocaleString('default', { month: 'long', year: 'numeric' })}</span>}
-              />
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-xl font-semibold text-gray-700 mb-4">Monthly Complaints</h2>
+            <div className="h-64">
+              <Bar data={barChartData} options={{ responsive: true, maintainAspectRatio: false }} />
             </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-xl font-semibold text-gray-700 mb-4">Calendar</h2>
+            <Calendar
+              onChange={setDate}
+              value={date}
+              className="w-full border-none"
+              tileClassName="text-black hover:bg-blue-100"
+            />
           </div>
         </div>
       </div>
-    </div>
-</div>
+    </Sidebar>
   );
 };
 
