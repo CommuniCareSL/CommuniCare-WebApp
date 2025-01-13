@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { fetchUserDetailsById } from "../../service/admin/User";
+import { useNavigate } from "react-router-dom";
+import { fetchUserDetailsById, blockUser } from "../../service/admin/User";
 import profileImg from "../../assets/Admin/profile-img.jpg";
 import "../../styles/components/Admin/CivilOfficerDetails.css";
+import AlertService from "../../shared/service/AlertService";
 
 function CitizenBlockDetails({ userId }) {
   const [userDetails, setUserDetails] = useState(null);
+  const navigate = useNavigate();
 
   console.log("User ID in CitizenBlockDetails:", userId);
 
@@ -27,6 +30,31 @@ function CitizenBlockDetails({ userId }) {
       console.error("userId is undefined or null");
     }
   }, [userId]);
+
+  // Handle block button click
+    const handleBlockClick = async () => {
+      const result = await AlertService.confirm({
+        title: "Block User",
+        text: "Are you sure you want to unblock this user?",
+        confirmButtonText: "Yes, Unblock",
+        cancelButtonText: "Cancel",
+      });
+  
+      if (result.isConfirmed) {
+        try {
+          // Call the backend API to block the user
+          await blockUser(userId, false); // Pass userId and isBlock=true
+          AlertService.success("User unblocked successfully!");
+          navigate("/AdminViewCitizen");
+          // Optionally, refetch user details to update the UI
+          //const updatedUserDetails = await fetchUserDetailsById(userId);
+          //setUserDetails(updatedUserDetails);
+        } catch (error) {
+          console.error("Failed to unblock user:", error);
+          AlertService.error("Failed to unblock user. Please try again.");
+        }
+      }
+    };
 
   if (!userDetails) {
     return <div>Loading...</div>;
@@ -90,7 +118,7 @@ function CitizenBlockDetails({ userId }) {
           </table>
         </div>
         <div className="added-civisl-officer-personal-detail-edit-delete">
-          <button style={{width: '100px'}}><span class="material-symbols-outlined">radio_button_unchecked</span>Unblock</button>
+          <button onClick={handleBlockClick} style={{width: '100px'}}><span class="material-symbols-outlined">radio_button_unchecked</span>Unblock</button>
           <button><span class="material-symbols-outlined">delete</span> Delete</button> 
         </div>
       </div>

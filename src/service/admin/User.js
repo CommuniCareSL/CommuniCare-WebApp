@@ -17,10 +17,23 @@ export const fetchUsersBySabhaAndBlockStatus = async (sabhaId, isBlock) => {
 // Fetch user details by userId
 export const fetchUserDetailsById = async (userId) => {
   try {
-    const response = await axios.get(`${BASE_URL}/user/${userId}`);
+    const response = await axios.get(`${BASE_URL}/user/by/${userId}`);
     return response.data; // Returns the user object
   } catch (error) {
     console.error("Error fetching user details:", error);
+    throw error;
+  }
+};
+
+// Block/Unblock user
+export const blockUser = async (userId, isBlock) => {
+  try {
+    const response = await axios.patch(`${BASE_URL}/user/${userId}/block`, {
+      isBlock,
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error blocking/unblocking user:", error);
     throw error;
   }
 };

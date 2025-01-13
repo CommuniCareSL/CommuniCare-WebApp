@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { fetchUserDetailsById } from "../../service/admin/User";
+import { useNavigate } from "react-router-dom";
+import { fetchUserDetailsById, blockUser } from "../../service/admin/User"; // Import blockUser function
 import profileImg from "../../assets/Admin/profile-img.jpg";
 import "../../styles/components/Admin/CivilOfficerDetails.css";
+import AlertService from "../../shared/service/AlertService";
 
 function CitizenUnblockDetails({ userId }) {
   const [userDetails, setUserDetails] = useState(null);
+  const navigate = useNavigate();
 
   console.log("User ID in CitizenUnblockDetails:", userId);
 
@@ -12,9 +15,7 @@ function CitizenUnblockDetails({ userId }) {
     const fetchUserDetails = async () => {
       try {
         const data = await fetchUserDetailsById(userId);
-
         console.log("User details:", data);
-
         setUserDetails(data);
       } catch (error) {
         console.error("Failed to fetch user details:", error);
@@ -27,6 +28,31 @@ function CitizenUnblockDetails({ userId }) {
       console.error("userId is undefined or null");
     }
   }, [userId]);
+
+  // Handle block button click
+  const handleBlockClick = async () => {
+    const result = await AlertService.confirm({
+      title: "Block User",
+      text: "Are you sure you want to block this user?",
+      confirmButtonText: "Yes, Block",
+      cancelButtonText: "Cancel",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        // Call the backend API to block the user
+        await blockUser(userId, true); // Pass userId and isBlock=true
+        AlertService.success("User blocked successfully!");
+        navigate("/AdminViewCitizen");
+        // Optionally, refetch user details to update the UI
+        //const updatedUserDetails = await fetchUserDetailsById(userId);
+        //setUserDetails(updatedUserDetails);
+      } catch (error) {
+        console.error("Failed to block user:", error);
+        AlertService.error("Failed to block user. Please try again.");
+      }
+    }
+  };
 
   if (!userDetails) {
     return <div>Loading...</div>;
@@ -58,7 +84,6 @@ function CitizenUnblockDetails({ userId }) {
                 </td>
                 <td className="added-civisl-officer-personal-detail-table-structure-column-1-second-part">
                   <p>{userDetails.idNumber}</p>{" "}
-                  {/* Replace with the correct field from your backend */}
                 </td>
               </tr>
               <tr className="added-civisl-officer-personal-detail-table-structure-column-1">
@@ -83,14 +108,13 @@ function CitizenUnblockDetails({ userId }) {
                 </td>
                 <td className="added-civisl-officer-personal-detail-table-structure-column-1-second-part">
                   <p>{userDetails.district}</p>{" "}
-                  {/* Replace with the correct field from your backend */}
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
         <div className="added-civisl-officer-personal-detail-edit-delete">
-          <button>
+          <button onClick={handleBlockClick}>
             <span className="material-symbols-outlined">block</span>Block
           </button>
         </div>
