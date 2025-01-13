@@ -1,6 +1,22 @@
 import axios from "axios";
 import { BASE_URL } from "../../constants/config";
 
+// Function to register a new employee
+export const registerEmployee = async (employeeData, token) => {
+  try {
+      const response = await axios.post(`${BASE_URL}/employee/register`, employeeData, {
+          headers: {
+              Authorization: `Bearer ${token}`, // Include the token in the request headers
+          },
+      });
+      return response.data; // Return the response data
+  } catch (error) {
+      console.error('Error registering employee:', error);
+      throw error; // Throw error for handling in the component
+  }
+};
+
+
 // Function to fetch employees by sabhaId
 export const fetchEmployeesBySabhaId = async (sabhaId) => {
   try {
