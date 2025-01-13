@@ -76,7 +76,7 @@ const AdminForm = ({ mode, employeeId, onClose, onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validateForm()) return; // Stop if validation fails
-
+  
     const formData = {
       name,
       address,
@@ -88,7 +88,9 @@ const AdminForm = ({ mode, employeeId, onClose, onSubmit }) => {
       sabhaId: selectedSabha,
       departmentId: 2,
     };
-    onSubmit(formData);
+  
+    // Pass employeeId along with formData
+    onSubmit(formData, employeeId);
   };
 
   return (

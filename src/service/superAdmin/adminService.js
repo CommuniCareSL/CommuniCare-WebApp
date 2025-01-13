@@ -39,7 +39,7 @@ export const fetchSabhas = async (district) => {
 
 export const addAdmin = async (adminData) => {
   try {
-    const response = await axios.post(`${BASE_URL}/employee`, adminData);
+    const response = await axios.post(`${BASE_URL}/employee/addAdmin`, adminData);
     return response.data;
   } catch (error) {
     console.error('Error adding admin:', error);
@@ -49,7 +49,11 @@ export const addAdmin = async (adminData) => {
 
 export const updateAdmin = async (adminData) => {
   try {
-    const response = await axios.put(`${BASE_URL}/employee/${adminData.index}`, adminData);
+    const response = await axios.put(
+      `${BASE_URL}/employee/updateAdmin/${adminData.employeeId}`, // Include employeeId in the URL
+      adminData,
+    );
+    console.log('Received adminData:', adminData);
     return response.data;
   } catch (error) {
     console.error('Error updating admin:', error);
