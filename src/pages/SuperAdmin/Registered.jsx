@@ -1,50 +1,75 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Sidebar from '../../components/SuperAdmin/Sidebar';
+import { getAllAdmins, addAdmin, updateAdmin } from '../../service/superAdmin/adminService';
+import AdminForm from '../../components/SuperAdmin/AdminForm';
 import '../../styles/pages/SuperAdmin/Registered.css';
 
 export const Registered = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [data, setData] = useState([
-    { index: 1, district: 'Colombo', pradeshiyaSabha: 'Homagama' },
-    { index: 2, district: 'Kalutara', pradeshiyaSabha: 'Agalwatta' },
-    { index: 3, district: 'Colombo', pradeshiyaSabha: 'Dehiwala' },
-    { index: 4, district: 'Gampaha', pradeshiyaSabha: 'Attanagalla' },
-    { index: 5, district: 'Kalutara', pradeshiyaSabha: 'Matugama' },
-    { index: 6, district: 'Gampaha', pradeshiyaSabha: 'Kelaniya' }
-  ]);
-  const [editingIndex, setEditingIndex] = useState(null);
-  const [editDistrict, setEditDistrict] = useState('');
-  const [editPradeshiyaSabha, setEditPradeshiyaSabha] = useState('');
+  const [admins, setAdmins] = useState([]);
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [formMode, setFormMode] = useState('add');
+  const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
+
+  useEffect(() => {
+    fetchAdmins();
+  }, []);
+
+  const fetchAdmins = async () => {
+    try {
+      const response = await getAllAdmins(2);
+      setAdmins(response);
+    } catch (error) {
+      console.error('Error fetching admins:', error);
+    }
+  };
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
 
-  const handleEdit = (item) => {
-    setEditingIndex(item.index); // Set the index being edited
-    setEditDistrict(item.district); // Prefill current district
-    setEditPradeshiyaSabha(item.pradeshiyaSabha); // Prefill current pradeshiya sabha
+  const handleAddAdmin = () => {
+    setFormMode('add');
+    setSelectedEmployeeId(null);
+    setIsFormOpen(true);
   };
 
-  const handleSave = () => {
-    setData((prevData) =>
-      prevData.map((item) =>
-        item.index === editingIndex
-          ? { ...item, district: editDistrict, pradeshiyaSabha: editPradeshiyaSabha }
-          : item
-      )
-    );
-    setEditingIndex(null); // Exit edit mode
+  const handleEditAdmin = (employeeId) => {
+    setFormMode('edit');
+    setSelectedEmployeeId(employeeId);
+    setIsFormOpen(true);
   };
 
-  const handleCancel = () => {
-    setEditingIndex(null); // Exit edit mode without saving
+  const handleViewAdmin = (employeeId) => {
+    setFormMode('view');
+    setSelectedEmployeeId(employeeId);
+    setIsFormOpen(true);
   };
 
-  const filteredData = data.filter(item =>
-    item.district.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.pradeshiyaSabha.toLowerCase().includes(searchQuery.toLowerCase())
+  const handleFormSubmit = async (formData) => {
+    try {
+      if (formMode === 'add') {
+        const response = await addAdmin({ ...formData, departmentId: 2 });
+        setAdmins([...admins, response.data]);
+      } else if (formMode === 'edit') {
+        const updatedAdmin = { ...formData, employeeId: selectedEmployeeId };
+        await updateAdmin(updatedAdmin);
+        setAdmins(prevAdmins =>
+          prevAdmins.map(admin =>
+            admin.employeeId === selectedEmployeeId ? updatedAdmin : admin
+          )
+        );
+      }
+      setIsFormOpen(false);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
+  };
+
+  const filteredAdmins = admins.filter(admin =>
+    admin.district.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    admin.sabhaName.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -52,13 +77,19 @@ export const Registered = () => {
       <div className="p-6 overflow-y-auto">
         <div className="Sadmin-table-home-page">
           <div className="Sadmin-table-title-container">
-            <h3>Pradeshiya Sabha</h3>
+            <h3>Pradeshiya Sabha Admins</h3>
           </div>
 
           <div className="Sadmin-table-table-tab-view-for-table-content">
             <div className="tabCon">
               <div className="newreg-search mb-4 flex justify-end">
-                <div className="newreg-search-input relative">
+                <button
+                  className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+                  onClick={handleAddAdmin}
+                >
+                  Add Admin
+                </button>
+                <div className="newreg-search-input relative ml-4">
                   <input
                     type="text"
                     placeholder="Search..."
@@ -76,7 +107,8 @@ export const Registered = () => {
                 <table className="newreg-table w-full table-auto">
                   <thead className="bg-gradient-to-r from-black to-blue-900 text-white">
                     <tr>
-                      <th className="px-4 py-2 text-center">Index</th>
+                      <th className="px-4 py-2 text-center">User Id</th>
+                      <th className="px-4 py-2 text-center">Name</th>
                       <th className="px-4 py-2 text-center">District</th>
                       <th className="px-4 py-2 text-center">Pradeshiya Sabha</th>
                       <th className="px-4 py-2 text-center">View Details</th>
@@ -84,55 +116,30 @@ export const Registered = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {filteredData.map((item) => (
-                      <tr key={item.index} className="border-b border-gray-200 hover:bg-gray-100">
-                        {editingIndex === item.index ? (
-                          <>
-                            <td className="px-4 py-2 text-center">{item.index}</td>
-                            <td className="px-4 py-2 text-center">
-                              <input
-                                type="text"
-                                value={editDistrict}
-                                onChange={(e) => setEditDistrict(e.target.value)}
-                                className="border rounded px-2 py-1"
-                              />
-                            </td>
-                            <td className="px-4 py-2 text-center">
-                              <input
-                                type="text"
-                                value={editPradeshiyaSabha}
-                                onChange={(e) => setEditPradeshiyaSabha(e.target.value)}
-                                className="border rounded px-2 py-1"
-                              />
-                            </td>
-                            <td className="px-4 py-2 text-center">
-                              <button className="btn1" onClick={handleSave}>Save</button>
-                              <button className="btn1 ml-2" onClick={handleCancel}>Cancel</button>
-                            </td>
-                            <td className="px-4 py-2 text-center"></td>
-                          </>
-                        ) : (
-                          <>
-                            <td className="px-4 py-2 text-center">{item.index}</td>
-                            <td className="px-4 py-2 text-center">{item.district}</td>
-                            <td className="px-4 py-2 text-center">{item.pradeshiyaSabha}</td>
-                            <td className="px-4 py-2 text-center">
-                              <Link to={`/pradeshiya-sabha-details/${item.index}`}>
-                                <button className="btn1">View</button>
-                              </Link>
-                            </td>
-                            <td className="px-4 py-2 text-center">
-                              <div className="flex justify-center space-x-2">
-                                <button
-                                  className="btn1"
-                                  onClick={() => handleEdit(item)}
-                                >
-                                  Edit
-                                </button>
-                              </div>
-                            </td>
-                          </>
-                        )}
+                    {filteredAdmins.map((admin) => (
+                      <tr key={admin.employeeId} className="border-b border-gray-200 hover:bg-gray-100">
+                        <td className="px-4 py-2 text-center">{admin.employeeId}</td>
+                        <td className="px-4 py-2 text-center">{admin.name}</td>
+                        <td className="px-4 py-2 text-center">{admin.district}</td>
+                        <td className="px-4 py-2 text-center">{admin.sabhaName}</td>
+                        <td className="px-4 py-2 text-center">
+                          <button
+                            className="btn1"
+                            onClick={() => handleViewAdmin(admin.employeeId)}
+                          >
+                            View
+                          </button>
+                        </td>
+                        <td className="px-4 py-2 text-center">
+                          <div className="flex justify-center space-x-2">
+                            <button
+                              className="btn1"
+                              onClick={() => handleEditAdmin(admin.employeeId)}
+                            >
+                              Edit
+                            </button>
+                          </div>
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -141,6 +148,16 @@ export const Registered = () => {
             </div>
           </div>
         </div>
+
+        {/* AdminForm Modal */}
+        {isFormOpen && (
+          <AdminForm
+            mode={formMode}
+            employeeId={selectedEmployeeId}
+            onClose={() => setIsFormOpen(false)}
+            onSubmit={handleFormSubmit}
+          />
+        )}
       </div>
     </Sidebar>
   );
