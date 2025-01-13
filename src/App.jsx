@@ -61,7 +61,7 @@ const App = () => {
         <Route path="/AdminAddedContractorDetails" element={<AdminAddedContractorDetails />} />
         <Route path="/AdminViewCitizen" element={<AdminViewCitizen />} />
         <Route path="/AdminViewCitizenDetailed/:userId" element={<AdminViewCitizenDetailed />} />
-        <Route path="/AdminViewBlockedCitizenDetails" element={<AdminViewBlockedCitizenDetails />} />
+        <Route path="/AdminViewBlockedCitizenDetails/:userId" element={<AdminViewBlockedCitizenDetails />} />
         <Route path="/AdminReport" element={<AdminReport />} />
         
 
