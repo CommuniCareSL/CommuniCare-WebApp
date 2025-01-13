@@ -99,7 +99,7 @@ function AddNewOfficerForm() {
                         required
                     >
                         <option value="" disabled className='placeholder-selcet' style={{ color: '#a2a2a2' }}>Please choose the Department</option>
-                        <option value="2">Administration Division</option>
+                        {/* <option value="2">Administration Division</option> */}
                         <option value="3">Health Division</option>
                         <option value="4">Account Division</option>
                         <option value="5">Work and Plan Division</option>
