@@ -83,7 +83,7 @@ const Sidebar = ({ children }) => {
           <a
             href="/login"
             onClick={handleLogout}
-            className="flex items-center p-3 hover:bg-gray-700"
+            className="flex items-center p-0 hover:bg-gray-700"
           >
             <span className="material-symbols-outlined">logout</span>
             {isExpanded && <span className="ml-4">Logout</span>}
