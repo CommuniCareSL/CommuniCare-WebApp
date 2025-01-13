@@ -56,7 +56,7 @@ const App = () => {
         <Route path="/AdminUnseenComplaintDetails" element={<AdminUnseenComplaintDetails />} />
         <Route path="/AdminInprogressComplainDetails" element={<AdminInprogressComplainDetails />} />
         <Route path="/AdminCompletedComplainDetails" element={<AdminCompletedComplainDetails />} />
-        <Route path="/AdminAddedOfficersDetails" element={<AdminAddedOfficersDetails />} />
+        <Route path="/AdminAddedOfficersDetails/:employeeId" element={<AdminAddedOfficersDetails />} />
         <Route path="/AdminAddContractor" element={<AdminAddContractor />} />
         <Route path="/AdminAddedContractorDetails" element={<AdminAddedContractorDetails />} />
         <Route path="/AdminViewCitizen" element={<AdminViewCitizen />} />
