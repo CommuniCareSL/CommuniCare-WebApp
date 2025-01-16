@@ -187,18 +187,22 @@ const ComplaintView = () => {
 
         <p className='m-5'>
           <span className='text-blue-700 text-lg'>Description : </span>
-          <br />
           {complaint.description} {/* Use the fetched description */}
         </p>
 
         <p className='m-5'>
-          <span className='text-blue-700 text-lg'>Complaint Submittee : </span><br />
+          <span className='text-blue-700 text-lg'>Complaint Submittee : </span>
           {complaint.user.fullName} {/* Use the fetched user name */}
         </p>
 
         <p className='m-5'>
-          <span className='text-blue-700 text-lg'>Date Submitted : </span><br />
+          <span className='text-blue-700 text-lg'>Date Submitted : </span>
           {new Date(complaint.createdAt).toISOString().split('T')[0]} {/* Format the date */}
+        </p>
+
+        <p className='m-5'>
+          <span className='text-blue-700 text-lg'>Remark : </span>
+          {complaint.remark} {/* Use the fetched user name */}
         </p>
 
         {/* Display Submitted Note */}
@@ -229,7 +233,7 @@ const ComplaintView = () => {
             <FormLabel>Change Status</FormLabel>
             <Select value={newStatus} onChange={handleStatusChange} placeholder="Select new status">
               <option value="PENDING">PENDING</option>
-              <option value="IN_PROGRESS">IN_PROGRESS</option>
+              <option value="IN_PROGRESS">IN PROGRESS</option>
               <option value="RESOLVED">RESOLVED</option>
               <option value="REJECTED">REJECTED</option>
             </Select>
