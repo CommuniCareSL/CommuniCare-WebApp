@@ -40,6 +40,10 @@ import WorkAndPlanDashboard from "./pages/WorkAndPlan/Dashboard";
 import WorkAndPlanComplaint from "./pages/WorkAndPlan/Complaint";
 import ComplaintView from './components/WorkAndPlan/Complaint/ComplaintView';
 import WorkAndPlanAppointment from "./pages/WorkAndPlan/WorkAndPlanAppointment";
+import WorkAndPlanBookedAppointments from "./pages/WorkAndPlan/WorkAndPlanBookedAppointments";
+import WorkAndPlanCompletedorCanceledAppointments from "./pages/WorkAndPlan/WorkAndPlanCompletedorCanceledAppointments";
+import WorkAndPlanOngoingAppointments from "./pages/WorkAndPlan/WorkAndPlanOngoingAppointments";
+import WorkAndPlanTodaysAppointments from "./pages/WorkAndPlan/WorkAndPlanTodaysAppointments";
 
 const App = () => {
   return (
@@ -103,6 +107,10 @@ const App = () => {
         <Route path="/WorkAndPlanComplaint" element={<WorkAndPlanComplaint />} />
         <Route path="/ComplaintView/:id" element={<ComplaintView />} />
         <Route path="/WorkAndPlanAppointment" element={<WorkAndPlanAppointment />} />
+        <Route path="/WorkAndPlanBookedAppointments" element={<WorkAndPlanBookedAppointments />} />
+        <Route path="/WorkAndPlanCompletedorCanceledAppointments" element={<WorkAndPlanCompletedorCanceledAppointments />} />
+        <Route path="/WorkAndPlanOngoingAppointments" element={<WorkAndPlanOngoingAppointments />} />
+        <Route path="/WorkAndPlanTodaysAppointments" element={<WorkAndPlanTodaysAppointments />} />
         
         {/* 6 Development */}
       </Routes>
