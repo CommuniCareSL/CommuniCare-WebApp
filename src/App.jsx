@@ -39,6 +39,8 @@ import PradeshiyaSabhaDetails from "./pages/SuperAdmin/PradeshiyaSabhaDetails"; 
 import WorkAndPlanDashboard from "./pages/WorkAndPlan/Dashboard";
 import WorkAndPlanComplaint from "./pages/WorkAndPlan/Complaint";
 import ComplaintView from './components/WorkAndPlan/Complaint/ComplaintView';
+import WorkAndPlanAppointment from "./pages/WorkAndPlan/WorkAndPlanAppointment";
+
 const App = () => {
   return (
     <Router>
@@ -100,6 +102,7 @@ const App = () => {
         <Route path="/WorkAndPlanDashboard" element={<WorkAndPlanDashboard />} />
         <Route path="/WorkAndPlanComplaint" element={<WorkAndPlanComplaint />} />
         <Route path="/ComplaintView/:id" element={<ComplaintView />} />
+        <Route path="/WorkAndPlanAppointment" element={<WorkAndPlanAppointment />} />
         
         {/* 6 Development */}
       </Routes>
