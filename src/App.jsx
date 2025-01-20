@@ -38,6 +38,7 @@ import ServiceDetails from "./pages/Civil Officer/Service_details";
 import NewAppointment from "./pages/Civil Officer/New_appointment";
 import OfficerProfile from './pages/Civil Officer/Profile_page';
 
+
 import SuperAdminDashboard from "./pages/SuperAdmin/Dashboard";
 import { Newregistration } from "./pages/SuperAdmin/NewRegistration";
 import Registered from "./pages/SuperAdmin/Registered";
