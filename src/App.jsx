@@ -21,6 +21,12 @@ import AdminReport from "./pages/Admin/AdminReport";
 
 import OfficerComplaintView from "./pages/Civil Officer/Complaint_view";
 import SingleComplaint from './pages/Civil Officer/Single_Complaint_view';
+import Services from './pages/Civil Officer/Services_manage';
+import Playground from './pages/Civil Officer/Services/Playground_home';
+import ManagePlayground from './pages/Civil Officer/Services/Manage_playground';
+import PlaygroundRequests from './pages/Civil Officer/Services/Playgroud_requests';
+import PlaygroundHistory from './pages/Civil Officer/Services/Playground_past';
+import AssemblyHall from './pages/Civil Officer/Services/AssemblyHall_home';
 
 import Dashboard_Officer from "./pages/Civil Officer/Dashboard";
 import Calendar_Officer from "./pages/Civil Officer/calendar_schedule";
@@ -30,6 +36,7 @@ import Documents_Officer from "./pages/Civil Officer/Citizen_documents";
 import ServiceDetails from "./pages/Civil Officer/Service_details";
 import NewAppointment from "./pages/Civil Officer/New_appointment";
 import OfficerProfile from './pages/Civil Officer/Profile_page';
+
 
 import SuperAdminDashboard from "./pages/SuperAdmin/Dashboard";
 import { Newregistration } from "./pages/SuperAdmin/NewRegistration";
@@ -90,7 +97,11 @@ const App = () => {
         {/* <Route path="/Single_complaint/:id" component={SingleComplaint} /> */}
         <Route path="/Single_complaint/:id" element={<SingleComplaint />} />
         <Route path="/profile_Officer" element={<OfficerProfile/>} />
-
+        <Route path="/Playground_home" element={<Playground/>} />
+        <Route path="/Playground_home/ManagePlayground" element={<ManagePlayground/>} />
+        <Route path="/Playground_home/PlaygroundRequests" element={<PlaygroundRequests/>} />
+        <Route path="/Playground_home/PlaygroundHistory" element={<PlaygroundHistory/>} />
+        <Route path="/AssemblyHall_home" element={<AssemblyHall/>} />
         
         {/* Officer Routes */}
         <Route path="/dashboard_Officer" element={<Dashboard_Officer />} />
@@ -100,6 +111,7 @@ const App = () => {
         <Route path="/document_Officer" element={<Documents_Officer />} />
         <Route path="/details/:serviceName" element={<ServiceDetails />} />
         <Route path="/new_appointment" element={<NewAppointment />} />
+        <Route path="/services" element={<Services />} />
 
         {/* 1 Super Admin Routes */}
         <Route path="/SuperAdminDashboard" element={<SuperAdminDashboard />} />
