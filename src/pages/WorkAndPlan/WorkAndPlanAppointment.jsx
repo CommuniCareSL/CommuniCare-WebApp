@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import Sidebar from '../../components/WorkAndPlan/Sidebar';
 import { BarChart, Users, Calendar, MessageSquare, TrendingUp, CalendarCheck2, CalendarX, CalendarRange} from 'lucide-react';
 
@@ -92,12 +93,12 @@ const WorkAndPlanAppointment = () => {
             {/* Appointment Actions (Larger Column) */}
             <div className="lg:col-span-2 bg-white rounded-xl shadow-sm p-6">
                 <h2 className="text-lg font-semibold text-gray-800 mb-4">Appointments Actions</h2>
-                {/* <div className="grid grid-cols-1 gap-3">
+                <div className="grid grid-cols-1 gap-3">
                     {[
-                    { label: "Add User", path: "/WorkAndPlanBookedAppointments" },
-                    { label: "New Appointment", path: "/WorkAndPlanCompletedorCanceledAppointments" },
-                    { label: "Create Report", path: "/WorkAndPlanOngoingAppointments" },
-                    { label: "View Analytics", path: "/WorkAndPlanTodaysAppointments" },
+                    { label: "Booked Appointments", path: "/WorkAndPlanBookedAppointments" },
+                    { label: "Today Appointment", path: "/WorkAndPlanTodaysAppointments" },
+                    { label: "Ongoing Appointments", path: "/WorkAndPlanOngoingAppointments" },
+                    { label: "Completed or Canceled Appointments", path: "/WorkAndPlanCompletedorCanceledAppointments" },
                     ].map(({ label, path }) => (
                     <Link key={path} to={path}>
                         <button
@@ -108,7 +109,7 @@ const WorkAndPlanAppointment = () => {
                         </button>
                     </Link>
                     ))}
-                </div> */}
+                </div>
             </div>
         </div>
 
