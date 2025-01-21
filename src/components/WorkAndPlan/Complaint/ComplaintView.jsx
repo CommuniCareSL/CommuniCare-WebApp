@@ -5,11 +5,9 @@ import {
 } from "@chakra-ui/react";
 import MapComponent from "./MapComponent";
 import { fetchComplaintById } from "../../../service/complaint/Complaint"; // Import the service function
-import {
-  addNoteToComplaint,
-  updateNoteInComplaint,
-} from "../../../service/complaint/Complaint"; // Import the new service functions
+import {addNoteToComplaint,updateNoteInComplaint,updateComplaintStatus} from "../../../service/complaint/Complaint"; // Import the new service functions
 import AlertService from "../../../shared/service/AlertService"; // Import the AlertService class
+
 // Status mapping object
 const STATUS_MAP = {
   0: { label: "PENDING", color: "yellow" },
@@ -89,10 +87,29 @@ const ComplaintView = () => {
   };
 
   // Handle submit status change
-  const handleSubmitStatusChange = () => {
-    setStatus(newStatus);
-    setNewStatus("");
-    setAlertOpen(false);
+  const handleSubmitStatusChange = async () => {
+    try {
+      // Update the status in the backend
+      const updatedComplaint = await updateComplaintStatus(id, newStatus);
+  
+      // Update the complaint state with the new status
+      setComplaint((prevComplaint) => ({
+        ...prevComplaint,
+        status: updatedComplaint.status, // Assuming the backend returns the updated complaint
+      }));
+  
+      // Update the local status state
+      setStatus(newStatus);
+  
+      // Show success alert
+      AlertService.success("Status updated successfully!");
+  
+      // Close the alert modal
+      setAlertOpen(false);
+    } catch (error) {
+      console.error("Error updating status:", error);
+      AlertService.error("Failed to update status. Please try again.");
+    }
   };
 
   // Handle cancel status change
@@ -121,7 +138,7 @@ const ComplaintView = () => {
         updatedComplaint = await addNoteToComplaint(id, note);
         AlertService.success("Note added successfully!"); // Show success alert
       }
-      
+
       // Update the complaint state with the new note
       setComplaint((prevComplaint) => ({
         ...prevComplaint,
@@ -282,10 +299,10 @@ const ComplaintView = () => {
               onChange={handleStatusChange}
               placeholder="Select new status"
             >
-              <option value="PENDING">PENDING</option>
-              <option value="IN_PROGRESS">IN PROGRESS</option>
-              <option value="RESOLVED">RESOLVED</option>
-              <option value="REJECTED">REJECTED</option>
+              <option value={0}>PENDING</option>
+              <option value={1}>IN PROGRESS</option>
+              <option value={2}>RESOLVED</option>
+              <option value={3}>REJECTED</option>
             </Select>
             <Button
               colorScheme="blue"
