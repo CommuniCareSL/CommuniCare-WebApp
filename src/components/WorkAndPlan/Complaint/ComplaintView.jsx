@@ -22,6 +22,7 @@ const ComplaintView = () => {
   const [isLoading, setIsLoading] = useState(true); // State to handle loading
   const [error, setError] = useState(null); // State to handle errors
   const [isSubmittingNote, setIsSubmittingNote] = useState(false); // State to handle note submission loading
+  const [isUpdatingStatus, setIsUpdatingStatus] = useState(false);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedImage, setSelectedImage] = useState("");
@@ -89,26 +90,33 @@ const ComplaintView = () => {
   // Handle submit status change
   const handleSubmitStatusChange = async () => {
     try {
-      // Update the status in the backend
-      const updatedComplaint = await updateComplaintStatus(id, newStatus);
-  
-      // Update the complaint state with the new status
-      setComplaint((prevComplaint) => ({
-        ...prevComplaint,
-        status: updatedComplaint.status, // Assuming the backend returns the updated complaint
-      }));
-  
-      // Update the local status state
-      setStatus(newStatus);
-  
-      // Show success alert
-      AlertService.success("Status updated successfully!");
-  
-      // Close the alert modal
+      setIsUpdatingStatus(true);
+      
+      const response = await updateComplaintStatus(id, newStatus);
+      console.log('Update response:', response); // Debug log
+      
+      if (response && response.complaint) {
+        setComplaint(prevComplaint => {
+          const updatedComplaint = {
+            ...prevComplaint,
+            ...response.complaint,
+            user: prevComplaint.user,
+            category: prevComplaint.category,
+            sabha: prevComplaint.sabha
+          };
+          console.log('Updated complaint:', updatedComplaint); // Debug log
+          return updatedComplaint;
+        });
+      }
+      
+      setNewStatus("");
       setAlertOpen(false);
+      AlertService.success(response.message || "Status updated successfully!");
     } catch (error) {
       console.error("Error updating status:", error);
       AlertService.error("Failed to update status. Please try again.");
+    } finally {
+      setIsUpdatingStatus(false);
     }
   };
 
@@ -200,12 +208,14 @@ const ComplaintView = () => {
     <div className="bg-slate-200 flex h-screen overflow-y-auto">
       {/* Left Column: Complaint Details */}
       <div className="left-column bg-white h-full overflow-y-auto m-5 w-2/3 ml-10 shadow-md rounded-md">
-        <p className="font-semibold text-lg m-5">
-          <span className="text-blue-700">Status : </span>
-          <Tag colorScheme={STATUS_MAP[complaint.status].color}>
-            <TagLabel>{STATUS_MAP[complaint.status].label}</TagLabel>
-          </Tag>
-        </p>
+      {complaint && (
+          <p className="font-semibold text-lg m-5">
+            <span className="text-blue-700">Status : </span>
+            <Tag colorScheme={STATUS_MAP[complaint.status].color}>
+              <TagLabel>{STATUS_MAP[complaint.status].label}</TagLabel>
+            </Tag>
+          </p>
+        )}
 
         <Box p={5}>
           <SimpleGrid columns={[2, null, 2]} spacing="40px">
@@ -263,13 +273,13 @@ const ComplaintView = () => {
         </p>
 
         {/* Display Submitted Note */}
-        {complaint.note && (
+        {/* {complaint.note && (
           <p className="m-5">
             <span className="text-blue-700 text-lg">Note : </span>
             <br />
             {complaint.note}
           </p>
-        )}
+        )} */}
 
         {submittedRejectReason && (
           <p className="m-5">
@@ -298,6 +308,7 @@ const ComplaintView = () => {
               value={newStatus}
               onChange={handleStatusChange}
               placeholder="Select new status"
+              isDisabled={isUpdatingStatus}
             >
               <option value={0}>PENDING</option>
               <option value={1}>IN PROGRESS</option>
@@ -309,6 +320,8 @@ const ComplaintView = () => {
               size="sm"
               mt={2}
               onClick={handleConfirmStatusChange}
+              isLoading={isUpdatingStatus}
+              isDisabled={!newStatus}
             >
               Change Status
             </Button>
@@ -325,6 +338,7 @@ const ComplaintView = () => {
                   size="sm"
                   mt={2}
                   onClick={handleSubmitStatusChange}
+                  isLoading={isUpdatingStatus}
                 >
                   Confirm
                 </Button>
@@ -333,14 +347,17 @@ const ComplaintView = () => {
                   size="sm"
                   mt={2}
                   ml={2}
-                  onClick={handleCancelStatusChange}
+                  onClick={() => {
+                    setAlertOpen(false);
+                    setNewStatus("");
+                  }}
+                  isDisabled={isUpdatingStatus}
                 >
                   Cancel
                 </Button>
               </div>
             </Alert>
           )}
-
           <FormControl mb={4}>
             <FormLabel>Add Note</FormLabel>
             <Textarea
@@ -361,7 +378,7 @@ const ComplaintView = () => {
             </Button>
           </FormControl>
 
-          <FormControl mb={4}>
+          {/* <FormControl mb={4}>
             <FormLabel>Reject Reason</FormLabel>
             <Select
               value={rejectReason}
@@ -392,7 +409,7 @@ const ComplaintView = () => {
             >
               Submit Reject Reason
             </Button>
-          </FormControl>
+          </FormControl> */}
         </div>
       </div>
     </div>
