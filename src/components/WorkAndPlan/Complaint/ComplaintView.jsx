@@ -6,7 +6,9 @@ import {
 import MapComponent from "./MapComponent";
 import { fetchComplaintById } from "../../../service/complaint/Complaint"; // Import the service function
 import {addNoteToComplaint,updateNoteInComplaint,updateComplaintStatus} from "../../../service/complaint/Complaint"; // Import the new service functions
+import {addNoteToComplaint,updateNoteInComplaint,updateComplaintStatus} from "../../../service/complaint/Complaint"; // Import the new service functions
 import AlertService from "../../../shared/service/AlertService"; // Import the AlertService class
+
 
 // Status mapping object
 const STATUS_MAP = {
