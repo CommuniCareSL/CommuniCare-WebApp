@@ -40,3 +40,41 @@ export const fetchComplaintById = async (complaintId) => {
     throw error; // Throw the error to be handled by the caller
   }
 };
+
+export const updateComplaintStatus = async (complaintId, status) => {
+  try {
+    const response = await axios.put(`${BASE_URL}/complaint/${complaintId}/status`, {
+      status,
+    });
+    return response.data; // Return the updated complaint or success message
+  } catch (error) {
+    console.error("Error updating status:", error);
+    throw error;
+  }
+};
+
+// Add a note to a complaint
+export const addNoteToComplaint = async (complaintId, note) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/complaint/${complaintId}/note`, {
+      note,
+    });
+    return response.data; // Return the updated complaint or success message
+  } catch (error) {
+    console.error("Error adding note:", error);
+    throw error;
+  }
+};
+
+// Update a note in a complaint
+export const updateNoteInComplaint = async (complaintId, note) => {
+  try {
+    const response = await axios.put(`${BASE_URL}/complaint/${complaintId}/note`, {
+      note,
+    });
+    return response.data; // Return the updated complaint or success message
+  } catch (error) {
+    console.error("Error updating note:", error);
+    throw error;
+  }
+};
