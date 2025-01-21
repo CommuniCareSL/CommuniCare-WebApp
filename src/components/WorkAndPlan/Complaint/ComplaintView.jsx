@@ -279,8 +279,8 @@ const ComplaintView = () => {
           {complaint.remark} {/* Use the fetched user name */}
         </p>
 
-        <p className='m-5'>
-          <span className='text-blue-700 text-lg'>Remark : </span>
+        <p className="m-5">
+          <span className="text-blue-700 text-lg">Remark : </span>
           {complaint.remark} {/* Use the fetched user name */}
         </p>
 
