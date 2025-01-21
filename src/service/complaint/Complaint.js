@@ -41,6 +41,18 @@ export const fetchComplaintById = async (complaintId) => {
   }
 };
 
+export const updateComplaintStatus = async (complaintId, status) => {
+  try {
+    const response = await axios.put(`${BASE_URL}/complaint/${complaintId}/status`, {
+      status,
+    });
+    return response.data; // Return the updated complaint or success message
+  } catch (error) {
+    console.error("Error updating status:", error);
+    throw error;
+  }
+};
+
 // Add a note to a complaint
 export const addNoteToComplaint = async (complaintId, note) => {
   try {
@@ -66,4 +78,3 @@ export const updateNoteInComplaint = async (complaintId, note) => {
     throw error;
   }
 };
-
