@@ -37,9 +37,9 @@ import {
 
 const Manage_Playground = () => {
   const [playgrounds, setPlaygrounds] = useState([
-    { id: 1, name: 'Greenfield', address: 'Main Street, City Center', contact: '1234567890' },
-    { id: 2, name: 'Sunny Park', address: 'Oak Avenue, Suburbia', contact: '9876543210' },
-    { id: 3, name: 'Sports Arena', address: 'Broadway, Downtown', contact: '5551234567' },
+    { id: 1, name: 'Greenfield', address: 'Main Street, City Center', contact: '1234567890', description: 'Good condition' },
+    { id: 2, name: 'Sunny Park', address: 'Oak Avenue, Suburbia', contact: '9876543210', description: 'Good condition' },
+    { id: 3, name: 'Sports Arena', address: 'Broadway, Downtown', contact: '5551234567', description: 'Good condition' },
   ]);
 
   const [currentPlayground, setCurrentPlayground] = useState(null);
@@ -213,7 +213,7 @@ const Manage_Playground = () => {
               {currentPlayground ? 'Edit Playground' : 'Add Playground'}
             </DrawerHeader>
 
-            <DrawerBody>
+            {/* <DrawerBody>
               <Stack spacing="24px">
                 <Box>
                   <FormLabel htmlFor="name">Name</FormLabel>
@@ -245,8 +245,90 @@ const Manage_Playground = () => {
                     }}
                   />
                 </Box>
+
+                
               </Stack>
-            </DrawerBody>
+            </DrawerBody> */}
+
+<DrawerBody>
+  <Stack spacing="24px">
+    <Box>
+      <FormLabel htmlFor="name">Name</FormLabel>
+      <Input
+        id="name"
+        placeholder="Enter playground name"
+        defaultValue={currentPlayground?.name || ''}
+      />
+    </Box>
+
+    <Box>
+      <FormLabel htmlFor="address">Region / Address</FormLabel>
+      <Textarea
+        id="address"
+        placeholder="Enter address"
+        defaultValue={currentPlayground?.address || ''}
+      />
+    </Box>
+
+    <Box>
+      <FormLabel htmlFor="contact">Contact Number</FormLabel>
+      <Input
+        id="contact"
+        placeholder="Enter contact number"
+        maxLength={10}
+        defaultValue={currentPlayground?.contact || ''}
+        onInput={(e) => {
+          e.target.value = e.target.value.replace(/[^0-9]/g, '');
+        }}
+      />
+    </Box>
+
+    {/* Terms Section */}
+    <Box>
+      <FormLabel>Terms & Conditions</FormLabel>
+      <Stack spacing={2}>
+        {currentPlayground?.terms?.map((term, index) => (
+          <Input
+            key={index}
+            defaultValue={term}
+            // placeholder={`Term ${index + 1}`}
+            id={`term-${index}`}
+          />
+        ))}
+        {/* Predefined Suggestions */}
+        <Box fontSize="sm" color="gray.500">
+          Suggestions: <i>"Return the field in clean condition", "Any damages must be reported immediately."</i>
+        </Box>
+        
+        <Button
+          leftIcon={<HiPlus />}
+          colorScheme="teal"
+          variant="outline"
+          size="sm"
+          onClick={() =>
+            setCurrentPlayground((prev) => ({
+              ...prev,
+              terms: [...(prev?.terms || []), ''],
+            }))
+          }
+        >
+          Condition
+        </Button>
+      </Stack>
+    </Box>
+
+
+    <Box>
+      <FormLabel htmlFor="address">Description (If any)</FormLabel>
+      <Textarea
+        id="address"
+        // placeholder="Enter address"
+        defaultValue={currentPlayground?.description || ''}
+      />
+    </Box>
+  </Stack>
+</DrawerBody>
+
 
             <DrawerFooter borderTopWidth="1px">
               <Button variant="outline" mr={3} onClick={onClose}>
