@@ -18,13 +18,6 @@ const ComplaintView = () => {
   const [isLoading, setIsLoading] = useState(true); // State to handle loading
   const [error, setError] = useState(null); // State to handle errors
 
-  const images = [
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-    'https://via.placeholder.com/150',
-  ];
-
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedImage, setSelectedImage] = useState('');
   const [status, setStatus] = useState("PENDING");
@@ -160,26 +153,26 @@ const ComplaintView = () => {
 
         <Box p={5}>
           <SimpleGrid columns={[2, null, 2]} spacing="40px">
-            {images.map((image, index) => (
+            {complaint.proofs.map((proof, index) => (
               <Box
                 key={index}
                 maxW="sm"
                 borderWidth="1px"
                 borderRadius="lg"
                 overflow="hidden"
-                onClick={() => handleImageClick(image)}
+                onClick={() => handleImageClick(proof)}
                 cursor="pointer"
               >
-                <Image src={image} alt={`image-${index}`} />
+                <Image src={`data:image/jpeg;base64,${proof}`} alt={`proof-${index}`} />
               </Box>
             ))}
           </SimpleGrid>
 
           <Modal isOpen={isOpen} onClose={onClose} size="xl">
             <ModalOverlay />
-            <ModalContent maxW="90vw" maxH="90vh">
+            <ModalContent maxW="50vw" maxH="90vh">
               <ModalBody p={0}>
-                <Image src={selectedImage} alt="Selected" maxH="90vh" />
+                <Image src={`data:image/jpeg;base64,${selectedImage}`} alt="Selected" maxH="90vh" />
               </ModalBody>
             </ModalContent>
           </Modal>
