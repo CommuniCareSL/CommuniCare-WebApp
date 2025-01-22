@@ -37,6 +37,7 @@ import Report from "./pages/SuperAdmin/Report";
 import PradeshiyaSabhaDetails from "./pages/SuperAdmin/PradeshiyaSabhaDetails"; // Import the new details page
 
 import HealthDashboard from "./pages/Health/Dashboard";
+import HealthComplaint from "./pages/WorkAndPlan/Complaint";
 
 
 
@@ -109,6 +110,7 @@ const App = () => {
 
         {/* 3 Health */}
         <Route path="/HealthDashboard" element={<HealthDashboard />} />
+        <Route path="/HealthComplaint" element={<HealthComplaint />} />
 
 
 
