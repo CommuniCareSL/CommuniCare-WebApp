@@ -36,6 +36,15 @@ import Registered from "./pages/SuperAdmin/Registered";
 import Report from "./pages/SuperAdmin/Report";
 import PradeshiyaSabhaDetails from "./pages/SuperAdmin/PradeshiyaSabhaDetails"; // Import the new details page
 
+import HealthDashboard from "./pages/Health/Dashboard";
+
+
+
+
+import AccountDashboard from "./pages/Account/Dashboard";
+
+
+
 import WorkAndPlanDashboard from "./pages/WorkAndPlan/Dashboard";
 import WorkAndPlanComplaint from "./pages/WorkAndPlan/Complaint";
 import ComplaintView from './components/WorkAndPlan/Complaint/ComplaintView';
@@ -99,8 +108,12 @@ const App = () => {
         <Route path="/pradeshiya-sabha-details/:index" element={<PradeshiyaSabhaDetails />} /> {/* Add this new route */}
 
         {/* 3 Health */}
+        <Route path="/HealthDashboard" element={<HealthDashboard />} />
+
+
 
         {/* 4 Account */}
+        <Route path="/AccountDashboard" element={<AccountDashboard />} />
 
         {/* 5 Work And Plan */}
         <Route path="/WorkAndPlanDashboard" element={<WorkAndPlanDashboard />} />
