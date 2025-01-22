@@ -43,7 +43,7 @@ import HealthComplaint from "./pages/WorkAndPlan/Complaint";
 
 
 import AccountDashboard from "./pages/Account/Dashboard";
-
+import AccountComplaint from "./pages/WorkAndPlan/Complaint";
 
 
 import WorkAndPlanDashboard from "./pages/WorkAndPlan/Dashboard";
@@ -116,6 +116,9 @@ const App = () => {
 
         {/* 4 Account */}
         <Route path="/AccountDashboard" element={<AccountDashboard />} />
+        <Route path="/AccountComplaint" element={<AccountComplaint />} />
+
+
 
         {/* 5 Work And Plan */}
         <Route path="/WorkAndPlanDashboard" element={<WorkAndPlanDashboard />} />
