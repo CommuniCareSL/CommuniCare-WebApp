@@ -66,12 +66,12 @@ const Sidebar = () => {
             Citizens
           </a>
         </li>
-        {/* <li>
-          <a href="#">
-            <span className="material-symbols-outlined">build</span>
-            Services
+        <li>
+        <a href="/AdminComplaint" onClick={(e) => handleClick(e, '/AdminComplaint')}>
+            <span className="material-symbols-outlined">report_problem</span>
+            Other Complaints
           </a>
-        </li> */}
+        </li> 
         
         <li>
           <a href="/AdminReport" onClick={(e) => handleClick(e, '/AdminReport')}>
