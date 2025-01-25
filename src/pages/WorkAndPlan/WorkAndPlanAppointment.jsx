@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Sidebar from '../../components/WorkAndPlan/Sidebar';
 import { Calendar, CalendarCheck2, CalendarX, CalendarRange} from 'lucide-react';
 
-
 const stats = [
     {
         title: 'Total Appointments',
