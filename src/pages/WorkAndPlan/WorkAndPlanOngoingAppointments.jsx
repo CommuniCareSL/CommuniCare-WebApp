@@ -209,6 +209,7 @@ const WorkAndPlanOngoingAppointments = () => {
 
 
                 <div className="mt-4 flex justify-end gap-3 w-full">
+                  <button className="px-4 py-2 bg-blue-500 text-white rounded-lg">Complete</button>
                   <button
                     className="px-4 py-2 bg-red-500 text-white rounded-lg"
                     onClick={handleCancelClick}
