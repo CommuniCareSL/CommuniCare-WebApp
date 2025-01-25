@@ -42,6 +42,13 @@ const stats = [
 const WorkAndPlanAppointment = () => {
   return (
     <Sidebar>
+
+        <style jsx>{`
+            button:hover {
+            transform: scale(1.05);
+            }
+        `}</style>
+
       {/* Remove duplicate container divs and adjust padding */}
       <div className="max-w-8xl mx-auto">
         {/* Header Section */}
