@@ -18,6 +18,7 @@ import AdminViewCitizen from "./pages/Admin/AdminViewCitizen";
 import AdminViewCitizenDetailed from "./pages/Admin/AdminViewCitizenDetailed";
 import AdminViewBlockedCitizenDetails from "./pages/Admin/AdminViewBlockedCitizenDetails";
 import AdminReport from "./pages/Admin/AdminReport";
+import AdminComplaint from "./pages/Admin/OtherComplaints";
 
 import OfficerComplaintView from "./pages/Civil Officer/Complaint_view";
 import SingleComplaint from './pages/Civil Officer/Single_Complaint_view';
@@ -35,6 +36,16 @@ import { Newregistration } from "./pages/SuperAdmin/NewRegistration";
 import Registered from "./pages/SuperAdmin/Registered";
 import Report from "./pages/SuperAdmin/Report";
 import PradeshiyaSabhaDetails from "./pages/SuperAdmin/PradeshiyaSabhaDetails"; // Import the new details page
+
+import HealthDashboard from "./pages/Health/Dashboard";
+import HealthComplaint from "./pages/Health/Complaint";
+
+
+
+
+import AccountDashboard from "./pages/Account/Dashboard";
+import AccountComplaint from "./pages/Account/Complaint";
+
 
 import WorkAndPlanDashboard from "./pages/WorkAndPlan/Dashboard";
 import WorkAndPlanComplaint from "./pages/WorkAndPlan/Complaint";
@@ -69,6 +80,7 @@ const App = () => {
         <Route path="/AdminViewCitizenDetailed/:userId" element={<AdminViewCitizenDetailed />} />
         <Route path="/AdminViewBlockedCitizenDetails/:userId" element={<AdminViewBlockedCitizenDetails />} />
         <Route path="/AdminReport" element={<AdminReport />} />
+        <Route path="/AdminComplaint" element={<AdminComplaint />} />
         
 
         <Route path="/officer_complaint" element={<OfficerComplaintView />} />
@@ -99,8 +111,16 @@ const App = () => {
         <Route path="/pradeshiya-sabha-details/:index" element={<PradeshiyaSabhaDetails />} /> {/* Add this new route */}
 
         {/* 3 Health */}
+        <Route path="/HealthDashboard" element={<HealthDashboard />} />
+        <Route path="/HealthComplaint" element={<HealthComplaint />} />
+
+
 
         {/* 4 Account */}
+        <Route path="/AccountDashboard" element={<AccountDashboard />} />
+        <Route path="/AccountComplaint" element={<AccountComplaint />} />
+
+
 
         {/* 5 Work And Plan */}
         <Route path="/WorkAndPlanDashboard" element={<WorkAndPlanDashboard />} />

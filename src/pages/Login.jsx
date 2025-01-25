@@ -37,7 +37,10 @@ const Login = () => {
             navigate("/dashboard");
             break;
           case 3:
-            navigate("/officer_complaint");
+            navigate("/HealthDashboard");
+            break;
+          case 4:
+            navigate("/AccountDashboard");
             break;
           case 5:
             navigate("/WorkAndPlanDashboard");
