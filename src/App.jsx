@@ -54,6 +54,14 @@ import HealthComplaint from "./pages/Health/Complaint";
 import AccountDashboard from "./pages/Account/Dashboard";
 import AccountComplaint from "./pages/Account/Complaint";
 
+import ServicesPage from "./pages/Account/Services/Services_manage";
+import PlaygroundAcc from './pages/Account/Services/Playground_home';
+import ManagePlaygroundAcc from './pages/Account/Services/Manage_playground';
+import PlaygroundRequestsAcc from './pages/Account/Services/Playground_requests';
+import PlaygroundHistoryAcc from './pages/Account/Services/Playground_past';
+import AssemblyHallAcc from './pages/Account/Services/AssemblyHall_home';
+
+
 
 import WorkAndPlanDashboard from "./pages/WorkAndPlan/Dashboard";
 import WorkAndPlanComplaint from "./pages/WorkAndPlan/Complaint";
@@ -104,6 +112,14 @@ const App = () => {
         <Route path="/Playground_home/PlaygroundRequests" element={<PlaygroundRequests/>} />
         <Route path="/Playground_home/PlaygroundHistory" element={<PlaygroundHistory/>} />
         <Route path="/AssemblyHall_home" element={<AssemblyHall/>} />
+
+        {/* Account/Services */}
+        <Route path="/ServicesPage" element={<ServicesPage/>} />
+        <Route path="/Playground_home" element={<PlaygroundAcc/>} />
+        <Route path="/Playground_home/ManagePlaygroundAcc" element={<ManagePlaygroundAcc/>} />
+        <Route path="/Playground_home/PlaygroundRequestsAcc" element={<PlaygroundRequestsAcc/>} />
+        <Route path="/Playground_home/PlaygroundHistoryAcc" element={<PlaygroundHistoryAcc/>} />
+        <Route path="/AssemblyHall_home" element={<AssemblyHallAcc/>} />
         
         {/* Officer Routes */}
         <Route path="/dashboard_Officer" element={<Dashboard_Officer />} />
