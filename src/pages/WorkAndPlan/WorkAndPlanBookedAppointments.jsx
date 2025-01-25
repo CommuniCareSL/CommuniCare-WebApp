@@ -78,6 +78,13 @@ const WorkAndPlanBookedAppointments = () => {
 
   return (
     <Sidebar>
+
+        <style jsx>{`
+            button:hover {
+            transform: scale(1.05);
+            }
+        `}</style>
+
       <div className="max-w-8xl mx-auto">
         <div className="mb-8">
           <h1 className="text-2xl font-semibold text-gray-800">Upcoming Appointments</h1>

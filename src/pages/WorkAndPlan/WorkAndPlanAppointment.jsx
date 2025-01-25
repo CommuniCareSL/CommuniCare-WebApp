@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Sidebar from '../../components/WorkAndPlan/Sidebar';
 import { Calendar, CalendarCheck2, CalendarX, CalendarRange} from 'lucide-react';
 
+
 const stats = [
     {
         title: 'Total Appointments',
@@ -42,6 +43,13 @@ const stats = [
 const WorkAndPlanAppointment = () => {
   return (
     <Sidebar>
+
+        <style jsx>{`
+            button:hover {
+            transform: scale(1.05);
+            }
+        `}</style>
+
       {/* Remove duplicate container divs and adjust padding */}
       <div className="max-w-8xl mx-auto">
         {/* Header Section */}
