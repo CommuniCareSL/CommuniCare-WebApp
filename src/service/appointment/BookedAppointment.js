@@ -22,3 +22,16 @@ export const getAppointments = async (sabhaId, departmentId) => {
       throw error;
     }
   };
+
+  export const cancelAppointment = async (appointmentId, cancelReason) => {
+    try {
+      const response = await axios.put(
+        `${BASE_URL}/appointment/${appointmentId}/cancel`,
+        { cancelReason }
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Error cancelling appointment:", error);
+      throw error;
+    }
+  };

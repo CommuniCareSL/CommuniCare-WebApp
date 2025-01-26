@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import Sidebar from "../../components/WorkAndPlan/Sidebar";
 import ReactSearchBox from "react-search-box";
 import { Warehouse, LandPlot, FileText, ChartArea, Trees } from 'lucide-react';
-import { getAppointments, getAppointmentDetails } from '../../service/appointment/BookedAppointment';
+import { getAppointments, getAppointmentDetails, cancelAppointment } from '../../service/appointment/BookedAppointment';
 import { getStoredData } from "../../hooks/localStorage";
+import axios from "axios";
+import { BASE_URL } from "../../constants/config";
+import AlertService from "../../shared/service/AlertService"; // Import the AlertService class
 
 const WorkAndPlanBookedAppointments = () => {
   const [appointments, setAppointments] = useState([]);
@@ -59,23 +62,42 @@ const WorkAndPlanBookedAppointments = () => {
     setIsCancelPopupVisible(true);
   };
 
-  const handleCancelSubmit = () => {
+  const handleCancelSubmit = async () => {
     if (cancelReason) {
-      console.log("Cancellation reason submitted:", cancelReason);
-      setIsCancelPopupVisible(false);
-      setCancelReason("");  // Reset the reason after submission
+      try {
+        // Call the backend API to cancel the appointment
+        await axios.put(`${BASE_URL}/appointment/${selectedAppointment.appointmentId}/cancel`, {
+          cancelReason,
+        });
+
+        console.log("Appointment cancelled successfully");
+        AlertService.success("Appointment cancelled successfully!");
+        setIsCancelPopupVisible(false);
+        setCancelReason(""); // Reset the reason after submission
+
+        // Refresh the appointments list
+        const data = await getAppointments(sabhaId, departmentId);
+        setAppointments(data);
+        setFilteredAppointments(data);
+
+        // Clear the selected appointment
+        setSelectedAppointment(null);
+      } catch (error) {
+        console.error('Error cancelling appointment:', error);
+        AlertService.error('Failed to cancel the appointment. Please try again.');
+      }
     } else {
-      alert("Please provide a cancellation reason.");
+      AlertService.error("Please provide a cancellation reason.");
     }
   };
 
   const categoryStyles = {
-    "Approval of building plans": {
+    "Approval of Building Plans": {
       icon: <Warehouse className="w-6 h-6 text-purple-600" />,
       bgColor: "bg-purple-100",
       bgSize: "w-10 h-10"
     },
-    "Approving land subdivision and amalgamation development plans": {
+    "Approving Land Subdivision and Amalgamation Development Plans": {
       icon: <LandPlot className="w-6 h-6 text-yellow-600" />,
       bgColor: "bg-yellow-100",
       bgSize: "w-10 h-10"
@@ -85,7 +107,7 @@ const WorkAndPlanBookedAppointments = () => {
       bgColor: "bg-blue-100",
       bgSize: "w-10 h-10"
     },
-    "Obtaining a trade license": {
+    "Obtaining a Trade License": {
       icon: <ChartArea className="w-6 h-6 text-red-600" />,
       bgColor: "bg-red-100",
       bgSize: "w-10 h-10"
