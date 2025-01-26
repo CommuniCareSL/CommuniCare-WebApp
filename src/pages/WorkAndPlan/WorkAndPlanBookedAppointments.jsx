@@ -5,8 +5,6 @@ import ReactSearchBox from "react-search-box";
 import { Warehouse, LandPlot, FileText, ChartArea, Trees } from 'lucide-react';
 import { getAppointments, getAppointmentDetails, cancelAppointment } from '../../service/appointment/BookedAppointment';
 import { getStoredData } from "../../hooks/localStorage";
-import axios from "axios";
-import { BASE_URL } from "../../constants/config";
 import AlertService from "../../shared/service/AlertService"; // Import the AlertService class
 
 const WorkAndPlanBookedAppointments = () => {
@@ -65,21 +63,19 @@ const WorkAndPlanBookedAppointments = () => {
   const handleCancelSubmit = async () => {
     if (cancelReason) {
       try {
-        // Call the backend API to cancel the appointment
-        await axios.put(`${BASE_URL}/appointment/${selectedAppointment.appointmentId}/cancel`, {
-          cancelReason,
-        });
-
+        // Call the service function to cancel the appointment
+        await cancelAppointment(selectedAppointment.appointmentId, cancelReason);
+  
         console.log("Appointment cancelled successfully");
         AlertService.success("Appointment cancelled successfully!");
         setIsCancelPopupVisible(false);
         setCancelReason(""); // Reset the reason after submission
-
+  
         // Refresh the appointments list
         const data = await getAppointments(sabhaId, departmentId);
         setAppointments(data);
         setFilteredAppointments(data);
-
+  
         // Clear the selected appointment
         setSelectedAppointment(null);
       } catch (error) {
