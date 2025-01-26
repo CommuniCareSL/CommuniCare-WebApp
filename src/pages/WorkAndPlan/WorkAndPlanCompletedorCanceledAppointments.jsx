@@ -196,7 +196,7 @@ const WorkAndPlanCompletedorCanceledAppointments = () => {
                 {/* Appointment Status */}
                 <div className="mt-4">
                   {selectedAppointment.state === "Completed" && (
-                    <span className="px-4 py-2 text-white bg-red-600 rounded-lg">Completed</span>
+                    <span className="px-4 py-2 text-white bg-blue-600 rounded-lg">Completed</span>
                   )}
                   {selectedAppointment.state === "Canceled" && (
                     <div>
