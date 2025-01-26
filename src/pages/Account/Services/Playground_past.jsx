@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Sidebar from '../../../components/Account/Sidebar';
-import { HiChevronRight } from 'react-icons/hi';
+import { HiChevronRight, HiQuestionMarkCircle } from 'react-icons/hi';
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -16,6 +16,14 @@ import {
     Flex,
     Box,
     Select,
+    IconButton,
+    Popover,
+    PopoverTrigger,
+    PopoverContent,
+    PopoverHeader,
+    PopoverBody,
+    PopoverArrow,
+    PopoverCloseButton,
 } from '@chakra-ui/react';
 
 const Playground_past = () => {
@@ -24,7 +32,7 @@ const Playground_past = () => {
     const [reservations, setReservations] = useState([
         { id: 1, user: 'John Doe', event: 'Football Match', description: 'Quarter-finals', ground: 'Ground 1', date: '2024-01-25', payment: 'Paid', paymentAmount: 5000, status: 'Completed' },
         { id: 2, user: 'Jane Smith', event: 'Cricket Match', description: 'Semi-finals', ground: 'Ground 2', date: '2024-01-26', payment: 'Paid', paymentAmount: 3000, status: 'Completed' },
-        { id: 3, user: 'David Brown', event: 'Tennis Match', description: 'Finals', ground: 'Ground 1', date: '2024-01-27', payment: 'Paid', paymentAmount: 7000, status: 'Completed' },
+        { id: 3, user: 'David Brown', event: 'Tennis Match', description: 'Finals', ground: 'Ground 1', date: '2024-01-27', payment: 'Paid', paymentAmount: 7000, status: 'Cancelled', note: 'I just don\'t want to' },
         { id: 4, user: 'Alice Johnson', event: 'Basketball Match', description: 'Finals', ground: 'Ground 2', date: '2024-02-10', payment: 'Unpaid', paymentAmount: 4000, status: 'Rejected' },
         { id: 5, user: 'Bob Williams', event: 'Volleyball Match', description: 'Semi-finals', ground: 'Ground 1', date: '2024-02-15', payment: 'Paid', paymentAmount: 6000, status: 'Rejected' },
     ]);
@@ -139,6 +147,7 @@ const Playground_past = () => {
                         fontSize="sm"
                     >
                         <option value="Completed">Completed</option>
+                        <option value="Cancelled">Cancelled</option>
                         <option value="Rejected">Rejected</option>
                     </Select>
                 </Flex>
@@ -173,15 +182,39 @@ const Playground_past = () => {
                                     <td className="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{reservation.date}</td>
                                     <td className="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{reservation.paymentAmount}</td>
                                     <td className="px-6 py-4 border-b border-gray-200">
-                                        <span
-                                            className={`px-2 py-1 rounded text-sm ${
-                                                reservation.status === 'Completed'
-                                                    ? 'bg-green-100 text-green-800'
-                                                    : 'bg-red-100 text-red-800'
-                                            }`}
-                                        >
-                                            {reservation.status}
-                                        </span>
+                                        <Flex align="center">
+                                            <span
+                                                className={`px-2 py-1 rounded text-sm ${
+                                                    reservation.status === 'Completed'
+                                                        ? 'bg-green-100 text-green-800'
+                                                        : reservation.status === 'Rejected'
+                                                        ? 'bg-red-100 text-red-800'
+                                                        : 'bg-gray-100 text-gray-800'
+                                                }`}
+                                            >
+                                                {reservation.status}
+                                            </span>
+                                            {reservation.status === 'Cancelled' && (
+                                                <Popover>
+                                                    <PopoverTrigger>
+                                                        <IconButton
+                                                            aria-label="View cancellation reason"
+                                                            icon={<HiQuestionMarkCircle />}
+                                                            size="xs"
+                                                            ml={2}
+                                                            variant="ghost"
+                                                            onClick={(e) => e.stopPropagation()}
+                                                        />
+                                                    </PopoverTrigger>
+                                                    <PopoverContent>
+                                                        <PopoverArrow />
+                                                        <PopoverCloseButton />
+                                                        <PopoverHeader>Cancellation Reason</PopoverHeader>
+                                                        <PopoverBody>{reservation.note}</PopoverBody>
+                                                    </PopoverContent>
+                                                </Popover>
+                                            )}
+                                        </Flex>
                                     </td>
                                 </tr>
                             ))}
@@ -228,7 +261,9 @@ const Playground_past = () => {
                                         className={`px-2 py-1 rounded text-sm ${
                                             selectedReservation.status === 'Completed'
                                                 ? 'bg-green-100 text-green-800'
-                                                : 'bg-red-100 text-red-800'
+                                                : selectedReservation.status === 'Rejected'
+                                                ? 'bg-red-100 text-red-800'
+                                                : 'bg-gray-100 text-gray-800'
                                         }`}
                                     >
                                         {selectedReservation.status}

@@ -34,6 +34,12 @@ import {
   AlertDialogHeader,
   AlertDialogContent,
   AlertDialogOverlay,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
 } from '@chakra-ui/react';
 
 const Manage_Playground = () => {
@@ -63,6 +69,11 @@ const Manage_Playground = () => {
     isOpen: isDeleteOpen,
     onOpen: onDeleteOpen,
     onClose: onDeleteClose,
+  } = useDisclosure();
+  const {
+    isOpen: isViewOpen,
+    onOpen: onViewOpen,
+    onClose: onViewClose,
   } = useDisclosure();
   const cancelRef = React.useRef();
 
@@ -124,7 +135,7 @@ const Manage_Playground = () => {
           border="1px solid #E2E8F0"
         >
           <Box mb={4} fontWeight="bold" fontSize="lg" color="gray.700">
-           
+
           </Box>
           <TableContainer>
             <Table variant="striped" colorScheme="blue" size="sm">
@@ -134,7 +145,7 @@ const Manage_Playground = () => {
                     Name
                   </Th>
                   <Th fontWeight="bold" color="blue.700">
-                    Area / Region 
+                    Area / Region
                   </Th>
                   <Th fontWeight="bold" color="blue.700">
                     Price Per Day
@@ -151,15 +162,18 @@ const Manage_Playground = () => {
                     <Td py={4}>{pg.area}</Td>
                     <Td py={4}>{pg.price}</Td>
                     <Td py={4} isNumeric>
-                    <Button
-                      size="sm"
-                      colorScheme="blue"
-                      variant="outline"
-                      mr={2}
-                      onClick={() => setSelectedPlayground(pg)}
-                    >
-                      View
-                    </Button>
+                      <Button
+                        size="sm"
+                        colorScheme="blue"
+                        variant="outline"
+                        mr={2}
+                        onClick={() => {
+                          setSelectedPlayground(pg);
+                          onViewOpen();
+                        }}
+                      >
+                        View
+                      </Button>
                       <Button
                         size="sm"
                         colorScheme="teal"
@@ -229,7 +243,7 @@ const Manage_Playground = () => {
         </Box>
 
         {/* Drawer for Add/Edit Playground */}
-        <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
+        <Drawer isOpen={isOpen} placement="right" onClose={onClose} size="lg">
           <DrawerOverlay />
           <DrawerContent>
             <DrawerCloseButton />
@@ -237,7 +251,7 @@ const Manage_Playground = () => {
               {currentPlayground ? 'Edit Playground' : 'Add Playground'}
             </DrawerHeader>
 
-            {/* <DrawerBody>
+            <DrawerBody>
               <Stack spacing="24px">
                 <Box>
                   <FormLabel htmlFor="name">Name</FormLabel>
@@ -249,114 +263,77 @@ const Manage_Playground = () => {
                 </Box>
 
                 <Box>
-                  <FormLabel htmlFor="address">Region / Address</FormLabel>
+                  <FormLabel htmlFor="area">Area (In Sq. m)</FormLabel>
                   <Textarea
-                    id="address"
-                    placeholder="Enter address"
-                    defaultValue={currentPlayground?.address || ''}
-                  />
-                </Box>
-
-                <Box>
-                  <FormLabel htmlFor="contact">Contact Number</FormLabel>
-                  <Input
-                    id="contact"
-                    placeholder="Enter contact number"
-                    maxLength={10}
-                    defaultValue={currentPlayground?.contact || ''}
+                    id="area"
+                    placeholder="Enter area"
+                    defaultValue={currentPlayground?.area || ''}
                     onInput={(e) => {
-                      e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                      e.target.value = e.target.value.replace(/[^0-9.]/g, ''); // Allow decimals
                     }}
                   />
                 </Box>
 
-                
+                <Box>
+                  <FormLabel htmlFor="price">Price Per Day</FormLabel>
+                  <Input
+                    id="price"
+                    placeholder="Enter price per day"
+                    type="number"
+                    defaultValue={currentPlayground?.price || ''}
+                    onInput={(e) => {
+                      const value = parseInt(e.target.value, 10);
+                      if (value < 0) e.target.value = '';
+                    }}
+                  />
+                </Box>
+
+                {/* Terms Section */}
+                <Box>
+                  <FormLabel>Terms & Conditions</FormLabel>
+                  <Stack spacing={2}>
+                    {currentPlayground?.terms?.map((term, index) => (
+                      <Input
+                        key={index}
+                        defaultValue={term}
+                        id={`term-${index}`}
+                      />
+                    ))}
+                    {/* Predefined Suggestions */}
+                    <Box fontSize="sm" color="gray.500">
+                      Suggestions:{' '}
+                      <i>
+                        "Return the field in clean condition", "Any damages must
+                        be reported immediately."
+                      </i>
+                    </Box>
+
+                    <Button
+                      leftIcon={<HiPlus />}
+                      colorScheme="teal"
+                      variant="outline"
+                      size="sm"
+                      onClick={() =>
+                        setCurrentPlayground((prev) => ({
+                          ...prev,
+                          terms: [...(prev?.terms || []), ''],
+                        }))
+                      }
+                    >
+                      Condition
+                    </Button>
+                  </Stack>
+                </Box>
+
+                <Box>
+                  <FormLabel htmlFor="address">Description (If any)</FormLabel>
+                  <Textarea
+                    id="address"
+                    defaultValue={currentPlayground?.description || ''}
+                  />
+                </Box>
               </Stack>
-            </DrawerBody> */}
-
-<DrawerBody>
-  <Stack spacing="24px">
-    <Box>
-      <FormLabel htmlFor="name">Name</FormLabel>
-      <Input
-        id="name"
-        placeholder="Enter playground name"
-        defaultValue={currentPlayground?.name || ''}
-      />
-    </Box>
-
-    <Box>
-      <FormLabel htmlFor="area">Area (In Sq. m)</FormLabel>
-      <Textarea
-        id="area"
-        placeholder="Enter area"
-        defaultValue={currentPlayground?.area || ''}
-        onInput={(e) => {
-          e.target.value = e.target.value.replace(/[^0-9.]/g, ''); // Allow decimals
-        }}
-      />
-    </Box>
-
-    <Box>
-      <FormLabel htmlFor="price">Price Per Day</FormLabel>
-      <Input
-        id="price"
-        placeholder="Enter price per day"
-        type="number"
-        defaultValue={currentPlayground?.price || ''}
-        onInput={(e) => {
-          const value = parseInt(e.target.value, 10);
-          if (value < 0) e.target.value = '';
-        }}
-      />
-    </Box>
-
-    {/* Terms Section */}
-    <Box>
-      <FormLabel>Terms & Conditions</FormLabel>
-      <Stack spacing={2}>
-        {currentPlayground?.terms?.map((term, index) => (
-          <Input
-            key={index}
-            defaultValue={term}
-            // placeholder={`Term ${index + 1}`}
-            id={`term-${index}`}
-          />
-        ))}
-        {/* Predefined Suggestions */}
-        <Box fontSize="sm" color="gray.500">
-          Suggestions: <i>"Return the field in clean condition", "Any damages must be reported immediately."</i>
-        </Box>
-        
-        <Button
-          leftIcon={<HiPlus />}
-          colorScheme="teal"
-          variant="outline"
-          size="sm"
-          onClick={() =>
-            setCurrentPlayground((prev) => ({
-              ...prev,
-              terms: [...(prev?.terms || []), ''],
-            }))
-          }
-        >
-          Condition
-        </Button>
-      </Stack>
-    </Box>
-
-
-    <Box>
-      <FormLabel htmlFor="address">Description (If any)</FormLabel>
-      <Textarea
-        id="address"
-        // placeholder="Enter address"
-        defaultValue={currentPlayground?.description || ''}
-      />
-    </Box>
-  </Stack>
-</DrawerBody>
-
+            </DrawerBody>
 
             <DrawerFooter borderTopWidth="1px">
               <Button variant="outline" mr={3} onClick={onClose}>
@@ -368,8 +345,10 @@ const Manage_Playground = () => {
                   handleAddOrEdit({
                     id: currentPlayground?.id,
                     name: document.getElementById('name').value,
-                    address: document.getElementById('address').value,
-                    contact: document.getElementById('contact').value,
+                    area: document.getElementById('area').value,
+                    price: document.getElementById('price').value,
+                    description: document.getElementById('address').value,
+                    terms: currentPlayground?.terms || [],
                   })
                 }
               >
@@ -378,6 +357,41 @@ const Manage_Playground = () => {
             </DrawerFooter>
           </DrawerContent>
         </Drawer>
+
+        {/* View Playground Modal */}
+        <Modal isOpen={isViewOpen} onClose={onViewClose} size="lg">
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Playground Details</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              {selectedPlayground && (
+                <Stack spacing={4}>
+                  <Box>
+                    <strong>Name:</strong> {selectedPlayground.name}
+                  </Box>
+                  <Box>
+                    <strong>Area:</strong> {selectedPlayground.area} sq. m
+                  </Box>
+                  <Box>
+                    <strong>Price Per Day:</strong> LKR {selectedPlayground.price}
+                  </Box>
+                  <Box>
+                    <strong>Description:</strong> {selectedPlayground.description}
+                  </Box>
+                  <Box>
+                    <strong>Terms & Conditions:</strong>
+                    <ul>
+                      {selectedPlayground.terms.map((term, index) => (
+                        <li key={index}>{term}</li>
+                      ))}
+                    </ul>
+                  </Box>
+                </Stack>
+              )}
+            </ModalBody>
+          </ModalContent>
+        </Modal>
       </div>
     </div>
   );
