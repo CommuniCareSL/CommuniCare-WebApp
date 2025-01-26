@@ -2,6 +2,7 @@ import React from 'react';
 import Sidebar from '../../../components/Account/Sidebar';
 import PlaygroundAcc from './Playground_home';
 import AssemblyHallAcc from './AssemblyHall_home';
+import CrematoriumAcc from './Crematorium_home';
 import { Tabs, TabList, Tab, TabPanels, TabPanel, Box } from '@chakra-ui/react';
 const Services = () => {
     return (
@@ -78,7 +79,7 @@ const Services = () => {
                                     boxShadow: "0 0 5px blue.300", // Subtle glow for the selected tab
                                 }}
                             >
-                                Allotment of Assembly Hall
+                                Gully Bowser Service Reservation
                             </Tab>
                         </TabList>
                         <TabPanels>
@@ -87,6 +88,9 @@ const Services = () => {
                             </TabPanel>
                             <TabPanel>
                                 <AssemblyHallAcc />
+                            </TabPanel>
+                            <TabPanel>
+                                <CrematoriumAcc />
                             </TabPanel>
                         </TabPanels>
                     </Tabs>
