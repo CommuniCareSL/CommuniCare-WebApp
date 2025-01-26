@@ -1,0 +1,22 @@
+body {
+    min-height: 100vh;
+    background: #ffffff;
+    overflow-x: hidden;
+    padding-left: 120px; /* Match sidebar width */
+  }
+  
+  @media (max-width: 768px) {
+    body {
+      padding-left: 0;
+    }
+  
+    .sidebar {
+      width: 0;
+      overflow: hidden;
+      transition: width 0.4s ease;
+    }
+  
+    .sidebar.mobile-open {
+      width: 260px;
+    }
+  }
