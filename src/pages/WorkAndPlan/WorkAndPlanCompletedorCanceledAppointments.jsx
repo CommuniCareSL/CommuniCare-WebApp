@@ -23,6 +23,7 @@ const WorkAndPlanCompletedorCanceledAppointments = () => {
     const fetchData = async () => {
       try {
         const data = await fetchCanceledOrCompletedAppointments(sabhaId, departmentId);
+        console.log("API Response:", data); 
         const mappedData = data.map((appointment) => ({
           id: appointment.appointmentId,
           name: appointment.user.fullName,
@@ -33,6 +34,7 @@ const WorkAndPlanCompletedorCanceledAppointments = () => {
           state: appointment.status === 1 ? "Canceled" : "Completed",
           reason: appointment.note,
         }));
+        console.log("Mapped Data:", mappedData); 
         setAppointments(mappedData);
         setFilteredAppointments(mappedData);
       } catch (error) {
