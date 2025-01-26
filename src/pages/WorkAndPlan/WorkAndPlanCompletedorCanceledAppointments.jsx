@@ -5,7 +5,7 @@ import ReactSearchBox from "react-search-box";
 import { Warehouse, LandPlot, FileText, ChartArea, Trees } from "lucide-react";
 import { getStoredData } from "../../hooks/localStorage";
 import AlertService from "../../shared/service/AlertService";
-import { } from "../../service/appointment/CompletedorCanceledAppointment";
+import { fetchCanceledOrCompletedAppointments,fetchAppointmentDetails } from "../../service/appointment/CompletedorCanceledAppointment";
 
 const WorkAndPlanCompletedorCanceledAppointments = () => {
   const appointments = [
