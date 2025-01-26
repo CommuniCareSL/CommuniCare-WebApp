@@ -1,66 +1,63 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Sidebar from "../../components/WorkAndPlan/Sidebar";
 import ReactSearchBox from "react-search-box";
 import { Warehouse, LandPlot, FileText, ChartArea, Trees } from "lucide-react";
 import { getStoredData } from "../../hooks/localStorage";
 import AlertService from "../../shared/service/AlertService";
-import { fetchCanceledOrCompletedAppointments,fetchAppointmentDetails } from "../../service/appointment/CompletedorCanceledAppointment";
+import {
+  fetchCanceledOrCompletedAppointments,
+  fetchAppointmentDetails,
+} from "../../service/appointment/CompletedorCanceledAppointment";
 
 const WorkAndPlanCompletedorCanceledAppointments = () => {
-  const appointments = [
-    {
-      id: 1,
-      name: "John Doe",
-      category: "Approval of Building Plans",
-      date: "2025-02-10",
-      time: "09.45 AM",
-      description: "A routine dental checkup with Dr. Smith.",
-      state: "Completed",
-    },
-    {
-      id: 2,
-      name: "Jane Smith",
-      category: "Approving land subdivision and amalgamation development plans",
-      date: "2025-02-12",
-      time: "10.45 AM",
-      description: "Comprehensive eye exam to check vision and eye health.",
-      state: "Completed",
-    },
-    {
-      id: 3,
-      name: "Mike Johnson",
-      category: "Issuance of Certificate of Conformity",
-      date: "2025-02-15",
-      time: "11.45 AM",
-      description: "A general health consultation with Dr. Johnson.",
-      state: "Canceled",
-      reason: "A general health consultation with Dr. Johnson.",
-    },
-    {
-      id: 4,
-      name: "Alice Brown",
-      category: "Obtaining a trade license",
-      date: "2025-02-20",
-      time: "12.45 PM",
-      description: "Physiotherapy session to improve mobility and reduce pain.",
-      state: "Completed",
-    },
-    {
-      id: 5,
-      name: "Alice Brown",
-      category: "Obtaining an Environmental Compliance Certificate",
-      time: "1.45 PM",
-      date: "2025-02-20",
-      description: "Physiotherapy session to improve mobility and reduce pain.",
-      state: "Canceled",
-      reason: "Physiotherapy session to improve mobility and reduce pain.",
-    },
-  ];
-
-  const [filteredAppointments, setFilteredAppointments] =
-    useState(appointments);
+  const [appointments, setAppointments] = useState([]);
+  const [filteredAppointments, setFilteredAppointments] = useState([]);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
+  const [selectedAppointmentDetails, setSelectedAppointmentDetails] = useState(null);
+
+  const { sabhaId, departmentId } = getStoredData();
+
+  // Fetch all canceled or completed appointments
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchCanceledOrCompletedAppointments(sabhaId, departmentId);
+        const mappedData = data.map((appointment) => ({
+          id: appointment.appointmentId,
+          name: appointment.user.fullName,
+          category: appointment.title,
+          date: appointment.date,
+          time: appointment.timeSlot,
+          description: appointment.description,
+          state: appointment.status === 1 ? "Canceled" : "Completed",
+          reason: appointment.note,
+        }));
+        setAppointments(mappedData);
+        setFilteredAppointments(mappedData);
+      } catch (error) {
+        AlertService.error("Failed to fetch appointments.");
+      }
+    };
+
+    fetchData();
+  }, [sabhaId, departmentId]);
+
+  // Fetch details of the selected appointment
+  useEffect(() => {
+    if (selectedAppointment) {
+      const fetchDetails = async () => {
+        try {
+          const details = await fetchAppointmentDetails(selectedAppointment.id);
+          setSelectedAppointmentDetails(details);
+        } catch (error) {
+          AlertService.error("Failed to fetch appointment details.");
+        }
+      };
+
+      fetchDetails();
+    }
+  }, [selectedAppointment]);
 
   const categoryStyles = {
     "Approval of Building Plans": {
@@ -140,6 +137,15 @@ const WorkAndPlanCompletedorCanceledAppointments = () => {
     }
   };
 
+  // Get the cancel note based on the type
+  const getCancelNote = (details) => {
+    if (details.tcNote) return `Today Appointment Cancel Note: ${details.tcNote}`;
+    if (details.ocNote) return `Ongoing Appointment Cancel Note: ${details.ocNote}`;
+    if (details.bcNote) return `Booking Cancel Note: ${details.bcNote}`;
+    if (details.ucNote) return `User Cancel Note: ${details.ucNote}`;
+    return "No cancel note available.";
+  };
+
   return (
     <Sidebar>
       <style jsx>{`
@@ -215,7 +221,6 @@ const WorkAndPlanCompletedorCanceledAppointments = () => {
 
           {/* Appointment Details Panel */}
           <div className="col-span-1 bg-white p-6 shadow rounded-lg">
-            {/* <h2 className="text-lg font-semibold text-gray-800 mb-4">Appointment Details</h2> */}
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-semibold text-gray-800">
                 Appointment Details
@@ -233,7 +238,7 @@ const WorkAndPlanCompletedorCanceledAppointments = () => {
               )}
             </div>
 
-            {selectedAppointment ? (
+            {selectedAppointmentDetails ? (
               <div className="flex flex-col items-left text-left">
                 <div className="flex items-center gap-3">
                   <div
@@ -245,23 +250,23 @@ const WorkAndPlanCompletedorCanceledAppointments = () => {
                   </div>
                   <div className="text-left">
                     <h3 className="text-lg font-medium text-gray-900">
-                      {selectedAppointment.name}
+                      {selectedAppointmentDetails.user.fullName}
                     </h3>
-                    <p className="text-gray-500">{selectedAppointment.date}</p>
+                    <p className="text-gray-500">{selectedAppointmentDetails.date}</p>
                   </div>
                 </div>
                 <div className="bg-gray-200 h-px w-full mt-[2vh] mb-[2vh]"></div>
 
                 <p className="text-gray-700 text-left w-full text-lg font-semibold mt-2">
-                  {selectedAppointment.category}
+                  {selectedAppointmentDetails.title}
                 </p>
                 <p className="text-gray-700 mt-3 text-left w-full">
-                  {selectedAppointment.description}
+                  {selectedAppointmentDetails.description || "No description available."}
                 </p>
 
                 <div className="mt-4 flex justify-end gap-3 w-full">
                   <p className="text-gray-700 mt-3 text-right w-full">
-                    {selectedAppointment.time}
+                    {selectedAppointmentDetails.timeSlot}
                   </p>
                 </div>
 
@@ -287,18 +292,14 @@ const WorkAndPlanCompletedorCanceledAppointments = () => {
 
                 <div className="bg-gray-200 h-px w-full mt-[2vh] mb-[2vh]"></div>
 
-                {/* if canceled reason */}
-                <div className="mt-0">
-                  {selectedAppointment.state === "Canceled" && (
-                    <div>
-                      {selectedAppointment.reason && (
-                        <p className="mt-1 text-red-600 text-sm mt-[2vh] mb-[2vh]">
-                          Reason: {selectedAppointment.reason}
-                        </p>
-                      )}
-                    </div>
-                  )}
-                </div>
+                {/* Display cancel note if appointment is canceled */}
+                {selectedAppointment.state === "Canceled" && (
+                  <div>
+                    <p className="mt-1 text-red-600 text-sm mt-[2vh] mb-[2vh]">
+                      {getCancelNote(selectedAppointmentDetails)}
+                    </p>
+                  </div>
+                )}
               </div>
             ) : (
               <p className="text-gray-500 text-center">
