@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import Sidebar from "../../components/WorkAndPlan/Sidebar";
 import ReactSearchBox from "react-search-box";
 import { Warehouse, LandPlot, FileText, ChartArea, Trees } from 'lucide-react';
+import { getStoredData } from "../../hooks/localStorage";
+import AlertService from "../../shared/service/AlertService";
+import { getOngoingAppointments, cancelOngoingAppointment } from "../../service/appointment/OngoingAppointment";
+import { getOngoingAppointmentDetails,completeOngoingAppointment } from "../../service/appointment/OngoingAppointment";
 
 const WorkAndPlanOngoingAppointments = () => {
   const appointments = [
@@ -17,6 +21,8 @@ const WorkAndPlanOngoingAppointments = () => {
   const [selectedAppointment, setSelectedAppointment] = useState(null);
   const [isCancelPopupVisible, setIsCancelPopupVisible] = useState(false);
   const [cancelReason, setCancelReason] = useState("");
+
+  const { sabhaId, departmentId } = getStoredData();
 
   const categoryStyles = {
     "Approval of Building Plans": {
@@ -87,7 +93,7 @@ const WorkAndPlanOngoingAppointments = () => {
       setFilteredAppointments(
         appointments.filter(
           (appointment) =>
-            appointment.name.toLowerCase().includes(searchTerm) ||
+            appointment.date.toLowerCase().includes(searchTerm) ||
             appointment.category.toLowerCase().includes(searchTerm)
         )
       );
@@ -131,7 +137,7 @@ const WorkAndPlanOngoingAppointments = () => {
             placeholder="Search appointments"
             data={appointments.map((appointment) => ({
               key: appointment.id,
-              value: `${appointment.name} - ${appointment.category}`,
+              value: `${appointment.date} - ${appointment.category}`,
             }))}
             onSelect={(record) => handleSearch(record.value)}
             onChange={(value) => handleSearch(value)}
@@ -159,7 +165,7 @@ const WorkAndPlanOngoingAppointments = () => {
                         {categoryStyles[appointment.category].icon}
                       </div>
                     </td>
-                    <td className="px-4 py-2 text-gray-700 h-[10vh]">{appointment.name}</td>
+                    <td className="px-4 py-2 text-gray-700 h-[10vh]">{appointment.date}</td>
                     <td className="px-4 py-2 text-gray-700 h-[10vh]">{appointment.category}</td>
                   </tr>
                 ))}
