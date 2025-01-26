@@ -1,28 +1,112 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Sidebar from "../../components/WorkAndPlan/Sidebar";
 import ReactSearchBox from "react-search-box";
 import { Warehouse, LandPlot, FileText, ChartArea, Trees } from 'lucide-react';
 import { getStoredData } from "../../hooks/localStorage";
 import AlertService from "../../shared/service/AlertService";
-import { getOngoingAppointments, cancelOngoingAppointment } from "../../service/appointment/OngoingAppointment";
-import { getOngoingAppointmentDetails,completeOngoingAppointment } from "../../service/appointment/OngoingAppointment";
+import { getOngoingAppointments, cancelOngoingAppointment, getOngoingAppointmentDetails, completeOngoingAppointment } from "../../service/appointment/OngoingAppointment";
 
 const WorkAndPlanOngoingAppointments = () => {
-  const appointments = [
-    { id: 1, name: "John Doe", category: "Approval of Building Plans", date: "2025-02-10", time: "09.45 AM", description: "A routine dental checkup with Dr. Smith." },
-    { id: 2, name: "Jane Smith", category: "Approving land subdivision and amalgamation development plans", date: "2025-02-12", time: "10.45 AM", description: "Comprehensive eye exam to check vision and eye health." },
-    { id: 3, name: "Mike Johnson", category: "Issuance of Certificate of Conformity", date: "2025-02-15", time: "11.45 AM", description: "A general health consultation with Dr. Johnson." },
-    { id: 4, name: "Alice Brown", category: "Obtaining a trade license", date: "2025-02-20", time: "12.45 PM", description: "Physiotherapy session to improve mobility and reduce pain." },
-    { id: 5, name: "Alice Brown", category: "Obtaining an Environmental Compliance Certificate", time: "1.45 PM", date: "2025-02-20", description: "Physiotherapy session to improve mobility and reduce pain." },
-  ];
-
-  const [filteredAppointments, setFilteredAppointments] = useState(appointments);
+  const [appointments, setAppointments] = useState([]);
+  const [filteredAppointments, setFilteredAppointments] = useState([]);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
   const [isCancelPopupVisible, setIsCancelPopupVisible] = useState(false);
   const [cancelReason, setCancelReason] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const { sabhaId, departmentId } = getStoredData();
+
+  useEffect(() => {
+    const fetchAppointments = async () => {
+      try {
+        const data = await getOngoingAppointments(sabhaId, departmentId);
+        setAppointments(data);
+        setFilteredAppointments(data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching ongoing appointments:', error);
+        setError(error);
+        setLoading(false);
+      }
+    };
+
+    fetchAppointments();
+  }, [sabhaId, departmentId]);
+
+  const handleSearch = (value) => {
+    if (value) {
+      const searchTerm = value.toLowerCase();
+      setFilteredAppointments(
+        appointments.filter(
+          (appointment) =>
+            appointment.date.toLowerCase().includes(searchTerm) ||
+            appointment.title.toLowerCase().includes(searchTerm)
+        )
+      );
+    } else {
+      setFilteredAppointments(appointments);
+    }
+  };
+
+  const handleAppointmentClick = async (appointmentId) => {
+    try {
+      const appointmentDetails = await getOngoingAppointmentDetails(appointmentId);
+      setSelectedAppointment(appointmentDetails);
+    } catch (error) {
+      console.error('Error fetching appointment details:', error);
+      AlertService.error('Failed to fetch appointment details. Please try again.');
+    }
+  };
+
+  const handleCancelClick = () => {
+    setIsCancelPopupVisible(true);
+  };
+
+  const handleCancelSubmit = async () => {
+    if (cancelReason) {
+      try {
+        await cancelOngoingAppointment(selectedAppointment.appointmentId, cancelReason);
+        AlertService.success("Appointment cancelled successfully!");
+        setIsCancelPopupVisible(false);
+        setCancelReason("");
+
+        // Refresh the appointments list
+        const data = await getOngoingAppointments(sabhaId, departmentId);
+        setAppointments(data);
+        setFilteredAppointments(data);
+
+        // Clear the selected appointment
+        setSelectedAppointment(null);
+      } catch (error) {
+        console.error('Error cancelling appointment:', error);
+        AlertService.error('Failed to cancel the appointment. Please try again.');
+      }
+    } else {
+      AlertService.error("Please provide a cancellation reason.");
+    }
+  };
+
+  const handleCompleteAppointment = async () => {
+    if (selectedAppointment) {
+      try {
+        await completeOngoingAppointment(selectedAppointment.appointmentId);
+        AlertService.success("Appointment completed successfully!");
+
+        // Refresh the appointments list
+        const data = await getOngoingAppointments(sabhaId, departmentId);
+        setAppointments(data);
+        setFilteredAppointments(data);
+
+        // Clear the selected appointment
+        setSelectedAppointment(null);
+      } catch (error) {
+        console.error("Error completing appointment:", error);
+        AlertService.error("Failed to complete the appointment. Please try again.");
+      }
+    }
+  };
 
   const categoryStyles = {
     "Approval of Building Plans": {
@@ -54,14 +138,14 @@ const WorkAndPlanOngoingAppointments = () => {
 
   const categoryCheckOptions = {
     "Approval of Building Plans": [
-      "Archtectural plans",
+      "Architectural plans",
       "Land ownership documents",
       "National ID card",
       "Fees : Rs.750.00"
     ],
     "Approving land subdivision and amalgamation development plans": [
       "Request Letter",
-      "Land survery report",
+      "Land survey report",
       "Ownership certificates",
       "A copy of National ID card",
       "Fees : Rs.750.00"
@@ -74,7 +158,7 @@ const WorkAndPlanOngoingAppointments = () => {
     ],
     "Obtaining a trade license": [
       "Completed application form",
-      "Bussiness registration",
+      "Business registration",
       "Tax identification number",
       "Fees : Rs.3000.00"
     ],
@@ -86,39 +170,17 @@ const WorkAndPlanOngoingAppointments = () => {
       "Fees : Rs.3100.00"
     ],
   };
-  
-  const handleSearch = (value) => {
-    if (value) {
-      const searchTerm = value.toLowerCase();
-      setFilteredAppointments(
-        appointments.filter(
-          (appointment) =>
-            appointment.date.toLowerCase().includes(searchTerm) ||
-            appointment.category.toLowerCase().includes(searchTerm)
-        )
-      );
-    } else {
-      setFilteredAppointments(appointments);
-    }
-  };
 
-  const handleCancelClick = () => {
-    setIsCancelPopupVisible(true);
-  };
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-  const handleCancelSubmit = () => {
-    if (cancelReason) {
-      console.log("Cancellation reason submitted:", cancelReason);
-      setIsCancelPopupVisible(false);
-      setCancelReason("");  // Reset the reason after submission
-    } else {
-      alert("Please provide a cancellation reason.");
-    }
-  };
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   return (
     <Sidebar>
-
       <style jsx>{`
         button:hover {
           transform: scale(1.05);
@@ -128,7 +190,7 @@ const WorkAndPlanOngoingAppointments = () => {
       <div className="max-w-8xl mx-auto">
         <div className="mb-8">
           <h1 className="text-2xl font-semibold text-gray-800">Ongoing Appointments</h1>
-          <p className="text-gray-500 mt-1">View the appointments that are Ongoing</p>
+          <p className="text-gray-500 mt-1">View the appointments that are ongoing</p>
         </div>
 
         {/* Search Bar */}
@@ -136,8 +198,8 @@ const WorkAndPlanOngoingAppointments = () => {
           <ReactSearchBox
             placeholder="Search appointments"
             data={appointments.map((appointment) => ({
-              key: appointment.id,
-              value: `${appointment.date} - ${appointment.category}`,
+              key: appointment.appointmentId,
+              value: `${appointment.date} - ${appointment.title}`,
             }))}
             onSelect={(record) => handleSearch(record.value)}
             onChange={(value) => handleSearch(value)}
@@ -153,23 +215,31 @@ const WorkAndPlanOngoingAppointments = () => {
 
             <div className="mt-8 overflow-x-auto bg-white shadow-md rounded-lg">
               <table className="min-w-full border-collapse">
-              <tbody>
-                {filteredAppointments.map((appointment, index) => (
-                  <tr
-                    key={appointment.id}
-                    className={`cursor-pointer ${index % 2 === 0 ? "border-t" : "border-t bg-gray-50"} hover:bg-gray-100`}
-                    onClick={() => setSelectedAppointment(appointment)}
-                  >
-                    <td className="px-4 py-2 text-gray-700 h-[10vh]">
-                      <div className={`p-3 ${categoryStyles[appointment.category].bgColor} ${categoryStyles[appointment.category].bgSize} rounded-lg flex items-center justify-center`}>
-                        {categoryStyles[appointment.category].icon}
-                      </div>
-                    </td>
-                    <td className="px-4 py-2 text-gray-700 h-[10vh]">{appointment.date}</td>
-                    <td className="px-4 py-2 text-gray-700 h-[10vh]">{appointment.category}</td>
-                  </tr>
-                ))}
-              </tbody>
+                <tbody>
+                  {filteredAppointments.length > 0 ? (
+                    filteredAppointments.map((appointment, index) => (
+                      <tr
+                        key={appointment.appointmentId}
+                        className={`cursor-pointer ${index % 2 === 0 ? "border-t" : "border-t bg-gray-50"} hover:bg-gray-100`}
+                        onClick={() => handleAppointmentClick(appointment.appointmentId)}
+                      >
+                        <td className="px-4 py-2 text-gray-700 h-[10vh]">
+                          <div className={`p-3 ${categoryStyles[appointment.title]?.bgColor || "bg-gray-100"} ${categoryStyles[appointment.title]?.bgSize || "w-10 h-10"} rounded-lg flex items-center justify-center`}>
+                            {categoryStyles[appointment.title]?.icon || <div>No Icon</div>}
+                          </div>
+                        </td>
+                        <td className="px-4 py-2 text-gray-700 h-[10vh]">{appointment.date}</td>
+                        <td className="px-4 py-2 text-gray-700 h-[10vh]">{appointment.title}</td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr>
+                      <td colSpan="3" className="text-center py-4 text-gray-500">
+                        No ongoing appointments found.
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
               </table>
             </div>
           </div>
@@ -181,41 +251,49 @@ const WorkAndPlanOngoingAppointments = () => {
             {selectedAppointment ? (
               <div className="flex flex-col items-left text-left">
                 <div className="flex items-center gap-3">
-                  <div className={`p-2 ${categoryStyles[selectedAppointment.category].bgColor} rounded-lg flex items-center justify-center`}>
-                    {categoryStyles[selectedAppointment.category].icon }
+                  <div className={`p-2 ${categoryStyles[selectedAppointment.title]?.bgColor || "bg-gray-100"} rounded-lg flex items-center justify-center`}>
+                    {categoryStyles[selectedAppointment.title]?.icon || <div>No Icon</div>}
                   </div>
                   <div className="text-left">
-                    <h3 className="text-lg font-medium text-gray-900">{selectedAppointment.name}</h3>
+                    <h3 className="text-lg font-medium text-gray-900">{selectedAppointment.user?.fullName || "No Name"}</h3>
                     <p className="text-gray-500">{selectedAppointment.date}</p>
                   </div>
                 </div>
                 <div className="bg-gray-200 h-px w-full mt-[2vh] mb-[2vh]"></div>
 
-                <p className="text-gray-700 text-left w-full text-lg font-semibold mt-2">{selectedAppointment.category}</p>
-                <p className="text-gray-700 mt-3 text-left w-full">{selectedAppointment.description}</p>
+                <p className="text-gray-700 text-left w-full text-lg font-semibold mt-2">{selectedAppointment.title}</p>
+                <p className="text-gray-700 mt-3 text-left w-full">{selectedAppointment.note || "No Description"}</p>
 
                 <div className="mt-4 flex justify-end gap-3 w-full">
-                  <p className="text-gray-700 mt-3 text-right w-full">{selectedAppointment.time}</p>
+                  <p className="text-gray-700 mt-3 text-right w-full">{selectedAppointment.timeSlot}</p>
                 </div>
 
                 <div className="bg-gray-200 h-px w-full mt-[2vh] mb-[2vh]"></div>
 
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">Required Documents</h3>
-                  {selectedAppointment && categoryCheckOptions[selectedAppointment.category] ? (
-                    <ul className="list-disc pl-5 text-gray-700">
-                      {categoryCheckOptions[selectedAppointment.category].map((item, index) => (
-                        <li key={index}>{item}</li>
+                {/* Requirements List */}
+                <div className="mt-4">
+                  <h3 className="text-lg font-medium text-gray-800">Requirements</h3>
+                  {selectedAppointment && categoryCheckOptions[selectedAppointment.title] ? (
+                    <ul className="mt-2 space-y-2 list-disc pl-5">
+                      {categoryCheckOptions[selectedAppointment.title].map((option, index) => (
+                        <li key={index} className="text-gray-700">
+                          {option}
+                        </li>
                       ))}
                     </ul>
                   ) : (
-                    <p className="text-gray-500">No requirements available.</p>
+                    <p className="text-gray-500">No requirements available for this category.</p>
                   )}
                 </div>
 
-
                 <div className="mt-4 flex justify-end gap-3 w-full">
-                  <button className="px-4 py-2 bg-blue-500 text-white rounded-lg">Complete</button>
+                  <button
+                    className="px-4 py-2 bg-blue-500 text-white rounded-lg"
+                    onClick={handleCompleteAppointment}
+                  >
+                    Complete
+                  </button>
+
                   <button
                     className="px-4 py-2 bg-red-500 text-white rounded-lg"
                     onClick={handleCancelClick}
