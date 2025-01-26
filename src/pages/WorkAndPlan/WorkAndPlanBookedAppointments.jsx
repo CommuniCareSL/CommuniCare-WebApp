@@ -5,7 +5,7 @@ import ReactSearchBox from "react-search-box";
 import { Warehouse, LandPlot, FileText, ChartArea, Trees } from 'lucide-react';
 import { getAppointments, getAppointmentDetails, cancelAppointment } from '../../service/appointment/BookedAppointment';
 import { getStoredData } from "../../hooks/localStorage";
-import AlertService from "../../shared/service/AlertService"; // Import the AlertService class
+import AlertService from "../../shared/service/AlertService";
 
 const WorkAndPlanBookedAppointments = () => {
   const [appointments, setAppointments] = useState([]);
