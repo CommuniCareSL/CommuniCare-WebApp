@@ -1,26 +1,140 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Sidebar from "../../components/WorkAndPlan/Sidebar";
 import ReactSearchBox from "react-search-box";
 import { Warehouse, LandPlot, FileText, ChartArea, Trees } from 'lucide-react';
+import { getTodayAppointments, getTodayAppointmentDetails, cancelTodayAppointment, startAppointment } from '../../service/appointment/TodaysAppointment';
 import { getStoredData } from "../../hooks/localStorage";
 import AlertService from "../../shared/service/AlertService";
-import { getTodayAppointments, getTodayAppointmentDetails, cancelTodayAppointment, startAppointment } from "../../service/appointment/TodaysAppointment";
 
 const WorkAndPlanTodaysAppointments = () => {
-  const appointments = [
-    { id: 1, name: "John Doe", category: "Approval of Building Plans", date: "2025-02-10", time: "09.45 AM", description: "A routine dental checkup with Dr. Smith." },
-    { id: 2, name: "Jane Smith", category: "Approving land subdivision and amalgamation development plans", date: "2025-02-12", time: "10.45 AM", description: "Comprehensive eye exam to check vision and eye health." },
-    { id: 3, name: "Mike Johnson", category: "Issuance of Certificate of Conformity", date: "2025-02-15", time: "11.45 AM", description: "A general health consultation with Dr. Johnson." },
-    { id: 4, name: "Alice Brown", category: "Obtaining a trade license", date: "2025-02-20", time: "12.45 PM", description: "Physiotherapy session to improve mobility and reduce pain." },
-    { id: 5, name: "Alice Brown", category: "Obtaining an Environmental Compliance Certificate", time: "1.45 PM", date: "2025-02-20", description: "Physiotherapy session to improve mobility and reduce pain." },
-  ];
-
-  const [filteredAppointments, setFilteredAppointments] = useState(appointments);
+  const [appointments, setAppointments] = useState([]);
+  const [filteredAppointments, setFilteredAppointments] = useState([]);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
   const [isCancelPopupVisible, setIsCancelPopupVisible] = useState(false);
   const [cancelReason, setCancelReason] = useState("");
   const [checkedItems, setCheckedItems] = useState({});
+
+  const { sabhaId, departmentId } = getStoredData();
+
+  useEffect(() => {
+    const fetchAppointments = async () => {
+      try {
+        const data = await getTodayAppointments(sabhaId, departmentId);
+        console.log("Fetched Today's Appointments:", data); // Log the data
+        setAppointments(data);
+        setFilteredAppointments(data);
+      } catch (error) {
+        console.error('Error fetching today\'s appointments:', error);
+      }
+    };
+
+    fetchAppointments();
+  }, [sabhaId, departmentId]);
+
+  const handleSearch = (value) => {
+    if (value) {
+      const searchTerm = value.toLowerCase();
+      setFilteredAppointments(
+        appointments.filter(
+          (appointment) =>
+            appointment.timeSlot.toLowerCase().includes(searchTerm) ||
+            appointment.title.toLowerCase().includes(searchTerm)
+        )
+      );
+    } else {
+      setFilteredAppointments(appointments);
+    }
+  };
+
+  const handleAppointmentClick = async (appointmentId) => {
+    try {
+      const appointmentDetails = await getTodayAppointmentDetails(appointmentId);
+      console.log("Appointment Details:", appointmentDetails); // Log the details
+      setSelectedAppointment(appointmentDetails);
+    } catch (error) {
+      console.error('Error fetching appointment details:', error);
+    }
+  };
+
+  const handleCheckboxChange = (category, option) => {
+    setCheckedItems((prev) => {
+      const updatedCategory = {
+        ...prev[category],
+        [option]: !prev[category]?.[option],
+      };
+
+      console.log("Checkbox Changed:", category, option);
+      console.log("Updated Checked Items:", updatedCategory);
+
+      return {
+        ...prev,
+        [category]: updatedCategory,
+      };
+    });
+  };
+
+  const isStartEnabled = () => {
+    if (!selectedAppointment || !categoryCheckOptions[selectedAppointment.title]) return false;
+
+    const options = categoryCheckOptions[selectedAppointment.title];
+    const allChecked = options.every((option) => checkedItems[selectedAppointment.title]?.[option]);
+
+    console.log("Checked Items:", checkedItems);
+    console.log("Is Start Enabled:", allChecked);
+
+    return allChecked;
+  };
+
+  const handleStartAppointment = async () => {
+    if (selectedAppointment) {
+      try {
+        await startAppointment(selectedAppointment.appointmentId);
+        AlertService.success("Appointment started successfully!");
+
+        // Refresh the appointments list
+        const data = await getTodayAppointments(sabhaId, departmentId);
+        console.log("Refreshed Appointments:", data);
+        setAppointments(data);
+        setFilteredAppointments(data);
+
+        // Clear the selected appointment
+        setSelectedAppointment(null);
+      } catch (error) {
+        console.error("Error starting appointment:", error);
+        AlertService.error("Failed to start the appointment. Please try again.");
+      }
+    }
+  };
+
+  const handleCancelClick = () => {
+    setIsCancelPopupVisible(true);
+  };
+
+  const handleCancelSubmit = async () => {
+    if (cancelReason) {
+      try {
+        await cancelTodayAppointment(selectedAppointment.appointmentId, cancelReason);
+        console.log("Appointment cancelled successfully");
+        AlertService.success("Appointment cancelled successfully!");
+        setIsCancelPopupVisible(false);
+        setCancelReason(""); // Reset the reason after submission
+
+        // Refresh the appointments list
+        const data = await getTodayAppointments(sabhaId, departmentId);
+        setAppointments(data);
+        setFilteredAppointments(data);
+
+        // Clear the selected appointment
+        setSelectedAppointment(null);
+      } catch (error) {
+        console.error('Error cancelling appointment:', error);
+        alert('Failed to cancel the appointment. Please try again.');
+      }
+    } else {
+      AlertService.error("Please provide a cancellation reason.");
+    }
+  };
 
   const categoryStyles = {
     "Approval of Building Plans": {
@@ -52,14 +166,14 @@ const WorkAndPlanTodaysAppointments = () => {
 
   const categoryCheckOptions = {
     "Approval of Building Plans": [
-      "Archtectural plans",
+      "Architectural plans",
       "Land ownership documents",
       "National ID card",
       "Fees : Rs.750.00"
     ],
     "Approving land subdivision and amalgamation development plans": [
       "Request Letter",
-      "Land survery report",
+      "Land survey report",
       "Ownership certificates",
       "A copy of National ID card",
       "Fees : Rs.750.00"
@@ -72,7 +186,7 @@ const WorkAndPlanTodaysAppointments = () => {
     ],
     "Obtaining a trade license": [
       "Completed application form",
-      "Bussiness registration",
+      "Business registration",
       "Tax identification number",
       "Fees : Rs.3000.00"
     ],
@@ -84,61 +198,9 @@ const WorkAndPlanTodaysAppointments = () => {
       "Fees : Rs.3100.00"
     ],
   };
-  
-  const handleSearch = (value) => {
-    if (value) {
-      const searchTerm = value.toLowerCase();
-      setFilteredAppointments(
-        appointments.filter(
-          (appointment) =>
-            appointment.date.toLowerCase().includes(searchTerm) ||
-            appointment.category.toLowerCase().includes(searchTerm)
-        )
-      );
-    } else {
-      setFilteredAppointments(appointments);
-    }
-  };
-
-  const handleCheckboxChange = (category, option) => {
-    setCheckedItems((prev) => {
-      const updatedCategory = {
-        ...prev[category],
-        [option]: !prev[category]?.[option],
-      };
-  
-      return {
-        ...prev,
-        [category]: updatedCategory,
-      };
-    });
-  };
-
-  const isStartEnabled = () => {
-    if (!selectedAppointment || !categoryCheckOptions[selectedAppointment.category]) return false;
-  
-    const options = categoryCheckOptions[selectedAppointment.category];
-    return options.every((option) => checkedItems[selectedAppointment.category]?.[option]);
-  };
-  
-
-  const handleCancelClick = () => {
-    setIsCancelPopupVisible(true);
-  };
-
-  const handleCancelSubmit = () => {
-    if (cancelReason) {
-      console.log("Cancellation reason submitted:", cancelReason);
-      setIsCancelPopupVisible(false);
-      setCancelReason("");  // Reset the reason after submission
-    } else {
-      alert("Please provide a cancellation reason.");
-    }
-  };
 
   return (
     <Sidebar>
-
       <style jsx>{`
         button:hover {
           transform: scale(1.05);
@@ -148,7 +210,7 @@ const WorkAndPlanTodaysAppointments = () => {
       <div className="max-w-8xl mx-auto">
         <div className="mb-8">
           <h1 className="text-2xl font-semibold text-gray-800">Today's Appointments</h1>
-          <p className="text-gray-500 mt-1">View the appointments that are booked</p>
+          <p className="text-gray-500 mt-1">View the appointments that are booked for today</p>
         </div>
 
         {/* Search Bar */}
@@ -156,8 +218,8 @@ const WorkAndPlanTodaysAppointments = () => {
           <ReactSearchBox
             placeholder="Search appointments"
             data={appointments.map((appointment) => ({
-              key: appointment.id,
-              value: `${appointment.date} - ${appointment.category}`,
+              key: appointment.appointmentId,
+              value: `${appointment.timeSlot} - ${appointment.title}`,
             }))}
             onSelect={(record) => handleSearch(record.value)}
             onChange={(value) => handleSearch(value)}
@@ -173,23 +235,23 @@ const WorkAndPlanTodaysAppointments = () => {
 
             <div className="mt-8 overflow-x-auto bg-white shadow-md rounded-lg">
               <table className="min-w-full border-collapse">
-              <tbody>
-                {filteredAppointments.map((appointment, index) => (
-                  <tr
-                    key={appointment.id}
-                    className={`cursor-pointer ${index % 2 === 0 ? "border-t" : "border-t bg-gray-50"} hover:bg-gray-100`}
-                    onClick={() => setSelectedAppointment(appointment)}
-                  >
-                    <td className="px-4 py-2 text-gray-700 h-[10vh]">
-                      <div className={`p-3 ${categoryStyles[appointment.category].bgColor} ${categoryStyles[appointment.category].bgSize} rounded-lg flex items-center justify-center`}>
-                        {categoryStyles[appointment.category].icon}
-                      </div>
-                    </td>
-                    <td className="px-4 py-2 text-gray-700 h-[10vh]">{appointment.date}</td>
-                    <td className="px-4 py-2 text-gray-700 h-[10vh]">{appointment.category}</td>
-                  </tr>
-                ))}
-              </tbody>
+                <tbody>
+                  {filteredAppointments.map((appointment, index) => (
+                    <tr
+                      key={appointment.appointmentId}
+                      className={`cursor-pointer ${index % 2 === 0 ? "border-t" : "border-t bg-gray-50"} hover:bg-gray-100`}
+                      onClick={() => handleAppointmentClick(appointment.appointmentId)}
+                    >
+                      <td className="px-4 py-2 text-gray-700 h-[10vh]">
+                        <div className={`p-3 ${categoryStyles[appointment.title]?.bgColor || "bg-gray-100"} ${categoryStyles[appointment.title]?.bgSize || "w-10 h-10"} rounded-lg flex items-center justify-center`}>
+                          {categoryStyles[appointment.title]?.icon || <div>No Icon</div>}
+                        </div>
+                      </td>
+                      <td className="px-4 py-2 text-gray-700 h-[10vh]">{appointment.timeSlot}</td>
+                      <td className="px-4 py-2 text-gray-700 h-[10vh]">{appointment.title}</td>
+                    </tr>
+                  ))}
+                </tbody>
               </table>
             </div>
           </div>
@@ -201,36 +263,36 @@ const WorkAndPlanTodaysAppointments = () => {
             {selectedAppointment ? (
               <div className="flex flex-col items-left text-left">
                 <div className="flex items-center gap-3">
-                  <div className={`p-2 ${categoryStyles[selectedAppointment.category].bgColor} rounded-lg flex items-center justify-center`}>
-                    {categoryStyles[selectedAppointment.category].icon }
+                  <div className={`p-2 ${categoryStyles[selectedAppointment.title]?.bgColor || "bg-gray-100"} rounded-lg flex items-center justify-center`}>
+                    {categoryStyles[selectedAppointment.title]?.icon || <div>No Icon</div>}
                   </div>
                   <div className="text-left">
-                    <h3 className="text-lg font-medium text-gray-900">{selectedAppointment.name}</h3>
+                    <h3 className="text-lg font-medium text-gray-900">{selectedAppointment.user?.fullName || "No Name"}</h3>
                     <p className="text-gray-500">{selectedAppointment.date}</p>
                   </div>
                 </div>
                 <div className="bg-gray-200 h-px w-full mt-[2vh] mb-[2vh]"></div>
 
-                <p className="text-gray-700 text-left w-full text-lg font-semibold mt-2">{selectedAppointment.category}</p>
-                <p className="text-gray-700 mt-3 text-left w-full">{selectedAppointment.description}</p>
+                <p className="text-gray-700 text-left w-full text-lg font-semibold mt-2">{selectedAppointment.title}</p>
+                <p className="text-gray-700 mt-3 text-left w-full">{selectedAppointment.note || "No Description"}</p>
 
                 <div className="mt-4 flex justify-end gap-3 w-full">
-                  <p className="text-gray-700 mt-3 text-right w-full">{selectedAppointment.time}</p>
+                  <p className="text-gray-700 mt-3 text-right w-full">{selectedAppointment.timeSlot}</p>
                 </div>
 
                 <div className="bg-gray-200 h-px w-full mt-[2vh] mb-[2vh]"></div>
 
-                {/*check boxes*/}
+                {/* Checkboxes */}
                 <div className="mt-4">
                   <h3 className="text-lg font-medium text-gray-800">Requirements</h3>
-                  {selectedAppointment && categoryCheckOptions[selectedAppointment.category] ? (
+                  {selectedAppointment && categoryCheckOptions[selectedAppointment.title] ? (
                     <div className="mt-2 space-y-2">
-                      {categoryCheckOptions[selectedAppointment.category].map((option, index) => (
+                      {categoryCheckOptions[selectedAppointment.title].map((option, index) => (
                         <label key={index} className="flex items-center space-x-2">
                           <input
                             type="checkbox"
-                            checked={checkedItems[selectedAppointment.category]?.[option] || false}
-                            onChange={() => handleCheckboxChange(selectedAppointment.category, option)}
+                            checked={checkedItems[selectedAppointment.title]?.[option] || false}
+                            onChange={() => handleCheckboxChange(selectedAppointment.title, option)}
                             className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring focus:ring-blue-500"
                           />
                           <span className="text-gray-700">{option}</span>
@@ -242,13 +304,13 @@ const WorkAndPlanTodaysAppointments = () => {
                   )}
                 </div>
 
-
                 <div className="mt-4 flex justify-end gap-3 w-full">
                   <button
                     className={`px-4 py-2 rounded-lg ${
                       isStartEnabled() ? "bg-blue-500 text-white" : "bg-gray-400 text-gray-200 cursor-not-allowed"
                     }`}
                     disabled={!isStartEnabled()}
+                    onClick={handleStartAppointment}
                   >
                     Start
                   </button>
