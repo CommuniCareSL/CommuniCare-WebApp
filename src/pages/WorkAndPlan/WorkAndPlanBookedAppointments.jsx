@@ -53,7 +53,7 @@ const WorkAndPlanBookedAppointments = () => {
       setFilteredAppointments(
         appointments.filter(
           (appointment) =>
-            appointment.name.toLowerCase().includes(searchTerm) ||
+            appointment.date.toLowerCase().includes(searchTerm) ||
             appointment.category.toLowerCase().includes(searchTerm)
         )
       );
@@ -97,7 +97,7 @@ const WorkAndPlanBookedAppointments = () => {
             placeholder="Search appointments"
             data={appointments.map((appointment) => ({
               key: appointment.id,
-              value: `${appointment.name} - ${appointment.category}`,
+              value: `${appointment.date} - ${appointment.category}`,
             }))}
             onSelect={(record) => handleSearch(record.value)}
             onChange={(value) => handleSearch(value)}
@@ -125,7 +125,7 @@ const WorkAndPlanBookedAppointments = () => {
                         {categoryStyles[appointment.category].icon}
                       </div>
                     </td>
-                    <td className="px-4 py-2 text-gray-700 h-[10vh]">{appointment.name}</td>
+                    <td className="px-4 py-2 text-gray-700 h-[10vh]">{appointment.date}</td>
                     <td className="px-4 py-2 text-gray-700 h-[10vh]">{appointment.category}</td>
                   </tr>
                 ))}
