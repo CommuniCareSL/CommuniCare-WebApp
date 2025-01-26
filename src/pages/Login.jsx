@@ -45,9 +45,9 @@ const Login = () => {
           case 5:
             navigate("/WorkAndPlanDashboard");
             break;
-          default:
-            navigate("/");
-            break;
+          // default:
+          //   navigate("/");
+          //   break;
         }
       } else {
         setError(userData.message);
