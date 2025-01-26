@@ -103,7 +103,7 @@ function AddNewOfficerForm() {
                         <option value="3">Health Division</option>
                         <option value="4">Account Division</option>
                         <option value="5">Work and Plan Division</option>
-                        <option value="6">Development Division</option>
+                        {/* <option value="6">Development Division</option> */}
                     </select>
                 </div>
 
