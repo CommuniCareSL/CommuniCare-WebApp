@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import Sidebar from '../../components/WorkAndPlan/Sidebar';
-import { BarChart, Users, Calendar, MessageSquare, TrendingUp, CalendarCheck2, CalendarX, CalendarRange} from 'lucide-react';
+import { Calendar, CalendarCheck2, CalendarX, CalendarRange} from 'lucide-react';
 
 const stats = [
     {
@@ -42,6 +42,13 @@ const stats = [
 const WorkAndPlanAppointment = () => {
   return (
     <Sidebar>
+
+        <style jsx>{`
+            button:hover {
+            transform: scale(1.05);
+            }
+        `}</style>
+
       {/* Remove duplicate container divs and adjust padding */}
       <div className="max-w-8xl mx-auto">
         {/* Header Section */}
@@ -95,8 +102,8 @@ const WorkAndPlanAppointment = () => {
                 <h2 className="text-lg font-semibold text-gray-800 mb-4">Appointments Actions</h2>
                 <div className="grid grid-cols-1 gap-3">
                     {[
-                    { label: "Booked Appointments", path: "/WorkAndPlanBookedAppointments" },
-                    { label: "Today Appointment", path: "/WorkAndPlanTodaysAppointments" },
+                    { label: "Upcoming Appointments", path: "/WorkAndPlanBookedAppointments" },
+                    { label: "Today Appointments", path: "/WorkAndPlanTodaysAppointments" },
                     { label: "Ongoing Appointments", path: "/WorkAndPlanOngoingAppointments" },
                     { label: "Completed or Canceled Appointments", path: "/WorkAndPlanCompletedorCanceledAppointments" },
                     ].map(({ label, path }) => (

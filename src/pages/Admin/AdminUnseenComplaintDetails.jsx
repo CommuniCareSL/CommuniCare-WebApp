@@ -3,7 +3,7 @@ import Sidebar from '../../components/Admin/Sidebar';
 
 import '../../styles/pages/Admin/AdminUnseenComplaintDetails.css';
 
-import UnseenComplaintsDetails from '../../components/Admin/UnseenComplaintsDetails';
+import ComplaintsDetails from '../../components/Admin/ComplaintsDetails';
 
 function AdminUnseenComplaintDetails() {
   return (
@@ -12,7 +12,7 @@ function AdminUnseenComplaintDetails() {
 
       <div className="admin-unseen-complaints-details-home-page">
         <div className="unseen-complaint-title-container">
-          <button><span class="material-symbols-outlined">arrow_back_ios</span></button>
+          {/* <button><span class="material-symbols-outlined">arrow_back_ios</span></button> */}
           <h3>Unseen Complaints</h3>
         </div>
 
@@ -23,7 +23,7 @@ function AdminUnseenComplaintDetails() {
 
           <div style={{borderBottom: '2px solid #0991FF'}}></div>
 
-          <UnseenComplaintsDetails />
+          <ComplaintsDetails />
 
         </div>
 

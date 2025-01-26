@@ -3,7 +3,7 @@ import Sidebar from '../../components/Admin/Sidebar';
 
 import '../../styles/pages/Admin/AdminUnseenComplaintDetails.css';
 
-import UnseenComplaintsDetails from '../../components/Admin/UnseenComplaintsDetails';
+import ComplaintsDetails from '../../components/Admin/ComplaintsDetails';
 
 import completeImage from '../../assets/Admin/complete.png';
 
@@ -14,7 +14,7 @@ function AdminCompletedComplainDetails() {
     
           <div className="admin-unseen-complaints-details-home-page">
             <div className="unseen-complaint-title-container">
-              <h3>Unseen Complaints</h3>
+              <h3>Completed Complaints</h3>
             </div>
     
             <div className="admin-unseen-complain-details-panel">
@@ -24,7 +24,7 @@ function AdminCompletedComplainDetails() {
     
               <div style={{borderBottom: '2px solid #0991FF'}}></div>
     
-              <UnseenComplaintsDetails />
+              <ComplaintsDetails />
     
             </div>
     
