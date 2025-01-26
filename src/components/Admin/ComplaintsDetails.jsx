@@ -2,9 +2,9 @@ import React from 'react';
 
 import profileImg from '../../assets/Admin/profile-img.jpg';
 
-import UploadPhotosSlider from '../../components/Admin/UploadPhotosSlider';
+import UploadPhotosSlider from './UploadPhotosSlider';
 
-function UnseenComplaintsDetails() {
+function ComplaintsDetails() {
   return (
     <div className='unseen-complaints-details-divs'>
 
@@ -74,4 +74,4 @@ function UnseenComplaintsDetails() {
   )
 }
 
-export default UnseenComplaintsDetails
+export default ComplaintsDetails
