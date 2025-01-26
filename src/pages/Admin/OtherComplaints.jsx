@@ -130,7 +130,7 @@ const Complaint = () => {
       <Sidebar />
 
       {/* Main Content */}
-      <div className="flex-1 ml-[85px] transition-all duration-300 hover:ml-[260px] p-4 overflow-y-auto">
+      <div className="flex-grow p-5 min-h-screen min-w-auto ml-[85px] transition-all duration-300 bg-[#e8eff9] overflow-y-auto sidebar:hover:ml-[260px]">
         {/* Status Count Cards */}
         <div className="grid grid-cols-4 gap-4 mb-6">
           {Object.entries(statusCounts).map(([key, count], idx) => {
