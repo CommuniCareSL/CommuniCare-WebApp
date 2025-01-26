@@ -67,7 +67,7 @@ const WorkAndPlanCompletedorCanceledAppointments = () => {
       bgColor: "bg-purple-100",
       bgSize: "w-10 h-10",
     },
-    "Approving land subdivision and amalgamation development plans": {
+    "Approving Land Subdivision and Amalgamation Development Plans": {
       icon: <LandPlot className="w-6 h-6 text-yellow-600" />,
       bgColor: "bg-yellow-100",
       bgSize: "w-10 h-10",
@@ -77,7 +77,7 @@ const WorkAndPlanCompletedorCanceledAppointments = () => {
       bgColor: "bg-blue-100",
       bgSize: "w-10 h-10",
     },
-    "Obtaining a trade license": {
+    "Obtaining a Trade license": {
       icon: <ChartArea className="w-6 h-6 text-red-600" />,
       bgColor: "bg-red-100",
       bgSize: "w-10 h-10",
@@ -85,6 +85,12 @@ const WorkAndPlanCompletedorCanceledAppointments = () => {
     "Obtaining an Environmental Compliance Certificate": {
       icon: <Trees className="w-6 h-6 text-green-600" />,
       bgColor: "bg-green-100",
+      bgSize: "w-10 h-10",
+    },
+    // Add a default style for undefined categories
+    default: {
+      icon: <Warehouse className="w-6 h-6 text-gray-600" />,
+      bgColor: "bg-gray-100",
       bgSize: "w-10 h-10",
     },
   };
@@ -200,12 +206,12 @@ const WorkAndPlanCompletedorCanceledAppointments = () => {
                       <td className="px-4 py-2 text-gray-700 h-[10vh]">
                         <div
                           className={`p-3 ${
-                            categoryStyles[appointment.category].bgColor
+                            categoryStyles[appointment.category || categoryStyles.default].bgColor
                           } ${
-                            categoryStyles[appointment.category].bgSize
+                            categoryStyles[appointment.category || categoryStyles.default].bgSize
                           } rounded-lg flex items-center justify-center`}
                         >
-                          {categoryStyles[appointment.category].icon}
+                          {categoryStyles[appointment.category || categoryStyles.default].icon}
                         </div>
                       </td>
                       <td className="px-4 py-2 text-gray-700 h-[10vh]">
