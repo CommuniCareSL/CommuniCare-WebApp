@@ -18,6 +18,8 @@ const WorkAndPlanBookedAppointments = () => {
   const [isCancelPopupVisible, setIsCancelPopupVisible] = useState(false);
   const [cancelReason, setCancelReason] = useState("");
 
+  const { sabhaId, departmentId } = getStoredData();
+
   const categoryStyles = {
     "Approval of Building Plans": {
       icon: <Warehouse className="w-6 h-6 text-purple-600" />,
