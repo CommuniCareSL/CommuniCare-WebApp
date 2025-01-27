@@ -1,0 +1,34 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 85px;
+  transition: width 0.4s ease;
+  z-index: 50;
+}
+
+.sidebar:hover {
+  width: 260px;
+}
+
+/* Main content margin adjustment */
+.complaint-page-content {
+  margin-left: 85px;
+  transition: margin-left 0.4s ease;
+}
+
+.sidebar:hover ~ .complaint-page-content {
+  margin-left: 260px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 0;
+    overflow: hidden;
+  }
+
+  .complaint-page-content {
+    margin-left: 0;
+  }
+}
