@@ -1,7 +1,6 @@
-// Import necessary modules
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { Home } from "lucide-react"; // Import the Home icon
 import "../styles/pages/Login.css";
 import profileImg from "../assets/x.png";
 import UserService from "../service/UserService";
@@ -63,6 +62,30 @@ const Login = () => {
 
   return (
     <div className="login-page-home-body">
+      {/* Add home icon button */}
+      <div 
+        className="home-icon-container" 
+        onClick={() => navigate('/')}
+        style={{
+          position: 'absolute',
+          top: '20px',
+          right: '20px',
+          cursor: 'pointer',
+          backgroundColor: 'white',
+          borderRadius: '50%',
+          padding: '8px',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          transition: 'transform 0.2s',
+        }}
+        onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
+        onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+      >
+        <Home size={24} />
+      </div>
+
       <div className="login-container">
         <div className="login-image">
           <img src={profileImg} alt="Login" />
@@ -100,8 +123,8 @@ const Login = () => {
               <a
                 href="#"
                 onClick={(e) => {
-                  e.preventDefault(); // Prevent default anchor behavior
-                  navigate("/signup"); // Navigate to the Signup page
+                  e.preventDefault();
+                  navigate("/signup");
                 }}
               >
                 Signup now
