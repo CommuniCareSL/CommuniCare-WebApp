@@ -271,7 +271,7 @@ const WorkAndPlanCompletedorCanceledAppointments = () => {
                   {selectedAppointmentDetails.title}
                 </p>
                 <p className="text-gray-700 mt-3 text-left w-full">
-                  {selectedAppointmentDetails.description || "No description available."}
+                  {selectedAppointmentDetails.note || "No User Note available."}
                 </p>
 
                 <div className="mt-4 flex justify-end gap-3 w-full">
