@@ -28,6 +28,12 @@ import ManagePlayground from './pages/Civil Officer/Services/Manage_playground';
 import PlaygroundRequests from './pages/Civil Officer/Services/Playground_requests';
 import PlaygroundHistory from './pages/Civil Officer/Services/Playground_past';
 import AssemblyHall from './pages/Civil Officer/Services/AssemblyHall_home';
+import Services from './pages/Civil Officer/Services_manage';
+import Playground from './pages/Civil Officer/Services/Playground_home';
+import ManagePlayground from './pages/Civil Officer/Services/Manage_playground';
+import PlaygroundRequests from './pages/Civil Officer/Services/Playground_requests';
+import PlaygroundHistory from './pages/Civil Officer/Services/Playground_past';
+import AssemblyHall from './pages/Civil Officer/Services/AssemblyHall_home';
 
 import Dashboard_Officer from "./pages/Civil Officer/Dashboard";
 import Calendar_Officer from "./pages/Civil Officer/calendar_schedule";

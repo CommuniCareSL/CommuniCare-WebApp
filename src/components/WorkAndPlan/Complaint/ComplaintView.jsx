@@ -6,7 +6,9 @@ import {
 import MapComponent from "./MapComponent";
 import { fetchComplaintById } from "../../../service/complaint/Complaint"; // Import the service function
 import {addNoteToComplaint,updateNoteInComplaint,updateComplaintStatus} from "../../../service/complaint/Complaint"; // Import the new service functions
+import {addNoteToComplaint,updateNoteInComplaint,updateComplaintStatus} from "../../../service/complaint/Complaint"; // Import the new service functions
 import AlertService from "../../../shared/service/AlertService"; // Import the AlertService class
+
 
 
 // Status mapping object
@@ -266,11 +268,6 @@ const ComplaintView = () => {
           <span className="text-blue-700 text-lg">Date Submitted : </span>
           {new Date(complaint.createdAt).toISOString().split("T")[0]}{" "}
           {/* Format the date */}
-        </p>
-
-        <p className="m-5">
-          <span className="text-blue-700 text-lg">Remark : </span>
-          {complaint.remark} {/* Use the fetched user name */}
         </p>
 
         <p className="m-5">
