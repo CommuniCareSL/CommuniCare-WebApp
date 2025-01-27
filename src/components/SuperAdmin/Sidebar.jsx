@@ -59,15 +59,15 @@ const Sidebar = ({ children }) => {
         <ul className="mt-6 flex flex-col h-[calc(100vh-160px)] overflow-y-auto">
           {[
             { path: "/SuperAdminDashboard", icon: "dashboard", label: "Dashboard" },
-            { path: "/NewRegistration", icon: "person_add", label: "New Registration" },
-            { path: "/Registered", icon: "verified_user", label: "Registered" },
+            { path: "/NewRegistration", icon: "verified_user", label: "Sabha" },
+            { path: "/Registered", icon: "person_add", label: "Admins" },
             { path: "/Report", icon: "assessment", label: "Report" },
           ].map((item) => (
             <li key={item.path}>
               <a
                 href={item.path}
                 onClick={(e) => handleClick(e, item.path)}
-                className={`flex items-center p-3 hover:bg-gray-700 ${
+                className={`flex items-center mt-4 p-3 hover:bg-gray-700 ${
                   location.pathname === item.path ? "bg-gray-700" : ""
                 }`}
               >
@@ -95,9 +95,9 @@ const Sidebar = ({ children }) => {
       <div className="flex-1 flex flex-col">
         {/* Top Bar */}
         <header className="bg-black shadow p-4 flex justify-between items-center">
-          <h1 className="text-xl font-semibold">Dashboard</h1>
+          <h1 className="text-xl font-semibold"></h1>
           <div className="flex items-center">
-            <span className="text-sm mr-4">Welcome, Super Admin</span>
+            <span className="text-sm mr-4"></span>
             <img src={profileImg} alt="Profile" className="w-10 h-10 rounded-full" />
           </div>
         </header>
