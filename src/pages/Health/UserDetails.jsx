@@ -13,7 +13,7 @@ const UserDetails = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/user`, {
+        const response = await axios.get(`${BASE_URL}/user/all`, {
           params: { sabhaId }, // Pass sabhaId as a query parameter
         });
         setUsers(response.data);
