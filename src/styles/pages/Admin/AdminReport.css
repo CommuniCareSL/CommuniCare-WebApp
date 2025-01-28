@@ -68,3 +68,24 @@
   .holiday-item p {
     margin: 0.25rem 0.5rem;
   }
+
+  .report-summery-left-block-type2,
+  .report-summery-right-block-type2{
+    height: 100%;
+    background-color: #fff;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .report-summery-left-block-type2{
+    width: 49%;
+    float: left;
+  }
+
+  .report-summery-right-block-type2{
+    width: 49%;
+    float: right;
+  }
