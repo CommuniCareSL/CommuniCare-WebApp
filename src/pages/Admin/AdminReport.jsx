@@ -2,6 +2,9 @@ import React from 'react';
 import Sidebar from '../../components/Admin/Sidebar';
 import ReportComplaintBarchart from '../../components/Admin/Report/ReportComplaintBarchart';
 import ReportComplaintLineChart from '../../components/Admin/Report/ReportComplaintLineChart';
+import ReportAppointmentDoughnutChart from '../../components/Admin/Report/ReportAppointmentDoughnutChart';
+import ReportAppointmentLineChart from '../../components/Admin/Report/ReportAppointmentLineChart';
+import ReportUpcomingAppointments from '../../components/Admin/Report/ReportUpcomingAppointments';
 
 import WaveIcon from '../../assets/Admin/waving-hand.png';
 
@@ -44,9 +47,11 @@ const AdminReport = () => {
         </div>
 
         <div className="report-summery-blocks">
+          {/* Left bar garph */}
           <div className="report-summery-left-block-type1">
             <ReportComplaintBarchart />
           </div>
+          {/* right line chart and the holidays */}
           <div className="report-summery-right-block-type1">
             <div className="report-summery-right-block-type1-first-box">
               <ReportComplaintLineChart />
@@ -77,16 +82,17 @@ const AdminReport = () => {
         </div>
 
         <div className="report-summery-blocks">
-          {/* Appointment content */}
+          {/* Left chart */}
+          <div className="report-summery-left-block-type2">
+            <ReportAppointmentDoughnutChart />
+          </div>
+          <div className="report-summery-right-block-type2">
+            <ReportAppointmentLineChart />
+          </div>
         </div>
 
-        {/* Services Summary */}
-        <div className='report-main-title'>
-          <h4>Summary Of Services</h4>
-        </div>
-
-        <div className="report-summery-blocks">
-          {/* Services content */}
+        <div className="report-summery-blocks-type2">
+          <ReportUpcomingAppointments />
         </div>
 
       </div>

@@ -25,6 +25,18 @@
     margin-top: 3vh;
   }
 
+  .report-summery-blocks-type2{
+    width: 93%;
+    height: 80vh;
+    margin-left: 35px;
+    margin-top: 3vh;
+    background-color: #fff;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .report-summery-left-block-type1{
     width: 65%;
     height: 100%;
@@ -67,4 +79,25 @@
   
   .holiday-item p {
     margin: 0.25rem 0.5rem;
+  }
+
+  .report-summery-left-block-type2,
+  .report-summery-right-block-type2{
+    height: 100%;
+    background-color: #fff;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .report-summery-left-block-type2{
+    width: 49%;
+    float: left;
+  }
+
+  .report-summery-right-block-type2{
+    width: 49%;
+    float: right;
   }
