@@ -1,124 +1,107 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Sidebar from '../../components/Admin/Sidebar';
-import Calendar from 'react-calendar';
-import DoughnutChart from '../../components/Admin/DoughnutChart';
-import 'react-calendar/dist/Calendar.css';
-import { Line, Pie, Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, ArcElement, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import ReportComplaintBarchart from '../../components/Admin/Report/ReportComplaintBarchart';
+import ReportComplaintLineChart from '../../components/Admin/Report/ReportComplaintLineChart';
+import ReportAppointmentDoughnutChart from '../../components/Admin/Report/ReportAppointmentDoughnutChart';
+import ReportAppointmentLineChart from '../../components/Admin/Report/ReportAppointmentLineChart';
+
+import WaveIcon from '../../assets/Admin/waving-hand.png';
+
+import '../../styles/pages/Admin/Dashboard.css';
+import '../../styles/pages/Admin/AdminReport.css';
 
 const AdminReport = () => {
-    const [date, setDate] = useState(new Date());
-    const [greeting, setGreeting] = useState('');
-    const [isSidebarHovered, setIsSidebarHovered] = useState(false);
-  
-    useEffect(() => {
-      const hour = new Date().getHours();
-      if (hour < 11) setGreeting('Good morning Admin');
-      else if (hour < 13) setGreeting('Good afternoon Admin');
-      else if (hour < 17) setGreeting('Good evening Admin');
-      else setGreeting('Good night Admin');
-    }, []);
-  
-    const cardData = [
-      { title: 'Total Users', value: 12, icon: 'bx bx-user' },
-      { title: 'Total Officers', value: 5, icon: 'bx bxs-user-detail' },
-      { title: 'Number of complaints', value: 12, icon: 'bx bxs-error' },
-    ];
-  
-    const lineChartData = {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-      datasets: [{
-        label: 'Users',
-        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 2],
-        borderColor: '#0991FF',
-        tension: 0.1
-      }]
-    };
-  
-    const pieChartData = {
-      labels: ['Male', 'Female'],
-      datasets: [{
-        data: [120, 84],
-        backgroundColor: ['rgba(54, 162, 235, 0.9)', 'rgba(54, 162, 235, 0.5)'],
-      }]
-    };
-  
-    const barChartData = {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-      datasets: [{
-        label: 'Monthly Complaints',
-        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 2],
-        backgroundColor: 'rgba(54, 162, 235, 0.5)',
-      }]
-    };
-  
-    return (
-  <div>
-  <Sidebar/>
-  <div className='admin-table-home-page'>
+  // Example holidays array
+  const holidays = [
+    { date: "2025-01-20", reason: "New Year's Day" },
+    { date: "2025-01-22", reason: "Republic Day" },
+    { date: "2025-01-20", reason: "New Year's Day" },
+    { date: "2025-01-22", reason: "Republic Day" },
+    { date: "2025-01-20", reason: "New Year's Day" },
+    { date: "2025-01-22", reason: "Republic Day" },
+    // Add more holidays here
+  ];
+
+  return (
+    <div>
+
+      <style jsx>{`
+        button:hover {
+          transform: scale(1.05);
+        }
+      `}</style>
+
+      <Sidebar />
+
+      <div className="admin-dashboard-home-page">
+
+        <div className="welcome-for-admin">
+          <h3>Welcome</h3>
+          <img src={WaveIcon} alt="Wave" />
+        </div>
         
-  
-        <div className={`flex bg-gray-100 min-h-screen transition-all ${isSidebarHovered ? 'ml-64' : 'ml-16'}`}>
-          <div className="flex-1 p-4 lg:p-10 min-h-screen">
-            <h1 className="text-2xl lg:text-3xl font-bold text-blue-600 mb-6 ml-4 sm:ml-16">{greeting}!</h1>
-  
-            <div className="flex justify-center">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-6">
-                    {cardData.map((card, index) => (
-                    <div
-                        key={index}
-                        className="bg-white rounded-lg shadow-md p-4 lg:p-6 flex items-center justify-between"
-                    >
-                        <div>
-                        <h2 className="text-base lg:text-lg font-semibold text-gray-700">{card.title}</h2>
-                        <p className="text-2xl lg:text-3xl font-bold text-blue-500">{card.value}</p>
-                        </div>
-                        <i className={`${card.icon} text-3xl lg:text-4xl text-blue-400`}></i>
+        {/* Complaint summary */}
+        <div className='report-main-title'>
+          <h4>Summary Of Complaints</h4>
+        </div>
+
+        <div className="report-summery-blocks">
+          {/* Left bar garph */}
+          <div className="report-summery-left-block-type1">
+            <ReportComplaintBarchart />
+          </div>
+          {/* right line chart and the holidays */}
+          <div className="report-summery-right-block-type1">
+            <div className="report-summery-right-block-type1-first-box">
+              <ReportComplaintLineChart />
+            </div>
+            <div className="report-summery-right-block-type1-Second-box">
+              <h2 className="text-lg font-semibold mb-4">Last Week Holidays</h2>
+              <div className="bg-gray-200 h-px w-full mt-[1vh] mb-[1vh]"></div>
+              {/* Render the holidays */}
+              <div className="h-[15vh] overflow-y-auto border border-gray-300 rounded-lg bg-gray-50">
+                {holidays.length > 0 ? (
+                  holidays.map((holiday, index) => (
+                    <div key={index} className="holiday-item">
+                      <p><strong>Date:</strong> {holiday.date}</p>
+                      <p><strong>Reason:</strong> {holiday.reason}</p>
                     </div>
-                    ))}
-                </div>
-            </div>
-  
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 mb-6">
-              <div className="6bg-white rounded-lg shadow-md p-4 lg:p-6 flex flex-col items-center">
-                <h2 className="text-lg lg:text-xl font-semibold text-gray-700 mb-4">Users Registration by Month</h2>
-                <div className="h-64">
-                  <Line data={lineChartData} options={{ responsive: true, maintainAspectRatio: false }} />
-                </div>
-              </div>
-  
-              <div className="bg-white rounded-lg shadow-md p-4 lg:p-6 flex flex-col items-center">
-                <h2 className="text-lg lg:text-xl font-semibold text-gray-700 mb-4">Complaints</h2>
-                <div className="flex items-center justify-center h-96 w-full">
-                  <DoughnutChart />
-                </div>
-              </div>
-            </div>
-  
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
-              <div className="bg-white rounded-lg shadow-md p-4 lg:p-6">
-                <h2 className="text-lg lg:text-xl font-semibold text-gray-700 mb-4">Monthly Complaints</h2>
-                <div className="h-64">
-                  <Bar data={barChartData} options={{ responsive: true, maintainAspectRatio: false }} />
-                </div>
-              </div>
-  
-              <div className="bg-white rounded-lg shadow-md p-4 lg:p-6">
-                <h2 className="text-lg lg:text-xl font-semibold text-gray-700 mb-4">Calendar</h2>
-                <Calendar
-                  onChange={setDate}
-                  value={date}
-                  className="w-full border-none"
-                  tileClassName="text-black-600 hover:bg-blue-100"
-                  navigationLabel={({ date }) => <span className="text-blue-600">{date.toLocaleString('default', { month: 'long', year: 'numeric' })}</span>}
-                />
+                  ))
+                ) : (
+                  <p>No holidays for last week.</p>
+                )}
               </div>
             </div>
           </div>
         </div>
-      </div>
-  </div>
-    );
-}
 
-export default AdminReport
+        {/* Appointment Summary */}
+        <div className='report-main-title'>
+          <h4>Summary Of Appointments</h4>
+        </div>
+
+        <div className="report-summery-blocks">
+          {/* Left chart */}
+          <div className="report-summery-left-block-type2">
+            <ReportAppointmentDoughnutChart />
+          </div>
+          <div className="report-summery-right-block-type2">
+            <ReportAppointmentLineChart />
+          </div>
+        </div>
+
+        {/* Services Summary */}
+        <div className='report-main-title'>
+          <h4>Summary Of Services</h4>
+        </div>
+
+        <div className="report-summery-blocks">
+          {/* Services content */}
+        </div>
+
+      </div>
+    </div>
+  );
+};
+
+export default AdminReport;

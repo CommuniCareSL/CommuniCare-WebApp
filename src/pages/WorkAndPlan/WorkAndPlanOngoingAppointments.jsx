@@ -114,7 +114,7 @@ const WorkAndPlanOngoingAppointments = () => {
       bgColor: "bg-purple-100",
       bgSize: "w-10 h-10"
     },
-    "Approving land subdivision and amalgamation development plans": {
+    "Approving Land Subdivision and Amalgamation Development Plans": {
       icon: <LandPlot className="w-6 h-6 text-yellow-600" />,
       bgColor: "bg-yellow-100",
       bgSize: "w-10 h-10"
@@ -124,7 +124,7 @@ const WorkAndPlanOngoingAppointments = () => {
       bgColor: "bg-blue-100",
       bgSize: "w-10 h-10"
     },
-    "Obtaining a trade license": {
+    "Obtaining a Trade License": {
       icon: <ChartArea className="w-6 h-6 text-red-600" />,
       bgColor: "bg-red-100",
       bgSize: "w-10 h-10"
@@ -143,7 +143,7 @@ const WorkAndPlanOngoingAppointments = () => {
       "National ID card",
       "Fees : Rs.750.00"
     ],
-    "Approving land subdivision and amalgamation development plans": [
+    "Approving Land Subdivision and Amalgamation Development Plans": [
       "Request Letter",
       "Land survey report",
       "Ownership certificates",

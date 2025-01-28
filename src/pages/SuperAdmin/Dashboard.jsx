@@ -35,14 +35,14 @@ const Dashboard = () => {
   };
 
   const cardData = [
-    { title: 'Total Users', value: 204, icon: 'person_outline' },
-    { title: 'Total Officers', value: 56, icon: 'badge' },
+    { title: 'Total Users', value: 26, icon: 'person_outline' },
+    { title: 'Total Officers', value: 36, icon: 'badge' },
     { title: 'Number of complaints', value: 12, icon: 'warning' },
-    { title: 'Make Appointments', value: 25, icon: 'calendar_month' }
+    { title: 'Number of Appointments', value: 25, icon: 'calendar_month' }
   ];
 
   const lineChartData = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    labels: ['Dec', 'Nov', 'Oct', 'Sep', 'Aug', 'Jul', 'Jun', 'May', 'Apr', 'Mar', 'Feb', 'Jan'],
     datasets: [{
       label: 'Users',
       data: [10, 5, 15, 12, 8, 20, 25, 18, 24, 30, 22, 28],
@@ -60,7 +60,7 @@ const Dashboard = () => {
   };
 
   const barChartData = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    labels: ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan'],
     datasets: [{
       label: 'Monthly Complaints',
       data: [65, 59, 80, 81, 56, 55],
