@@ -2,37 +2,7 @@ import React, { useState, useRef } from 'react';
 import Sidebar from '../../../components/Account/Sidebar';
 import { HiChevronRight, HiQuestionMarkCircle } from 'react-icons/hi';
 import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    useDisclosure,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalBody,
-    ModalCloseButton,
-    Button,
-    AlertDialog,
-    AlertDialogOverlay,
-    AlertDialogContent,
-    AlertDialogHeader,
-    AlertDialogBody,
-    AlertDialogFooter,
-    Select,
-    Input,
-    Flex,
-    Box,
-    IconButton,
-    Popover,
-    PopoverTrigger,
-    PopoverContent,
-    PopoverHeader,
-    PopoverBody,
-    PopoverArrow,
-    PopoverCloseButton,
-    Textarea,
-    useToast,
+    Breadcrumb, BreadcrumbItem, BreadcrumbLink, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton, Button, AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, Select, Input, Flex, Box, IconButton, Popover, PopoverTrigger, PopoverContent, PopoverHeader, PopoverBody, PopoverArrow, PopoverCloseButton, Textarea, useToast,
 } from '@chakra-ui/react';
 
 const PlaygroundRequests = () => {
@@ -40,15 +10,14 @@ const PlaygroundRequests = () => {
     const { isOpen: isRejectOpen, onOpen: onRejectOpen, onClose: onRejectClose } = useDisclosure();
     const [selectedReservation, setSelectedReservation] = useState(null);
     const [reservations, setReservations] = useState([
-        { id: 1, user: 'John Doe', event: 'Football Match', description: 'Quarter-finals', ground: 'Ground 1', date: '2025-01-25', payment: 'Paid', paymentAmount: 5000, status: 'Booked' },
-        { id: 2, user: 'Jane Smith', event: 'Cricket Match', description: 'Semi-finals', ground: 'Ground 2', date: '2025-01-26', payment: 'Unpaid', paymentAmount: 3000, status: 'Booked' },
-        { id: 3, user: 'David Brown', event: 'Tennis Match', description: 'Finals', ground: 'Ground 1', date: '2025-01-27', payment: 'Paid', paymentAmount: 7000, status: 'Cancelled', note: 'Too crampy. Not big enough' },
+        { id: 1, user: 'John Doe', event: 'Football Match', description: 'Quarter-finals', ground: 'Ground 1', date: '2025-01-25', payment: 'Paid', paymentAmount: 5000,  },
+        { id: 2, user: 'Jane Smith', event: 'Cricket Match', description: 'Semi-finals', ground: 'Ground 2', date: '2025-01-26', payment: 'Unpaid', paymentAmount: 3000, },
+        { id: 3, user: 'David Brown', event: 'Tennis Match', description: 'Finals', ground: 'Ground 1', date: '2025-01-27', payment: 'Paid', paymentAmount: 7000,  },
     ]);
 
     const [filters, setFilters] = useState({
         ground: '',
         date: '',
-        status: '',
     });
 
     const [searchQuery, setSearchQuery] = useState('');
@@ -201,20 +170,6 @@ const PlaygroundRequests = () => {
                         <option value="newest">Newest</option>
                         <option value="oldest">Oldest</option>
                     </Select>
-                    <Select
-                        placeholder="Filter by Status"
-                        value={filters.status}
-                        onChange={(e) => setFilters({ ...filters, status: e.target.value })}
-                        width="200px"
-                        bg="white"
-                        borderColor="gray.300"
-                        _hover={{ borderColor: 'blue.300' }}
-                        _focus={{ borderColor: 'blue.500', boxShadow: '0 0 0 1px blue.500' }}
-                        fontSize="sm"
-                    >
-                        <option value="Booked">Booked</option>
-                        <option value="Cancelled">Cancelled</option>
-                    </Select>
                 </Flex>
 
                 {/* Action Buttons */}
@@ -249,7 +204,6 @@ const PlaygroundRequests = () => {
                                 <th className="px-6 py-3 border-b border-gray-200 text-sm font-medium text-gray-700">Ground</th>
                                 <th className="px-6 py-3 border-b border-gray-200 text-sm font-medium text-gray-700">Reservation Date</th>
                                 <th className="px-6 py-3 border-b border-gray-200 text-sm font-medium text-gray-700">Payment (LKR)</th>
-                                <th className="px-6 py-3 border-b border-gray-200 text-sm font-medium text-gray-700">Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -276,39 +230,7 @@ const PlaygroundRequests = () => {
                                     <td className="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{reservation.ground}</td>
                                     <td className="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{reservation.date}</td>
                                     <td className="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{reservation.paymentAmount}</td>
-                                    <td className="px-6 py-4 border-b border-gray-200">
-                                        <Flex align="center">
-                                            <span
-                                                className={`px-2 py-1 rounded text-sm ${
-                                                    reservation.status === 'Booked'
-                                                        ? 'bg-green-100 text-green-800'
-                                                        : 'bg-red-100 text-red-800'
-                                                }`}
-                                            >
-                                                {reservation.status}
-                                            </span>
-                                            {reservation.status === 'Cancelled' && (
-                                                <Popover>
-                                                    <PopoverTrigger>
-                                                        <IconButton
-                                                            aria-label="View cancellation reason"
-                                                            icon={<HiQuestionMarkCircle />}
-                                                            size="xs"
-                                                            ml={2}
-                                                            variant="ghost"
-                                                            onClick={(e) => e.stopPropagation()}
-                                                        />
-                                                    </PopoverTrigger>
-                                                    <PopoverContent>
-                                                        <PopoverArrow />
-                                                        <PopoverCloseButton />
-                                                        <PopoverHeader>Cancellation Reason</PopoverHeader>
-                                                        <PopoverBody>{reservation.note}</PopoverBody>
-                                                    </PopoverContent>
-                                                </Popover>
-                                            )}
-                                        </Flex>
-                                    </td>
+                                    
                                 </tr>
                             ))}
                         </tbody>
@@ -347,18 +269,6 @@ const PlaygroundRequests = () => {
                                 </Box>
                                 <Box mb={4}>
                                     <strong>Payment:</strong> {selectedReservation.payment} (LKR {selectedReservation.paymentAmount})
-                                </Box>
-                                <Box>
-                                    <strong>Status:</strong>{" "}
-                                    <span
-                                        className={`px-2 py-1 rounded text-sm ${
-                                            selectedReservation.status === 'Booked'
-                                                ? 'bg-green-100 text-green-800'
-                                                : 'bg-red-100 text-red-800'
-                                        }`}
-                                    >
-                                        {selectedReservation.status}
-                                    </span>
                                 </Box>
                             </Box>
                         )}
