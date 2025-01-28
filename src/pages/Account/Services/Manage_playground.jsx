@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-// import Sidebar from '../../../components/Civil Officer/Sidebar';
+import React, { useState, useEffect } from 'react';
 import Sidebar from '../../../components/Account/Sidebar';
 import { HiChevronRight, HiPlus } from 'react-icons/hi';
+import { getStoredData } from "../../../hooks/localStorage";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -34,69 +34,56 @@ import {
   AlertDialogHeader,
   AlertDialogContent,
   AlertDialogOverlay,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
 } from '@chakra-ui/react';
+import { fetchSavedGrounds } from "../../../service/Services/Playground"; // Adjust the path as necessary
 
 const Manage_Playground = () => {
-  const [playgrounds, setPlaygrounds] = useState([
-    {
-      id: 1,
-      name: 'Greenfield',
-      area: 100.5,
-      price: 5000,
-      description: 'Good condition',
-      terms: ['Return the field in clean condition'],
-    },
-    {
-      id: 2,
-      name: 'Sunny Park',
-      area: 200,
-      price: 10000,
-      description: 'Suitable for events',
-      terms: ['Report damages immediately'],
-    },
-  ]);
-
+  const { sabhaId, departmentId } = getStoredData(); // Assuming this function retrieves sabhaId
+  const [playgrounds, setPlaygrounds] = useState([]);
   const [currentPlayground, setCurrentPlayground] = useState(null);
-  const [selectedPlayground, setSelectedPlayground] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
     isOpen: isDeleteOpen,
     onOpen: onDeleteOpen,
     onClose: onDeleteClose,
   } = useDisclosure();
-  const {
-    isOpen: isViewOpen,
-    onOpen: onViewOpen,
-    onClose: onViewClose,
-  } = useDisclosure();
   const cancelRef = React.useRef();
+
+  // Fetch playgrounds by sabhaId when the component mounts
+  useEffect(() => {
+    const fetchPlaygrounds = async () => {
+      try {
+        const data = await fetchSavedGrounds(sabhaId);
+        setPlaygrounds(data); // Set the fetched data to the state
+      } catch (error) {
+        console.error('Error fetching playgrounds:', error);
+      }
+    };
+
+    fetchPlaygrounds();
+  }, [sabhaId]); // Re-fetch if sabhaId changes
 
   const handleAddOrEdit = (playground) => {
     if (currentPlayground) {
       setPlaygrounds((prev) =>
-        prev.map((pg) => (pg.id === currentPlayground.id ? playground : pg))
+        prev.map((pg) => (pg.groundId === currentPlayground.groundId ? playground : pg))
       );
     } else {
-      setPlaygrounds((prev) => [...prev, { ...playground, id: Date.now() }]);
+      setPlaygrounds((prev) => [...prev, { ...playground, groundId: Date.now() }]);
     }
     setCurrentPlayground(null);
     onClose();
   };
 
-  const handleDelete = (id) => {
-    setPlaygrounds((prev) => prev.filter((pg) => pg.id !== id));
+  const handleDelete = (groundId) => {
+    setPlaygrounds((prev) => prev.filter((pg) => pg.groundId !== groundId));
     onDeleteClose();
   };
 
   return (
+    <Sidebar>
     <div className="flex h-screen">
-      <Sidebar />
+      
 
       <div className="flex-1 p-5 bg-gray-100 overflow-y-auto">
         {/* Breadcrumb */}
@@ -135,7 +122,7 @@ const Manage_Playground = () => {
           border="1px solid #E2E8F0"
         >
           <Box mb={4} fontWeight="bold" fontSize="lg" color="gray.700">
-
+            {/* Playgrounds in Sabha {sabhaId} */}
           </Box>
           <TableContainer>
             <Table variant="striped" colorScheme="blue" size="sm">
@@ -145,10 +132,13 @@ const Manage_Playground = () => {
                     Name
                   </Th>
                   <Th fontWeight="bold" color="blue.700">
-                    Area / Region
+                    Region
                   </Th>
                   <Th fontWeight="bold" color="blue.700">
                     Price Per Day
+                  </Th>
+                  <Th fontWeight="bold" color="blue.700">
+                    Description
                   </Th>
                   <Th isNumeric fontWeight="bold" color="blue.700">
                     Options
@@ -157,23 +147,12 @@ const Manage_Playground = () => {
               </Thead>
               <Tbody>
                 {playgrounds.map((pg) => (
-                  <Tr key={pg.id} _hover={{ bg: 'gray.50' }}>
+                  <Tr key={pg.groundId} _hover={{ bg: 'gray.50' }}>
                     <Td py={4}>{pg.name}</Td>
                     <Td py={4}>{pg.area}</Td>
-                    <Td py={4}>{pg.price}</Td>
+                    <Td py={4}>{pg.pricePerDay}</Td>
+                    <Td py={4}>{pg.note}</Td>
                     <Td py={4} isNumeric>
-                      <Button
-                        size="sm"
-                        colorScheme="blue"
-                        variant="outline"
-                        mr={2}
-                        onClick={() => {
-                          setSelectedPlayground(pg);
-                          onViewOpen();
-                        }}
-                      >
-                        View
-                      </Button>
                       <Button
                         size="sm"
                         colorScheme="teal"
@@ -217,7 +196,7 @@ const Manage_Playground = () => {
                               </Button>
                               <Button
                                 colorScheme="red"
-                                onClick={() => handleDelete(pg.id)}
+                                onClick={() => handleDelete(pg.groundId)}
                                 ml={3}
                               >
                                 Delete
@@ -233,8 +212,9 @@ const Manage_Playground = () => {
               <Tfoot>
                 <Tr>
                   <Th>Name</Th>
-                  <Th>Area / Region</Th>
+                  <Th>Region</Th>
                   <Th>Price Per Day</Th>
+                  <Th>Description</Th>
                   <Th isNumeric>Options</Th>
                 </Tr>
               </Tfoot>
@@ -263,14 +243,11 @@ const Manage_Playground = () => {
                 </Box>
 
                 <Box>
-                  <FormLabel htmlFor="area">Area (In Sq. m)</FormLabel>
-                  <Textarea
+                  <FormLabel htmlFor="area">Region</FormLabel>
+                  <Input
                     id="area"
-                    placeholder="Enter area"
+                    placeholder="Enter region"
                     defaultValue={currentPlayground?.area || ''}
-                    onInput={(e) => {
-                      e.target.value = e.target.value.replace(/[^0-9.]/g, ''); // Allow decimals
-                    }}
                   />
                 </Box>
 
@@ -280,7 +257,7 @@ const Manage_Playground = () => {
                     id="price"
                     placeholder="Enter price per day"
                     type="number"
-                    defaultValue={currentPlayground?.price || ''}
+                    defaultValue={currentPlayground?.pricePerDay || ''}
                     onInput={(e) => {
                       const value = parseInt(e.target.value, 10);
                       if (value < 0) e.target.value = '';
@@ -288,48 +265,21 @@ const Manage_Playground = () => {
                   />
                 </Box>
 
-                {/* Terms Section */}
                 <Box>
-                  <FormLabel>Terms & Conditions</FormLabel>
-                  <Stack spacing={2}>
-                    {currentPlayground?.terms?.map((term, index) => (
-                      <Input
-                        key={index}
-                        defaultValue={term}
-                        id={`term-${index}`}
-                      />
-                    ))}
-                    {/* Predefined Suggestions */}
-                    <Box fontSize="sm" color="gray.500">
-                      Suggestions:{' '}
-                      <i>
-                        "Return the field in clean condition", "Any damages must
-                        be reported immediately."
-                      </i>
-                    </Box>
-
-                    <Button
-                      leftIcon={<HiPlus />}
-                      colorScheme="teal"
-                      variant="outline"
-                      size="sm"
-                      onClick={() =>
-                        setCurrentPlayground((prev) => ({
-                          ...prev,
-                          terms: [...(prev?.terms || []), ''],
-                        }))
-                      }
-                    >
-                      Condition
-                    </Button>
-                  </Stack>
+                  <FormLabel htmlFor="terms">Terms & Conditions</FormLabel>
+                  <Textarea
+                    id="terms"
+                    placeholder="Enter terms and conditions"
+                    defaultValue={currentPlayground?.terms || ''}
+                  />
                 </Box>
 
                 <Box>
-                  <FormLabel htmlFor="address">Description (If any)</FormLabel>
+                  <FormLabel htmlFor="note">Description (If any)</FormLabel>
                   <Textarea
-                    id="address"
-                    defaultValue={currentPlayground?.description || ''}
+                    id="note"
+                    placeholder="Enter description"
+                    defaultValue={currentPlayground?.note || ''}
                   />
                 </Box>
               </Stack>
@@ -343,12 +293,12 @@ const Manage_Playground = () => {
                 colorScheme="blue"
                 onClick={() =>
                   handleAddOrEdit({
-                    id: currentPlayground?.id,
+                    groundId: currentPlayground?.groundId,
                     name: document.getElementById('name').value,
                     area: document.getElementById('area').value,
-                    price: document.getElementById('price').value,
-                    description: document.getElementById('address').value,
-                    terms: currentPlayground?.terms || [],
+                    pricePerDay: document.getElementById('price').value,
+                    terms: document.getElementById('terms').value,
+                    note: document.getElementById('note').value,
                   })
                 }
               >
@@ -357,44 +307,11 @@ const Manage_Playground = () => {
             </DrawerFooter>
           </DrawerContent>
         </Drawer>
-
-        {/* View Playground Modal */}
-        <Modal isOpen={isViewOpen} onClose={onViewClose} size="lg">
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Playground Details</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              {selectedPlayground && (
-                <Stack spacing={4}>
-                  <Box>
-                    <strong>Name:</strong> {selectedPlayground.name}
-                  </Box>
-                  <Box>
-                    <strong>Area:</strong> {selectedPlayground.area} sq. m
-                  </Box>
-                  <Box>
-                    <strong>Price Per Day:</strong> LKR {selectedPlayground.price}
-                  </Box>
-                  <Box>
-                    <strong>Description:</strong> {selectedPlayground.description}
-                  </Box>
-                  <Box>
-                    <strong>Terms & Conditions:</strong>
-                    <ul>
-                      {selectedPlayground.terms.map((term, index) => (
-                        <li key={index}>{term}</li>
-                      ))}
-                    </ul>
-                  </Box>
-                </Stack>
-              )}
-            </ModalBody>
-          </ModalContent>
-        </Modal>
       </div>
     </div>
+    </Sidebar>
   );
+  
 };
 
 export default Manage_Playground;
