@@ -13,7 +13,7 @@ const Menus = [
   { title: 'Complaints', icon: <FaRegCommentAlt />, path: '/HealthComplaint' },
   // { title: 'Appointments', icon: <RiFileList2Line />, path: '/WorkAndPlanAppointment' },
   // { title: 'Services', icon: <RiServiceLine />, path: '/ServicesPage' },
-  { title: 'Documents', icon: <RiBarChart2Fill />, path: '/document_Officer' },
+  { title: 'Citizens', icon: <RiMenu2Fill />, path: '/UserDetailsHealth' },
   { title: 'Profile', icon: <RiProfileLine />, path: '/dashboard_Officer', spacing: true },
   { title: 'Logout', icon: <RiLogoutBoxLine />, path: '/login' },
 ];

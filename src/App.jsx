@@ -74,6 +74,7 @@ import WorkAndPlanBookedAppointments from "./pages/WorkAndPlan/WorkAndPlanBooked
 import WorkAndPlanCompletedorCanceledAppointments from "./pages/WorkAndPlan/WorkAndPlanCompletedorCanceledAppointments";
 import WorkAndPlanOngoingAppointments from "./pages/WorkAndPlan/WorkAndPlanOngoingAppointments";
 import WorkAndPlanTodaysAppointments from "./pages/WorkAndPlan/WorkAndPlanTodaysAppointments";
+import Citizens from "./pages/WorkAndPlan/UserDetails";
 
 const App = () => {
   return (
@@ -170,6 +171,7 @@ const App = () => {
         <Route path="/WorkAndPlanCompletedorCanceledAppointments" element={<WorkAndPlanCompletedorCanceledAppointments />} />
         <Route path="/WorkAndPlanOngoingAppointments" element={<WorkAndPlanOngoingAppointments />} />
         <Route path="/WorkAndPlanTodaysAppointments" element={<WorkAndPlanTodaysAppointments />} />
+        <Route path="/Citizens" element={<Citizens />} />
         
         {/* 6 Development */}
       </Routes>
