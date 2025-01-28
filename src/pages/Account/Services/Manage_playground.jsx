@@ -95,8 +95,9 @@ const Manage_Playground = () => {
   };
 
   return (
+    <Sidebar>
     <div className="flex h-screen">
-      <Sidebar />
+      
 
       <div className="flex-1 p-5 bg-gray-100 overflow-y-auto">
         {/* Breadcrumb */}
@@ -394,6 +395,7 @@ const Manage_Playground = () => {
         </Modal>
       </div>
     </div>
+    </Sidebar>
   );
 };
 

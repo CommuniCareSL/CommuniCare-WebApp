@@ -141,8 +141,9 @@ const PlaygroundRequests = () => {
     };
 
     return (
+        <Sidebar>
         <div className="flex h-screen">
-            <Sidebar />
+           
 
             <div className="flex-1 p-8 bg-gray-50 overflow-y-auto">
                 {/* Breadcrumb */}
@@ -414,6 +415,7 @@ const PlaygroundRequests = () => {
                 </AlertDialogContent>
             </AlertDialog>
         </div>
+        </Sidebar>
     );
 };
 
