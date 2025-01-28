@@ -1,0 +1,48 @@
+.report-main-title{
+    width: 93%;
+    margin-left: 35px;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2vh;
+    background-color: #fff;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3vh;
+  }
+  
+  .report-main-title h4{
+    padding-left: 10px;
+    font-weight: 600;
+  }
+ 
+  .report-summery-blocks{
+    width: 93%;
+    height: 70vh;
+    margin-left: 35px;
+    margin-top: 3vh;
+  }
+
+  .report-summery-left-block-type1{
+    width: 57%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 15px;
+    display: flex;
+    float: left;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .report-summery-right-block-type1{
+    width: 40%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 15px;
+    display: flex;
+    float: right;
+    justify-content: center;
+    align-items: center;
+  }
