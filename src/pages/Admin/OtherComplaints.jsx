@@ -24,6 +24,7 @@ import { BsSearch } from 'react-icons/bs';
 import { FaUser, FaCalendarAlt, FaInfoCircle } from 'react-icons/fa';
 import { getStoredData } from "../../hooks/localStorage";
 import { fetchComplaints } from '../../service/complaint/Complaint';
+import '../../styles/pages/Admin/OtherComplaints.css'
 
 // Status mapping object
 const STATUS_MAP = {
@@ -130,7 +131,7 @@ const Complaint = () => {
       <Sidebar />
 
       {/* Main Content */}
-      <div className="flex-grow p-5 min-h-screen min-w-auto ml-[85px] transition-all duration-300 bg-[#e8eff9] overflow-y-auto sidebar:hover:ml-[260px]">
+      <div className="flex-grow p-5 min-h-screen min-w-auto complaint-page-content bg-[#e8eff9] overflow-y-auto">
         {/* Status Count Cards */}
         <div className="grid grid-cols-4 gap-4 mb-6">
           {Object.entries(statusCounts).map(([key, count], idx) => {
