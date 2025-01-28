@@ -46,7 +46,7 @@ const Manage_Crematorium = () => {
     {
       id: 1,
       name: 'Peaceful Rest Crematorium',
-      capacity: 50,
+      area: '123 Main St, Springfield',
       rentalFee: 15000,
       description: 'Serene and well-maintained',
       terms: ['No flowers allowed', 'No photography'],
@@ -54,7 +54,7 @@ const Manage_Crematorium = () => {
     {
       id: 2,
       name: 'Eternal Light Crematorium',
-      capacity: 100,
+      area: '456 Elm St, Shelbyville',
       rentalFee: 25000,
       description: 'Ideal for large gatherings',
       terms: ['Advance booking required', 'No outside food allowed'],
@@ -144,7 +144,7 @@ const Manage_Crematorium = () => {
                     Name
                   </Th>
                   <Th fontWeight="bold" color="teal.700">
-                    Capacity
+                    Area
                   </Th>
                   <Th fontWeight="bold" color="teal.700">
                     Rental Fee
@@ -158,7 +158,7 @@ const Manage_Crematorium = () => {
                 {crematoriums.map((crematorium) => (
                   <Tr key={crematorium.id} _hover={{ bg: 'gray.50' }}>
                     <Td py={4}>{crematorium.name}</Td>
-                    <Td py={4}>{crematorium.capacity} people</Td>
+                    <Td py={4}>{crematorium.area}</Td>
                     <Td py={4}>LKR {crematorium.rentalFee}</Td>
                     <Td py={4} isNumeric>
                       <Button
@@ -232,7 +232,7 @@ const Manage_Crematorium = () => {
               <Tfoot>
                 <Tr>
                   <Th>Name</Th>
-                  <Th>Capacity</Th>
+                  <Th>Area</Th>
                   <Th>Rental Fee</Th>
                   <Th isNumeric>Options</Th>
                 </Tr>
@@ -262,16 +262,11 @@ const Manage_Crematorium = () => {
                 </Box>
 
                 <Box>
-                  <FormLabel htmlFor="capacity">Capacity</FormLabel>
+                  <FormLabel htmlFor="area">Area</FormLabel>
                   <Input
-                    id="capacity"
-                    placeholder="Enter capacity"
-                    type="number"
-                    defaultValue={currentCrematorium?.capacity || ''}
-                    onInput={(e) => {
-                      const value = parseInt(e.target.value, 10);
-                      if (value < 0) e.target.value = '';
-                    }}
+                    id="area"
+                    placeholder="Enter area (address)"
+                    defaultValue={currentCrematorium?.area || ''}
                   />
                 </Box>
 
@@ -345,7 +340,7 @@ const Manage_Crematorium = () => {
                   handleAddOrEdit({
                     id: currentCrematorium?.id,
                     name: document.getElementById('name').value,
-                    capacity: document.getElementById('capacity').value,
+                    area: document.getElementById('area').value,
                     rentalFee: document.getElementById('rentalFee').value,
                     description: document.getElementById('description').value,
                     terms: currentCrematorium?.terms || [],
@@ -371,7 +366,7 @@ const Manage_Crematorium = () => {
                     <strong>Name:</strong> {selectedCrematorium.name}
                   </Box>
                   <Box>
-                    <strong>Capacity:</strong> {selectedCrematorium.capacity} people
+                    <strong>Area:</strong> {selectedCrematorium.area}
                   </Box>
                   <Box>
                     <strong>Rental Fee:</strong> LKR {selectedCrematorium.rentalFee}
