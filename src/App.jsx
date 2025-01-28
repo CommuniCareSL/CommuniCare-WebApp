@@ -45,6 +45,7 @@ import HealthComplaint from "./pages/Health/Complaint";
 
 import AccountDashboard from "./pages/Account/Dashboard";
 import AccountComplaint from "./pages/Account/Complaint";
+import AccountAppointment from "./pages/Account/AccountAppointment";
 
 import ServicesPage from "./pages/Account/Services/Services_manage";
 import PlaygroundAcc from './pages/Account/Services/Playground_home';
@@ -152,6 +153,7 @@ const App = () => {
         {/* 4 Account */}
         <Route path="/AccountDashboard" element={<AccountDashboard />} />
         <Route path="/AccountComplaint" element={<AccountComplaint />} />
+        <Route path="/AccountAppointment" element={<AccountAppointment />} />
 
 
 
