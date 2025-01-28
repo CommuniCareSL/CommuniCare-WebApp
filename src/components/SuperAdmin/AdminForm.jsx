@@ -62,11 +62,40 @@ const AdminForm = ({ mode, employeeId, onClose, onSubmit }) => {
     setSelectedSabha(''); // Reset selected sabha when district changes
   };
 
+  const validateName = (name) => {
+    // Regex to match only alphabetic characters and spaces
+    const namePattern = /^[A-Za-z\s]+$/;
+    return namePattern.test(name);
+  };
+
+  const validateNIC = (nic) => {
+      const nicPattern = /^[0-9]{9}[VvXx]$|^[0-9]{12}$/;
+      return nicPattern.test(nic);
+  };
+
+  const validatePassword = (password) => {
+      // Password must be at least 8 characters
+      return password.length >= 8;
+  };
+
+  const validateContactNo = (contactNo) => {
+      // Contact number must be exactly 10 digits
+      const contactPattern = /^[0-9]{10}$/;
+      return contactPattern.test(contactNo);
+  };
+
   const validateForm = () => {
     const errors = {};
     if (!name) errors.name = 'Name is required';
+    if (!validateName(name)) errors.name = 'Name should only contain letters and spaces';
+    if (!address) errors.address = 'Address is required';
     if (!email) errors.email = 'Email is required';
     if (!password) errors.password = 'Password is required';
+    if (!contactNo) errors.contactNo = 'Contact Number is required';
+    if (!nic) errors.nic = 'NIC is required';
+    if (!validatePassword(password)) errors.password = 'Password must be at least 8 characters';
+    if (!validateContactNo(contactNo)) errors.contactNo = 'Contact Number must be 10 digits';
+    if (!validateNIC(nic)) errors.nic = 'Invalid NIC';
     if (!selectedDistrict) errors.district = 'District is required';
     if (!selectedSabha) errors.sabha = 'Sabha is required';
     setErrors(errors);
@@ -170,6 +199,9 @@ const AdminForm = ({ mode, employeeId, onClose, onSubmit }) => {
                 className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 disabled={mode === 'view'}
               />
+              {errors.address && (
+                <p className="text-red-500 text-sm mt-1">{errors.address}</p>
+              )}
             </div>
           </div>
 
@@ -184,6 +216,9 @@ const AdminForm = ({ mode, employeeId, onClose, onSubmit }) => {
                 className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 disabled={mode === 'view'}
               />
+              {errors.contactNo && (
+                <p className="text-red-500 text-sm mt-1">{errors.contactNo}</p>
+              )}
             </div>
 
             {/* NIC Input */}
@@ -196,6 +231,9 @@ const AdminForm = ({ mode, employeeId, onClose, onSubmit }) => {
                 className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 disabled={mode === 'view'}
               />
+              {errors.nic && (
+                <p className="text-red-500 text-sm mt-1">{errors.nic}</p>
+              )}
             </div>
           </div>
 
