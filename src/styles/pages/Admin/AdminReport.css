@@ -20,29 +20,51 @@
  
   .report-summery-blocks{
     width: 93%;
-    height: 70vh;
+    height: 75vh;
     margin-left: 35px;
     margin-top: 3vh;
   }
 
   .report-summery-left-block-type1{
-    width: 57%;
+    width: 65%;
     height: 100%;
     background-color: #fff;
     border-radius: 15px;
     display: flex;
     float: left;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
+    padding: 10px 20px;
   }
   
   .report-summery-right-block-type1{
-    width: 40%;
+    width: 34%;
     height: 100%;
     background-color: #fff;
     border-radius: 15px;
     display: flex;
     float: right;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    padding: 40px 8px;
+  }
+
+  .report-summery-right-block-type1-first-box{
+    width: 100%;
+    height: 60%;
+  }
+
+  .report-summery-right-block-type1-Second-box{
+    width: 100%;
+    height: 40%;
+    margin-top: 2vh;
+    padding: 20px 20px
+  }
+
+  .holiday-item {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .holiday-item p {
+    margin: 0.25rem 0.5rem;
   }
