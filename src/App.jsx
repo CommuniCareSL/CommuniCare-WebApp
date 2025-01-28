@@ -39,6 +39,7 @@ import PradeshiyaSabhaDetails from "./pages/SuperAdmin/PradeshiyaSabhaDetails"; 
 
 import HealthDashboard from "./pages/Health/Dashboard";
 import HealthComplaint from "./pages/Health/Complaint";
+import UserDetailsHealth from "./pages/Health/UserDetails";
 
 
 
@@ -46,6 +47,7 @@ import HealthComplaint from "./pages/Health/Complaint";
 import AccountDashboard from "./pages/Account/Dashboard";
 import AccountComplaint from "./pages/Account/Complaint";
 import AccountAppointment from "./pages/Account/AccountAppointment";
+import UserDetails from "./pages/Account/UserDetails";
 
 import ServicesPage from "./pages/Account/Services/Services_manage";
 import PlaygroundAcc from './pages/Account/Services/Playground_home';
@@ -72,6 +74,7 @@ import WorkAndPlanBookedAppointments from "./pages/WorkAndPlan/WorkAndPlanBooked
 import WorkAndPlanCompletedorCanceledAppointments from "./pages/WorkAndPlan/WorkAndPlanCompletedorCanceledAppointments";
 import WorkAndPlanOngoingAppointments from "./pages/WorkAndPlan/WorkAndPlanOngoingAppointments";
 import WorkAndPlanTodaysAppointments from "./pages/WorkAndPlan/WorkAndPlanTodaysAppointments";
+import Citizens from "./pages/WorkAndPlan/UserDetails";
 
 const App = () => {
   return (
@@ -147,6 +150,7 @@ const App = () => {
         {/* 3 Health */}
         <Route path="/HealthDashboard" element={<HealthDashboard />} />
         <Route path="/HealthComplaint" element={<HealthComplaint />} />
+        <Route path="/UserDetailsHealth" element={<UserDetailsHealth />} />
 
 
 
@@ -154,6 +158,7 @@ const App = () => {
         <Route path="/AccountDashboard" element={<AccountDashboard />} />
         <Route path="/AccountComplaint" element={<AccountComplaint />} />
         <Route path="/AccountAppointment" element={<AccountAppointment />} />
+        <Route path="/UserDetails" element={<UserDetails />} />
 
 
 
@@ -166,6 +171,7 @@ const App = () => {
         <Route path="/WorkAndPlanCompletedorCanceledAppointments" element={<WorkAndPlanCompletedorCanceledAppointments />} />
         <Route path="/WorkAndPlanOngoingAppointments" element={<WorkAndPlanOngoingAppointments />} />
         <Route path="/WorkAndPlanTodaysAppointments" element={<WorkAndPlanTodaysAppointments />} />
+        <Route path="/Citizens" element={<Citizens />} />
         
         {/* 6 Development */}
       </Routes>
