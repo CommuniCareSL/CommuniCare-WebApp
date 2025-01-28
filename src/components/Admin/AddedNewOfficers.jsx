@@ -52,6 +52,8 @@ function AddedNewOfficers() {
                   </td>
                   <td className="admin-add-new-officer-table-row-column-2">
                     <h4>{officer.name}</h4>
+                  </td>
+                  <td className="admin-add-new-officer-table-row-column-3">
                     <p>{officer.id}</p> {/* Display officer ID */}
                   </td>
                   <td className="admin-add-new-officer-table-row-column-4">
