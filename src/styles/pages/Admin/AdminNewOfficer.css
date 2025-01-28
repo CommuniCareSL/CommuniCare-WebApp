@@ -228,8 +228,9 @@
 
 .add-new-officer-form-content{
   width: 100%;
-  height: 70vh;
+  height: 60vh;
   padding: 10px 30px;
+  overflow-y: scroll;
 }
 
 .add-new-officer-form-Name{
