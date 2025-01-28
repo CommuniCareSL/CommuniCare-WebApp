@@ -127,13 +127,13 @@ const Playground_past = () => {
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem>
-              <BreadcrumbLink href="#" fontSize="sm" color="gray.600">
+              <BreadcrumbLink href="/ServicesPage" fontSize="sm" color="gray.600">
                 Playground Reservation
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem isCurrentPage>
               <BreadcrumbLink href="#" fontSize="sm" color="gray.800" fontWeight="medium">
-                Past Reservations
+                Past & Canceled Reservations
               </BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>

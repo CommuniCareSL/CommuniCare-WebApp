@@ -129,7 +129,7 @@ const PlaygroundPage = () => {
           {/* Card 3 */}
           <div className="bg-white shadow-md rounded-lg p-4">
             <div className="flex justify-between items-center mb-2">
-              <h3 className="text-lg font-semibold text-blue-700">Past Reservations</h3>
+              <h3 className="text-lg font-semibold text-blue-700">Past & Cancelled Reservations</h3>
               <Link to="/Playground_home/PlaygroundHistoryAcc">
                 <Button variant="outline" colorScheme="teal" size="sm" className="mb-2">
                   View History
