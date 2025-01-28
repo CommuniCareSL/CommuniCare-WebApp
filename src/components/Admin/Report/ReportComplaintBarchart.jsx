@@ -13,6 +13,7 @@ const Utils = {
 const ReportComplaintBarchart = () => {
   const chartRef = useRef(null);
   const [chartData, setChartData] = useState(null);
+  const [allData, setAllData] = useState(null); // To store the full data from API
   const { sabhaId } = getStoredData();
 
   useEffect(() => {
@@ -21,15 +22,25 @@ const ReportComplaintBarchart = () => {
         const response = await axios.get(`${BASE_URL}/admin-chart/monthly/${sabhaId}`);
         const data = response.data;
 
-        const datasets = data.datasets.map((dataset, i) => ({
-          ...dataset,
-          borderColor: Utils.namedColor(i),
-          backgroundColor: Utils.transparentize(Utils.namedColor(i), 0.5),
-        }));
-
-        setChartData({
+        // Store the full data for future use
+        setAllData({
           labels: data.labels,
-          datasets,
+          datasets: data.datasets.map((dataset, i) => ({
+            ...dataset,
+            borderColor: Utils.namedColor(i),
+            backgroundColor: Utils.transparentize(Utils.namedColor(i), 0.5),
+          })),
+        });
+
+        // Set initial data (first two months)
+        setChartData({
+          labels: data.labels.slice(0, 1), // First two months
+          datasets: data.datasets.map((dataset, i) => ({
+            ...dataset,
+            data: dataset.data.slice(0, 1), // Data for the first two months
+            borderColor: Utils.namedColor(i),
+            backgroundColor: Utils.transparentize(Utils.namedColor(i), 0.5),
+          })),
         });
       } catch (error) {
         console.error("Error fetching chart data:", error);
@@ -43,14 +54,16 @@ const ReportComplaintBarchart = () => {
     {
       name: "Add Month",
       handler() {
-        if (chartRef.current) {
+        if (chartRef.current && allData) {
           const chart = chartRef.current;
-          if (chart.data.labels.length < 12) { // Maximum limit is 12 months
-            const nextMonth = Utils.months({ count: chart.data.labels.length + 1 }).pop();
-            chart.data.labels.push(nextMonth);
-            chart.data.datasets.forEach((dataset) => 
-              dataset.data.push(Utils.numbers({ count: 1, min: 0, max: 100 })[0])
-            );
+          const currentCount = chart.data.labels.length;
+
+          if (currentCount < allData.labels.length) {
+            // Add the next month
+            chart.data.labels.push(allData.labels[currentCount]);
+            chart.data.datasets.forEach((dataset, index) => {
+              dataset.data.push(allData.datasets[index].data[currentCount]);
+            });
             chart.update();
           } else {
             alert("You can only have up to 12 months of data.");
@@ -63,7 +76,9 @@ const ReportComplaintBarchart = () => {
       handler() {
         if (chartRef.current) {
           const chart = chartRef.current;
-          if (chart.data.labels.length > 1) { // Minimum limit is 1 month
+
+          if (chart.data.labels.length > 1) {
+            // Remove the last month
             chart.data.labels.pop();
             chart.data.datasets.forEach((dataset) => dataset.data.pop());
             chart.update();
