@@ -4,6 +4,7 @@ import ReportComplaintBarchart from '../../components/Admin/Report/ReportComplai
 import ReportComplaintLineChart from '../../components/Admin/Report/ReportComplaintLineChart';
 import ReportAppointmentDoughnutChart from '../../components/Admin/Report/ReportAppointmentDoughnutChart';
 import ReportAppointmentLineChart from '../../components/Admin/Report/ReportAppointmentLineChart';
+import ReportUpcomingAppointments from '../../components/Admin/Report/ReportUpcomingAppointments';
 
 import WaveIcon from '../../assets/Admin/waving-hand.png';
 
@@ -90,13 +91,8 @@ const AdminReport = () => {
           </div>
         </div>
 
-        {/* Services Summary */}
-        <div className='report-main-title'>
-          <h4>Summary Of Services</h4>
-        </div>
-
-        <div className="report-summery-blocks">
-          {/* Services content */}
+        <div className="report-summery-blocks-type2">
+          <ReportUpcomingAppointments />
         </div>
 
       </div>
