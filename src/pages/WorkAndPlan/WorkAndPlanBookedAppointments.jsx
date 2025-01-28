@@ -149,7 +149,8 @@ const WorkAndPlanBookedAppointments = () => {
             <h2 className="text-xl font-medium text-gray-800">Appointments</h2>
             <p className="text-gray-500 mt-1">Categorized Appointments</p>
 
-            <div className="mt-8 overflow-x-auto bg-white shadow-md rounded-lg">
+            <div className="mt-8 bg-white shadow-md rounded-lg overflow-hidden">
+              <div  className="h-[50vh]  overflow-y-auto">
               <table className="min-w-full border-collapse">
                 <tbody>
                   {filteredAppointments.map((appointment, index) => (
@@ -169,6 +170,7 @@ const WorkAndPlanBookedAppointments = () => {
                   ))}
                 </tbody>
               </table>
+              </div>
             </div>
           </div>
 
