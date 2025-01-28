@@ -39,7 +39,7 @@ export const Newregistration = () => {
       <div className="p-6 overflow-y-auto">
         <div className="admin-table-home-page">
           <div className="admin-table-title-container">
-            <h3>Newly requested Pradeshiya Sabha</h3>
+            <h3>Sabha Details</h3>
           </div>
 
           <div className="admin-table-table-tab-view-for-table-content">
@@ -85,13 +85,7 @@ export const Newregistration = () => {
                             className="btn1"
                             onClick={() => handleAccept(item.pradeshiyaSabha)}
                           >
-                            Accept
-                          </button>
-                          <button
-                            className="btn1"
-                            onClick={() => handleReject(item.pradeshiyaSabha)}
-                          >
-                            Reject
+                            Edit
                           </button>
                         </div>
                       </td>
