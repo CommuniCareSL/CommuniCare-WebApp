@@ -61,7 +61,7 @@ const Sidebar = ({ children }) => {
             { path: "/SuperAdminDashboard", icon: "dashboard", label: "Dashboard" },
             { path: "/NewRegistration", icon: "verified_user", label: "Sabha" },
             { path: "/Registered", icon: "person_add", label: "Admins" },
-            { path: "/Report", icon: "assessment", label: "Report" },
+            // { path: "/Report", icon: "assessment", label: "Report" },
           ].map((item) => (
             <li key={item.path}>
               <a
