@@ -11,8 +11,8 @@ import { clearStoredData } from "../../hooks/localStorage";
 const Menus = [
   { title: 'Home', icon: <RiDashboardFill />, path: '/AccountDashboard' },
   { title: 'Complaints', icon: <FaRegCommentAlt />, path: '/AccountComplaint' },
-  { title: 'Appointments', icon: <RiFileList2Line />, path: '/WorkAndPlanAppointment' },
-  { title: 'Service Requests', icon: <RiServiceLine />, path: '/requests_Officer' },
+  { title: 'Appointments', icon: <RiFileList2Line />, path: '/AccountAppointment' },
+  { title: 'Services', icon: <RiServiceLine />, path: '/ServicesPage' },
   { title: 'Documents', icon: <RiBarChart2Fill />, path: '/document_Officer' },
   { title: 'Profile', icon: <RiProfileLine />, path: '/dashboard_Officer', spacing: true },
   { title: 'Logout', icon: <RiLogoutBoxLine />, path: '/login' },

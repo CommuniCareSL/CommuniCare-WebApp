@@ -77,7 +77,7 @@ export const Registered = () => {
       <div className="p-6 overflow-y-auto">
         <div className="Sadmin-table-home-page">
           <div className="Sadmin-table-title-container">
-            <h3>Pradeshiya Sabha Admins</h3>
+            <h3>Sabha Admins</h3>
           </div>
 
           <div className="Sadmin-table-table-tab-view-for-table-content">

@@ -45,6 +45,23 @@ import HealthComplaint from "./pages/Health/Complaint";
 
 import AccountDashboard from "./pages/Account/Dashboard";
 import AccountComplaint from "./pages/Account/Complaint";
+import AccountAppointment from "./pages/Account/AccountAppointment";
+
+import ServicesPage from "./pages/Account/Services/Services_manage";
+import PlaygroundAcc from './pages/Account/Services/Playground_home';
+import ManagePlaygroundAcc from './pages/Account/Services/Manage_playground';
+import PlaygroundRequestsAcc from './pages/Account/Services/Playground_requests';
+import PlaygroundHistoryAcc from './pages/Account/Services/Playground_past';
+
+import AssemblyHallAcc from './pages/Account/Services/AssemblyHall_home';
+import Manage_AssemblyHallAcc from './pages/Account/Services/Manage_assemblyhall';
+import HallRequestsAcc from './pages/Account/Services/AssemblyHall_requests';
+import HallHistoryAcc from './pages/Account/Services/AssemblyHall_past';
+
+import CrematoriumAcc from './pages/Account/Services/Crematorium_home';
+import Manage_CrematoriumAcc from './pages/Account/Services/Manage_Crematorium';
+import CrematoriumRequestsAcc from './pages/Account/Services/Crematorium_requests';
+import CrematoriumHistoryAcc from './pages/Account/Services/Crematorium_past';
 
 
 import WorkAndPlanDashboard from "./pages/WorkAndPlan/Dashboard";
@@ -91,6 +108,23 @@ const App = () => {
         {/* <Route path="/Single_complaint/:id" component={SingleComplaint} /> */}
         <Route path="/Single_complaint/:id" element={<SingleComplaint />} />
 
+        {/* Account/Services */}
+        <Route path="/ServicesPage" element={<ServicesPage/>} />
+        <Route path="/Playground_home" element={<PlaygroundAcc/>} />
+        <Route path="/Playground_home/ManagePlaygroundAcc" element={<ManagePlaygroundAcc/>} />
+        <Route path="/Playground_home/PlaygroundRequestsAcc" element={<PlaygroundRequestsAcc/>} />
+        <Route path="/Playground_home/PlaygroundHistoryAcc" element={<PlaygroundHistoryAcc/>} />
+
+        <Route path="/AssemblyHall_home" element={<AssemblyHallAcc/>} />
+        <Route path="/AssemblyHall_home/ManageAssemblyHallAcc" element={<Manage_AssemblyHallAcc />} />
+        <Route path="/AssemblyHall_home/HallRequestsAcc" element={<HallRequestsAcc />} />
+        <Route path="/AssemblyHall_home/HallHistoryAcc" element={<HallHistoryAcc />} />
+
+        <Route path="/Crematorium_home" element={<CrematoriumAcc/>} />
+        <Route path="/Crematorium_home/ManageCrematoriumAcc" element={<Manage_CrematoriumAcc/>} />
+        <Route path="/Crematorium_home/CrematoriumRequestsAcc" element={<CrematoriumRequestsAcc/>} />
+        <Route path="/Crematorium_home/CrematoriumHistoryAcc" element={<CrematoriumHistoryAcc/>} />
+
         
         {/* Officer Routes */}
         <Route path="/dashboard_Officer" element={<Dashboard_Officer />} />
@@ -119,6 +153,7 @@ const App = () => {
         {/* 4 Account */}
         <Route path="/AccountDashboard" element={<AccountDashboard />} />
         <Route path="/AccountComplaint" element={<AccountComplaint />} />
+        <Route path="/AccountAppointment" element={<AccountAppointment />} />
 
 
 
