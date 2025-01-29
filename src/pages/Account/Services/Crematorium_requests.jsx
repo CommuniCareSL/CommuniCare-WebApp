@@ -32,11 +32,12 @@ import {
     PopoverBody,
     PopoverArrow,
     PopoverCloseButton,
+    Textarea,
 } from '@chakra-ui/react';
 
 const CrematoriumRequests = () => {
     const { isOpen: isViewOpen, onOpen: onViewOpen, onClose: onViewClose } = useDisclosure();
-    const { isOpen: isRejectOpen, onOpen: onRejectOpen, onClose: onRejectClose } = useDisclosure();
+    const { isOpen: isCancelOpen, onOpen: onCancelOpen, onClose: onCancelClose } = useDisclosure();
     const [selectedReservation, setSelectedReservation] = useState(null);
     const [reservations, setReservations] = useState([
         {
@@ -47,29 +48,31 @@ const CrematoriumRequests = () => {
             timeSlot: '10:00 AM - 12:00 PM',
             payment: 'Paid',
             paymentAmount: 15000,
-            status: 'Confirmed',
+            status: 'Booked',
             deceasedName: 'Jane Doe',
             deceasedAddress: '123 Main St, City, Country',
             dateOfDeath: '2025-01-20',
             notifierName: 'John Doe',
             notifierAddress: '123 Main St, City, Country',
             notifierRelationship: 'Spouse',
+            cancellationReason: '',
         },
         {
             id: 2,
             user: 'Jane Smith',
             crematorium: 'Eternal Light Crematorium',
-            funeralDate: '2025-01-26',
+            funeralDate: '2025-02-04',
             timeSlot: '02:00 PM - 04:00 PM',
             payment: 'Unpaid',
             paymentAmount: 20000,
-            status: 'Pending',
+            status: 'Booked',
             deceasedName: 'John Smith',
             deceasedAddress: '456 Elm St, City, Country',
             dateOfDeath: '2025-01-21',
             notifierName: 'Jane Smith',
             notifierAddress: '456 Elm St, City, Country',
             notifierRelationship: 'Daughter',
+            cancellationReason: '',
         },
         {
             id: 3,
@@ -79,13 +82,14 @@ const CrematoriumRequests = () => {
             timeSlot: '09:00 AM - 11:00 AM',
             payment: 'Paid',
             paymentAmount: 18000,
-            status: 'Rejected',
+            status: 'Cancelled',
             deceasedName: 'Mary Brown',
             deceasedAddress: '789 Oak St, City, Country',
             dateOfDeath: '2025-01-22',
             notifierName: 'David Brown',
             notifierAddress: '789 Oak St, City, Country',
             notifierRelationship: 'Son',
+            cancellationReason: 'Change of plans.',
         },
     ]);
 
@@ -97,6 +101,7 @@ const CrematoriumRequests = () => {
 
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedRows, setSelectedRows] = useState([]);
+    const [cancellationReason, setCancellationReason] = useState('');
     const cancelRef = useRef();
 
     // Handle filters
@@ -125,25 +130,16 @@ const CrematoriumRequests = () => {
         );
     };
 
-    // Handle confirm reservation
-    const handleConfirmReservation = () => {
+    // Handle cancel reservation
+    const handleCancelReservation = () => {
         setReservations((prev) =>
             prev.map((res) =>
-                selectedRows.includes(res.id) ? { ...res, status: 'Confirmed' } : res
+                selectedRows.includes(res.id) ? { ...res, status: 'Cancelled', cancellationReason } : res
             )
         );
         setSelectedRows([]);
-    };
-
-    // Handle reject reservation
-    const handleRejectReservation = () => {
-        setReservations((prev) =>
-            prev.map((res) =>
-                selectedRows.includes(res.id) ? { ...res, status: 'Rejected' } : res
-            )
-        );
-        setSelectedRows([]);
-        onRejectClose();
+        setCancellationReason('');
+        onCancelClose();
     };
 
     // Handle cancel selection
@@ -159,288 +155,299 @@ const CrematoriumRequests = () => {
         }
     };
 
+    // Check if reservation can be cancelled (not within 2 days of funeral date)
+    const canCancelReservation = (funeralDate) => {
+        const today = new Date();
+        const funeralDay = new Date(funeralDate);
+        const timeDifference = funeralDay - today;
+        const daysDifference = timeDifference / (1000 * 3600 * 24);
+        return daysDifference > 2;
+    };
+
     return (
         <Sidebar>
-        <div className="flex h-screen">
-            
+            <div className="flex h-screen">
+                <div className="flex-1 p-8 bg-gray-50 overflow-y-auto">
+                    {/* Breadcrumb */}
+                    <Breadcrumb spacing="8px" separator={<HiChevronRight />} mb={6}>
+                        <BreadcrumbItem>
+                            <BreadcrumbLink href="#" fontSize="sm" color="gray.600">Services</BreadcrumbLink>
+                        </BreadcrumbItem>
+                        <BreadcrumbItem>
+                            <BreadcrumbLink href="#" fontSize="sm" color="gray.600">Crematorium Reservation</BreadcrumbLink>
+                        </BreadcrumbItem>
+                        <BreadcrumbItem isCurrentPage>
+                            <BreadcrumbLink href="#" fontSize="sm" color="gray.800" fontWeight="medium">Requests</BreadcrumbLink>
+                        </BreadcrumbItem>
+                    </Breadcrumb>
 
-            <div className="flex-1 p-8 bg-gray-50 overflow-y-auto">
-                {/* Breadcrumb */}
-                <Breadcrumb spacing="8px" separator={<HiChevronRight />} mb={6}>
-                    <BreadcrumbItem>
-                        <BreadcrumbLink href="#" fontSize="sm" color="gray.600">Services</BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbItem>
-                        <BreadcrumbLink href="#" fontSize="sm" color="gray.600">Crematorium Reservation</BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbItem isCurrentPage>
-                        <BreadcrumbLink href="#" fontSize="sm" color="gray.800" fontWeight="medium">Requests</BreadcrumbLink>
-                    </BreadcrumbItem>
-                </Breadcrumb>
-
-                {/* Search Bar and Filters */}
-                <Flex gap={4} mb={6} alignItems="center">
-                    <Input
-                        placeholder="Search by user, crematorium, or funeral date..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        width="300px"
-                        bg="white"
-                        borderColor="gray.300"
-                        _hover={{ borderColor: 'blue.300' }}
-                        _focus={{ borderColor: 'blue.500', boxShadow: '0 0 0 1px blue.500' }}
-                        fontSize="sm"
-                    />
-                    <Select
-                        placeholder="Filter by Crematorium"
-                        value={filters.crematorium}
-                        onChange={(e) => setFilters({ ...filters, crematorium: e.target.value })}
-                        width="200px"
-                        bg="white"
-                        borderColor="gray.300"
-                        _hover={{ borderColor: 'blue.300' }}
-                        _focus={{ borderColor: 'blue.500', boxShadow: '0 0 0 1px blue.500' }}
-                        fontSize="sm"
-                    >
-                        <option value="Peaceful Rest Crematorium">Peaceful Rest Crematorium</option>
-                        <option value="Eternal Light Crematorium">Eternal Light Crematorium</option>
-                        <option value="Serenity Gardens Crematorium">Serenity Gardens Crematorium</option>
-                    </Select>
-                    <Select
-                        placeholder="Sort by Date"
-                        value={filters.date}
-                        onChange={(e) => setFilters({ ...filters, date: e.target.value })}
-                        width="200px"
-                        bg="white"
-                        borderColor="gray.300"
-                        _hover={{ borderColor: 'blue.300' }}
-                        _focus={{ borderColor: 'blue.500', boxShadow: '0 0 0 1px blue.500' }}
-                        fontSize="sm"
-                    >
-                        <option value="newest">Newest</option>
-                        <option value="oldest">Oldest</option>
-                    </Select>
-                    <Select
-                        placeholder="Filter by Status"
-                        value={filters.status}
-                        onChange={(e) => setFilters({ ...filters, status: e.target.value })}
-                        width="200px"
-                        bg="white"
-                        borderColor="gray.300"
-                        _hover={{ borderColor: 'blue.300' }}
-                        _focus={{ borderColor: 'blue.500', boxShadow: '0 0 0 1px blue.500' }}
-                        fontSize="sm"
-                    >
-                        <option value="Confirmed">Confirmed</option>
-                        <option value="Pending">Pending</option>
-                        <option value="Rejected">Rejected</option>
-                        <option value="Cancelled">Cancelled</option>
-                    </Select>
-                </Flex>
-
-                {/* Action Buttons */}
-                {selectedRows.length > 0 && (
-                    <Flex gap={4} mb={6}>
-                        <Button
-                            colorScheme="blue"
-                            onClick={handleConfirmReservation}
-                            size="sm"
+                    {/* Search Bar and Filters */}
+                    <Flex gap={4} mb={6} alignItems="center">
+                        <Input
+                            placeholder="Search by user, crematorium, or funeral date..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            width="300px"
+                            bg="white"
+                            borderColor="gray.300"
+                            _hover={{ borderColor: 'blue.300' }}
+                            _focus={{ borderColor: 'blue.500', boxShadow: '0 0 0 1px blue.500' }}
+                            fontSize="sm"
+                        />
+                        <Select
+                            placeholder="Filter by Crematorium"
+                            value={filters.crematorium}
+                            onChange={(e) => setFilters({ ...filters, crematorium: e.target.value })}
+                            width="200px"
+                            bg="white"
+                            borderColor="gray.300"
+                            _hover={{ borderColor: 'blue.300' }}
+                            _focus={{ borderColor: 'blue.500', boxShadow: '0 0 0 1px blue.500' }}
+                            fontSize="sm"
                         >
-                            Confirm Reservation
-                        </Button>
-                        <Button
-                            colorScheme="red"
-                            onClick={onRejectOpen}
-                            size="sm"
+                            <option value="Peaceful Rest Crematorium">Peaceful Rest Crematorium</option>
+                            <option value="Eternal Light Crematorium">Eternal Light Crematorium</option>
+                            <option value="Serenity Gardens Crematorium">Serenity Gardens Crematorium</option>
+                        </Select>
+                        <Select
+                            placeholder="Sort by Date"
+                            value={filters.date}
+                            onChange={(e) => setFilters({ ...filters, date: e.target.value })}
+                            width="200px"
+                            bg="white"
+                            borderColor="gray.300"
+                            _hover={{ borderColor: 'blue.300' }}
+                            _focus={{ borderColor: 'blue.500', boxShadow: '0 0 0 1px blue.500' }}
+                            fontSize="sm"
                         >
-                            Reject Reservation
-                        </Button>
-                        <Button
-                            colorScheme="gray"
-                            onClick={handleCancelSelection}
-                            size="sm"
+                            <option value="newest">Newest</option>
+                            <option value="oldest">Oldest</option>
+                        </Select>
+                        <Select
+                            placeholder="Filter by Status"
+                            value={filters.status}
+                            onChange={(e) => setFilters({ ...filters, status: e.target.value })}
+                            width="200px"
+                            bg="white"
+                            borderColor="gray.300"
+                            _hover={{ borderColor: 'blue.300' }}
+                            _focus={{ borderColor: 'blue.500', boxShadow: '0 0 0 1px blue.500' }}
+                            fontSize="sm"
                         >
-                            Cancel Selection
-                        </Button>
+                            <option value="Booked">Booked</option>
+                            <option value="Cancelled">Cancelled</option>
+                        </Select>
                     </Flex>
-                )}
 
-                {/* Table */}
-                <Box overflowX="auto" bg="white" shadow="sm" borderRadius="lg" border="1px" borderColor="gray.200">
-                    <table className="w-full text-left">
-                        <thead>
-                            <tr className="bg-gray-100">
-                                <th className="px-6 py-3 border-b border-gray-200"></th>
-                                <th className="px-6 py-3 border-b border-gray-200 text-sm font-medium text-gray-700">Reservation ID</th>
-                                <th className="px-6 py-3 border-b border-gray-200 text-sm font-medium text-gray-700">User</th>
-                                <th className="px-6 py-3 border-b border-gray-200 text-sm font-medium text-gray-700">Crematorium</th>
-                                <th className="px-6 py-3 border-b border-gray-200 text-sm font-medium text-gray-700">Funeral Date</th>
-                                <th className="px-6 py-3 border-b border-gray-200 text-sm font-medium text-gray-700">Time Slot</th>
-                                <th className="px-6 py-3 border-b border-gray-200 text-sm font-medium text-gray-700">Payment (LKR)</th>
-                                <th className="px-6 py-3 border-b border-gray-200 text-sm font-medium text-gray-700">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {filteredReservations.map((reservation) => (
-                                <tr
-                                    key={reservation.id}
-                                    className={`hover:bg-gray-50 transition-colors ${
-                                        selectedRows.includes(reservation.id) ? 'bg-blue-50' : ''
-                                    }`}
-                                    onClick={(e) => handleViewReservation(reservation, e)}
-                                >
-                                    <td className="px-6 py-4 border-b border-gray-200">
-                                        <input
-                                            type="checkbox"
-                                            className="checkbox"
-                                            checked={selectedRows.includes(reservation.id)}
-                                            onChange={() => handleRowSelect(reservation.id)}
-                                            disabled={reservation.status === 'Cancelled' || reservation.status === 'Rejected'}
-                                        />
-                                    </td>
-                                    <td className="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{reservation.id}</td>
-                                    <td className="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{reservation.user}</td>
-                                    <td className="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{reservation.crematorium}</td>
-                                    <td className="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{reservation.funeralDate}</td>
-                                    <td className="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{reservation.timeSlot}</td>
-                                    <td className="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{reservation.paymentAmount}</td>
-                                    <td className="px-6 py-4 border-b border-gray-200">
-                                        <Flex align="center">
-                                            <span
-                                                className={`px-2 py-1 rounded text-sm ${
-                                                    reservation.status === 'Confirmed'
-                                                        ? 'bg-green-100 text-green-800'
-                                                        : reservation.status === 'Pending'
-                                                        ? 'bg-blue-100 text-blue-800'
-                                                        : reservation.status === 'Rejected'
-                                                        ? 'bg-red-100 text-red-800'
-                                                        : 'bg-gray-100 text-gray-800'
-                                                }`}
-                                            >
-                                                {reservation.status}
-                                            </span>
-                                            {reservation.status === 'Cancelled' && (
-                                                <Popover>
-                                                    <PopoverTrigger>
-                                                        <IconButton
-                                                            aria-label="View cancellation reason"
-                                                            icon={<HiQuestionMarkCircle />}
-                                                            size="xs"
-                                                            ml={2}
-                                                            variant="ghost"
-                                                            onClick={(e) => e.stopPropagation()}
-                                                        />
-                                                    </PopoverTrigger>
-                                                    <PopoverContent>
-                                                        <PopoverArrow />
-                                                        <PopoverCloseButton />
-                                                        <PopoverHeader>Cancellation Reason</PopoverHeader>
-                                                        <PopoverBody>{reservation.note}</PopoverBody>
-                                                    </PopoverContent>
-                                                </Popover>
-                                            )}
-                                        </Flex>
-                                    </td>
+                    {/* Action Buttons */}
+                    {selectedRows.length > 0 && (
+                        <Flex gap={4} mb={6}>
+                            <Button
+                                colorScheme="red"
+                                onClick={onCancelOpen}
+                                size="sm"
+                                isDisabled={!canCancelReservation(
+                                    reservations.find((res) => res.id === selectedRows[0])?.funeralDate
+                                )}
+                            >
+                                Cancel Reservation
+                            </Button>
+                            <Button
+                                colorScheme="gray"
+                                onClick={handleCancelSelection}
+                                size="sm"
+                            >
+                                Cancel Selection
+                            </Button>
+                        </Flex>
+                    )}
+
+                    {/* Table */}
+                    <Box overflowX="auto" bg="white" shadow="sm" borderRadius="lg" border="1px" borderColor="gray.200">
+                        <table className="w-full text-left">
+                            <thead>
+                                <tr className="bg-gray-100">
+                                    <th className="px-6 py-3 border-b border-gray-200"></th>
+                                    <th className="px-6 py-3 border-b border-gray-200 text-sm font-medium text-gray-700">Reservation ID</th>
+                                    <th className="px-6 py-3 border-b border-gray-200 text-sm font-medium text-gray-700">User</th>
+                                    <th className="px-6 py-3 border-b border-gray-200 text-sm font-medium text-gray-700">Crematorium</th>
+                                    <th className="px-6 py-3 border-b border-gray-200 text-sm font-medium text-gray-700">Funeral Date</th>
+                                    <th className="px-6 py-3 border-b border-gray-200 text-sm font-medium text-gray-700">Time Slot</th>
+                                    <th className="px-6 py-3 border-b border-gray-200 text-sm font-medium text-gray-700">Payment (LKR)</th>
+                                    <th className="px-6 py-3 border-b border-gray-200 text-sm font-medium text-gray-700">Status</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </Box>
-            </div>
-
-            {/* View Reservation Modal */}
-            <Modal isOpen={isViewOpen} onClose={onViewClose} size="lg">
-                <ModalOverlay />
-                <ModalContent>
-                    <ModalHeader fontSize="xl" fontWeight="bold" borderBottom="1px" borderColor="gray.200" pb={4}>
-                        Reservation Details
-                    </ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody py={6}>
-                        {selectedReservation && (
-                            <Box>
-                                <Box mb={4}>
-                                    <strong>Reservation ID:</strong> {selectedReservation.id}
-                                </Box>
-                                <Box mb={4}>
-                                    <strong>User:</strong> {selectedReservation.user}
-                                </Box>
-                                <Box mb={4}>
-                                    <strong>Crematorium:</strong> {selectedReservation.crematorium}
-                                </Box>
-                                <Box mb={4}>
-                                    <strong>Funeral Date:</strong> {selectedReservation.funeralDate}
-                                </Box>
-                                <Box mb={4}>
-                                    <strong>Time Slot:</strong> {selectedReservation.timeSlot}
-                                </Box>
-                                <Box mb={4}>
-                                    <strong>Payment:</strong> {selectedReservation.payment} (LKR {selectedReservation.paymentAmount})
-                                </Box>
-                                <Box mb={4}>
-                                    <strong>Status:</strong>{" "}
-                                    <span
-                                        className={`px-2 py-1 rounded text-sm ${
-                                            selectedReservation.status === 'Confirmed'
-                                                ? 'bg-green-100 text-green-800'
-                                                : selectedReservation.status === 'Pending'
-                                                ? 'bg-blue-100 text-blue-800'
-                                                : selectedReservation.status === 'Rejected'
-                                                ? 'bg-red-100 text-red-800'
-                                                : 'bg-gray-100 text-gray-800'
+                            </thead>
+                            <tbody>
+                                {filteredReservations.map((reservation) => (
+                                    <tr
+                                        key={reservation.id}
+                                        className={`hover:bg-gray-50 transition-colors ${
+                                            selectedRows.includes(reservation.id) ? 'bg-blue-50' : ''
                                         }`}
+                                        onClick={(e) => handleViewReservation(reservation, e)}
                                     >
-                                        {selectedReservation.status}
-                                    </span>
-                                </Box>
-                                <Divider my={4} />
-                                <Box mb={4}>
-                                    <strong>Deceased Name:</strong> {selectedReservation.deceasedName}
-                                </Box>
-                                <Box mb={4}>
-                                    <strong>Deceased Address:</strong> {selectedReservation.deceasedAddress}
-                                </Box>
-                                <Box mb={4}>
-                                    <strong>Date of Death:</strong> {selectedReservation.dateOfDeath}
-                                </Box>
-                                <Box mb={4}>
-                                    <strong>Notifier Name:</strong> {selectedReservation.notifierName}
-                                </Box>
-                                <Box mb={4}>
-                                    <strong>Notifier Address:</strong> {selectedReservation.notifierAddress}
-                                </Box>
-                                <Box mb={4}>
-                                    <strong>Notifier Relationship:</strong> {selectedReservation.notifierRelationship}
-                                </Box>
-                            </Box>
-                        )}
-                    </ModalBody>
-                </ModalContent>
-            </Modal>
+                                        <td className="px-6 py-4 border-b border-gray-200">
+                                            <input
+                                                type="checkbox"
+                                                className="checkbox"
+                                                checked={selectedRows.includes(reservation.id)}
+                                                onChange={() => handleRowSelect(reservation.id)}
+                                                disabled={reservation.status === 'Cancelled'}
+                                            />
+                                        </td>
+                                        <td className="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{reservation.id}</td>
+                                        <td className="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{reservation.user}</td>
+                                        <td className="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{reservation.crematorium}</td>
+                                        <td className="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{reservation.funeralDate}</td>
+                                        <td className="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{reservation.timeSlot}</td>
+                                        <td className="px-6 py-4 border-b border-gray-200 text-sm text-gray-700">{reservation.paymentAmount}</td>
+                                        <td className="px-6 py-4 border-b border-gray-200">
+                                            <Flex align="center">
+                                                <span
+                                                    className={`px-2 py-1 rounded text-sm ${
+                                                        reservation.status === 'Booked'
+                                                            ? 'bg-green-100 text-green-800'
+                                                            : 'bg-red-100 text-red-800'
+                                                    }`}
+                                                >
+                                                    {reservation.status}
+                                                </span>
+                                                {reservation.status === 'Cancelled' && (
+                                                    <Popover>
+                                                        <PopoverTrigger>
+                                                            <IconButton
+                                                                aria-label="View cancellation reason"
+                                                                icon={<HiQuestionMarkCircle />}
+                                                                size="xs"
+                                                                ml={2}
+                                                                variant="ghost"
+                                                                onClick={(e) => e.stopPropagation()}
+                                                            />
+                                                        </PopoverTrigger>
+                                                        <PopoverContent>
+                                                            <PopoverArrow />
+                                                            <PopoverCloseButton />
+                                                            <PopoverHeader>Cancellation Reason</PopoverHeader>
+                                                            <PopoverBody>{reservation.cancellationReason}</PopoverBody>
+                                                        </PopoverContent>
+                                                    </Popover>
+                                                )}
+                                            </Flex>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </Box>
+                </div>
 
-            {/* Reject Reservation Alert */}
-            <AlertDialog isOpen={isRejectOpen} onClose={onRejectClose} leastDestructiveRef={cancelRef}>
-                <AlertDialogOverlay />
-                <AlertDialogContent>
-                    <AlertDialogHeader fontSize="lg" fontWeight="bold">
-                        Reject Reservation
-                    </AlertDialogHeader>
-                    <AlertDialogBody>
-                        Are you sure you want to reject the selected reservations?
-                    </AlertDialogBody>
-                    <AlertDialogFooter>
-                        <Button ref={cancelRef} onClick={onRejectClose}>
-                            Cancel
-                        </Button>
-                        <Button colorScheme="red" onClick={handleRejectReservation} ml={3}>
-                            Reject
-                        </Button>
-                    </AlertDialogFooter>
-                </AlertDialogContent>
-            </AlertDialog>
-        </div>
+                {/* View Reservation Modal */}
+                <Modal isOpen={isViewOpen} onClose={onViewClose} size="lg">
+                    <ModalOverlay />
+                    <ModalContent>
+                        <ModalHeader fontSize="xl" fontWeight="bold" borderBottom="1px" borderColor="gray.200" pb={4}>
+                            Reservation Details
+                        </ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody py={6}>
+                            {selectedReservation && (
+                                <Box>
+                                    <Box mb={4}>
+                                        <strong>Reservation ID:</strong> {selectedReservation.id}
+                                    </Box>
+                                    <Box mb={4}>
+                                        <strong>User:</strong> {selectedReservation.user}
+                                    </Box>
+                                    <Box mb={4}>
+                                        <strong>Crematorium:</strong> {selectedReservation.crematorium}
+                                    </Box>
+                                    <Box mb={4}>
+                                        <strong>Funeral Date:</strong> {selectedReservation.funeralDate}
+                                    </Box>
+                                    <Box mb={4}>
+                                        <strong>Time Slot:</strong> {selectedReservation.timeSlot}
+                                    </Box>
+                                    <Box mb={4}>
+                                        <strong>Payment:</strong> {selectedReservation.payment} (LKR {selectedReservation.paymentAmount})
+                                    </Box>
+                                    <Box mb={4}>
+                                        <strong>Status:</strong>{" "}
+                                        <span
+                                            className={`px-2 py-1 rounded text-sm ${
+                                                selectedReservation.status === 'Booked'
+                                                    ? 'bg-green-100 text-green-800'
+                                                    : 'bg-red-100 text-red-800'
+                                            }`}
+                                        >
+                                            {selectedReservation.status}
+                                        </span>
+                                    </Box>
+                                    <Divider my={4} />
+                                    <Box mb={4}>
+                                        <strong>Deceased Name:</strong> {selectedReservation.deceasedName}
+                                    </Box>
+                                    <Box mb={4}>
+                                        <strong>Deceased Address:</strong> {selectedReservation.deceasedAddress}
+                                    </Box>
+                                    <Box mb={4}>
+                                        <strong>Date of Death:</strong> {selectedReservation.dateOfDeath}
+                                    </Box>
+                                    <Box mb={4}>
+                                        <strong>Notifier Name:</strong> {selectedReservation.notifierName}
+                                    </Box>
+                                    <Box mb={4}>
+                                        <strong>Notifier Address:</strong> {selectedReservation.notifierAddress}
+                                    </Box>
+                                    <Box mb={4}>
+                                        <strong>Notifier Relationship:</strong> {selectedReservation.notifierRelationship}
+                                    </Box>
+                                    {selectedReservation.status === 'Cancelled' && (
+                                        <Box mb={4}>
+                                            <strong>Cancellation Reason:</strong> {selectedReservation.cancellationReason}
+                                        </Box>
+                                    )}
+                                </Box>
+                            )}
+                        </ModalBody>
+                    </ModalContent>
+                </Modal>
+
+                {/* Cancel Reservation Alert */}
+                <AlertDialog isOpen={isCancelOpen} onClose={onCancelClose} leastDestructiveRef={cancelRef}>
+                    <AlertDialogOverlay />
+                    <AlertDialogContent>
+                        <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                            Cancel Reservation
+                        </AlertDialogHeader>
+                        <AlertDialogBody>
+                            <Box mb={4}>
+                                Are you sure you want to cancel the selected reservations?
+                            </Box>
+                            <Textarea
+                                placeholder="Enter cancellation reason..."
+                                value={cancellationReason}
+                                onChange={(e) => setCancellationReason(e.target.value)}
+                                isRequired
+                            />
+                        </AlertDialogBody>
+                        <AlertDialogFooter>
+                            <Button ref={cancelRef} onClick={onCancelClose}>
+                                Cancel
+                            </Button>
+                            <Button
+                                colorScheme="red"
+                                onClick={handleCancelReservation}
+                                ml={3}
+                                isDisabled={!cancellationReason}
+                            >
+                                Confirm Cancellation
+                            </Button>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialog>
+            </div>
         </Sidebar>
     );
 };
 
-export default CrematoriumRequests
+export default CrematoriumRequests;

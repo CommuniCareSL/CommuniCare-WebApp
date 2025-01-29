@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sidebar from '../../../components/Account/Sidebar';
 import { HiChevronRight, HiPlus } from 'react-icons/hi';
 import {
@@ -8,7 +8,6 @@ import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
@@ -27,367 +26,268 @@ import {
   Stack,
   Textarea,
   useDisclosure,
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogContent,
-  AlertDialogOverlay,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
+  Spinner,
+  Alert,
+  AlertIcon,
 } from '@chakra-ui/react';
+import {
+  fetchSavedCrematorium,
+  addCrematorium,
+  editCrematorium,
+  deleteCrematorium,
+} from '../../../service/reservation/crematorium/crematorium';
+import { getStoredData } from "../../../hooks/localStorage";
 
 const Manage_Crematorium = () => {
-  const [crematoriums, setCrematoriums] = useState([
-    {
-      id: 1,
-      name: 'Peaceful Rest Crematorium',
-      area: '123 Main St, Springfield',
-      rentalFee: 15000,
-      description: 'Serene and well-maintained',
-      terms: ['No flowers allowed', 'No photography'],
-    },
-    {
-      id: 2,
-      name: 'Eternal Light Crematorium',
-      area: '456 Elm St, Shelbyville',
-      rentalFee: 25000,
-      description: 'Ideal for large gatherings',
-      terms: ['Advance booking required', 'No outside food allowed'],
-    },
-  ]);
-
+  const { sabhaId, departmentId } = getStoredData();
+  const [crematoriums, setCrematoriums] = useState([]);
   const [currentCrematorium, setCurrentCrematorium] = useState(null);
-  const [selectedCrematorium, setSelectedCrematorium] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const {
-    isOpen: isDeleteOpen,
-    onOpen: onDeleteOpen,
-    onClose: onDeleteClose,
-  } = useDisclosure();
-  const {
-    isOpen: isViewOpen,
-    onOpen: onViewOpen,
-    onClose: onViewClose,
-  } = useDisclosure();
-  const cancelRef = React.useRef();
+  const [formData, setFormData] = useState({
+    name: '',
+    area: '',
+    price: '',
+    note: '',
+    terms: '',
+  });
 
-  const handleAddOrEdit = (crematorium) => {
-    if (currentCrematorium) {
-      setCrematoriums((prev) =>
-        prev.map((c) => (c.id === currentCrematorium.id ? crematorium : c))
-      );
-    } else {
-      setCrematoriums((prev) => [...prev, { ...crematorium, id: Date.now() }]);
+  // Fetch crematoriums on component mount
+  useEffect(() => {
+    const loadCrematoriums = async () => {
+      setIsLoading(true);
+      try {
+        const data = await fetchSavedCrematorium(sabhaId);
+        setCrematoriums(data);
+      } catch (err) {
+        setError('Failed to fetch crematoriums');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    loadCrematoriums();
+  }, [sabhaId]);
+
+  const handleAddOrEdit = async (crematorium) => {
+    try {
+      if (currentCrematorium) {
+        // Edit existing crematorium
+        const updated = await editCrematorium(currentCrematorium.crematoriumId, crematorium);
+        setCrematoriums((prev) =>
+          prev.map((c) => (c.crematoriumId === updated.crematoriumId ? updated : c))
+        );
+      } else {
+        // Add new crematorium
+        const added = await addCrematorium({ ...crematorium, sabhaId });
+        setCrematoriums((prev) => [...prev, added]);
+      }
+      onClose();
+    } catch (err) {
+      setError('Failed to save crematorium');
     }
-    setCurrentCrematorium(null);
-    onClose();
   };
 
-  const handleDelete = (id) => {
-    setCrematoriums((prev) => prev.filter((c) => c.id !== id));
-    onDeleteClose();
+  const handleDelete = async (crematoriumId, crematoriumName) => {
+    const confirmDelete = window.confirm(`Are you sure you want to delete ${crematoriumName}?`);
+    if (confirmDelete) {
+      try {
+        await deleteCrematorium(crematoriumId);
+        setCrematoriums((prev) => prev.filter((c) => c.crematoriumId !== crematoriumId));
+      } catch (err) {
+        setError(`Failed to delete crematorium: ${crematoriumName}`);
+      }
+    }
   };
+
+  if (isLoading) {
+    return (
+      <Sidebar>
+        <Box className="flex justify-center items-center h-screen">
+          <Spinner size="xl" />
+        </Box>
+      </Sidebar>
+    );
+  }
+
+  if (error) {
+    return (
+      <Sidebar>
+        <Box className="flex justify-center items-center h-screen">
+          <Alert status="error">
+            <AlertIcon />
+            {error}
+          </Alert>
+        </Box>
+      </Sidebar>
+    );
+  }
 
   return (
     <Sidebar>
-    <div className="flex h-screen">
-      <div className="flex-1 p-5 bg-gray-100 overflow-y-auto">
-        {/* Breadcrumb */}
-        <Breadcrumb spacing="8px" separator={<HiChevronRight />}>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="#">Services</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="#">Crematorium Reservation</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbItem isCurrentPage>
-            <BreadcrumbLink href="#">Management</BreadcrumbLink>
-          </BreadcrumbItem>
-        </Breadcrumb>
+      <div className="flex h-screen">
+        <div className="flex-1 p-5 bg-gray-100 overflow-y-auto">
+          {/* Breadcrumb */}
+          <Breadcrumb spacing="8px" separator={<HiChevronRight />}>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">Services</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#">Crematorium Reservation</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem isCurrentPage>
+              <BreadcrumbLink href="#">Management</BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
 
-        {/* Add Crematorium Button */}
-        <Box className="flex justify-end mb-5">
-          <Button
-            leftIcon={<HiPlus />}
-            colorScheme="blue"
-            onClick={() => {
-              setCurrentCrematorium(null);
-              onOpen();
-            }}
-          >
-            Add Crematorium
-          </Button>
-        </Box>
-
-        {/* Table Section */}
-        <Box
-          bg="white"
-          borderRadius="md"
-          boxShadow="lg"
-          p={5}
-          border="1px solid #E2E8F0"
-        >
-          <Box mb={4} fontWeight="bold" fontSize="lg" color="gray.700">
-            Crematoriums
+          {/* Add Crematorium Button */}
+          <Box className="flex justify-end mb-5">
+            <Button
+              leftIcon={<HiPlus />}
+              colorScheme="blue"
+              onClick={() => {
+                setCurrentCrematorium(null);
+                setFormData({
+                  name: '',
+                  area: '',
+                  price: '',
+                  note: '',
+                  terms: '',
+                });
+                onOpen();
+              }}
+            >
+              Add Crematorium
+            </Button>
           </Box>
-          <TableContainer>
-            <Table variant="striped" colorScheme="teal" size="sm">
-              <Thead>
-                <Tr>
-                  <Th fontWeight="bold" color="teal.700">
-                    Name
-                  </Th>
-                  <Th fontWeight="bold" color="teal.700">
-                    Area
-                  </Th>
-                  <Th fontWeight="bold" color="teal.700">
-                    Rental Fee
-                  </Th>
-                  <Th isNumeric fontWeight="bold" color="teal.700">
-                    Options
-                  </Th>
-                </Tr>
-              </Thead>
-              <Tbody>
-                {crematoriums.map((crematorium) => (
-                  <Tr key={crematorium.id} _hover={{ bg: 'gray.50' }}>
-                    <Td py={4}>{crematorium.name}</Td>
-                    <Td py={4}>{crematorium.area}</Td>
-                    <Td py={4}>LKR {crematorium.rentalFee}</Td>
-                    <Td py={4} isNumeric>
-                      <Button
-                        size="sm"
-                        colorScheme="teal"
-                        variant="outline"
-                        mr={2}
-                        onClick={() => {
-                          setSelectedCrematorium(crematorium);
-                          onViewOpen();
-                        }}
-                      >
-                        View
-                      </Button>
-                      <Button
-                        size="sm"
-                        colorScheme="blue"
-                        variant="outline"
-                        mr={2}
-                        onClick={() => {
-                          setCurrentCrematorium(crematorium);
-                          onOpen();
-                        }}
-                      >
-                        Edit
-                      </Button>
-                      <Button
-                        size="sm"
-                        colorScheme="red"
-                        variant="outline"
-                        onClick={onDeleteOpen}
-                      >
-                        Delete
-                      </Button>
 
-                      {/* Delete Confirmation Dialog */}
-                      <AlertDialog
-                        isOpen={isDeleteOpen}
-                        leastDestructiveRef={cancelRef}
-                        onClose={onDeleteClose}
-                      >
-                        <AlertDialogOverlay>
-                          <AlertDialogContent>
-                            <AlertDialogHeader fontSize="lg" fontWeight="bold">
-                              Delete Crematorium
-                            </AlertDialogHeader>
-
-                            <AlertDialogBody>
-                              Are you sure you want to delete this entry?
-                            </AlertDialogBody>
-
-                            <AlertDialogFooter>
-                              <Button ref={cancelRef} onClick={onDeleteClose}>
-                                Cancel
-                              </Button>
-                              <Button
-                                colorScheme="red"
-                                onClick={() => handleDelete(crematorium.id)}
-                                ml={3}
-                              >
-                                Delete
-                              </Button>
-                            </AlertDialogFooter>
-                          </AlertDialogContent>
-                        </AlertDialogOverlay>
-                      </AlertDialog>
-                    </Td>
+          {/* Table Section */}
+          <Box bg="white" borderRadius="md" boxShadow="lg" p={5}>
+            <Box mb={4} fontWeight="bold" fontSize="lg" color="gray.700">
+              Crematoriums
+            </Box>
+            <TableContainer>
+              <Table variant="striped" colorScheme="teal" size="sm">
+                <Thead>
+                  <Tr>
+                    <Th>Name</Th>
+                    <Th>Area</Th>
+                    <Th>Rental Fee</Th>
+                    <Th>Description</Th>
+                    <Th>Terms</Th>
+                    <Th>Actions</Th>
                   </Tr>
-                ))}
-              </Tbody>
-              <Tfoot>
-                <Tr>
-                  <Th>Name</Th>
-                  <Th>Area</Th>
-                  <Th>Rental Fee</Th>
-                  <Th isNumeric>Options</Th>
-                </Tr>
-              </Tfoot>
-            </Table>
-          </TableContainer>
-        </Box>
+                </Thead>
+                <Tbody>
+                  {crematoriums.map((crematorium) => (
+                    <Tr key={crematorium.crematoriumId}>
+                      <Td>{crematorium.name}</Td>
+                      <Td>{crematorium.area}</Td>
+                      <Td>LKR {crematorium.price}</Td>
+                      <Td>{crematorium.note}</Td>
+                      <Td>{crematorium.terms}</Td>
+                      <Td>
+                        <Button
+                          size="sm"
+                          colorScheme="blue"
+                          onClick={() => {
+                            setCurrentCrematorium(crematorium);
+                            setFormData({
+                              name: crematorium.name,
+                              area: crematorium.area,
+                              price: crematorium.price,
+                              note: crematorium.note,
+                              terms: crematorium.terms,
+                            });
+                            onOpen();
+                          }}
+                        >
+                          Edit
+                        </Button>
+                        <Button
+                          size="sm"
+                          colorScheme="red"
+                          ml={2}
+                          onClick={() => handleDelete(crematorium.crematoriumId, crematorium.name)}
+                        >
+                          Delete
+                        </Button>
+                      </Td>
+                    </Tr>
+                  ))}
+                </Tbody>
+              </Table>
+            </TableContainer>
+          </Box>
 
-        {/* Drawer for Add/Edit Crematorium */}
-        <Drawer isOpen={isOpen} placement="right" onClose={onClose} size="lg">
-          <DrawerOverlay />
-          <DrawerContent>
-            <DrawerCloseButton />
-            <DrawerHeader borderBottomWidth="1px">
-              {currentCrematorium ? 'Edit Crematorium' : 'Add Crematorium'}
-            </DrawerHeader>
-
-            <DrawerBody>
-              <Stack spacing="24px">
-                <Box>
-                  <FormLabel htmlFor="name">Name</FormLabel>
-                  <Input
-                    id="name"
-                    placeholder="Enter crematorium name"
-                    defaultValue={currentCrematorium?.name || ''}
-                  />
-                </Box>
-
-                <Box>
-                  <FormLabel htmlFor="area">Area</FormLabel>
-                  <Input
-                    id="area"
-                    placeholder="Enter area (address)"
-                    defaultValue={currentCrematorium?.area || ''}
-                  />
-                </Box>
-
-                <Box>
-                  <FormLabel htmlFor="rentalFee">Rental Fee</FormLabel>
-                  <Input
-                    id="rentalFee"
-                    placeholder="Enter rental fee"
-                    type="number"
-                    defaultValue={currentCrematorium?.rentalFee || ''}
-                    onInput={(e) => {
-                      const value = parseInt(e.target.value, 10);
-                      if (value < 0) e.target.value = '';
-                    }}
-                  />
-                </Box>
-
-                {/* Terms Section */}
-                <Box>
-                  <FormLabel>Terms & Conditions</FormLabel>
-                  <Stack spacing={2}>
-                    {currentCrematorium?.terms?.map((term, index) => (
-                      <Input
-                        key={index}
-                        defaultValue={term}
-                        id={`term-${index}`}
-                      />
-                    ))}
-                    {/* Predefined Suggestions */}
-                    <Box fontSize="sm" color="gray.500">
-                      Suggestions:{' '}
-                      <i>
-                        "No flowers allowed", "No photography", "Advance booking required"
-                      </i>
-                    </Box>
-
-                    <Button
-                      leftIcon={<HiPlus />}
-                      colorScheme="teal"
-                      variant="outline"
-                      size="sm"
-                      onClick={() =>
-                        setCurrentCrematorium((prev) => ({
-                          ...prev,
-                          terms: [...(prev?.terms || []), ''],
-                        }))
-                      }
-                    >
-                      Add Condition
-                    </Button>
-                  </Stack>
-                </Box>
-
-                <Box>
-                  <FormLabel htmlFor="description">Description (If any)</FormLabel>
-                  <Textarea
-                    id="description"
-                    defaultValue={currentCrematorium?.description || ''}
-                  />
-                </Box>
-              </Stack>
-            </DrawerBody>
-
-            <DrawerFooter borderTopWidth="1px">
-              <Button variant="outline" mr={3} onClick={onClose}>
-                Cancel
-              </Button>
-              <Button
-                colorScheme="blue"
-                onClick={() =>
-                  handleAddOrEdit({
-                    id: currentCrematorium?.id,
-                    name: document.getElementById('name').value,
-                    area: document.getElementById('area').value,
-                    rentalFee: document.getElementById('rentalFee').value,
-                    description: document.getElementById('description').value,
-                    terms: currentCrematorium?.terms || [],
-                  })
-                }
-              >
-                Submit
-              </Button>
-            </DrawerFooter>
-          </DrawerContent>
-        </Drawer>
-
-        {/* View Crematorium Modal */}
-        <Modal isOpen={isViewOpen} onClose={onViewClose} size="lg">
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Crematorium Details</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              {selectedCrematorium && (
+          {/* Drawer for Add/Edit Crematorium */}
+          <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
+            <DrawerOverlay />
+            <DrawerContent>
+              <DrawerCloseButton />
+              <DrawerHeader>
+                {currentCrematorium ? 'Edit Crematorium' : 'Add Crematorium'}
+              </DrawerHeader>
+              <DrawerBody>
                 <Stack spacing={4}>
                   <Box>
-                    <strong>Name:</strong> {selectedCrematorium.name}
+                    <FormLabel>Name</FormLabel>
+                    <Input
+                      name="name"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    />
                   </Box>
                   <Box>
-                    <strong>Area:</strong> {selectedCrematorium.area}
+                    <FormLabel>Area</FormLabel>
+                    <Input
+                      name="area"
+                      value={formData.area}
+                      onChange={(e) => setFormData({ ...formData, area: e.target.value })}
+                    />
                   </Box>
                   <Box>
-                    <strong>Rental Fee:</strong> LKR {selectedCrematorium.rentalFee}
+                    <FormLabel>Rental Fee</FormLabel>
+                    <Input
+                      name="price"
+                      type="number"
+                      value={formData.price}
+                      onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+                    />
                   </Box>
                   <Box>
-                    <strong>Description:</strong> {selectedCrematorium.description}
+                    <FormLabel>Description</FormLabel>
+                    <Textarea
+                      name="note"
+                      value={formData.note}
+                      onChange={(e) => setFormData({ ...formData, note: e.target.value })}
+                    />
                   </Box>
                   <Box>
-                    <strong>Terms & Conditions:</strong>
-                    <ul>
-                      {selectedCrematorium.terms.map((term, index) => (
-                        <li key={index}>{term}</li>
-                      ))}
-                    </ul>
+                    <FormLabel>Terms</FormLabel>
+                    <Input
+                      name="terms"
+                      value={formData.terms}
+                      onChange={(e) => setFormData({ ...formData, terms: e.target.value })}
+                    />
                   </Box>
                 </Stack>
-              )}
-            </ModalBody>
-          </ModalContent>
-        </Modal>
+              </DrawerBody>
+              <DrawerFooter>
+                <Button variant="outline" mr={3} onClick={onClose}>
+                  Cancel
+                </Button>
+                <Button
+                  colorScheme="blue"
+                  onClick={() => handleAddOrEdit(formData)}
+                >
+                  Save
+                </Button>
+              </DrawerFooter>
+            </DrawerContent>
+          </Drawer>
+        </div>
       </div>
-    </div>
     </Sidebar>
   );
 };
