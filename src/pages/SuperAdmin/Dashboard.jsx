@@ -35,17 +35,17 @@ const Dashboard = () => {
   };
 
   const cardData = [
-    { title: 'Total Users', value: 26, icon: 'person_outline' },
-    { title: 'Total Officers', value: 36, icon: 'badge' },
-    { title: 'Number of complaints', value: 12, icon: 'warning' },
-    { title: 'Number of Appointments', value: 25, icon: 'calendar_month' }
+    { title: 'Total Users', value: 6, icon: 'person_outline' },
+    { title: 'Total Officers', value: 5, icon: 'badge' },
+    { title: 'Number of complaints', value: 8, icon: 'warning' },
+    { title: 'Number of Appointments', value: 5, icon: 'calendar_month' }
   ];
 
   const lineChartData = {
     labels: ['Dec', 'Nov', 'Oct', 'Sep', 'Aug', 'Jul', 'Jun', 'May', 'Apr', 'Mar', 'Feb', 'Jan'],
     datasets: [{
       label: 'Users',
-      data: [10, 5, 15, 12, 8, 20, 25, 18, 24, 30, 22, 28],
+      data: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5],
       borderColor: '#0991FF',
       tension: 0.1
     }]
@@ -144,7 +144,7 @@ const Dashboard = () => {
 
   return (
     <Sidebar>
-      <div className="pt-6 p-6 overflow-y-auto">
+      <div className="pt-6 p-6 overflow-y-auto bg-[#e8eff9]">
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
           {cardData.map((card, index) => (
@@ -161,25 +161,11 @@ const Dashboard = () => {
         </div>
 
         {/* Charts Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-4">
           <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold text-gray-700 mb-4">Users Registration</h2>
+            <h2 className="text-xl font-semibold text-gray-700 mb-4">Registered Users</h2>
             <div className="h-64">
               <Line data={lineChartData} options={{ responsive: true, maintainAspectRatio: false }} />
-            </div>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold text-gray-700 mb-4">Users by Gender</h2>
-            <div className="h-64">
-              <Pie data={pieChartData} options={{ responsive: true, maintainAspectRatio: false }} />
-            </div>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold text-gray-700 mb-4">Monthly Complaints</h2>
-            <div className="h-64">
-              <Bar data={barChartData} options={{ responsive: true, maintainAspectRatio: false }} />
             </div>
           </div>
 
@@ -194,6 +180,20 @@ const Dashboard = () => {
               onClickDay={handleDateClick}
             />
           </div>
+
+          {/* <div className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-xl font-semibold text-gray-700 mb-4">Users by Gender</h2>
+            <div className="h-64">
+              <Pie data={pieChartData} options={{ responsive: true, maintainAspectRatio: false }} />
+            </div>
+          </div> */}
+
+          {/* <div className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-xl font-semibold text-gray-700 mb-4">Monthly Complaints</h2>
+            <div className="h-64">
+              <Bar data={barChartData} options={{ responsive: true, maintainAspectRatio: false }} />
+            </div>
+          </div> */}
         </div>
 
         {/* Holiday Modal */}

@@ -25,6 +25,18 @@
     margin-top: 3vh;
   }
 
+  .report-summery-blocks-type2{
+    width: 93%;
+    height: 80vh;
+    margin-left: 35px;
+    margin-top: 3vh;
+    background-color: #fff;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .report-summery-left-block-type1{
     width: 65%;
     height: 100%;

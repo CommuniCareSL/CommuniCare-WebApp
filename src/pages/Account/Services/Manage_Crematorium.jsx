@@ -96,7 +96,6 @@ const Manage_Crematorium = () => {
   return (
     <Sidebar>
     <div className="flex h-screen">
-
       <div className="flex-1 p-5 bg-gray-100 overflow-y-auto">
         {/* Breadcrumb */}
         <Breadcrumb spacing="8px" separator={<HiChevronRight />}>
