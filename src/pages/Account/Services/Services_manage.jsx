@@ -4,6 +4,7 @@ import Sidebar from '../../../components/Account/Sidebar';
 import PlaygroundAcc from './Playground_home';
 import AssemblyHallAcc from './AssemblyHall_home';
 import CrematoriumAcc from './Crematorium_home';
+import GullyBowserService from './GullyBowser_service';
 
 const Services = () => {
     const tabOrientation = useBreakpointValue({ base: 'vertical', md: 'horizontal' });
@@ -63,8 +64,8 @@ const Services = () => {
                                 <CrematoriumAcc />
                             </TabPanel>
                             <TabPanel>
-                                {/* Add Gully Bowser component when ready */}
-                                <div>Gully Bowser Service Component</div>
+                               <GullyBowserService />
+                                {/* <div>Gully Bowser Service Component</div> */}
                             </TabPanel>
                         </TabPanels>
                     </Tabs>

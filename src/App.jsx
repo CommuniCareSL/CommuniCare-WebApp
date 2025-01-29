@@ -65,6 +65,8 @@ import Manage_CrematoriumAcc from './pages/Account/Services/Manage_Crematorium';
 import CrematoriumRequestsAcc from './pages/Account/Services/Crematorium_requests';
 import CrematoriumHistoryAcc from './pages/Account/Services/Crematorium_past';
 
+import GullyBowserService from './pages/Account/Services/GullyBowser_service';
+
 
 import WorkAndPlanDashboard from "./pages/WorkAndPlan/Dashboard";
 import WorkAndPlanComplaint from "./pages/WorkAndPlan/Complaint";
@@ -128,6 +130,7 @@ const App = () => {
         <Route path="/Crematorium_home/CrematoriumRequestsAcc" element={<CrematoriumRequestsAcc/>} />
         <Route path="/Crematorium_home/CrematoriumHistoryAcc" element={<CrematoriumHistoryAcc/>} />
 
+        <Route path="/GullyBowser_Service" element={<GullyBowserService />} />
         
         {/* Officer Routes */}
         <Route path="/dashboard_Officer" element={<Dashboard_Officer />} />

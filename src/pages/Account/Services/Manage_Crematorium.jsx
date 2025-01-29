@@ -94,8 +94,8 @@ const Manage_Crematorium = () => {
   };
 
   return (
+    <Sidebar>
     <div className="flex h-screen">
-      <Sidebar />
 
       <div className="flex-1 p-5 bg-gray-100 overflow-y-auto">
         {/* Breadcrumb */}
@@ -389,6 +389,7 @@ const Manage_Crematorium = () => {
         </Modal>
       </div>
     </div>
+    </Sidebar>
   );
 };
 
