@@ -102,7 +102,7 @@ const WorkAndPlanCompletedorCanceledAppointments = () => {
       "National ID card",
       "Fees : Rs.750.00",
     ],
-    "Approving land subdivision and amalgamation development plans": [
+    "Approving Land Subdivision and Amalgamation Development Plans": [
       "Request Letter",
       "Land survery report",
       "Ownership certificates",
@@ -115,7 +115,7 @@ const WorkAndPlanCompletedorCanceledAppointments = () => {
       "Copy of building plan",
       "Fees : Rs.2000.00",
     ],
-    "Obtaining a trade license": [
+    "Obtaining a Trade License": [
       "Completed application form",
       "Bussiness registration",
       "Tax identification number",
